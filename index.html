@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince Learning Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ══════════════ HEADER ══════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Prince <em>Learning Hub</em></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#flashcards" class="nav-link" onclick="closeNav()">Flashcards</a>
+        <a href="#upload"     class="nav-link" onclick="closeNav()">Upload</a>
+        <a href="#ai"         class="nav-link" onclick="closeNav()">AI Assistant</a>
+        <a href="#categories" class="nav-link" onclick="closeNav()">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <span class="theme-icon">☽</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to your study companion</p>
+      <h1 class="hero-title">Master Tax, Law,<br/>Accounts & GST</h1>
+      <p class="hero-subtitle">Upload flashcards, study smarter, and get AI-powered help — all in one beautiful hub.</p>
+      <div class="hero-search">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="globalSearch" class="search-input" placeholder="Search flashcards, topics…" autocomplete="off" />
+        <button class="search-btn" onclick="runSearch()">Search</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span id="statCards">0</span><em>Flashcards</em></div>
+        <div class="stat-sep">|</div>
+        <div class="stat"><span id="statFiles">0</span><em>Files</em></div>
+        <div class="stat-sep">|</div>
+        <div class="stat"><span>4</span><em>Categories</em></div>
+      </div>
+    </div>
+    <div class="hero-deco"></div>
+  </section>
+
+  <!-- ══════════════ CATEGORIES ══════════════ -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Categories</h2>
+        <p class="section-sub">Filter your study material by subject</p>
+      </div>
+      <div class="category-grid">
+        <button class="cat-btn active" data-cat="all">All</button>
+        <button class="cat-btn" data-cat="tax">
+          <span class="cat-icon">📊</span> Tax
+        </button>
+        <button class="cat-btn" data-cat="law">
+          <span class="cat-icon">⚖️</span> Law
+        </button>
+        <button class="cat-btn" data-cat="accounts">
+          <span class="cat-icon">🧾</span> Accounts
+        </button>
+        <button class="cat-btn" data-cat="gst">
+          <span class="cat-icon">📋</span> GST
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FLASHCARDS ══════════════ -->
+  <section class="section" id="flashcards">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Flashcards</h2>
+        <p class="section-sub">Click a card to reveal the answer</p>
+      </div>
+      <div class="flashcard-grid" id="flashcardGrid">
+        <!-- Populated by JS -->
+      </div>
+      <p class="empty-state" id="noCards" style="display:none">No flashcards found. Upload HTML files or try a different category.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ UPLOAD ══════════════ -->
+  <section class="section section-alt" id="upload">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Upload Flashcards</h2>
+        <p class="section-sub">Upload your HTML flashcard files — they are stored locally in your browser</p>
+      </div>
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="fileInput" accept=".html" multiple hidden />
+        <div class="upload-icon">⬆</div>
+        <p class="upload-label">Drag & drop <strong>.html</strong> flashcard files here</p>
+        <p class="upload-hint">or</p>
+        <button class="btn-primary" onclick="document.getElementById('fileInput').click()">Browse Files</button>
+        <p class="upload-formats">Supported: .html flashcard files</p>
+      </div>
+      <div class="upload-category-select">
+        <label>Assign category to uploaded files:</label>
+        <select id="uploadCategory">
+          <option value="tax">Tax</option>
+          <option value="law">Law</option>
+          <option value="accounts">Accounts</option>
+          <option value="gst">GST</option>
+        </select>
+      </div>
+      <div class="uploaded-list" id="uploadedList"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ AI ASSISTANT ══════════════ -->
+  <section class="section" id="ai">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">AI Assistant</h2>
+        <p class="section-sub">Ask any question about Tax, Law, Accounts or GST</p>
+      </div>
+      <div class="ai-chat-box">
+        <div class="ai-messages" id="aiMessages">
+          <div class="ai-msg bot">
+            <div class="ai-avatar">◈</div>
+            <div class="ai-bubble">Hi! I'm your study assistant. Ask me anything about Tax, Law, Accounts, or GST. 📚</div>
+          </div>
+        </div>
+        <div class="ai-input-row">
+          <input type="text" id="aiInput" class="ai-input" placeholder="Ask a question…" autocomplete="off" />
+          <button class="btn-primary ai-send" id="aiSend" onclick="sendAI()">Send ↗</button>
+        </div>
+        <p class="ai-disclaimer">Powered by Claude AI · Responses are educational, not legal advice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span> Prince Learning Hub
+      </div>
+      <p class="footer-copy">© 2025 Prince Learning Hub · Built for learners, by learners.</p>
+      <div class="footer-links">
+        <a href="#flashcards">Flashcards</a>
+        <a href="#upload">Upload</a>
+        <a href="#ai">AI Help</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════ MODAL (file viewer) ══════════════ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <iframe id="modalFrame" src="" title="Flashcard Viewer"></iframe>
+    </div>
+  </div>
+
+  <!-- ══════════════ TOAST ══════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
