@@ -511,3 +511,37 @@ document.getElementById('flashcardGrid').addEventListener('keydown', e => {
     e.target.closest('.flashcard')?.classList.toggle('flipped');
   }
 });
+// async function askAI() {
+const input = document.getElementById("ai-input").value;
+const responseBox = document.getElementById("ai-response");
+
+responseBox.innerHTML = "Thinking...";
+
+const API_KEY = "AIzaSyALhebdXG0JpLPiMmoOLrsuCm6LjRw13J4";
+
+try {
+const response = await fetch(
+"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + API_KEY,
+{
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+},
+body: JSON.stringify({
+contents: [{
+parts: [{ text: input }]
+}]
+})
+}
+);
+
+const data = await response.json();
+
+responseBox.innerHTML =
+data.candidates[0].content.parts[0].text;
+
+} catch (error) {
+responseBox.innerHTML =
+"⚠️ AI Error: " + error.message;
+}
+}
