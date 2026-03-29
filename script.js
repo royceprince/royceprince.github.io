@@ -5,14 +5,13 @@
 /* ══════════════════════
    STATE
 ══════════════════════ */
-let allCards   = [];   // { id, question, answer, category, source:'builtin'|'file', fileName, fileURL }
-let uploadedFiles = []; // { name, url, category, id }
+let allCards      = [];
+let uploadedFiles = [];
 let activeCategory = 'all';
-let aiHistory = [];
+let aiHistory     = [];
 
-const STORAGE_KEY_FILES   = 'plh_files';
-const STORAGE_KEY_CARDS   = 'plh_cards';
-const AI_ENDPOINT = 'https://api.anthropic.com/v1/messages';
+const STORAGE_KEY_FILES = 'plh_files';
+const STORAGE_KEY_CARDS = 'plh_cards';
 
 /* ══════════════════════
    BUILT-IN SAMPLE FLASHCARDS
@@ -53,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTheme();
   setupHamburger();
   setupAIInput();
+  loadGeminiKey();
 });
 
 function loadedCards() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY_CARDS) || '[]');
-  } catch { return []; }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY_CARDS) || '[]'); }
+  catch { return []; }
 }
 
 function loadFromStorage() {
@@ -74,7 +73,6 @@ function loadFromStorage() {
 function setupTheme() {
   const saved = localStorage.getItem('plh_theme') || 'dark';
   setTheme(saved);
-
   document.getElementById('themeToggle').addEventListener('click', () => {
     const cur = document.documentElement.getAttribute('data-theme');
     setTheme(cur === 'dark' ? 'light' : 'dark');
@@ -121,7 +119,6 @@ function setupCategoryBtns() {
       btn.classList.add('active');
       activeCategory = btn.dataset.cat;
       renderCards();
-      // Smooth scroll to flashcards
       document.getElementById('flashcards').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
@@ -131,7 +128,7 @@ function setupCategoryBtns() {
    RENDER FLASHCARDS
 ══════════════════════ */
 function renderCards(query = '') {
-  const grid = document.getElementById('flashcardGrid');
+  const grid    = document.getElementById('flashcardGrid');
   const noCards = document.getElementById('noCards');
 
   let filtered = allCards.filter(c => {
@@ -142,7 +139,6 @@ function renderCards(query = '') {
     return c.question.toLowerCase().includes(q) || c.answer.toLowerCase().includes(q) || c.category.includes(q);
   });
 
-  // Also show file cards
   let fileFiltered = uploadedFiles.filter(f => {
     const catOk = activeCategory === 'all' || f.category === activeCategory;
     if (!catOk) return false;
@@ -157,12 +153,9 @@ function renderCards(query = '') {
   }
   noCards.style.display = 'none';
 
-  const cardsHTML = filtered.map(c => buildFlashcardHTML(c, query)).join('');
-  const filesHTML = fileFiltered.map(f => buildFileCardHTML(f)).join('');
+  grid.innerHTML = filtered.map(c => buildFlashcardHTML(c, query)).join('') +
+                   fileFiltered.map(f => buildFileCardHTML(f)).join('');
 
-  grid.innerHTML = cardsHTML + filesHTML;
-
-  // Flip logic
   grid.querySelectorAll('.flashcard').forEach(el => {
     el.addEventListener('click', () => el.classList.toggle('flipped'));
   });
@@ -218,13 +211,9 @@ function setupSearch() {
   let debounce;
   input.addEventListener('input', () => {
     clearTimeout(debounce);
-    debounce = setTimeout(() => {
-      renderCards(input.value.trim());
-    }, 250);
+    debounce = setTimeout(() => renderCards(input.value.trim()), 250);
   });
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') runSearch();
-  });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
 }
 
 function runSearch() {
@@ -237,13 +226,12 @@ function runSearch() {
    FILE UPLOAD
 ══════════════════════ */
 function setupFileInput() {
-  const input = document.getElementById('fileInput');
-  input.addEventListener('change', () => handleFiles(input.files));
+  document.getElementById('fileInput').addEventListener('change', e => handleFiles(e.target.files));
 }
 
 function setupDragDrop() {
   const zone = document.getElementById('uploadArea');
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
   zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
   zone.addEventListener('drop', e => {
     e.preventDefault();
@@ -251,9 +239,7 @@ function setupDragDrop() {
     handleFiles(e.dataTransfer.files);
   });
   zone.addEventListener('click', e => {
-    if (!e.target.closest('button')) {
-      document.getElementById('fileInput').click();
-    }
+    if (!e.target.closest('button')) document.getElementById('fileInput').click();
   });
 }
 
@@ -262,71 +248,40 @@ function handleFiles(files) {
   let added = 0;
 
   Array.from(files).forEach(file => {
-    if (!file.name.endsWith('.html')) {
-      showToast(`"${file.name}" is not an HTML file.`, 'error');
-      return;
-    }
-    const existing = uploadedFiles.find(f => f.name === file.name);
-    if (existing) {
-      showToast(`"${file.name}" is already uploaded.`, 'error');
-      return;
-    }
+    if (!file.name.endsWith('.html')) { showToast(`"${file.name}" is not an HTML file.`, 'error'); return; }
+    if (uploadedFiles.find(f => f.name === file.name)) { showToast(`"${file.name}" is already uploaded.`, 'error'); return; }
 
     const url = URL.createObjectURL(file);
-    const id = 'f_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+    const id  = 'f_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
     uploadedFiles.push({ id, name: file.name, url, category });
     added++;
-
-    // Try to extract Q&A from HTML if it follows the flashcard format
     parseHTMLFlashcards(file, category, id);
   });
 
-  if (added > 0) {
-    saveFiles();
-    renderUploadedList();
-    updateStats();
-    showToast(`${added} file(s) uploaded successfully!`);
-  }
+  if (added > 0) { saveFiles(); renderUploadedList(); updateStats(); showToast(`${added} file(s) uploaded successfully!`); }
 }
 
 function parseHTMLFlashcards(file, category, fileId) {
   const reader = new FileReader();
   reader.onload = e => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(e.target.result, 'text/html');
-
-    // Look for common flashcard patterns in HTML
+    const doc = new DOMParser().parseFromString(e.target.result, 'text/html');
     const questions = doc.querySelectorAll('[data-question], .question, .fc-question, h2, h3');
     const answers   = doc.querySelectorAll('[data-answer], .answer, .fc-answer, p');
-
     if (questions.length && answers.length) {
       const count = Math.min(questions.length, answers.length);
       for (let i = 0; i < count; i++) {
         const q = questions[i]?.textContent?.trim();
         const a = answers[i]?.textContent?.trim();
-        if (q && a && q !== a) {
-          const card = {
-            id: `file_${fileId}_${i}`,
-            category,
-            question: q,
-            answer: a,
-            source: 'file',
-            fileName: file.name
-          };
-          allCards.push(card);
-        }
+        if (q && a && q !== a) allCards.push({ id:`file_${fileId}_${i}`, category, question:q, answer:a, source:'file', fileName:file.name });
       }
-      saveCards();
-      renderCards();
-      updateStats();
+      saveCards(); renderCards(); updateStats();
     }
   };
   reader.readAsText(file);
 }
 
 function saveFiles() {
-  // Store only metadata (not blob URLs, which don't persist across sessions)
-  const meta = uploadedFiles.map(f => ({ id: f.id, name: f.name, category: f.category }));
+  const meta = uploadedFiles.map(f => ({ id:f.id, name:f.name, category:f.category }));
   try { localStorage.setItem(STORAGE_KEY_FILES, JSON.stringify(meta)); } catch(e) {}
 }
 
@@ -338,7 +293,6 @@ function saveCards() {
 function renderUploadedList() {
   const list = document.getElementById('uploadedList');
   if (!uploadedFiles.length) { list.innerHTML = ''; return; }
-
   list.innerHTML = uploadedFiles.map(f => `
     <div class="uploaded-item">
       <span>📄</span>
@@ -346,24 +300,19 @@ function renderUploadedList() {
       <span class="uploaded-item-cat">${f.category}</span>
       ${f.url ? `<button class="btn-ghost" onclick="openFileModal('${f.id}')" style="font-size:.78rem">View</button>` : ''}
       <button class="uploaded-item-del" onclick="deleteFile('${f.id}')">✕ Remove</button>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
 function deleteFile(id) {
   uploadedFiles = uploadedFiles.filter(f => f.id !== id);
   allCards = allCards.filter(c => !c.id?.startsWith('file_' + id));
-  saveFiles();
-  saveCards();
-  renderUploadedList();
-  renderCards();
-  updateStats();
+  saveFiles(); saveCards(); renderUploadedList(); renderCards(); updateStats();
   showToast('File removed.');
 }
 
 function openFileModal(id) {
   const f = uploadedFiles.find(f => f.id === id);
-  if (!f || !f.url) { showToast('File URL is not available. Re-upload the file.', 'error'); return; }
+  if (!f || !f.url) { showToast('File URL not available. Re-upload the file.', 'error'); return; }
   document.getElementById('modalFrame').src = f.url;
   document.getElementById('modalOverlay').classList.add('open');
 }
@@ -374,200 +323,183 @@ function closeModal() {
 }
 
 /* ══════════════════════
-   AI ASSISTANT
+   AI ASSISTANT — FREE GEMINI
 ══════════════════════ */
-function setupAIInput() {
-  document.getElementById('aiInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAI(); }
-  });
+const GEMINI_SYSTEM = `You are a knowledgeable CA (Chartered Accountant) study assistant for Indian CA students.
+You specialise in: Income Tax, GST, Company Law, Indian Contract Act, Partnership Act, Accounting Standards, Journal Entries, CA Inter and CA Final syllabus.
+Give clear, structured, concise answers. Use bullet points and examples where helpful.
+Responses are for study purposes only — not personal legal or financial advice.`;
+
+function loadGeminiKey() {
+  const saved = localStorage.getItem('plh_gemini_key');
+  const input  = document.getElementById('geminiKeyInput');
+  const status = document.getElementById('aiKeyStatus');
+  if (saved && input && status) {
+    input.value      = saved;
+    status.className = 'ai-key-status ok';
+    status.textContent = '✅ API key loaded. AI is ready!';
+  }
 }
 
+function saveGeminiKey() {
+  const key    = document.getElementById('geminiKeyInput').value.trim();
+  const status = document.getElementById('aiKeyStatus');
+  if (!key) {
+    status.className   = 'ai-key-status err';
+    status.textContent = 'AIzaSyALhebdXG0JpLPiMmoOLrsuCm6LjRw13J4.';
+    return;
+  }
+  if (!key.startsWith('AI')) {
+    status.className   = 'ai-key-status err';
+    status.textContent = '❌ Key looks wrong — Gemini keys start with "AIza…". Try again.';
+    return;
+  }
+  localStorage.setItem('plh_gemini_key', key);
+  status.className   = 'ai-key-status ok';
+  status.textContent = '✅ Connected! You can now ask questions below.';
+}
+
+function setupAIInput() {
+  const input = document.getElementById('aiInput');
+  if (input) {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAI(); }
+    });
+  }
+}
+
+/* ── single sendAI — uses free Gemini API ── */
 async function sendAI() {
   const inputEl = document.getElementById('aiInput');
   const sendBtn = document.getElementById('aiSend');
-  const msg = inputEl.value.trim();
-  if (!msg) return;
+  const text    = inputEl.value.trim();
+  if (!text) return;
 
-  inputEl.value = '';
+  const apiKey = localStorage.getItem('plh_gemini_key') ||
+                 document.getElementById('geminiKeyInput')?.value.trim();
+
+  if (!apiKey) {
+    const status = document.getElementById('aiKeyStatus');
+    if (status) { status.className = 'ai-key-status err'; status.textContent = '❌ Enter and save your Gemini API key above first!'; }
+    document.getElementById('geminiKeyInput')?.focus();
+    return;
+  }
+
+  appendAIMsg('user', text);
+  inputEl.value    = '';
   sendBtn.disabled = true;
-
-  appendMessage('user', msg);
-  aiHistory.push({ role: 'user', content: msg });
-
-  const typingId = appendTyping();
+  const typingId   = showTyping();
 
   try {
-    const response = await fetch(AI_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: `You are a helpful educational assistant for Prince Learning Hub, specializing in Indian Tax Law, Business Law, Accounting, and GST. 
-Answer concisely and clearly. Use examples where helpful. Format lists with dashes. 
-Keep answers focused and educational. If a question is outside these domains, politely redirect.`,
-        messages: aiHistory
-      })
-    });
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: GEMINI_SYSTEM }] },
+          contents: [{ role: 'user', parts: [{ text }] }],
+          generationConfig: { temperature: 0.7, maxOutputTokens: 800 }
+        })
+      }
+    );
 
+    const data = await res.json();
     removeTyping(typingId);
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err?.error?.message || `HTTP ${response.status}`);
+    if (!res.ok) {
+      const errMsg = data?.error?.message || 'Unknown error';
+      appendAIMsg('bot',
+        `❌ <strong>API Error:</strong> ${errMsg}<br/>
+        <small style="opacity:.7">Get a fresh key from
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#f0c050">aistudio.google.com</a>
+        and re-paste it above.</small>`
+      );
+      sendBtn.disabled = false;
+      return;
     }
 
-    const data = await response.json();
-    const reply = data?.content?.map(b => b.text || '').join('') || '(No response)';
-
-    appendMessage('bot', reply);
-    aiHistory.push({ role: 'assistant', content: reply });
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, no response. Try again.';
+    appendAIMsg('bot', formatAI(reply));
 
   } catch (err) {
     removeTyping(typingId);
-    appendMessage('bot', `⚠️ Sorry, I couldn't connect to the AI service. Please check your internet connection and try again.\n\n*Error: ${err.message}*`);
+    appendAIMsg('bot', `❌ <strong>Network error:</strong> ${err.message}<br/><small style="opacity:.7">Check your internet and try again.</small>`);
   }
 
   sendBtn.disabled = false;
   inputEl.focus();
 }
 
-function appendMessage(role, text) {
-  const box = document.getElementById('aiMessages');
-  const div = document.createElement('div');
-  div.className = `ai-msg ${role}`;
-
-  const avatar = role === 'bot'
-    ? `<div class="ai-avatar">◈</div>`
-    : `<div class="ai-avatar" style="background:linear-gradient(135deg,#6e9ec9,#81b29a)">✦</div>`;
-
-  // Basic markdown: bold, italic, newlines
-  let html = text
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`(.*?)`/g, '<code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px">$1</code>')
-    .replace(/\n/g, '<br>');
-
-  div.innerHTML = role === 'bot'
-    ? `${avatar}<div class="ai-bubble">${html}</div>`
-    : `<div class="ai-bubble">${html}</div>${avatar}`;
-
-  box.appendChild(div);
+function appendAIMsg(role, html) {
+  const box  = document.getElementById('aiMessages');
+  const wrap = document.createElement('div');
+  wrap.className = 'ai-msg ' + role;
+  const av  = document.createElement('div');
+  av.className   = 'ai-avatar';
+  av.textContent = role === 'bot' ? '◈' : 'U';
+  const bub  = document.createElement('div');
+  bub.className  = 'ai-bubble';
+  bub.innerHTML  = html;
+  if (role === 'bot') { wrap.appendChild(av); wrap.appendChild(bub); }
+  else                { wrap.appendChild(bub); wrap.appendChild(av); }
+  box.appendChild(wrap);
   box.scrollTop = box.scrollHeight;
-  return div;
 }
 
-let typingCounter = 0;
-function appendTyping() {
-  const id = 'typing_' + (++typingCounter);
+let _typingCounter = 0;
+function showTyping() {
+  const id  = 'typing_' + (++_typingCounter);
   const box = document.getElementById('aiMessages');
-  const div = document.createElement('div');
-  div.className = 'ai-msg bot ai-typing';
-  div.id = id;
-  div.innerHTML = `
-    <div class="ai-avatar">◈</div>
-    <div class="ai-bubble"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
-  box.appendChild(div);
+  const wrap = document.createElement('div');
+  wrap.className = 'ai-msg bot';
+  wrap.id = id;
+  wrap.innerHTML = `<div class="ai-avatar">◈</div>
+    <div class="ai-bubble ai-typing-dots"><span></span><span></span><span></span></div>`;
+  box.appendChild(wrap);
   box.scrollTop = box.scrollHeight;
   return id;
 }
 
-function removeTyping(id) {
-  document.getElementById(id)?.remove();
+function removeTyping(id) { document.getElementById(id)?.remove(); }
+
+function formatAI(text) {
+  text = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  text = text.replace(/\*(.*?)\*/g,     '<em>$1</em>');
+  text = text.replace(/`(.*?)`/g,       '<code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px">$1</code>');
+  text = text.replace(/^[-•]\s+(.+)$/gm,'<li>$1</li>');
+  text = text.replace(/(<li>.*?<\/li>\n?)+/gs, m => `<ul>${m}</ul>`);
+  text = text.replace(/\n/g, '<br>');
+  return text;
 }
 
 /* ══════════════════════
-   TOAST NOTIFICATIONS
+   TOAST
 ══════════════════════ */
 let toastTimer;
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = `toast show${type === 'error' ? ' error' : ''}`;
+  t.className   = `toast show${type === 'error' ? ' error' : ''}`;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.classList.remove('show'); }, 3500);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
 /* ══════════════════════
    KEYBOARD SHORTCUTS
 ══════════════════════ */
 document.addEventListener('keydown', e => {
-  // Escape closes modal
   if (e.key === 'Escape') closeModal();
-  // / focuses search
   if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
     e.preventDefault();
     document.getElementById('globalSearch').focus();
   }
 });
 
-/* ══════════════════════
-   KEYBOARD FLIP for flashcards
-══════════════════════ */
 document.getElementById('flashcardGrid').addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault();
     e.target.closest('.flashcard')?.classList.toggle('flipped');
   }
 });
-async function sendAI() {
-const input = document.getElementById("aiInput");
-const message = input.value;
-
-if (!message) return;
-
-const messages = document.getElementById("aiMessages");
-
-// user message
-messages.innerHTML += `
-<div class="ai-msg user">
-<div class="ai-bubble">${message}</div>
-</div>
-`;
-
-input.value = "";
-
-// loading
-messages.innerHTML += `
-<div class="ai-msg bot">
-<div class="ai-bubble">Thinking...</div>
-</div>
-`;
-
-const API_KEY = "AIzaSyALhebdXG0JpLPiMmoOLrsuCm6LjRw13J4";
-
-try {
-const response = await fetch(
-`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-{
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-contents: [{
-parts: [{ text: message }]
-}]
-})
-}
-);
-
-const data = await response.json();
-
-const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
-
-messages.innerHTML += `
-<div class="ai-msg bot">
-<div class="ai-bubble">${reply}</div>
-</div>
-`;
-
-} catch (error) {
-messages.innerHTML += `
-<div class="ai-msg bot">
-<div class="ai-bubble">⚠️ Error connecting AI</div>
-</div>
-`;
-}
-}
