@@ -517,15 +517,15 @@ const responseBox = document.getElementById("ai-response");
 
 responseBox.innerHTML = "Thinking...";
 
-const API_KEY = "AIzaSyALhebdXG0JpLPiMmoOLrsuCm6LjRw13J4";
+const API_KEY = "AIzaSyC7bTk92Al7EJEpIj3I1QjoN9VEeY4ZPac";
 
 try {
 const response = await fetch(
-"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + API_KEY,
+`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
 {
 method: "POST",
 headers: {
-"Content-Type": "application/json",
+"Content-Type": "application/json"
 },
 body: JSON.stringify({
 contents: [{
@@ -542,6 +542,6 @@ data.candidates[0].content.parts[0].text;
 
 } catch (error) {
 responseBox.innerHTML =
-"⚠️ AI Error: " + error.message;
+"⚠️ Error: " + error.message;
 }
 }
