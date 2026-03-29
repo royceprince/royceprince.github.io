@@ -511,17 +511,17 @@ document.getElementById('flashcardGrid').addEventListener('keydown', e => {
     e.target.closest('.flashcard')?.classList.toggle('flipped');
   }
 });
-// async function askAI() {
-const input = document.getElementById("ai-input").value;
-const responseBox = document.getElementById("ai-response");
+// async function sendAI() {
+const input = document.getElementById("aiInput").value;
+const responseBox = document.getElementById("aiMessages");
 
-responseBox.innerHTML = "Thinking...";
+responseBox.innerHTML += "<div>Thinking...</div>";
 
 const API_KEY = "AIzaSyC7bTk92Al7EJEpIj3I1QjoN9VEeY4ZPac";
 
 try {
 const response = await fetch(
-`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + API_KEY,
 {
 method: "POST",
 headers: {
@@ -537,11 +537,11 @@ parts: [{ text: input }]
 
 const data = await response.json();
 
-responseBox.innerHTML =
-data.candidates[0].content.parts[0].text;
+const reply = data.candidates[0].content.parts[0].text;
+
+responseBox.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
 
 } catch (error) {
-responseBox.innerHTML =
-"⚠️ Error: " + error.message;
+responseBox.innerHTML += `<div>⚠️ Error: ${error.message}</div>`;
 }
 }
