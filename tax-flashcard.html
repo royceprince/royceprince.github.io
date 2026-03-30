@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CA Inter Tax Flashcards — May 2026</title>
+<title>CA Inter Direct Tax — Complete Flashcards May 2026</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f0f;color:#f0f0f0;min-height:100vh;padding:16px}
@@ -82,25 +82,68 @@
   .footer{text-align:center;margin-top:24px;font-size:12px;color:#555;padding-bottom:10px}
   .footer span{color:#7F77DD;font-weight:700}
 
+  /* Quick Reference styles */
+  .qr-chapter{background:#111;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-left:4px solid #444}
+  .qr-ch-head{font-size:13px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:0.4px}
+  .qr-sub{font-size:12px;font-weight:800;margin-bottom:6px;margin-top:4px;letter-spacing:0.3px}
+  .qr-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .qr-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .qr-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:14px;line-height:1.5}
+
+  @media(max-width:700px){
+    .qr-grid2{grid-template-columns:1fr}
+  }
   @media(max-width:500px){
     .app-header h1{font-size:14px}
     .fc-title{font-size:15px}
     .fc-bullets li{font-size:12px}
     .ch-tab{padding:7px 12px;font-size:11px}
   }
+
+  .ch-tab.active-hp{background:#085041;color:#E1F5EE;border-color:#1D9E75}
+  .ch-tab.active-ifos{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
+  .ch-tab.active-club{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
+  .ch-tab.active-setoff{background:#3B0A0A;color:#FDE8E8;border-color:#CC3333}
+  .tpill.active-hp{background:#085041;color:#E1F5EE;border-color:#1D9E75}
+  .tpill.active-ifos{background:#26215C;color:#EEEDFE;border-color:#7F77DD}
+  .tpill.active-club{background:#5C3700;color:#FFF3CD;border-color:#E8A000}
+  .tpill.active-setoff{background:#3B0A0A;color:#FDE8E8;border-color:#CC3333}
+  .pfill-hp{background:#1D9E75}
+  .pfill-ifos{background:#7F77DD}
+  .pfill-club{background:#E8A000}
+  .pfill-setoff{background:#CC3333}
+  .btn-hp{background:#0F6E56}
+  .btn-ifos{background:#534AB7}
+  .btn-club{background:#B07B00}
+  .btn-setoff{background:#992222}
+
+  .ch-tab.active-via{background:#173404;color:#EAF3DE;border-color:#639922}
+  .ch-tab.active-rtn{background:#042C53;color:#E6F1FB;border-color:#378ADD}
+  .tpill.active-via{background:#173404;color:#EAF3DE;border-color:#639922}
+  .tpill.active-rtn{background:#042C53;color:#E6F1FB;border-color:#378ADD}
+  .pfill-via{background:#639922}
+  .pfill-rtn{background:#378ADD}
+  .btn-via{background:#3A6010}
+  .btn-rtn{background:#1A4E7A}
 </style>
 </head>
 <body>
 
 <div class="app-header">
-  <h1>CA Inter Direct Tax — Flashcard Revision</h1>
+  <h1>📚 CA Inter DT — Complete Flashcards (Ch 1–12) | Price Learning Hub</h1>
   <div class="badges">
     <span class="badge" style="background:#FFF3CD;color:#7B4B00">Ch 1 Basics</span>
     <span class="badge" style="background:#D9EDF7;color:#1A5173">Ch 2 Residence</span>
     <span class="badge b1">Ch 3 Salaries</span>
-    <span class="badge b2">Ch 4 PGBP</span>
+    <span class="badge" style="background:#E1F5EE;color:#085041">Ch 4 HP</span>
+    <span class="badge b2">Ch 5 PGBP</span>
     <span class="badge b3">Ch 6 Capital Gain</span>
+    <span class="badge" style="background:#EEEDFE;color:#3C3489">Ch 7 IFOS</span>
+    <span class="badge" style="background:#FFF3CD;color:#7B4B00">Ch 8 Clubbing</span>
+    <span class="badge" style="background:#FDE8E8;color:#7B1010">Ch 9 Set-Off</span>
+    <span class="badge" style="background:#EAF3DE;color:#27500A">Ch 10 Deductions</span>
     <span class="badge b4">Ch 11 TDS/TCS</span>
+    <span class="badge" style="background:#E6F1FB;color:#0C447C">Ch 12 Returns</span>
   </div>
 </div>
 
@@ -108,10 +151,16 @@
   <button class="ch-tab active-ch1" id="tab-ch1" onclick="switchChapter(1)">Ch 1</button>
   <button class="ch-tab" id="tab-ch2" onclick="switchChapter(2)">Ch 2</button>
   <button class="ch-tab" id="tab-ch3" onclick="switchChapter(3)">Ch 3</button>
-  <button class="ch-tab" id="tab-ch4" onclick="switchChapter(4)">Ch 4</button>
+  <button class="ch-tab" id="tab-hp" onclick="switchChapter('hp')">Ch 4</button>
+  <button class="ch-tab" id="tab-ch4" onclick="switchChapter(4)">Ch 5</button>
   <button class="ch-tab" id="tab-ch6" onclick="switchChapter(6)">Ch 6</button>
+  <button class="ch-tab" id="tab-ifos" onclick="switchChapter('ifos')">Ch 7</button>
+  <button class="ch-tab" id="tab-club" onclick="switchChapter('club')">Ch 8</button>
+  <button class="ch-tab" id="tab-setoff" onclick="switchChapter('setoff')">Ch 9</button>
+  <button class="ch-tab" id="tab-via" onclick="switchChapter('via')">Ch 10</button>
   <button class="ch-tab" id="tab-ch11" onclick="switchChapter(11)">Ch 11</button>
-  <button class="ch-tab" id="tab-all" onclick="switchChapter(0)">All</button>
+  <button class="ch-tab" id="tab-rtn" onclick="switchChapter('rtn')">Ch 12</button>
+  <button class="ch-tab" id="tab-mega" onclick="switchChapter('mega')">🔀 ALL Chapters</button>
 </div>
 
 <div class="topic-pills" id="tpills"></div>
@@ -125,192 +174,658 @@
 <div class="hint">Click card / Arrow keys to navigate &nbsp;|&nbsp; Topic pills to filter &nbsp;|&nbsp; ★ = Exam Important</div>
 
 <div class="summary-section">
-  <h2 style="color:#E8A000">Quick Reference Tables — All Chapters</h2>
+<h2 style="color:#E8A000;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 12 CHAPTERS | CA Inter Direct Tax AY 2026-27</h2>
 
-  <div style="margin-bottom:16px">
-    <h3 style="color:#E8A000;margin-bottom:8px">Ch 1 — Tax Rates Quick Reference (AY 2026-27)</h3>
-    <table class="rate-table">
-      <tr><th>Assessee</th><th>Tax Rate</th><th>Surcharge</th><th>Special Notes</th></tr>
-      <tr><td>Individual — Old Regime</td><td>NIL/5%/20%/30% on 2.5/5/10L</td><td>10-37%</td><td>87A: 12,500 if NTI ≤ 5L</td></tr>
-      <tr><td>Senior Citizen (60-80)</td><td>NIL up to 3L, 5/20/30%</td><td>10-37%</td><td>Higher exemption limit</td></tr>
-      <tr><td>Super Senior (80+)</td><td>NIL up to 5L, 20/30%</td><td>10-37%</td><td>No 5% slab!</td></tr>
-      <tr><td>115BAC New Regime</td><td>0/5/10/15/20/25/30% on 4/8/12/16/20/24L</td><td>Max 25%</td><td>87A: 60,000 if NTI ≤ 12L</td></tr>
-      <tr><td>Domestic Company</td><td>25% (T/O ≤ 400Cr) / 30%</td><td>7%/12%</td><td>Foreign = 35%</td></tr>
-      <tr><td>Firm/LLP/Local Auth</td><td>30%</td><td>12% if TI > 1Cr</td><td>–</td></tr>
-      <tr><td>Co-operative Society</td><td>10/20/30% on 10K/20K</td><td>7%/12%</td><td>Like domestic co</td></tr>
-      <tr><td>Deemed Income (68-69D)</td><td>60% u/s 115BBE</td><td>25%</td><td>Effective 78%</td></tr>
-      <tr><td>Lottery/Online Games</td><td>30% u/s 115BB/BBJ</td><td>Normal</td><td>No basic exemption</td></tr>
-    </table>
+<!-- ═══ CH 1 ═══ -->
+<div class="qr-chapter" style="border-left-color:#E8A000">
+  <div class="qr-ch-head" style="background:#3D2200;color:#FFF3CD">Ch 1 — Basics &amp; Tax Rates</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#E8A000">Old Regime Slabs (Individual)</div>
+      <table class="rate-table">
+        <tr><th>Income Slab</th><th>Rate</th></tr>
+        <tr><td>Upto ₹2,50,000</td><td>NIL</td></tr>
+        <tr><td>₹2.5L – ₹5L</td><td>5%</td></tr>
+        <tr><td>₹5L – ₹10L</td><td>20%</td></tr>
+        <tr><td>Above ₹10L</td><td>30%</td></tr>
+        <tr><td>Senior (60+) basic exemption</td><td>₹3,00,000</td></tr>
+        <tr><td>Super Senior (80+) basic exemption</td><td>₹5,00,000</td></tr>
+        <tr><td>Rebate 87A (old) — NTI ≤ ₹5L</td><td>₹12,500 max</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#E8A000">New Regime 115BAC (Default AY 26-27)</div>
+      <table class="rate-table">
+        <tr><th>Income Slab</th><th>Rate</th></tr>
+        <tr><td>Upto ₹4,00,000</td><td>NIL</td></tr>
+        <tr><td>₹4L – ₹8L</td><td>5%</td></tr>
+        <tr><td>₹8L – ₹12L</td><td>10%</td></tr>
+        <tr><td>₹12L – ₹16L</td><td>15%</td></tr>
+        <tr><td>₹16L – ₹20L</td><td>20%</td></tr>
+        <tr><td>₹20L – ₹24L</td><td>25%</td></tr>
+        <tr><td>Above ₹24L</td><td>30%</td></tr>
+        <tr><td>Rebate 87A (new) — NTI ≤ ₹12L</td><td>₹60,000 max</td></tr>
+        <tr><td>Max Surcharge under 115BAC</td><td>25% (NOT 37%)</td></tr>
+      </table>
+    </div>
   </div>
-  <div style="margin-bottom:16px">
-    <h3 style="color:#2980B9;margin-bottom:8px">Ch 2 — Residential Status Matrix</h3>
-    <table class="rate-table">
-      <tr><th>Individual — Days</th><th>Status</th><th>Taxability</th></tr>
-      <tr><td>≥182 days in PY</td><td>Resident — then check R&OR / R-NOR</td><td>Both conditions = R&OR | Either fails = R-NOR</td></tr>
-      <tr><td>≥60 days in PY + ≥365 in last 4 PYs</td><td>Resident</td><td>Same additional condition check</td></tr>
-      <tr><td>Neither above</td><td>Non-Resident</td><td>Only Indian income</td></tr>
-      <tr><td>NRI/Indian origin visiting 120-181 days, income &gt; 15L</td><td>R but NOR</td><td>India + India-controlled biz income</td></tr>
-      <tr><td>Indian Citizen, income &gt;15L, not taxed abroad</td><td>Deemed R but NOR (6(1A))</td><td>Same as R-NOR</td></tr>
-    </table>
-    <table class="rate-table" style="margin-top:6px">
-      <tr><th>Income Type</th><th>R &amp; OR</th><th>R but NOR</th><th>NR</th></tr>
-      <tr><td>Indian Income</td><td style="color:#5DCAA5">✔ Taxable</td><td style="color:#5DCAA5">✔ Taxable</td><td style="color:#5DCAA5">✔ Taxable</td></tr>
-      <tr><td>Foreign — Biz controlled from India</td><td style="color:#5DCAA5">✔ Taxable</td><td style="color:#5DCAA5">✔ Taxable</td><td style="color:#E87070">✘ Not Taxable</td></tr>
-      <tr><td>Other Foreign Income</td><td style="color:#5DCAA5">✔ Taxable</td><td style="color:#E87070">✘ Not Taxable</td><td style="color:#E87070">✘ Not Taxable</td></tr>
-    </table>
+  <div class="qr-sub" style="color:#E8A000;margin-top:10px">Surcharge Rates — Individual</div>
+  <table class="rate-table">
+    <tr><th>NTI Range</th><th>Surcharge %</th><th>Note</th></tr>
+    <tr><td>Upto ₹50 Lakhs</td><td>NIL</td><td>—</td></tr>
+    <tr><td>₹50L to ₹1 Crore</td><td>10%</td><td>—</td></tr>
+    <tr><td>₹1Cr to ₹2Cr</td><td>15%</td><td>—</td></tr>
+    <tr><td>₹2Cr to ₹5Cr</td><td>25%</td><td>Special income (CG/Div) capped @15%</td></tr>
+    <tr><td>Above ₹5Cr</td><td>37%</td><td>NOT under 115BAC | CG/Div still 15%</td></tr>
+  </table>
+  <div class="qr-pills">
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">H&amp;EC = 4% always</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Domestic Co: 7% &amp; 12%</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Firm/LLP: 12% if &gt;1Cr</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">288A: Round TI to ₹10 | 288B: Round tax to ₹10</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">115BAC = DEFAULT | Opt out = file ITR 139(1)</span>
   </div>
-  <div style="margin-bottom:16px">
-    <h3 style="color:#639922;margin-bottom:8px">Capital Gain Tax Rates Summary</h3>
-    <table class="rate-table">
-      <tr><th>Asset Type</th><th>Before 23 Jul 2024</th><th>On/After 23 Jul 2024</th></tr>
-      <tr><td>LTCG — Equity (112A)</td><td>10% (exempt Rs 1L)</td><td>12.5% (exempt Rs 1.25L)</td></tr>
-      <tr><td>STCG — Equity (111A)</td><td>15%</td><td>20%</td></tr>
-      <tr><td>LTCG — Other assets</td><td>20% with indexation</td><td>12.5% no indexation</td></tr>
-      <tr><td>STCG — Other assets</td><td>Normal slab rate</td><td>Normal slab rate</td></tr>
-      <tr><td>Debt MF/MLD (50AA)</td><td>Slab rate (always STCG)</td><td>Slab rate (always STCG)</td></tr>
-      <tr><td>Immovable property (Ind/HUF pre-23Jul24)</td><td>20% with indexation</td><td>Lower of 12.5% or 20%+index</td></tr>
-    </table>
-  </div>
+</div>
 
-  <div style="margin-bottom:16px">
-    <h3 style="color:#639922;margin-bottom:8px">CG Exemption Sections — Quick Comparison</h3>
-    <table class="rate-table">
-      <tr><th>Section</th><th>Who</th><th>Asset sold</th><th>New Asset</th><th>Time Limit</th><th>Max Cap</th></tr>
-      <tr><td>54</td><td>Ind/HUF</td><td>RHP (LTCA)</td><td>1 RHP India (2 if LTCG≤2Cr)</td><td>-1+2 buy / +3 construct</td><td>Rs 10 Cr</td></tr>
-      <tr><td>54B</td><td>Ind/HUF</td><td>Urban agri land</td><td>Any agri land</td><td>+2 buy</td><td>—</td></tr>
-      <tr><td>54D</td><td>Any</td><td>Industrial L&B (compulsory acq)</td><td>New industrial L&B</td><td>+3 buy</td><td>—</td></tr>
-      <tr><td>54EC</td><td>Any</td><td>Land/Bldg/Both (LTCG)</td><td>NHAI/RECL/PFCL/IRFCL bonds</td><td>6 months</td><td>Rs 50L</td></tr>
-      <tr><td>54F</td><td>Ind/HUF</td><td>Any LTCA (not RHP)</td><td>1 RHP India</td><td>-1+2 buy / +3 construct</td><td>Rs 10 Cr</td></tr>
-    </table>
-  </div>
-
-  <div style="margin-bottom:16px">
-    <h3 style="color:#1D9E75;margin-bottom:8px">TDS Quick Reference</h3>
-    <table class="rate-table">
-      <tr><th>Section</th><th>Nature</th><th>Rate</th><th>Threshold</th></tr>
-      <tr><td>192</td><td>Salary</td><td>Slab rate</td><td>—</td></tr>
-      <tr><td>194A</td><td>Interest (non-securities)</td><td>10%</td><td>Rs 50K / Rs 1L senior</td></tr>
-      <tr><td>194B/BB</td><td>Lottery/Horse race</td><td>30%</td><td>Rs 10,000</td></tr>
-      <tr><td>194BA</td><td>Online games</td><td>30%</td><td>Rs 100/month net winning</td></tr>
-      <tr><td>194C</td><td>Contractors</td><td>1%/2%</td><td>Single Rs 30K / Annual Rs 1L</td></tr>
-      <tr><td>194I</td><td>Rent — Land/Bldg/Furniture</td><td>10%</td><td>Rs 50,000/month</td></tr>
-      <tr><td>194I</td><td>Rent — P&amp;M/Equipment</td><td>2%</td><td>Rs 50,000/month</td></tr>
-      <tr><td>194J</td><td>Professional/Technical fees</td><td>10%/2%</td><td>Rs 50,000</td></tr>
-      <tr><td>194Q</td><td>Purchase of goods</td><td>0.1%</td><td>Rs 50 Lakhs</td></tr>
-      <tr><td>194T</td><td>Partner payments (NEW 2025)</td><td>10%</td><td>Rs 20,000</td></tr>
-    </table>
-  </div>
-
-  <div class="summary-grid" style="margin-top:20px">
-    <div class="s-card" style="background:#231600;border-color:#E8A000">
-      <h3 style="color:#F0C040">Ch 1 — Basics & Tax Rates Key Points</h3>
-      <ul style="color:#D4A000">
-        <li>Sources: IT Act 1961 + Rules 1962 + Finance Act + Circulars + SC/HC</li>
-        <li>AY = PY + 1 year | AY 26-27, PY = 25-26</li>
-        <li>7 types of Person: I-HUF-Company-Firm-AOP/BOI-LA-AJP</li>
-        <li>Old Regime: 2.5L-5L-10L at 5-20-30% | New 115BAC default</li>
-        <li>New Regime: 4-8-12-16-20-24L at 5-10-15-20-25-30%</li>
-        <li>87A Old = Rs 12,500 (NTI ≤ 5L) | 87A New = Rs 60,000 (NTI ≤ 12L)</li>
-        <li>Deemed income 68-69D = 78% tax (60% + 25% SC + 4%)</li>
-        <li>Agri income: Exempt + Partial integration for Ind/HUF/AOP</li>
-        <li>Tea 60-40 | Rubber 65-35 | Coffee cured 75-25 | Coffee roasted 60-40</li>
-      </ul>
+<!-- ═══ CH 2 ═══ -->
+<div class="qr-chapter" style="border-left-color:#2980B9">
+  <div class="qr-ch-head" style="background:#0D3A5C;color:#D9EDF7">Ch 2 — Residential Status &amp; Scope of Total Income</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#2980B9">Individual Residential Status</div>
+      <table class="rate-table">
+        <tr><th>Status</th><th>Condition</th></tr>
+        <tr><td>Resident (Basic)</td><td>182+ days in India in PY <strong>OR</strong> 60+ days in PY + 365+ days in 4 PYs preceding</td></tr>
+        <tr><td>Special: Indian Citizen/PIO</td><td>60 days → 120 days (if Indian income &gt;₹15L, visits India 120-182 days) OR 182 days</td></tr>
+        <tr><td>Deemed Resident</td><td>Indian citizen, income &gt;₹15L from India, not taxable anywhere else → RNOR</td></tr>
+        <tr><td>R&amp;OR (Ordinarily Resident)</td><td>Resident + (Resident in 2 out of 10 preceding PYs) + (730+ days in 7 preceding PYs)</td></tr>
+        <tr><td>RNOR</td><td>Resident but NOT both above conditions</td></tr>
+        <tr><td>NR</td><td>Neither 182 days nor 60+365 condition</td></tr>
+      </table>
     </div>
-    <div class="s-card" style="background:#041527;border-color:#2980B9">
-      <h3 style="color:#A8D4EC">Ch 2 — Residential Status Key Points</h3>
-      <ul style="color:#5BA4CF">
-        <li>Individual: BC1 = 182+ days | BC2 = 60 days + 365/4PYs</li>
-        <li>R&OR: Both additional conditions (2/10 PYs + 730/7 PYs)</li>
-        <li>R-NOR: Either additional condition fails</li>
-        <li>Deemed Resident 6(1A): Income > 15L + not taxed abroad = R-NOR</li>
-        <li>HUF/Firm: C&M wholly outside = NR | Partly India = Resident</li>
-        <li>Indian Company = Always Resident</li>
-        <li>Foreign Company: POEM in India = Resident</li>
-        <li>Sec 9 Big 4: Business Connection, Salary, Dividend, Interest/Royalty/FTS</li>
-        <li>Gift by Resident to NR (after 5 July 2019) = Deemed Indian income</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#1a1228;border-color:#7F77DD">
-      <h3 style="color:#CECBF6">Ch 3 Salaries — Key Formulas</h3>
-      <ul style="color:#AFA9EC">
-        <li>Gratuity POGA: 15/26 × Latest salary × Completed yrs (max 20L)</li>
-        <li>Gratuity Non-POGA: ½ × Avg 10m salary × Completed yrs (max 20L)</li>
-        <li>Leave salary (Non-Govt): Lowest of 4 — leave credit/10m salary/actual/25L</li>
-        <li>HRA: Lowest of 3 — 50/40% salary / actual HRA / rent-10% salary</li>
-        <li>Pension commuted: Govt = fully exempt | Non-Govt+gratuity = 1/3 | Without = 1/2</li>
-        <li>Standard deduction: Rs 75,000 new regime | Rs 50,000 old regime</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#1f1808;border-color:#BA7517">
-      <h3 style="color:#FAC775">Ch 4 PGBP — Key Rates</h3>
-      <ul style="color:#EF9F27">
-        <li>Dep rates: Building 10% | P&amp;M 15% | Computer 40% | Intangible 25%</li>
-        <li>Additional dep: 20% on new P&amp;M manufacturing | &lt;180 days = 10%+10% next</li>
-        <li>44AD: T/O up to 2Cr (3Cr digital) | 8% (6% digital)</li>
-        <li>44ADA: GR up to 50L (75L digital) | 50% of GR</li>
-        <li>44AE: Heavy = Rs 1000/ton/month | Other = Rs 7500/month</li>
-        <li>Partner rem: 6L BP = 90% or 3L (higher) | Balance = 60% | Interest max 12%</li>
-        <li>43B(h): MSME — 15 days (no agreement) / 45 days (with agreement)</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#0a1f05;border-color:#639922">
-      <h3 style="color:#C0DD97">Ch 6 Capital Gain — Key Formulas</h3>
-      <ul style="color:#97C459">
-        <li>CG = FVOC − Transfer exp − COA − COI</li>
-        <li>LTCA: Listed equity/UTI/EOMF/ZCB = &gt;1 yr | All others = &gt;2 yrs</li>
-        <li>Depreciable assets = ALWAYS STCG (Sec 50)</li>
-        <li>Slump sale COA = Net worth | &gt;3 years = LTCG</li>
-        <li>54: RHP to RHP | -1+2 buy / +3 construct | 10 Cr cap</li>
-        <li>54F formula: LTCG × Cost / Net Consideration</li>
-        <li>54EC: Bonds 6 months | Max Rs 50L | 5yr lock</li>
-        <li>112A: Equity LTCG 12.5% | 1.25L exempt | Grandfathering 31/1/2018</li>
-        <li>111A: Equity STCG 20% (from 23 Jul 2024)</li>
-        <li>2-6-8 km rule for urban agri land</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#0a1f17;border-color:#1D9E75">
-      <h3 style="color:#9FE1CB">Ch 11 TDS — Interest Formulas</h3>
-      <ul style="color:#5DCAA5">
-        <li>234A: 1% × months from due date (late return)</li>
-        <li>234B: 1% × months from 1 Apr AY (short advance tax, &lt;90%)</li>
-        <li>234C: 1% × 3 months per instalment (last = 1 month)</li>
-        <li>234E: Rs 200/day for delayed TDS return (max = TDS)</li>
-        <li>Advance tax: 15-45-75-100% on 15 Jun/Sep/Dec/Mar</li>
-        <li>206AA no PAN: Higher of section rate or 20%</li>
-        <li>194T (NEW 2025): Partner payments 10% if &gt;Rs 20,000</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#0a1f05;border-color:#639922">
-      <h3 style="color:#C0DD97">Sec 47 — Exempt Transfers (No CG)</h3>
-      <ul style="color:#97C459">
-        <li>HUF partition | Gift / Will / Trust (not ESOP)</li>
-        <li>Holding ↔ Subsidiary (100% holding, Indian Co)</li>
-        <li>Amalgamation (Indian Co) | Demerger (Indian Co)</li>
-        <li>Bond/Debenture → Shares (same company)</li>
-        <li>Preference → Equity (same company)</li>
-        <li>Gold ↔ EGR (Electronic Gold Receipt)</li>
-        <li>Sovereign Gold Bond redemption (Individual)</li>
-        <li>Reverse mortgage | Work of art to Govt/Museum</li>
-      </ul>
-    </div>
-    <div class="s-card" style="background:#1a1228;border-color:#7F77DD">
-      <h3 style="color:#CECBF6">Most Expected Exam Questions</h3>
-      <ul style="color:#AFA9EC">
-        <li>CG computation with Sec 50C SDV adjustment</li>
-        <li>Sec 54/54F exemption with CGAS calculation</li>
-        <li>112A grandfathering — COA with 31 Jan 2018 FMV</li>
-        <li>Sec 45(2) — CA to SIT — both CG and PGBP</li>
-        <li>Slump sale — Net Worth + FVOC calculation</li>
-        <li>Depreciable asset block — STCG calculation</li>
-        <li>Sec 45(5) — Compulsory acquisition + enhanced comp</li>
-        <li>Amalgamation/Demerger — taxation of all 3 parties</li>
-        <li>Buyback w.e.f. Oct 2024 — deemed dividend + capital loss</li>
-      </ul>
+    <div>
+      <div class="qr-sub" style="color:#2980B9">Scope of Total Income</div>
+      <table class="rate-table">
+        <tr><th>Income Type</th><th>R&amp;OR</th><th>RNOR</th><th>NR</th></tr>
+        <tr><td>Income received in India</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Income accruing in India</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Income from business controlled in India</td><td>✅</td><td>✅</td><td>❌</td></tr>
+        <tr><td>Foreign income (other)</td><td>✅</td><td>❌</td><td>❌</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">HUF/Firm: Resident if control &amp; management wholly/partly in India</span>
+        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">Company: Indian Co = always Resident | Foreign Co = POEM in India = Resident</span>
+        <span class="qr-pill" style="background:#0D3A5C;color:#D9EDF7">Dividend/Interest from India = Always taxable for all</span>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="footer">Made for <span>CA Inter May 2026</span> — Ch 3 Salaries (24) + Ch 4 PGBP (34) + Ch 6 Capital Gain (30) + Ch 11 TDS/TCS (23) | Total 111 Flashcards | CA Bhanwar Borana Notes</div>
+<!-- ═══ CH 3 ═══ -->
+<div class="qr-chapter" style="border-left-color:#7F77DD">
+  <div class="qr-ch-head" style="background:#26215C;color:#EEEDFE">Ch 3 — Salaries</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#7F77DD">Key Exemptions &amp; Limits</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Limit / Formula</th></tr>
+        <tr><td>HRA Exemption (10(13A))</td><td>Min of: Actual HRA | Rent paid – 10% salary | 50%/40% of salary</td></tr>
+        <tr><td>Gratuity — Govt Employee</td><td>Fully exempt</td></tr>
+        <tr><td>Gratuity — Non-Govt (covered)</td><td>Min: Actual | 15/26 × salary × years | ₹20,00,000</td></tr>
+        <tr><td>Gratuity — Non-Govt (uncovered)</td><td>Min: Actual | ½ month avg salary × years | ₹20,00,000</td></tr>
+        <tr><td>Leave Encashment (retired)</td><td>Min: Actual | 10 months avg salary | Leave due × avg salary | ₹25,00,000</td></tr>
+        <tr><td>VRS (10(10C))</td><td>Min: Actual | ₹5,00,000</td></tr>
+        <tr><td>Standard Deduction (16(ia))</td><td>₹75,000 (new regime) | ₹50,000 (old regime)</td></tr>
+        <tr><td>Professional Tax (16(iii))</td><td>Actual paid (old regime only)</td></tr>
+        <tr><td>Entertainment Allowance (16(ii))</td><td>Govt employees: Min(Actual | ₹5,000 | 20% of Basic)</td></tr>
+        <tr><td>Children Education Allow.</td><td>₹100/month/child (max 2 children)</td></tr>
+        <tr><td>Hostel Allowance</td><td>₹300/month/child (max 2 children)</td></tr>
+        <tr><td>Transport Allowance (Disabled)</td><td>₹3,200/month exempt</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#7F77DD">Perquisites — Valuation Quick Reference</div>
+      <table class="rate-table">
+        <tr><th>Perquisite</th><th>Value</th></tr>
+        <tr><td>Rent-free accommodation (owned by employer)</td><td>15%/10%/7.5% of salary based on city population</td></tr>
+        <tr><td>Accommodation in hotel</td><td>24% of salary OR actual hotel charges (lower)</td></tr>
+        <tr><td>Company car (&lt;1600cc) personal use</td><td>₹1,800 pm + ₹900 pm driver</td></tr>
+        <tr><td>Company car (&gt;1600cc) personal use</td><td>₹2,400 pm + ₹900 pm driver</td></tr>
+        <tr><td>Interest-free/concessional loan</td><td>SBI rate minus actual interest</td></tr>
+        <tr><td>Free education (employer school)</td><td>Exempt if cost ≤ ₹1,000 pm per child</td></tr>
+        <tr><td>Gift/vouchers from employer</td><td>Exempt upto ₹5,000 per year</td></tr>
+        <tr><td>Medical reimbursement</td><td>Fully taxable (no exemption from AY 2019-20)</td></tr>
+        <tr><td>Employer NPS contribution 80CCD(2)</td><td>Up to 10%/14% of salary deductible</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Salary for HRA = Basic + DA(terms) + Fixed %commission</span>
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Salary for perquisites = All monetary benefits except perquisites</span>
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">NPS 80CCD(2): 14% if CG/SG employer | 10% others</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 4 HP ═══ -->
+<div class="qr-chapter" style="border-left-color:#1D9E75">
+  <div class="qr-ch-head" style="background:#04342C;color:#E1F5EE">Ch 4 — Income from House Property</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#1D9E75">HP Computation Format</div>
+      <table class="rate-table">
+        <tr><th>Particulars</th><th>SOP</th><th>LOP/DLOP</th></tr>
+        <tr><td>Municipal Value / Fair Rent / Standard Rent</td><td>—</td><td>Higher of MV&amp;FR, restricted to SR</td></tr>
+        <tr><td>Expected Rent (ER)</td><td>—</td><td>xx</td></tr>
+        <tr><td>Actual Rent (AR)</td><td>—</td><td>xx (DLOP = ER)</td></tr>
+        <tr><td><strong>GAV</strong></td><td>NIL</td><td>Higher of ER &amp; AR</td></tr>
+        <tr><td>Less: Municipal taxes paid by owner</td><td>—</td><td>(xx)</td></tr>
+        <tr><td><strong>NAV</strong></td><td>NIL</td><td>xx</td></tr>
+        <tr><td>Less: 30% Std deduction u/s 24(a)</td><td>—</td><td>(xx)</td></tr>
+        <tr><td>Less: Interest on loan u/s 24(b)</td><td>(₹2L / ₹30K)</td><td>Full interest</td></tr>
+        <tr><td><strong>Income / (Loss) from HP</strong></td><td>(Loss)</td><td>xx</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#1D9E75">Interest on Loan — Key Limits</div>
+      <table class="rate-table">
+        <tr><th>Case</th><th>Limit</th></tr>
+        <tr><td>LOP / DLOP</td><td>No limit — full interest</td></tr>
+        <tr><td>SOP — Special (loan ≥ 1.4.99, P/C, 5yr completion)</td><td>Max ₹2,00,000</td></tr>
+        <tr><td>SOP — General (all other cases)</td><td>Max ₹30,000</td></tr>
+        <tr><td>Pre-construction interest</td><td>5 equal instalments from year of completion</td></tr>
+        <tr><td>115BAC — SOP interest</td><td>NOT allowed</td></tr>
+        <tr><td>HP loss max inter-head set-off</td><td>₹2,00,000</td></tr>
+        <tr><td>Sec 25A: Arrears/Unrealised rent recovery</td><td>70% taxable in year of receipt</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Max 2 SOP allowed from AY 2020-21</span>
+        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Municipal taxes: Payment basis only | Owner must pay</span>
+        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">Composite rent: Separable→HP | Inseparable→PGBP</span>
+        <span class="qr-pill" style="background:#04342C;color:#E1F5EE">HP loss C/F: 8 years | Against HP income only after 1st year</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 5 PGBP ═══ -->
+<div class="qr-chapter" style="border-left-color:#BA7517">
+  <div class="qr-ch-head" style="background:#412402;color:#FAEEDA">Ch 5 — Profits &amp; Gains from Business or Profession (PGBP)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#BA7517">Depreciation Rates — Key Assets</div>
+      <table class="rate-table">
+        <tr><th>Asset</th><th>Rate</th></tr>
+        <tr><td>Residential Building</td><td>5%</td></tr>
+        <tr><td>Non-residential Building</td><td>10%</td></tr>
+        <tr><td>Furniture &amp; Fittings</td><td>10%</td></tr>
+        <tr><td>Plant &amp; Machinery (general)</td><td>15%</td></tr>
+        <tr><td>Motor cars (non-hiring)</td><td>15%</td></tr>
+        <tr><td>Computer / Books (professional)</td><td>40%</td></tr>
+        <tr><td>Motor buses/lorries (hiring)</td><td>30%</td></tr>
+        <tr><td>New P&amp;M — additional dep (32(1)(iia))</td><td>20% in 1st year (not 115BAC)</td></tr>
+        <tr><td>Intangible assets (know-how, patent etc.)</td><td>25%</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#BA7517">Presumptive Tax — Key Sections</div>
+      <table class="rate-table">
+        <tr><th>Section</th><th>Eligible</th><th>Deemed Income</th></tr>
+        <tr><td>44AD</td><td>Resident Individual/HUF/Firm (not LLP) | T/O ≤ ₹3Cr (digital ≤ ₹3Cr)</td><td>6% digital | 8% cash</td></tr>
+        <tr><td>44ADA</td><td>Resident Individual/HUF/Partnership | Profession ≤ ₹75L</td><td>50% of GR</td></tr>
+        <tr><td>44AE</td><td>Goods carriage owner ≤ 10 vehicles</td><td>₹1,000/ton/month (HGV) | ₹7,500/vehicle/month (others)</td></tr>
+        <tr><td>44B</td><td>NR shipping business</td><td>7.5% of gross receipts</td></tr>
+        <tr><td>44BB</td><td>NR mineral oil exploration</td><td>10% of gross receipts</td></tr>
+        <tr><td>44BBA</td><td>NR airline business</td><td>5% of gross receipts</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#412402;color:#FAEEDA">WDV Block: Half depreciation if asset used &lt;180 days in 1st year</span>
+        <span class="qr-pill" style="background:#412402;color:#FAEEDA">Dep on SLM: Power generating units only | Individual asset tracking</span>
+        <span class="qr-pill" style="background:#412402;color:#FAEEDA">35AD: 100% deduction on capital expenditure for specified businesses</span>
+        <span class="qr-pill" style="background:#412402;color:#FAEEDA">44AB Audit: T/O &gt;₹1Cr (business) | GR &gt;₹50L (profession)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 6 CG ═══ -->
+<div class="qr-chapter" style="border-left-color:#639922">
+  <div class="qr-ch-head" style="background:#173404;color:#EAF3DE">Ch 6 — Capital Gains</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#639922">Short-Term vs Long-Term Holding Period</div>
+      <table class="rate-table">
+        <tr><th>Asset Type</th><th>STCA if held ≤</th><th>LTCA if held &gt;</th></tr>
+        <tr><td>Listed shares / equity MF / zero coupon bonds</td><td>12 months</td><td>12 months</td></tr>
+        <tr><td>Unlisted shares / debt MF / land &amp; building</td><td>24 months</td><td>24 months</td></tr>
+        <tr><td>All other assets</td><td>36 months</td><td>36 months</td></tr>
+        <tr><td>Depreciable assets</td><td>Always STCG/STCL</td><td>—</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#639922;margin-top:8px">CG Tax Rates</div>
+      <table class="rate-table">
+        <tr><th>Type</th><th>Section</th><th>Rate</th></tr>
+        <tr><td>STCG — Listed equity/equity MF (STT paid)</td><td>111A</td><td>20% (w.e.f. 23.07.2024)</td></tr>
+        <tr><td>STCG — Other assets</td><td>Normal</td><td>Normal slab rates</td></tr>
+        <tr><td>LTCG — Listed equity/equity MF (STT paid)</td><td>112A</td><td>12.5% (above ₹1.25L exempt)</td></tr>
+        <tr><td>LTCG — Other assets</td><td>112</td><td>12.5% (no indexation) OR 20% with indexation (land/building)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#639922">CG Exemptions — Key Sections</div>
+      <table class="rate-table">
+        <tr><th>Sec</th><th>Asset</th><th>Invest in</th><th>Lock-in</th></tr>
+        <tr><td>54</td><td>Residential HP (Individual/HUF)</td><td>1 Res HP (1yr before / 2yr after)</td><td>3 years</td></tr>
+        <tr><td>54B</td><td>Agricultural land (Ind/HUF)</td><td>Agricultural land (2 yrs)</td><td>3 years</td></tr>
+        <tr><td>54D</td><td>Compulsory acquisition of land/bldg</td><td>Land/building for industrial purpose</td><td>3 years</td></tr>
+        <tr><td>54EC</td><td>LTCG any asset</td><td>NHAI/REC bonds (6 months) max ₹50L</td><td>5 years</td></tr>
+        <tr><td>54F</td><td>LTCG any asset except HP (Ind/HUF)</td><td>1 Res HP (1yr before/2yr after) | Not own &gt;1 HP</td><td>3 years</td></tr>
+        <tr><td>54G</td><td>Industrial undertaking (urban area)</td><td>P&amp;M/land/bldg in rural area</td><td>3 years</td></tr>
+        <tr><td>54GA</td><td>Industrial undertaking to SEZ</td><td>P&amp;M/land/bldg in SEZ</td><td>3 years</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">CGAS: Deposit if not invested before due date of return</span>
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Indexation: CII used for LTCG cost calculation</span>
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Sec 50C: SDV = COA for land/building if SDV &gt; 110% of actual</span>
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">Sec 112A: ₹1.25L LTCG exempt on equity (per year)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 7 IFOS ═══ -->
+<div class="qr-chapter" style="border-left-color:#7F77DD">
+  <div class="qr-ch-head" style="background:#26215C;color:#EEEDFE">Ch 7 — Income from Other Sources (IFOS)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#7F77DD">Incomes taxable under IFOS</div>
+      <table class="rate-table">
+        <tr><th>Income Type</th><th>Key Rule</th></tr>
+        <tr><td>Dividends</td><td>Taxable at normal rates | 10% TDS if &gt;₹5,000</td></tr>
+        <tr><td>Winning from lottery/games</td><td>30% flat | No deduction | No basic exemption</td></tr>
+        <tr><td>Horse race winnings</td><td>30% flat | TDS 30% if &gt;₹10,000</td></tr>
+        <tr><td>Interest on securities</td><td>Normal rates | Accrual basis</td></tr>
+        <tr><td>Salary of MP/MLA</td><td>IFOS (not Salary)</td></tr>
+        <tr><td>Family pension</td><td>IFOS | 1/3 or ₹25,000 (whichever lower) deductible</td></tr>
+        <tr><td>Sub-letting of house</td><td>IFOS</td></tr>
+        <tr><td>Royalty (author/patent)</td><td>IFOS | 80QQB/80RRB deduction available</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#7F77DD">Sec 56(2)(x) — Gift Taxation</div>
+      <table class="rate-table">
+        <tr><th>Type</th><th>Trigger</th><th>Taxable Amount</th></tr>
+        <tr><td>Money (without consideration)</td><td>Aggregate &gt; ₹50,000</td><td>Whole amount</td></tr>
+        <tr><td>Movable property (without consid.)</td><td>Agg. FMV &gt; ₹50,000</td><td>Entire FMV</td></tr>
+        <tr><td>Movable property (inadequate consid.)</td><td>Agg.(FMV−Consid.) &gt; ₹50,000</td><td>FMV − Consideration</td></tr>
+        <tr><td>Immovable (without consid.)</td><td>Per property SDV &gt; ₹50,000</td><td>Entire SDV</td></tr>
+        <tr><td>Immovable (inadequate consid.)</td><td>(SDV−Consid.) &gt; ₹50,000 AND SDV &gt; 110% of consid.</td><td>SDV − Consideration</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Gift exceptions: Relative | Marriage | Will/Inheritance | Local authority | Trust | Hospital/University</span>
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Relative = Spouse, siblings, parents, lineal ascendants/descendants &amp; their spouses</span>
+        <span class="qr-pill" style="background:#26215C;color:#EEEDFE">Deductions allowed: Standard dep (machinery) | Interest paid | 57(iii) expenditure</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 8 CLUBBING ═══ -->
+<div class="qr-chapter" style="border-left-color:#E8A000">
+  <div class="qr-ch-head" style="background:#5C3700;color:#FFF3CD">Ch 8 — Clubbing of Income</div>
+  <table class="rate-table">
+    <tr><th>Section</th><th>Situation</th><th>Clubbed with whom</th><th>Key Exception</th></tr>
+    <tr><td>60</td><td>Transfer of income without transfer of asset</td><td>Transferor always</td><td>No exception</td></tr>
+    <tr><td>61</td><td>Revocable transfer of asset</td><td>Transferor</td><td>Irrevocable for life = not clubbed</td></tr>
+    <tr><td>64(1)(ii)</td><td>Spouse gets remuneration from concern where transferor has substantial interest</td><td>Transferor (assessee)</td><td>Spouse has technical/professional qualification for the job</td></tr>
+    <tr><td>64(1)(iv)</td><td>Asset transferred to spouse without/inadequate consideration</td><td>Transferor</td><td>Transfer before marriage | living separately</td></tr>
+    <tr><td>64(1)(vi)</td><td>Asset transferred to son's wife</td><td>Transferor</td><td>Transfer before becoming son's wife</td></tr>
+    <tr><td>64(1)(vii)</td><td>Asset transferred to any person for benefit of spouse</td><td>Transferor</td><td>—</td></tr>
+    <tr><td>64(1)(viii)</td><td>Asset transferred for benefit of son's wife</td><td>Transferor</td><td>—</td></tr>
+    <tr><td>64(1A)</td><td>Income of minor child</td><td>Parent with higher income</td><td>Minor earns from manual work / own skill / disability | ₹1,500 exempt per minor u/s 10(32)</td></tr>
+    <tr><td>64(2)</td><td>HUF member converts self-acquired to HUF property</td><td>Member (transferor)</td><td>—</td></tr>
+  </table>
+  <div class="qr-pills">
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Substantial interest = 20%+ shareholding in company | 20%+ PSR in firm</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Second generation income (income on income from transferred asset) = NOT clubbed</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Cross gifts: Clubbed only to extent of matching amount</span>
+    <span class="qr-pill" style="background:#5C3700;color:#FFF3CD">Natural love &amp; affection ≠ adequate consideration</span>
+  </div>
+</div>
+
+<!-- ═══ CH 9 SET-OFF ═══ -->
+<div class="qr-chapter" style="border-left-color:#CC3333">
+  <div class="qr-ch-head" style="background:#3B0A0A;color:#FDE8E8">Ch 9 — Set-Off &amp; Carry Forward of Losses</div>
+  <table class="rate-table">
+    <tr><th>Sec</th><th>Loss Type</th><th>Set-Off Against</th><th>C/F Period</th><th>Return on time (Sec 80)?</th></tr>
+    <tr><td>70</td><td>Intra-head (same head)</td><td>Same head income only</td><td>—</td><td>—</td></tr>
+    <tr><td>71B</td><td>House Property Loss</td><td>Any head (max ₹2L) → then HP only</td><td>8 years</td><td>❌ NO — can file late</td></tr>
+    <tr><td>72</td><td>Normal Business Loss (PGBP)</td><td>Any income EXCEPT Salary</td><td>8 years</td><td>✅ YES</td></tr>
+    <tr><td>73</td><td>Speculative Business Loss</td><td>Speculative Business only</td><td>4 years</td><td>✅ YES</td></tr>
+    <tr><td>73A</td><td>Specified Business Loss (35AD)</td><td>Specified Business Income only</td><td>Unlimited</td><td>✅ YES</td></tr>
+    <tr><td>74</td><td>STCL</td><td>STCG + LTCG</td><td>8 years</td><td>✅ YES</td></tr>
+    <tr><td>74</td><td>LTCL</td><td>LTCG only</td><td>8 years</td><td>✅ YES</td></tr>
+    <tr><td>74A</td><td>Race-horse Loss</td><td>Race-horse income only</td><td>4 years</td><td>✅ YES</td></tr>
+    <tr><td>32(2)</td><td>Unabsorbed Depreciation</td><td>Any head EXCEPT Salary</td><td>Unlimited</td><td>❌ NO — can file late</td></tr>
+  </table>
+  <div class="qr-pills">
+    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Order: Step 1 Intra-head (Sec 70) → Step 2 Inter-head (Sec 71) → Step 3 C/F</span>
+    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Business loss ❌ Salary | HP loss inter-head max ₹2L only</span>
+    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">115BAC: HP loss cannot set-off OR carry forward</span>
+    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Within PGBP order: Current dep → B/F losses → Unabsorbed dep</span>
+    <span class="qr-pill" style="background:#3B0A0A;color:#FDE8E8">Speculation loss = PGBP other than specified business loss (Sec 73 deeming)</span>
+  </div>
+</div>
+
+<!-- ═══ CH 10 DEDUCTIONS ═══ -->
+<div class="qr-chapter" style="border-left-color:#639922">
+  <div class="qr-ch-head" style="background:#173404;color:#EAF3DE">Ch 10 — Deductions from GTI (Chapter VI-A)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#639922">Payment-based Deductions — Key Limits</div>
+      <table class="rate-table">
+        <tr><th>Section</th><th>Item</th><th>Who</th><th>Max Limit</th></tr>
+        <tr><td>80C</td><td>LIP, PPF, EPF, NSC, ELSS, Tuition, Housing loan principal, SSY, FD 5yr etc.</td><td>Ind/HUF</td><td>₹1,50,000</td></tr>
+        <tr><td>80CCC</td><td>LIC pension fund premium</td><td>Ind/HUF</td><td>₹1,50,000</td></tr>
+        <tr><td>80CCD(1)</td><td>Employee NPS contribution</td><td>Ind</td><td>10% salary (salaried) | 20% GTI (others)</td></tr>
+        <tr><td>80CCD(1B)</td><td>Additional NPS / NPS Vatsalya</td><td>Ind</td><td>₹50,000 (over &amp; above 80CCE limit)</td></tr>
+        <tr><td>80CCE</td><td>Combined 80C + 80CCC + 80CCD(1)</td><td>—</td><td>₹1,50,000 max total</td></tr>
+        <tr><td>80CCD(2)</td><td>Employer NPS contribution</td><td>Ind (employee)</td><td>10%/14% of salary | Available 115BAC ✅</td></tr>
+        <tr><td>80CCH(2)</td><td>CG contribution to Agniveer corpus</td><td>Agniveer</td><td>100% | Available 115BAC ✅</td></tr>
+        <tr><td>80D</td><td>Medical insurance + PHC</td><td>Ind/HUF</td><td>₹25K (₹50K senior) self | ₹25K (₹50K) parents</td></tr>
+        <tr><td>80DD</td><td>Handicapped dependent (flat)</td><td>Res Ind/HUF</td><td>₹75K (normal) | ₹1.25L (severe 80%+)</td></tr>
+        <tr><td>80DDB</td><td>Specified disease treatment</td><td>Res Ind/HUF</td><td>Actual or ₹40K/₹1L (senior) whichever lower − insurance</td></tr>
+        <tr><td>80E</td><td>Education loan interest (higher edu)</td><td>Ind</td><td>Full interest for 8 consecutive years</td></tr>
+        <tr><td>80EEA</td><td>Housing loan interest (SOP)</td><td>Ind</td><td>₹1,50,000 | SDV ≤₹45L | Loan 1.4.19–31.3.22</td></tr>
+        <tr><td>80EEB</td><td>EV loan interest</td><td>Ind</td><td>₹1,50,000 | Loan 1.4.19–31.3.23</td></tr>
+        <tr><td>80G</td><td>Donations</td><td>All</td><td>100%/50% unlimited or limited (10% ATI cap)</td></tr>
+        <tr><td>80GG</td><td>Rent paid (no HRA)</td><td>Ind</td><td>Min: ₹5K/mo | 25% adj-GTI | Rent−10% adj-GTI</td></tr>
+        <tr><td>80U</td><td>Self disability (flat)</td><td>Res Ind</td><td>₹75K (normal) | ₹1.25L (severe)</td></tr>
+        <tr><td>80QQB</td><td>Book royalty</td><td>Res Ind</td><td>Eligible royalty or ₹3L (lower)</td></tr>
+        <tr><td>80RRB</td><td>Patent royalty</td><td>Res Ind</td><td>Royalty or ₹3L (lower)</td></tr>
+        <tr><td>80TTA</td><td>Savings A/c interest</td><td>Ind/HUF (non-senior)</td><td>₹10,000</td></tr>
+        <tr><td>80TTB</td><td>All deposit interest (senior 60+)</td><td>Res Senior citizen</td><td>₹50,000</td></tr>
+        <tr><td>80JJAA</td><td>New employee cost</td><td>Business (44AB)</td><td>30% of additional employee cost | 3 years | Available 115BAC ✅</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#639922">80G — Donation Categories</div>
+      <table class="rate-table">
+        <tr><th>Category</th><th>%</th><th>Examples</th></tr>
+        <tr><td>100% Unlimited</td><td>100%</td><td>National Defence Fund, PM NRF, PM Care Fund, Swachh Bharat Kosh, Clean Ganga Fund, National Children/Sports/Cultural Fund (13 items)</td></tr>
+        <tr><td>50% Unlimited</td><td>50%</td><td>PM Drought Relief Fund only</td></tr>
+        <tr><td>100% Limited (10% ATI cap)</td><td>100%</td><td>Family Planning (F), Indian Olympic Association (O)</td></tr>
+        <tr><td>50% Limited (10% ATI cap)</td><td>50%</td><td>Housing Dev Authority (H), Temple (T), Public Charitable Trust (C), Minority community (M)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#639922;margin-top:10px">AMT — Alternate Minimum Tax (Sec 115JC)</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Rule</th></tr>
+        <tr><td>Applicable to</td><td>All assessee EXCEPT Company</td></tr>
+        <tr><td>Rate</td><td>18.5% of Adjusted Total Income (ATI)</td></tr>
+        <tr><td>Tax payable</td><td>HIGHER of Normal Tax OR AMT</td></tr>
+        <tr><td>Triggers when claimed</td><td>10AA / 35AD / 80JJAA / 80QQB / 80RRB</td></tr>
+        <tr><td>Not applicable if</td><td>ATI ≤ ₹20L (Ind/HUF/AOP) OR paying under 115BAC</td></tr>
+        <tr><td>AMT Credit (115JD)</td><td>C/F for 15 AYs | Set off when Normal &gt; AMT</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">VI-A deductions ≤ GTI always | Cannot C/F | Not against special rate income</span>
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">115BAC: Only 80CCD(2) + 80CCH(2) + 80JJAA allowed</span>
+        <span class="qr-pill" style="background:#173404;color:#EAF3DE">ATI = GTI + 10AA + 35AD + 80JJAA/QQB/RRB − Dep (if 35AD not claimed)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 11 TDS/TCS ═══ -->
+<div class="qr-chapter" style="border-left-color:#1D9E75">
+  <div class="qr-ch-head" style="background:#085041;color:#E1F5EE">Ch 11 — Advance Tax, TDS &amp; TCS</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#1D9E75">Advance Tax Instalments</div>
+      <table class="rate-table">
+        <tr><th>Due Date</th><th>Cumulative % Payable</th></tr>
+        <tr><td>15th June</td><td>15%</td></tr>
+        <tr><td>15th September</td><td>45%</td></tr>
+        <tr><td>15th December</td><td>75%</td></tr>
+        <tr><td>15th March</td><td>100%</td></tr>
+        <tr><td>44AD/44ADA (presumptive)</td><td>100% by 15th March only</td></tr>
+        <tr><td>Senior citizen (no PGBP)</td><td>No advance tax liability</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#1D9E75;margin-top:8px">Key TDS Sections &amp; Rates</div>
+      <table class="rate-table">
+        <tr><th>Sec</th><th>Nature of Payment</th><th>Rate</th><th>Threshold</th></tr>
+        <tr><td>192</td><td>Salary</td><td>Avg rate</td><td>Taxable income</td></tr>
+        <tr><td>193</td><td>Interest on securities</td><td>10%</td><td>₹10,000</td></tr>
+        <tr><td>194</td><td>Dividend (company)</td><td>10%</td><td>₹5,000</td></tr>
+        <tr><td>194A</td><td>Interest (Bank/FI/others)</td><td>10%</td><td>₹50K (bank) | ₹1L (senior) | ₹5K (others)</td></tr>
+        <tr><td>194C</td><td>Contractor payment</td><td>1% (Ind/HUF) | 2% others</td><td>₹30K single | ₹1L aggregate</td></tr>
+        <tr><td>194H</td><td>Commission/Brokerage</td><td>5%</td><td>₹20,000</td></tr>
+        <tr><td>194I</td><td>Rent (land/bldg/furniture)</td><td>10%</td><td>₹50,000 pm</td></tr>
+        <tr><td>194I(a)</td><td>Rent (plant/machinery)</td><td>2%</td><td>₹50,000 pm</td></tr>
+        <tr><td>194J</td><td>Professional/technical fees</td><td>10% (2% technical)</td><td>₹30,000</td></tr>
+        <tr><td>194N</td><td>Cash withdrawal from bank</td><td>2% (above ₹1Cr) | 5% (if no ITR &gt;₹20L)</td><td>₹1 Crore</td></tr>
+        <tr><td>194Q</td><td>Purchase of goods</td><td>0.1%</td><td>₹50L (buyer T/O &gt;₹10Cr)</td></tr>
+        <tr><td>195</td><td>Payment to NR</td><td>As applicable</td><td>Any amount</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#1D9E75">Interest on Tax — Sec 234A/B/C</div>
+      <table class="rate-table">
+        <tr><th>Section</th><th>Reason</th><th>Rate</th><th>Period</th></tr>
+        <tr><td>234A</td><td>Delay in filing return</td><td>1% pm or part</td><td>Due date to actual filing date</td></tr>
+        <tr><td>234B</td><td>Default in advance tax (paid &lt;90% of assessed tax)</td><td>1% pm or part</td><td>1st April of AY to assessment/payment</td></tr>
+        <tr><td>234C</td><td>Deferment of advance tax instalment</td><td>1% pm or part</td><td>3 months each (1 month for March)</td></tr>
+        <tr><td>234F</td><td>Late filing fee</td><td>₹5,000 (NTI &gt;₹5L) | ₹1,000 (NTI ≤₹5L)</td><td>One time fee</td></tr>
+        <tr><td>244A</td><td>Interest on refund (excess tax paid)</td><td>6% pa (0.5% pm)</td><td>1st April of AY to date of refund</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#1D9E75;margin-top:8px">Key TCS Sections</div>
+      <table class="rate-table">
+        <tr><th>Sec</th><th>Nature</th><th>Rate</th></tr>
+        <tr><td>206C(1)</td><td>Scrap, timber, forest produce, alcohol, minerals</td><td>1%–2.5%</td></tr>
+        <tr><td>206C(1H)</td><td>Sale of goods (seller T/O &gt;₹10Cr)</td><td>0.1%</td></tr>
+        <tr><td>206C(1G)</td><td>Overseas remittance (LRS) / foreign tour package</td><td>5% (20% if no PAN/Aadhaar)</td></tr>
+        <tr><td>206C(1G)</td><td>LRS for education (loan from FI)</td><td>0.5%</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#085041;color:#E1F5EE">TDS deducted at earlier of: Payment OR Credit to account</span>
+        <span class="qr-pill" style="background:#085041;color:#E1F5EE">No PAN = TDS at 20% or prescribed rate whichever is higher</span>
+        <span class="qr-pill" style="background:#085041;color:#E1F5EE">Form 15G/15H: Self-declaration for no TDS (no tax liability)</span>
+        <span class="qr-pill" style="background:#085041;color:#E1F5EE">Lower deduction certificate: Sec 197 application to AO</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CH 12 RETURN FILING ═══ -->
+<div class="qr-chapter" style="border-left-color:#378ADD">
+  <div class="qr-ch-head" style="background:#042C53;color:#E6F1FB">Ch 12 — Return Filing &amp; Self Assessment</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#378ADD">Who Must File Return — Sec 139(1)</div>
+      <table class="rate-table">
+        <tr><th>Assessee</th><th>Condition</th></tr>
+        <tr><td>Company / Firm / LLP</td><td>Always compulsory</td></tr>
+        <tr><td>Other assessee</td><td>GTI (before 54/54B/54D/54EC/54F exemption) &gt; Basic exemption</td></tr>
+        <tr><td>R&amp;OR Individual</td><td>Beneficial owner / beneficiary of foreign asset OR signing authority of foreign bank a/c</td></tr>
+        <tr><td>Any person (high-value)</td><td>Current a/c deposit &gt;₹1Cr | Savings &gt;₹50L | Foreign travel &gt;₹2L | Electricity &gt;₹1L | Biz T/O &gt;₹60L | Profession &gt;₹10L | TDS/TCS ≥₹25K (₹50K senior)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#378ADD;margin-top:8px">Due Dates of Filing</div>
+      <table class="rate-table">
+        <tr><th>Category</th><th>Due Date</th></tr>
+        <tr><td>Company + Audit required + Partner of audited firm</td><td>31st October of AY</td></tr>
+        <tr><td>Transfer Pricing applicable (Sec 92E)</td><td>30th November of AY</td></tr>
+        <tr><td>All other persons</td><td>31st July of AY</td></tr>
+        <tr><td>AY 2026-27 (all categories)</td><td>Oct 31, Nov 30, Jul 31, 2026</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#378ADD">Types of Returns &amp; Time Limits</div>
+      <table class="rate-table">
+        <tr><th>Return Type</th><th>Section</th><th>Last Date</th><th>Key Points</th></tr>
+        <tr><td>Normal Return</td><td>139(1)</td><td>Due date</td><td>All benefits available</td></tr>
+        <tr><td>Loss Return</td><td>139(3)</td><td>Due date (Sec 80)</td><td>Must file on time to C/F PGBP/CG loss</td></tr>
+        <tr><td>Belated Return</td><td>139(4)</td><td>31st Dec of AY</td><td>No C/F of losses | No 10AA/80JJAA/80QQB/80RRB | 234A interest + 234F fee</td></tr>
+        <tr><td>Revised Return</td><td>139(5)</td><td>31st Dec of AY</td><td>Correct omissions | Unlimited revisions | Substitutes original</td></tr>
+        <tr><td>Updated Return (ITR-U)</td><td>139(8A)</td><td>48 months from AY end</td><td>Only to increase income | 25%/50%/60%/70% extra tax yr 1/2/3/4 | Cannot declare loss</td></tr>
+        <tr><td>Defective Return</td><td>139(9)</td><td>15 days to rectify</td><td>Wrong form / no tax proof / no 44AB report → VOID if not rectified</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#378ADD;margin-top:8px">Self Assessment Tax — Sec 140A</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Rule</th></tr>
+        <tr><td>SAT = Total tax liability MINUS</td><td>TDS + TCS + Advance Tax + Relief u/s 89/90/91 + AMT credit</td></tr>
+        <tr><td>Pay SAT</td><td>BEFORE filing return</td></tr>
+        <tr><td>PAN-Aadhaar Link</td><td>Mandatory w.e.f. 01.07.2017 | Inoperative if not linked by 01.07.2023</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">HP loss + Unabsorbed dep → C/F even with belated return</span>
+        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">Sec 80 condition applies only in year of loss — not in set-off year</span>
+        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">234F: ₹5,000 if NTI &gt;₹5L | ₹1,000 if NTI ≤₹5L</span>
+        <span class="qr-pill" style="background:#042C53;color:#E6F1FB">Revised return substitutes original from date of original filing</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MEMORY TRICKS GRID ═══ -->
+<div class="qr-sub" style="color:#E8A000;font-size:14px;text-align:center;margin:20px 0 10px">⚡ EXAM MEMORY TRICKS — ALL CHAPTERS</div>
+<div class="summary-grid">
+  <div class="s-card" style="background:#1E1000;border-color:#E8A000">
+    <h3 style="color:#E8A000">Ch 1 — Tax Rate Tricks</h3>
+    <ul>
+      <li>Old slab: 0-2.5-5-10L → NIL-5-20-30%</li>
+      <li>New slab: 0-4-8-12-16-20-24L → NIL-5-10-15-20-25-30%</li>
+      <li>87A rebate: Old=₹12,500 up to 5L | New=₹60,000 up to 12L</li>
+      <li>Surcharge ladder: NIL-10-15-25-37% at 50L-1Cr-2Cr-5Cr</li>
+      <li>115BAC = Default | 37% surcharge = GONE in new regime</li>
+      <li>H&EC = 4% always on (Tax + Surcharge)</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#061021;border-color:#2980B9">
+    <h3 style="color:#2980B9">Ch 2 — Residence Tricks</h3>
+    <ul>
+      <li>ROR = Resident + 2/10 years + 730/7 years</li>
+      <li>RNOR = Resident but fails any above condition</li>
+      <li>NR = &lt;182 days AND not 60+365 condition</li>
+      <li>R&amp;OR taxes global income | RNOR = India + controlled biz | NR = India only</li>
+      <li>Company: Indian = Always Resident | Foreign = POEM in India</li>
+      <li>Deemed Resident: Indian citizen, India income &gt;15L, not taxed elsewhere</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#0D0B1F;border-color:#7F77DD">
+    <h3 style="color:#7F77DD">Ch 3 — Salary Tricks</h3>
+    <ul>
+      <li>HRA = Min of 3: Actual | Rent−10%sal | 50%/40%sal</li>
+      <li>Gratuity limit = ₹20L (all categories)</li>
+      <li>Leave encashment limit = ₹25L (retired)</li>
+      <li>Standard deduction = ₹75K (new) | ₹50K (old)</li>
+      <li>VRS exemption = min(Actual, ₹5L)</li>
+      <li>Perquisite car: ₹1800/₹2400 + ₹900 driver pm</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#061E16;border-color:#1D9E75">
+    <h3 style="color:#1D9E75">Ch 4 — HP Tricks</h3>
+    <ul>
+      <li>GAV DLOP = ER always (AR irrelevant)</li>
+      <li>Municipal taxes: Payment basis | Owner must pay</li>
+      <li>Pre-construction interest: 5 equal instalments</li>
+      <li>Max 2 SOP from AY 2020-21</li>
+      <li>HP loss inter-head max ₹2L | C/F 8 years HP only</li>
+      <li>115BAC: 24(b) SOP interest NOT allowed</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#1E1000;border-color:#BA7517">
+    <h3 style="color:#BA7517">Ch 5 — PGBP Tricks</h3>
+    <ul>
+      <li>Depreciable asset = ALWAYS STCG (not LTCG)</li>
+      <li>Half dep if asset used &lt;180 days in 1st year</li>
+      <li>44AD: 6% digital | 8% cash | T/O ≤₹3Cr</li>
+      <li>44ADA: 50% GR | Profession ≤₹75L</li>
+      <li>44AB audit: Biz &gt;₹1Cr | Profession &gt;₹50L</li>
+      <li>35AD: 100% capital expenditure deduction</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#0A1A04;border-color:#639922">
+    <h3 style="color:#639922">Ch 6 — Capital Gain Tricks</h3>
+    <ul>
+      <li>Holding: Listed shares/eq MF = 12M | Others = 24M/36M</li>
+      <li>STCG 111A = 20% | LTCG 112A = 12.5% (₹1.25L exempt)</li>
+      <li>54: 1 HP | 54EC: ₹50L bonds 6 months | 54F: any asset</li>
+      <li>CGAS: Deposit if not invested before return due date</li>
+      <li>50C: SDV used as COA if SDV &gt; 110% of actual price</li>
+      <li>Bonus shares COA = NIL | Rights shares = Issue price</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#0D0B1F;border-color:#7F77DD">
+    <h3 style="color:#7F77DD">Ch 7 — IFOS Tricks</h3>
+    <ul>
+      <li>MRIDHUTLAITC = Gift exceptions (Relative, Marriage etc.)</li>
+      <li>Lottery/Games = 30% flat | No deduction | No exemption</li>
+      <li>Family pension deduction = 1/3 or ₹25,000 (lower)</li>
+      <li>Gift &gt;₹50,000 without consideration = fully taxable</li>
+      <li>56(2)(x): SDV &gt; 110% of consideration = taxable</li>
+      <li>Dividends: 10% TDS if &gt;₹5,000 from company</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#1E1200;border-color:#E8A000">
+    <h3 style="color:#E8A000">Ch 8 — Clubbing Tricks</h3>
+    <ul>
+      <li>Substantial interest = 20%+ shares/PSR</li>
+      <li>Exception: Spouse's technical qualification → no clubbing</li>
+      <li>Minor ₹1,500 exempt per child u/s 10(32)</li>
+      <li>Second generation income = NOT clubbed</li>
+      <li>Cross gifts = Clubbed to extent of matching amount</li>
+      <li>Natural love ≠ adequate consideration</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#150404;border-color:#CC3333">
+    <h3 style="color:#CC3333">Ch 9 — Set-Off Tricks</h3>
+    <ul>
+      <li>Intra → Inter → C/F (always this order)</li>
+      <li>HP + Unabsorbed dep → can C/F even if return late</li>
+      <li>PGBP/CG/Race horse → MUST file on time for C/F</li>
+      <li>Business loss ❌ Salary | HP loss max ₹2L inter-head</li>
+      <li>Speculative = 4yr | HP/Normal/CG = 8yr | 35AD = unlimited</li>
+      <li>115BAC: HP loss cannot set-off or C/F at all</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#0A1A04;border-color:#639922">
+    <h3 style="color:#639922">Ch 10 — Deduction Tricks</h3>
+    <ul>
+      <li>80CCE = 80C+80CCC+80CCD(1) combined max ₹1.5L</li>
+      <li>80CCD(1B) = Extra ₹50K NPS (over 80CCE limit)</li>
+      <li>80D: ₹25K self + ₹25K parents (₹50K each if senior)</li>
+      <li>115BAC: Only 80CCD(2)+80CCH(2)+80JJAA allowed</li>
+      <li>AMT = 18.5% ATI | Not if 115BAC or ATI ≤₹20L</li>
+      <li>80G: Cash &gt;₹2,000 → No deduction | In-kind → No deduction</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#061E16;border-color:#1D9E75">
+    <h3 style="color:#1D9E75">Ch 11 — TDS/TCS Tricks</h3>
+    <ul>
+      <li>234A: 1% pm delay in filing | 234B: 1% pm advance tax default</li>
+      <li>234C: 1% pm deferment of instalment | 234F: ₹5K/₹1K fee</li>
+      <li>No PAN = TDS at 20% or prescribed rate (higher)</li>
+      <li>15G (non-senior) / 15H (senior) = No TDS declaration</li>
+      <li>Advance tax: 15-45-75-100% by Jun-Sep-Dec-Mar 15</li>
+      <li>TDS deducted at earlier of: Payment OR Credit to a/c</li>
+    </ul>
+  </div>
+  <div class="s-card" style="background:#021020;border-color:#378ADD">
+    <h3 style="color:#378ADD">Ch 12 — Return Filing Tricks</h3>
+    <ul>
+      <li>Company/Firm = Always file | Others = GTI &gt; Basic exemption</li>
+      <li>Belated = 31st Dec of AY | Revised = same 31st Dec</li>
+      <li>Updated (ITR-U) = 4 years | Only increase income</li>
+      <li>Extra tax: 25-50-60-70% in yr 1-2-3-4</li>
+      <li>HP loss + Unabsorbed dep = C/F even with belated return</li>
+      <li>Defective = 15 days to fix or VOID (ab-initio)</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+
+<div class="footer">
+<div class="footer">Made for <span>CA Inter May 2026</span> — Ch 1 Basics · Ch 2 Residence · Ch 3 Salaries · Ch 4 HP · Ch 5 PGBP · Ch 6 Capital Gain · Ch 7 IFOS · Ch 8 Clubbing · Ch 9 Set-Off · Ch 10 Deductions · Ch 11 TDS/TCS · <span style="color:#378ADD">Ch 12 Return Filing</span> | 🎯 Complete DT Flashcard Set | Price Learning Hub</div>
 
 <script>
 
@@ -521,12 +1036,773 @@ const CH6=[
 {tp:"Amendments CG FA2024",ch:6,col:"coral",star:true,title:"AMENDMENTS — Capital Gain FA 2024 & FA 2023 (EXAM CRITICAL)",bullets:["FA 2024 — w.e.f. 23 JULY 2024 (BIG CHANGES):","(1) LTCG on equity u/s 112A: 10% → 12.5% | Exempt limit: Rs 1 lakh → Rs 1.25 lakh","(2) STCG on equity u/s 111A: 15% → 20%","(3) LTCG on other assets: 20% WITH indexation → 12.5% WITHOUT indexation","(4) INDEXATION BENEFIT REMOVED for all LTCA transfers from 23 July 2024","(5) SPECIAL RELIEF: Resident Ind/HUF on immovable property acquired BEFORE 23 July 2024 = Lower of 12.5% (no index) or 20% (with index)","(6) Unlisted bonds/debentures transferred/redeemed on/after 23 July 2024 = STCG always u/s 50AA","(7) BUYBACK: w.e.f. 01 October 2024 — buyback amount = Deemed dividend u/s 2(22)(f) = IFOS | Capital loss in shareholder hands","FA 2023 changes:","COA/COI cannot include interest u/s 24(b) or VI-A deductions (prevents double benefit)","Sec 54: Max investment cap Rs 10 crore | Two RHP option if LTCG ≤ Rs 2 crore","Sec 54F: Investment cap Rs 10 crore","Sec 50AA: Debt MF acquired after 01/04/2023 = Always STCG","Sec 50B: FMV Rule 11UAE = Higher of FMV-1 (FMV undertaking) or FMV-2 (FMV consideration)"],trick:"Trick: 'FA 2024 BIG 5: (1) Equity LTCG 10→12.5% (2) Equity STCG 15→20% (3) Other LTCG 20→12.5% no-index (4) Indexation GONE (5) Buyback = Dividend IFOS | DATE = 23 July 2024 | Immovable relief = Choose lower!'"}
 ];
 
+// ═══════════════════════════════════════════════
+// CH HP — INCOME FROM HOUSE PROPERTY
+// ═══════════════════════════════════════════════
+const CHHP = [
+  {tp:"Sec 22 Charging Section",ch:"hp",col:"teal",star:true,
+   title:"Sec 22 — Charging Section: Income from House Property",
+   bullets:[
+     "Rental income (Annual Value) taxable under IFHP if TWO conditions satisfied:",
+     "1️⃣ There should be a HOUSE PROPERTY (building or land appurtenant thereto)",
+     "2️⃣ Assessee should be the OWNER of that house property",
+     "⭐ House property = Building + land appurtenant thereto",
+     "If property used for OWN BUSINESS/PROFESSION → Ignored (not taxable under HP)",
+     "Agriculture land itself is NOT HP, but building on it CAN be HP",
+     "Income from subletting → taxable under IFOS (not IFHP) since sub-lessor is NOT owner",
+   ],
+   trick:"🧠 Trick: '2 Conditions = Property + Owner | Sec 22 | Business use = Ignore | Sub-let = IFOS not HP'"
+  },
+  {tp:"Types of HP",ch:"hp",col:"teal",star:true,
+   title:"Types of House Property — LOP, SOP, DLOP",
+   bullets:[
+     "🏠 LOP (Let-Out Property) → Always Taxable under IFHP",
+     "🏠 SOP (Self-Occupied Property) — 2 Types:",
+     "→ SOP for RESIDENCE: Taxable but Annual Value = NIL",
+     "→ SOP for Business/Profession: IGNORE (taxable under PGBP if used in biz)",
+     "📌 Two SOP (Residence) → BOTH EXEMPT (Annual Value = NIL)",
+     "📌 More than Two SOP → Assessee can choose ANY 2 as SOP (exempt) | Remaining = DLOP",
+     "🏚 DLOP (Deemed Let-Out Property): Treated as if let out | GAV = Expected Rent",
+     "⭐ SOP exemption available ONLY to Individual & HUF (not to companies/firms)",
+     "SOP = Property occupied for self-occupation OR could not be occupied due to any reason (job in other city)",
+   ],
+   trick:"🧠 Trick: 'LOP = Tax | SOP residence = Exempt (upto 2) | >2 SOP → Choose 2 exempt, Rest = DLOP | SOP biz = Ignore'"
+  },
+  {tp:"GAV Computation",ch:"hp",col:"teal",star:true,
+   title:"GAV Computation — Step by Step for LOP",
+   bullets:[
+     "Step 1: Find EXPECTED RENT (ER)",
+     "→ ER = Higher of (Municipal Value, Fair Rent) BUT limited to Standard Rent",
+     "→ In short: ER = MIN (Higher of MV & FR, Standard Rent)",
+     "Step 2: Find ACTUAL RENT (AR)",
+     "→ AR = Rent received + Rent receivable − Unrealised Rent",
+     "Step 3: GAV = Higher of ER or AR (when fully let out)",
+     "⭐ DLOP: GAV = ER only (no AR since not let out)",
+     "⭐ SOP (Residence): GAV = NIL (Annual Value = NIL by law)",
+     "Municipal Value = Value as per municipality records",
+     "Fair Rent = Rent of similar property in same locality (also called reasonable letting value)",
+     "Standard Rent = Maximum rent as per Rent Control Act (legally recoverable from tenant)",
+   ],
+   trick:"🧠 Trick: 'ER = [Higher of MV & FR] capped at SR | GAV = Higher of ER & AR | DLOP = ER only | SOP = NIL'"
+  },
+  {tp:"Municipal Taxes",ch:"hp",col:"teal",star:false,
+   title:"Municipal Taxes — Conditions for Deduction",
+   bullets:[
+     "Municipal taxes = House tax, property tax, local body tax (gram panchayat, municipality, local authority)",
+     "Deductible from GAV to get NAV",
+     "Condition 1: Allowed on PAYMENT BASIS only (paid = allowed | outstanding = NOT allowed)",
+     "Condition 2: Must be paid by OWNER (not tenant)",
+     "Condition 3: If given as % age, calculate on Municipal Value",
+     "⭐ If paid by tenant → NOT deductible (owner did not pay)",
+     "Municipal taxes paid to FOREIGN municipality also allowed if foreign house income taxable in India",
+     "Municipal taxes for SOP = NIL (since NAV itself is NIL for SOP)",
+   ],
+   trick:"🧠 Trick: 'Municipal Tax = PAYMENT basis + OWNER pays only | %age → on Municipal Value | Foreign muni OK if India taxable'"
+  },
+  {tp:"Deductions u/s 24",ch:"hp",col:"teal",star:true,
+   title:"Deductions u/s 24 — Standard Deduction & Interest on Loan",
+   bullets:[
+     "TWO deductions u/s 24:",
+     "24(a) Standard Deduction = 30% of NAV (allowed for LOP & DLOP only, NOT for SOP)",
+     "24(b) Interest on Loan = Allowed for ALL types (SOP, LOP, DLOP)",
+     "Interest on Loan — Key Points:",
+     "→ Loan for: Purchase, Construction, Repair, Renovation of HP",
+     "→ Allowed on DUE BASIS (paid + outstanding both allowed) — unlike municipal taxes",
+     "→ Penal interest (interest on interest) NOT allowed",
+     "→ Loan from: Bank, FI, friend, family — anyone (no restriction on source)",
+     "→ Foreign interest paid: NOT allowed if TDS not deducted",
+     "→ Fresh loan for repayment of old HP loan → interest on fresh loan ALLOWED",
+   ],
+   trick:"🧠 Trick: '24(a) = 30% NAV (LOP/DLOP only) | 24(b) = Interest (due basis, all types) | Penal interest = NO | Fresh loan = YES'"
+  },
+  {tp:"Interest Limits u/s 24(b)",ch:"hp",col:"teal",star:true,
+   title:"Interest on Loan — Limits & Special/General Case",
+   bullets:[
+     "LOP / DLOP: NO LIMIT — Full interest allowed as deduction",
+     "SOP (Residence) — TWO cases:",
+     "SPECIAL CASE → Max ₹2,00,000:",
+     "  → Loan taken on or after 1.4.1999 PLUS",
+     "  → Loan for PURCHASE or CONSTRUCTION PLUS",
+     "  → Construction completed within 5 years from end of year in which loan taken",
+     "GENERAL CASE → Max ₹30,000:",
+     "  → All other cases (loan before 1.4.1999, or for repair/renovation, or construction not completed in 5 yrs)",
+     "PRE-CONSTRUCTION INTEREST: Interest paid BEFORE year of completion",
+     "→ Allowed in 5 EQUAL INSTALMENTS from year of completion",
+     "⭐ Default Tax Regime (115BAC): Interest on SOP loan u/s 24(b) NOT allowed",
+     "Joint Ownership SOP: ₹30,000/₹2,00,000 limit applies to EACH CO-OWNER separately",
+   ],
+   trick:"🧠 Trick: 'LOP/DLOP = No limit | SOP Special = ₹2L (loan after 1.4.99 + purchase/construct + 5yr completion) | SOP General = ₹30K | Pre-const interest = 5 instalments'"
+  },
+  {tp:"Unrealised Rent & Sec 25A",ch:"hp",col:"teal",star:true,
+   title:"Unrealised Rent, Recovery & Sec 25A",
+   bullets:[
+     "Unrealised Rent = Rent not recovered from tenant (like bad debts of HP)",
+     "Formula: Actual Rent = Rent received + Rent receivable − Unrealised Rent",
+     "⭐ Unrealised rent deductible only if 4 conditions of Rule 4 satisfied:",
+     "1. Tenancy should be bona fide",
+     "2. Tenant should have VACATED the property",
+     "3. Such tenant should NOT occupy any other HP of same assessee",
+     "4. Reasonable steps taken for recovery of unrealised rent",
+     "Note: As per ITR Form, unrealised rent can be reduced from Gross Annual Value",
+     "ARREARS OF RENT = Rent under dispute",
+     "SEC 25A — Recovery of unrealised rent / arrears:",
+     "→ Taxable in year of RECOVERY under HP head",
+     "→ Whether or not owner in that FY | Any expense for such recovery = IGNORED",
+     "→ Taxable Amount = Recovery × 70% (30% standard deduction allowed)",
+   ],
+   trick:"🧠 Trick: '4 conditions for unrealised rent: Bona fide + Vacated + No other HP + Steps taken | Sec 25A: Recovery × 70% = Taxable | No expense deduction'"
+  },
+  {tp:"Vacancy Concept",ch:"hp",col:"teal",star:true,
+   title:"Vacancy — GAV when Property Partly Vacant",
+   bullets:[
+     "Vacancy = Property is let-out but vacant for PART of the year",
+     "TWO Rules for GAV when vacant:",
+     "Case 1: ER ≤ AR + VR (Vacancy Rent) → GAV = ER (Expected Rent)",
+     "Case 2: ER > AR + VR → GAV = AR + VR (i.e., GAV falls due to vacancy)",
+     "VR = Rent that would have been received during vacancy period",
+     "Example 1: Monthly Rent ₹20,000 | ER ₹1,92,000 | Vacancy 3 months",
+     "  → AR = ₹1,80,000 (9 months) | VR = ₹60,000 | ER 1,92,000 ≤ 2,40,000 → GAV = ER",
+     "Example 2: Monthly Rent ₹3,000 | ER ₹1,95,000 | Vacancy 2 months",
+     "  → AR = ₹30,000 | VR = ₹6,000 | ER 1,95,000 > 36,000 → GAV = AR + VR = ₹36,000",
+     "⭐ Key: Vacancy REDUCES GAV only if ER > AR+VR",
+   ],
+   trick:"🧠 Trick: 'Vacancy GAV: ER ≤ AR+VR → GAV=ER | ER > AR+VR → GAV=AR+VR | Vacancy HURTS only when ER is BIG'"
+  },
+  {tp:"Partly Let Out Property",ch:"hp",col:"teal",star:true,
+   title:"Partly Let Out Property — Area-wise & Time-wise",
+   bullets:[
+     "AREA-WISE Partly Let Out: Some area let out, remaining self-occupied",
+     "→ Let out portion → LOP treatment",
+     "→ Self-occupied portion → SOP treatment",
+     "→ MV, FR, SR, Municipal taxes, Interest on loan → DIVIDE on AREA BASIS",
+     "→ Actual Rent → NEVER divided (always 100% for LOP portion only)",
+     "TIME-WISE Partly Let Out: Let out for some months, self-occupied for rest",
+     "→ ENTIRE property treated as LOP (even if let out for 1 day)",
+     "→ ER, AR, MV, FR etc. — taken for full year",
+     "→ Municipal taxes — taken as actually paid",
+     "→ Actual Rent — only for period of letting",
+   ],
+   trick:"🧠 Trick: 'Area-wise → Split HP | Actual Rent NEVER split | Time-wise → Whole = LOP if let even 1 day'"
+  },
+  {tp:"Deemed Owner Sec 27",ch:"hp",col:"teal",star:true,
+   title:"Sec 27 — Deemed Owner (6 Cases)",
+   bullets:[
+     "Deemed Owner = Person treated as owner for HP purposes even if not legally so",
+     "CASE 1: Individual transfers HP to SPOUSE (without consideration/inadequate) → Transferor = Deemed Owner",
+     "  Exception: Transfer in connection with LIVE APART agreement",
+     "CASE 2: Individual transfers HP to MINOR CHILD (other than minor married daughter) without/inadequate consideration → Transferor = Deemed Owner",
+     "CASE 3: CO-OPERATIVE SOCIETY — Shareholder = Deemed Owner",
+     "CASE 4: HOLDER OF IMPARTIBLE ESTATE → Deemed Owner",
+     "CASE 5: IMMOVABLE PROPERTY — Possession taken in part performance of contract (Sec 53A Transfer of Property Act) → Possessor = Deemed Owner",
+     "CASE 6: Property acquired under LONG TERM LEASE (>12 years) → Acquirer = Deemed Owner",
+     "⭐ Transfer to spouse for House Property + Sec 27 applies → Sec 64 clubbing does NOT apply",
+   ],
+   trick:"🧠 Trick: 'Deemed Owner 6 cases: S.M.C.H.P.L. → Spouse | Minor child | Co-op shareholder | Holder impartible | Part performance | Long lease >12yr'"
+  },
+  {tp:"Composite Rent",ch:"hp",col:"teal",star:true,
+   title:"Composite Rent — HP + Other Assets",
+   bullets:[
+     "Composite Rent = Rent of House Property + Rent of other assets & amenities (furniture, lift, AC, etc.)",
+     "CASE A: Agreement SEPARABLE (separate rent for HP and assets stated):",
+     "→ Rent of HP → Taxable under IFHP",
+     "→ Rent of other assets (furniture, lift, AC) → Taxable under PGBP or IFOS",
+     "CASE B: Agreement NOT Separable (single composite rent):",
+     "→ TOTAL RENT → Taxable under PGBP/IFOS",
+     "EXCEPTION: If letting of HP not feasible without other asset → TOTAL RENT taxable under PGBP/IFOS (even if separable)",
+     "Example: Hotel (HP not feasible without furniture/services) → PGBP always",
+     "⭐ FA 24 amendment: Residential house let by owner → IFHP (not PGBP) always",
+   ],
+   trick:"🧠 Trick: 'Composite Rent: Separable = HP + PGBP/IFOS separately | Not separable = All PGBP/IFOS | Hotel = PGBP always | Residential HP owner = IFHP (FA24)'"
+  },
+  {tp:"Joint Ownership",ch:"hp",col:"teal",star:false,
+   title:"Joint Ownership (Co-ownership) of HP",
+   bullets:[
+     "Joint/Co-ownership = Property owned by MORE than one person",
+     "Step 1: Compute Income from HP NORMALLY (as if single owner)",
+     "Step 2: Divide the HP income between co-owners in OWNERSHIP RATIO",
+     "Each co-owner includes their share in their respective total income",
+     "Interest on Loan for SOP: Limit of ₹30,000/₹2,00,000 applies to EACH OWNER separately",
+     "Example: If 2 co-owners with 50:50 ratio, each gets ₹2L limit for interest (total ₹4L between both)",
+     "⭐ Note: Income is first computed normally, THEN divided (not computed separately for each owner)",
+   ],
+   trick:"🧠 Trick: 'Co-ownership: Compute first → Divide later | Interest limit = Per owner (not per property) | ₹2L × each owner'"
+  },
+  {tp:"Other Important Notes",ch:"hp",col:"teal",star:true,
+   title:"HP — 5 Important Special Notes",
+   bullets:[
+     "1️⃣ HP held as STOCK IN TRADE (not let out during PY): NAV = NIL for 2 years from end of FY in which construction completed",
+     "2️⃣ 115BAC Default Regime: Interest u/s 24(b) for SOP (₹30K/₹2L) NOT allowed",
+     "3️⃣ SOP definition: Property occupied by assessee for self-occupation OR could NOT be occupied due to any reason",
+     "4️⃣ SOP exemption: Only for INDIVIDUAL & HUF (companies, firms etc. cannot claim SOP)",
+     "5️⃣ Foreign municipality taxes: Allowed as deduction if FOREIGN HP income is taxable in India",
+     "⭐ 30% standard deduction includes: Repair, maintenance, society charges, parking, insurance, electricity, water, lift charges etc. (no separate deduction for these)",
+     "Recovery of Unrealised Rent u/s 25A: Taxable under HP head regardless of ownership status in recovery year",
+   ],
+   trick:"🧠 Trick: '5 specials: SIT→NIL 2yrs | 115BAC→no SOP interest | SOP = self use OR couldn't use | SOP only Ind+HUF | Foreign taxes OK'"
+  },
+];
+
+// ═══════════════════════════════════════════════
+// CH IFOS — INCOME FROM OTHER SOURCES
+// ═══════════════════════════════════════════════
+const CHIFOS = [
+  {tp:"Sec 56 Charging Section",ch:"ifos",col:"purple",star:true,
+   title:"Sec 56 — Income from Other Sources (Charging Section)",
+   bullets:[
+     "IFOS = Residual head — ANY income NOT taxable under Salary, IFHP, PGBP, or Capital Gain",
+     "Sec 56(1): Any income not covered by other heads → taxable under IFOS",
+     "Sec 56(2): Specific incomes ALWAYS taxable under IFOS (even if could fit elsewhere):",
+     "→ Dividend (from any company)",
+     "→ Winning from lotteries, puzzles, card games, horse races etc.",
+     "→ Interest on securities (if shares held as SIT → PGBP; else IFOS)",
+     "→ Rent from letting P&M/furniture with or without building (if not PGBP)",
+     "→ Keymen insurance policy amount (if not PGBP or Salary)",
+     "→ Interest on compensation on compulsory acquisition",
+     "→ Gift u/s 56(2)(x)",
+     "→ Compensation on termination of employment u/s 56(2)(xi)",
+   ],
+   trick:"🧠 Trick: 'IFOS = Dustbin head (residual) | 56(2) specials: D.W.I.R.K.I.G.C = Dividend, Winning, Interest, Rent, Keyman, Interest-comp, Gift, Compensation'"
+  },
+  {tp:"Gift Taxation Sec 56(2)(x)",ch:"ifos",col:"purple",star:true,
+   title:"Sec 56(2)(x) — Gift Taxation (Full Framework)",
+   bullets:[
+     "Section 56(2)(x): Applicable when any person receives GIFT or asset at inadequate consideration",
+     "Applies if property is CAPITAL ASSET of recipient (not SIT)",
+     "THREE CATEGORIES of gifts:",
+     "Category A: MONEY (without consideration) → Taxable if aggregate > ₹50,000 (entire amount taxable)",
+     "Category B: MOVABLE PROPERTY [S.S.J.D.P.A.O.B.V+VDA]:",
+     "  Without consideration → Agg. FMV > ₹50,000 → Entire FMV taxable",
+     "  Inadequate consideration → Agg. (FMV−consid.) > ₹50,000 → Difference taxable",
+     "Category C: IMMOVABLE PROPERTY (Land, Building, Both):",
+     "  Without consideration → SDV per property > ₹50,000 → SDV taxable",
+     "  Inadequate consideration → (SDV−consid.) > ₹50,000 AND SDV > 110% of consid. → Difference taxable",
+     "⭐ NOT APPLICABLE (M.R.I.D.H.U.T.LA.I.T.C.) → NOT TAXABLE",
+   ],
+   trick:"🧠 Trick: '56(2)(x): Money → ₹50K total | Movable → FMV test | Immovable → SDV + 110% test | MRIDHUTLAITC = EXEMPT'"
+  },
+  {tp:"MRIDHUTLAITC Exemptions",ch:"ifos",col:"purple",star:true,
+   title:"Gift NOT taxable — M.R.I.D.H.U.T.L.A.I.T.C. (Full List)",
+   bullets:[
+     "M — On occasion of MARRIAGE (gifts received at time of own marriage)",
+     "R — From any RELATIVE (defined separately for Individual & HUF)",
+     "I — Under WILL or way of INHERITANCE",
+     "D — In contemplation of DEATH (gift given by dying person)",
+     "H — From any HOSPITAL or medical institution",
+     "U — From any UNIVERSITY or educational institution",
+     "T — From or by any TRUST registered u/s 12AA/12AB",
+     "LA — From any LOCAL AUTHORITY u/s 10(20)",
+     "I — From an INDIVIDUAL by trust created solely for benefit of relative of Individual",
+     "T — By any Fund/Trust/Hospital/Medical Inst/University/Edu. Institution referred u/s 10(23C)",
+     "C — Certain EXEMPT TRANSFERS u/s 47: HUF Partition, Holding to Subsidiary, Subsidiary to Holding, Amalgamation, Demerger",
+   ],
+   trick:"🧠 Trick: 'MRIDHUTLAITC = Gift Exempt! | Marriage, Relative, Inherit, Death, Hospital, University, Trust12AA, LocalAuth, Individual-trust, 10(23C), Certain47'"
+  },
+  {tp:"Relative Definition",ch:"ifos",col:"purple",star:true,
+   title:"Relative — Definition for Gift Exemption",
+   bullets:[
+     "RELATIVE for INDIVIDUAL (Sec 56 gift exemption):",
+     "→ Spouse of the individual",
+     "→ Brother or Sister (and their spouses)",
+     "→ Brother or Sister of spouse (and their spouses)",
+     "→ Brother or Sister of either parent",
+     "→ Lineal ascendant or descendant of individual (and spouses)",
+     "→ Lineal ascendant or descendant of spouse (and spouses)",
+     "RELATIVE for HUF: Any MEMBER of HUF",
+     "Note: In-laws ARE relatives (brother/sister of spouse)",
+     "Note: Cousin = NOT a relative (uncle's/aunt's child not included)",
+     "⭐ Assessee (recipient) not satisfied with SDV → Case can transfer to Valuation Officer (same as Sec 50C)",
+   ],
+   trick:"🧠 Trick: 'Relatives: Spouse + Siblings + Parents + Children (lineal) + THEIR spouses | Cousins = NOT relatives | HUF = any member'"
+  },
+  {tp:"Movable Property List",ch:"ifos",col:"purple",star:true,
+   title:"Movable Property — S.S.J.D.P.A.O.B.V. + VDA",
+   bullets:[
+     "Properties covered under 56(2)(x) movable category:",
+     "S — Shares & Securities",
+     "S — Sculptures",
+     "J — Jewellery",
+     "D — Drawings",
+     "P — Paintings",
+     "A — Archaeological Collection",
+     "O — (Any other) Work of Art",
+     "B — Bullion",
+     "V — Virtual Digital Assets (VDA)",
+     "Immovable = Land, Building or Both",
+     "⭐ Car, iPhone, TV, Furniture, Wrist Watch etc. → NOT in list → NOT taxable even if FMV > ₹50,000",
+     "Note: 56(2)(x) applicable ONLY if property is CAPITAL ASSET of recipient (if SIT → not applicable)",
+   ],
+   trick:"🧠 Trick: 'Movable = S.S.J.D.P.A.O.B.V. = Shares,Sculptures,Jewellery,Drawings,Paintings,Arch,Art,Bullion,VDA | Car/Phone/TV = NOT in list = NOT taxable'"
+  },
+  {tp:"Sec 56(2)(x) Special Notes",ch:"ifos",col:"purple",star:true,
+   title:"Gift — Special Notes (Sec 49(4), SDV Mismatch, COVID Relief)",
+   bullets:[
+     "Sec 49(4): If asset received as gift/low consideration AND 56(2)(x) already taxed on FMV/SDV → COA = FMV/SDV",
+     "→ Period of holding of PREVIOUS OWNER not included in POH",
+     "Note 4: Assessee not satisfied with SDV → Case transferred to VO (same as Sec 50C)",
+     "Note 5: 56(2)(x) applicable ONLY if property is capital asset of recipient | If SIT → Not applicable",
+     "SDV date mismatch: If date of agreement ≠ date of registration → SDV on date of agreement used",
+     "→ But only if part/full consideration paid by A/c Payee cheque, DD, or ECS before agreement",
+     "AMENDMENT FA-22 (w.e.f. AY 20-21): 56(2)(x) NOT applicable for money received by:",
+     "(i) Individual for COVID-19 treatment expenses for self/family",
+     "(ii) Family of deceased (COVID-19 death within 12 months of positive test):",
+     "  → From employer: No limit | From others: Up to ₹10 lakhs",
+   ],
+   trick:"🧠 Trick: '49(4) = COA becomes FMV/SDV | COVID relief = Exempt | SDV date agreement = OK if payment by cheque/DD/ECS'"
+  },
+  {tp:"Deductions u/s 57",ch:"ifos",col:"purple",star:true,
+   title:"Sec 57 — Allowable Deductions from IFOS",
+   bullets:[
+     "a) DIVIDEND or MF income: Only INTEREST expense allowed | Max 20% of dividend/MF income",
+     "b) FAMILY PENSION: Lower of 1/3rd of pension OR ₹15,000 p.a.",
+     "→ 115BAC Default Regime: Deduction is ₹25,000 instead of ₹15,000",
+     "Exemptions for family pension:",
+     "→ Widow/children of armed forces member (death in operational duties) → Exempt u/s 10(19)",
+     "→ Family member of CG/SG employee with Param Vir Chakra/Vir Chakra → Exempt u/s 10(18)(ii)",
+     "c) INTEREST ON COMPENSATION (compulsory acquisition): 50% of such interest",
+     "d) Any other expenditure (NOT capital expenditure): Wholly and exclusively for earning such income",
+     "⭐ Deduction for dividend: ONLY interest expense (no other expense like brokerage, advisory fees)",
+   ],
+   trick:"🧠 Trick: 'IFOS deductions: Dividend → 20% interest only | Family pension → 1/3rd or ₹15K (₹25K in 115BAC) | Compulsory acq. interest → 50%'"
+  },
+  {tp:"Sec 58 — Expenses NOT allowed",ch:"ifos",col:"purple",star:false,
+   title:"Sec 58 — Expenses NOT allowed as Deductions under IFOS",
+   bullets:[
+     "1. Any PERSONAL EXPENSES of the assessee",
+     "2. Interest or salary payable OUTSIDE INDIA on which TDS NOT paid/deducted",
+     "3. CASH EXPENDITURE exceeding ₹10,000 (Sec 40A(3) provisions apply)",
+     "4. 30% of any sum payable to RESIDENT on which TDS not paid/deducted [Sec 40(a)(ia)]",
+     "5. Any expenditure incurred for CASUAL INCOME (lottery, gambling, card games etc.)",
+     "⭐ Note: Same disallowances as PGBP apply to IFOS under Sec 58",
+   ],
+   trick:"🧠 Trick: 'Sec 58 NOT allowed: Personal exp | Outside India TDS default | Cash >₹10K | TDS default (30%) | Casual income expense'"
+  },
+  {tp:"Taxation of Dividend",ch:"ifos",col:"purple",star:true,
+   title:"Dividend Taxability — Sec 8 & Types of Dividend",
+   bullets:[
+     "Dividend income from Domestic or Foreign company → Taxable in hands of SHAREHOLDER at NORMAL TAX RATE",
+     "FINAL DIVIDEND: Taxable in year in which DECLARED at AGM by company",
+     "DEEMED DIVIDEND: Taxable in year in which DISTRIBUTED/PAID by company",
+     "INTERIM DIVIDEND: Taxable in year in which RECEIVED by shareholder",
+     "DEEMED DIVIDEND — 5 types u/s 2(22):",
+     "a) 2(22)(a): Distribution of ASSETS by company (to extent of accumulated profit)",
+     "b) 2(22)(b): Issue of DEBENTURES/DEPOSIT CERTIFICATES + Bonus preference shares",
+     "c) 2(22)(c): Distribution on LIQUIDATION",
+     "d) 2(22)(d): Distribution on REDUCTION OF SHARE CAPITAL",
+     "e) 2(22)(e): LOANS/ADVANCES by closely held company to shareholders (≥10% voting)",
+     "Substantial interest u/s 2(22)(e): Company = 20%+ voting | Firm/AOP = 20%+ PSR",
+   ],
+   trick:"🧠 Trick: 'Final = AGM declared | Deemed = Distributed | Interim = Received | DD 2(22) = A.B.C.D.E = Assets, Bonds, Liquidation, Reduction, Loans'"
+  },
+  {tp:"Sec 2(22)(e) Deemed Dividend",ch:"ifos",col:"purple",star:true,
+   title:"Sec 2(22)(e) — Loans/Advances as Deemed Dividend",
+   bullets:[
+     "Applicable to CLOSELY HELD COMPANY only (NOT widely held)",
+     "Loan/Advance given by closely held company to:",
+     "→ Shareholder holding 10% or more voting power, OR",
+     "→ Any concern (Co/Firm/AOP/BOI) in which such shareholder has SUBSTANTIAL INTEREST",
+     "→ Any person for the BENEFIT or on BEHALF of such shareholder",
+     "Taxable in hands of SHAREHOLDER to extent of ACCUMULATED PROFIT",
+     "⭐ Not applicable for TRADE ADVANCES (advances in nature of commercial transactions)",
+     "Example: Job work advance, advance for purchase of P&M for company's use = NOT deemed dividend",
+     "Dividend shall NOT include: Money lending business advances | Dividend set off against loan [2(22)(e)] | Buyback | Demerger shares | Preference share distributions 2(22)(c)/(d)",
+     "Substantial interest = 20% or more voting/PSR at ANY TIME during PY",
+     "Accumulated profit = Accounting profit (Companies Act), NOT assessable profit",
+   ],
+   trick:"🧠 Trick: '2(22)(e) = Closely held co only | 10% shareholder | Loan = Deemed DD | Trade advance = NOT DD | Accum. profit = Accounting profit not tax profit'"
+  },
+  {tp:"LIP Exemption Sec 10(10D)",ch:"ifos",col:"purple",star:true,
+   title:"Sec 10(10D) — Life Insurance Policy Exemption",
+   bullets:[
+     "Any sum received under LIP including BONUS = EXEMPT from tax",
+     "EXCEPTIONS — These are TAXABLE (not exempt):",
+     "(i) Keyman Insurance Policy",
+     "(ii) Premium > prescribed limit (20%/10%/15% of sum assured) — if received on death: EXEMPT",
+     "(iii) LIP (other than ULIP), issued ON OR AFTER 1.4.2023:",
+     "→ If annual premium EXCEEDS ₹5,00,000 in any PY → NOT exempt",
+     "→ If multiple LIPs: aggregate premium of those policies > ₹5L → policies exceeding limit not exempt",
+     "→ Most beneficial policies (by assessee's choice) get the exemption",
+     "GST Clarification: ₹5L limit is EXCLUSIVE of GST on premium",
+     "TERM LIFE INSURANCE: ₹5L limit NOT applicable (sum paid only on death, no survival benefit)",
+     "Exemption available on DEATH even if policy otherwise taxable",
+   ],
+   trick:"🧠 Trick: '10(10D) = LIP Exempt | Exceptions: Keyman + Premium>limit + New(post Apr23) premium>5L | Death=Always exempt | Term plan=No 5L limit | GST excluded'"
+  },
+  {tp:"Sec 56(2)(xiii) LIP Taxability",ch:"ifos",col:"purple",star:true,
+   title:"Sec 56(2)(xiii) — LIP Income Taxable under IFOS (FA 2023)",
+   bullets:[
+     "Added by FA-23, w.e.f. AY 2024-25",
+     "When LIP NOT exempt u/s 10(10D) → TAXABLE under IFOS u/s 56(2)(xiii)",
+     "Taxable Amount = Sum received (including bonus) MINUS aggregate premium paid MINUS deduction claimed u/s 80C",
+     "Formula: Taxable = Maturity Amount − (Annual Premium × Years) + Deduction u/s 80C claimed",
+     "NOT applicable to ULIP (ULIP has separate provisions) and Keyman Insurance Policy (KIP)",
+     "Example (Mr. Ram): Annual premium ₹5,20,000 | SA ₹60L | Term 10yr | 80C deducted ₹1,50,000",
+     "→ Premium not exempt (post-23 policy, premium > ₹5L) → Taxable u/s 56(2)(xiii)",
+     "→ Total premium = 52L | Less 80C = 15L | Net premium = 37L | Taxable = 77L − 37L = ₹40L",
+     "⭐ Kavi example: Premium > 10% of SA + > ₹5L → Not exempt | Taxable amount computed",
+   ],
+   trick:"🧠 Trick: '56(2)(xiii) = Non-exempt LIP → IFOS | Tax = Maturity - (Premium paid - 80C deducted) | Not for ULIP/Keyman | FA-23 new section'"
+  },
+  {tp:"Sec 56(2)(xi) Compensation",ch:"ifos",col:"purple",star:false,
+   title:"Sec 56(2)(xi) — Compensation on Termination/Modification of Employment",
+   bullets:[
+     "Any compensation received on TERMINATION OF EMPLOYMENT or modification of terms → Taxable as income",
+     "Applicable only if compensation received from PERSON OTHER THAN EMPLOYER",
+     "If received from EMPLOYER → Taxable u/s 17(3)(i) under head SALARIES",
+     "Taxable under IFOS if received from third party/other person",
+     "Sec 43CA: SDV as sales consideration for SIT (immovable property):",
+     "→ If SDV > 110% of consideration → SDV = Sales consideration for PGBP",
+     "→ Immovable property as Capital Asset → Sec 50C → Capital Gain",
+     "→ Immovable property as SIT → Sec 43CA → PGBP",
+   ],
+   trick:"🧠 Trick: '56(2)(xi) = Compensation from 3rd party = IFOS | From employer = Salary u/s 17(3) | SIT property SDV >110% = PGBP u/s 43CA'"
+  },
+  {tp:"Exempt Incomes IFOS",ch:"ifos",col:"purple",star:false,
+   title:"Exempt Incomes under IFOS — Key Sections",
+   bullets:[
+     "10(4)(ii): Interest on NRE account — Exempt in hands of Non-Resident or person permitted by RBI",
+     "10(10BC): Compensation received from CG/SG/Local Authority for disaster — Exempt (except loss allowed as deduction)",
+     "10(16): Scholarship for education — Fully exempt (no limit, no source restriction)",
+     "10(17): Daily allowance + Constituency allowance of MP/MLA — Exempt",
+     "10(17A): Award/Reward by Government in public interest — Exempt",
+     "10(15): Interest on Post Office Savings Bank Account:",
+     "→ Individual account: ₹3,500 exempt",
+     "→ Joint account: ₹7,000 exempt",
+     "⭐ These are specific IFOS exemptions beyond the main 10(10D) LIP exemption",
+   ],
+   trick:"🧠 Trick: 'IFOS Exempt: NRE interest | Disaster comp | Scholarship (full) | MP allowance | Govt award | Post Office ₹3500/₹7000'"
+  },
+];
+
+// ═══════════════════════════════════════════════
+// CH CLUB — CLUBBING OF INCOME
+// ═══════════════════════════════════════════════
+const CHCLUB = [
+  {tp:"Sec 64(1A) — Minor Child",ch:"club",col:"orange",star:true,
+   title:"Sec 64(1A) — Minor Child's Income Clubbing",
+   bullets:[
+     "Minor child = Below 18 years",
+     "Income of minor child → Clubbed with PARENT whose income is HIGHER (before clubbing)",
+     "THREE EXCEPTIONS — Minor's income taxable in MINOR'S hands only:",
+     "1. Income from MANUAL WORK",
+     "2. Income from OWN SKILL & TALENT",
+     "3. Minor child suffering from DISABILITY (u/s 80U)",
+     "⭐ Sec 10(32): If minor's income clubbed with parent → EXEMPTION of ₹1,500 per child per year to parent",
+     "Once clubbed with one parent → CONTINUES with that parent in subsequent years",
+     "AO can club with other parent after giving opportunity of being heard",
+     "Parents DIVORCED/NOT together: Club with parent who MAINTAINS minor in that PY",
+     "Note: Clubbing also applies to MINOR MARRIED DAUGHTER's income",
+     "Step-child and adopted child = child for this purpose",
+   ],
+   trick:"🧠 Trick: '64(1A) = Minor income → Higher income parent | 3 exceptions: Manual work, Skill/Talent, Disability | Exemption ₹1500 per child per parent'"
+  },
+  {tp:"Sec 64(1)(iv) — Spouse Asset",ch:"club",col:"orange",star:true,
+   title:"Sec 64(1)(iv) — Asset Transferred to Spouse",
+   bullets:[
+     "If individual transfers ANY ASSET to SPOUSE without consideration or inadequate consideration →",
+     "Income from such asset → Received by spouse BUT tax paid by TRANSFEROR (assessee)",
+     "Condition 1: Relationship of HUSBAND & WIFE must exist at time of TRANSFER and at time of GENERATING INCOME (both times)",
+     "Condition 2: NOT applicable if asset transferred for AGREEMENT TO LIVE APART",
+     "⭐ If HP transferred to spouse → Transferor = DEEMED OWNER u/s 27 → Sec 64 NOT applicable (Sec 27 takes over)",
+     "If asset converted by spouse into another form → Income from converted asset also clubbed",
+     "If CG arises from sale of transferred asset by spouse → CG clubbed with transferor",
+     "Natural love and affection = NOT adequate consideration (clubbing still applies)",
+     "Second generation income (accretion of transferred asset) = NOT clubbed",
+   ],
+   trick:"🧠 Trick: '64(1)(iv) = Asset to spouse → Income clubbed with transferor | Both time: Relationship must exist | HP transfer = Sec 27 (deemed owner) NOT 64'"
+  },
+  {tp:"Sec 64(1)(vi) — Son's Wife",ch:"club",col:"orange",star:true,
+   title:"Sec 64(1)(vi) — Asset Transferred to Son's Wife",
+   bullets:[
+     "If individual transfers any asset to SON'S WIFE without consideration or inadequate consideration →",
+     "Income received by son's wife → Taxable in hands of TRANSFEROR (assessee)",
+     "Condition: Relationship of father/mother-in-law & daughter-in-law must exist at time of:",
+     "→ Transfer of asset AND at time of generating income (BOTH times)",
+     "⭐ Similar to Sec 64(1)(iv) but for daughter-in-law instead of spouse",
+   ],
+   trick:"🧠 Trick: '64(1)(vi) = Asset to son's wife → Income taxed to transferor | Relationship both times must exist (same rule as spouse transfer)'"
+  },
+  {tp:"Sec 64(1)(vii/viii) — Indirect Transfer",ch:"club",col:"orange",star:false,
+   title:"Sec 64(1)(vii) & (viii) — Transfer to Any Person for Benefit of Spouse/Son's Wife",
+   bullets:[
+     "Sec 64(1)(vii): Asset transferred to ANY PERSON for BENEFIT OF SPOUSE (indirectly) →",
+     "→ Income from such asset (received by any person/transferee) → Clubbed with TRANSFEROR",
+     "Sec 64(1)(viii): Asset transferred to ANY PERSON for BENEFIT OF SON'S WIFE →",
+     "→ Income received by that other person → Clubbed with TRANSFEROR",
+     "Purpose: To prevent tax avoidance through indirect routes (putting assets in third party's name for family benefit)",
+     "Example: Mr. X gifts money to his friend Mr. Y who invests it for Mrs. X's benefit → Income clubbed with Mr. X",
+   ],
+   trick:"🧠 Trick: '64(1)(vii/viii) = Indirect gift for spouse/son's wife benefit → Still clubbed! | Cannot escape via 3rd party route'"
+  },
+  {tp:"Sec 64(1)(ii) — Spouse Remuneration",ch:"club",col:"orange",star:true,
+   title:"Sec 64(1)(ii) — Spouse's Remuneration from Concern (Substantial Interest)",
+   bullets:[
+     "Income of SPOUSE taxable in hands of ASSESSEE if:",
+     "Condition 1: Income is in nature of SALARY, COMMISSION, BONUS (REMUNERATION)",
+     "Condition 2: Such remuneration received from a CONCERN where assessee has SUBSTANTIAL INTEREST",
+     "Substantial Interest = Company: 20%+ shareholding | Firm/AOP/BOI: 20%+ PSR",
+     "ALSO applies if RELATIVE (S.M.F.B.S.LA.LD) of assessee has substantial interest jointly with assessee",
+     "EXCEPTION: If remuneration is due to TECHNICAL/PROFESSIONAL QUALIFICATION of spouse AND such qualification is the REASON for remuneration → Clubbing NOT applicable",
+     "When BOTH husband and wife have substantial interest and BOTH receive remuneration:",
+     "→ Clubbed in income of THAT SPOUSE whose total income (excluding such remuneration) is HIGHER",
+     "Once included in one spouse → continues with that spouse in subsequent years (unless AO directs otherwise)",
+   ],
+   trick:"🧠 Trick: '64(1)(ii) = Spouse's salary from biz where YOU have 20%+ → Clubbed | Exception: Spouse's own qualification → NOT clubbed | Both have interest → Higher income parent gets clubbing'"
+  },
+  {tp:"Sec 64(2) — Asset to HUF",ch:"club",col:"orange",star:false,
+   title:"Sec 64(2) — Asset Transferred to HUF",
+   bullets:[
+     "If individual (member) transfers any asset to HUF without consideration or inadequate consideration →",
+     "Income from such asset → Taxable in hands of TRANSFEROR MEMBER (not HUF)",
+     "After PARTITION of HUF → If transferred asset goes to SPOUSE of member → Income still clubbed with transferor",
+     "Condition: Individual must be member of HUF",
+   ],
+   trick:"🧠 Trick: '64(2) = Member gifts to own HUF → Income taxed to member | After HUF partition → If spouse gets it → Still clubbed'"
+  },
+  {tp:"Sec 60, 61 — Income/Asset Transfer",ch:"club",col:"orange",star:false,
+   title:"Sec 60 & 61 — Income Transfer / Revocable Transfer",
+   bullets:[
+     "SEC 60: INCOME TRANSFER WITHOUT ASSET TRANSFER",
+     "→ If individual transfers INCOME (not asset) to any person → Income taxable in hands of TRANSFEROR",
+     "→ Cannot escape tax by assigning income rights without transferring underlying asset",
+     "SEC 61: REVOCABLE TRANSFER OF ASSET",
+     "→ If transfer can be revoked by transferor → Income taxable in hands of TRANSFEROR",
+     "Exception to Sec 61: If transfer is revoked after death of beneficiary or transferee → Provision NOT applicable",
+     "⭐ Key difference: Sec 60 = Income transferred | Sec 61 = Asset transferred but REVOCABLY",
+   ],
+   trick:"🧠 Trick: 'Sec 60 = Income only transferred → Taxed to original person | Sec 61 = Revocable asset transfer → Taxed to transferor | Death of beneficiary = exception'"
+  },
+  {tp:"Clubbing Key Notes",ch:"club",col:"orange",star:true,
+   title:"Clubbing — 7 Important Special Notes",
+   bullets:[
+     "1. Income includes LOSS — clubbing provisions apply to losses too",
+     "2. If transferred ASSET CONVERTED to other form → Income from converted asset also clubbed",
+     "3. NATURAL LOVE & AFFECTION = Good consideration morally but NOT adequate consideration legally",
+     "4. If transferred asset SOLD by transferee → CAPITAL GAIN treated as income and CLUBBED",
+     "5. CROSS GIFTS (inter-connected transactions = tax evasion device) → Clubbing applies to matching amount",
+     "→ Example: X gifts ₹12L to Y's wife, Y gifts ₹8L to X's wife. Matching = ₹8L → Interest on ₹8L clubbed",
+     "6. BUSINESS INVESTMENT (spouse/son's wife invests gifted money in business):",
+     "→ Proportionate income clubbed = Business income × (Gifted amount / Opening capital of business)",
+     "→ Only if gifted money included in opening capital",
+     "7. SECOND GENERATION income = NOT clubbed (income from accretion of transferred asset is not clubbed)",
+   ],
+   trick:"🧠 Trick: '7 notes: Loss clubbed too | Converted asset = club | Natural love ≠ consideration | Sale of asset = CG clubbed | Cross gifts = matching amount | Business proportion formula | 2nd gen = NOT clubbed'"
+  },
+];
+
+// ═══════════════════════════════════════════════
+// CH SETOFF — SET-OFF & CARRY FORWARD OF LOSSES
+// ═══════════════════════════════════════════════
+const CHSETOFF = [
+  {tp:"Sec 70 — Intra Head",ch:"setoff",col:"red",star:true,
+   title:"Sec 70 — Intra Head Adjustment (Within Same Head)",
+   bullets:[
+     "Loss from ONE SOURCE can be set off against income from ANOTHER SOURCE under SAME HEAD",
+     "Example: Loss from HP-1 can be set off against income from HP-2 (same head)",
+     "⭐ EXCEPTIONS (Cannot do intra-head set off):",
+     "1. Speculative Business Loss → Can set off ONLY against Speculative Business Income",
+     "2. Specified Business Loss u/s 35AD → Can set off ONLY against Specified Business Income",
+     "3. LTCL → Can set off ONLY against LTCG (NOT against STCG)",
+     "4. Race-horse loss → ONLY against race-horse income",
+     "⭐ Salary income → Loss NOT possible (cannot have loss under salary head)",
+   ],
+   trick:"🧠 Trick: 'Sec 70 = Same head | 4 exceptions: Speculative, 35AD, LTCL, Race-horse | LTCL can only set off LTCG | Salary = No loss possible'"
+  },
+  {tp:"Sec 71 — Inter Head",ch:"setoff",col:"red",star:true,
+   title:"Sec 71 — Inter Head Adjustment (Across Different Heads)",
+   bullets:[
+     "Loss under ONE HEAD can be set off against income from ANOTHER HEAD in SAME PREVIOUS YEAR",
+     "⭐ EXCEPTIONS (Cannot do inter-head set off):",
+     "1. Speculative Business Loss → ONLY against Speculative Business Income",
+     "2. Specified Business Loss (35AD) → ONLY against Specified Business Income",
+     "3. LTCL → ONLY against LTCG",
+     "4. STCL → ONLY against STCG/LTCG (within Capital Gain head only)",
+     "5. Business Loss → CANNOT set off against SALARY",
+     "6. Race-horse loss → ONLY against race-horse income",
+     "⭐ HP Loss inter-head: Maximum ₹2,00,000 set off against other heads",
+     "Remaining HP loss > ₹2L → Carried forward u/s 71B for next 8 AYs",
+     "⭐ For carry forward → Inter-head adjustment NOT allowed (carry forward = same head only)",
+   ],
+   trick:"🧠 Trick: 'Sec 71 = Cross head same year | Business loss ≠ Salary | HP loss max ₹2L inter-head | STCL/LTCL stay in CG family | For C/F → no inter-head'"
+  },
+  {tp:"HP Loss — Sec 71B",ch:"setoff",col:"red",star:true,
+   title:"Loss from House Property — Set-Off & C/F (Sec 71B)",
+   bullets:[
+     "Step 1: Intra-head adjustment u/s 70 (HP loss from one property set off against HP income of another)",
+     "Step 2: Inter-head adjustment u/s 71 → MAX ₹2,00,000 can be set off against any other head",
+     "Step 3: Balance HP loss → Carry forward u/s 71B for next 8 ASSESSMENT YEARS",
+     "Carried forward HP loss → Set off ONLY against HP income in future years",
+     "⭐ Return on time NOT required for HP loss carry forward (unlike business losses)",
+     "⭐ 115BAC Default Regime: HP loss CANNOT be set off against any other head NOR carried forward",
+     "Practical: If HP loss = ₹5L, set off ₹2L against salary/other head, remaining ₹3L → C/F for 8 AYs against HP only",
+   ],
+   trick:"🧠 Trick: 'HP Loss: Step1 Intra | Step2 ₹2L Inter-head max | Step3 C/F 8AY HP only | Late filing OK for HP loss | 115BAC = No HP loss benefit at all!'"
+  },
+  {tp:"Business Loss — Sec 72, 73, 73A",ch:"setoff",col:"red",star:true,
+   title:"Business Losses — Normal, Speculative & Specified",
+   bullets:[
+     "NORMAL BUSINESS LOSS (Sec 72):",
+     "→ Step 1: Intra-head (biz vs biz income)",
+     "→ Step 2: Inter-head (except Salary)",
+     "→ Step 3: C/F for 8 AYs → Set off against ANY BUSINESS INCOME",
+     "→ Return on time = YES (mandatory for C/F)",
+     "SPECULATIVE BUSINESS LOSS (Sec 73):",
+     "→ Set off ONLY against Speculative Business Income",
+     "→ C/F for only 4 AYs",
+     "→ Return on time = YES",
+     "SPECIFIED BUSINESS LOSS Sec 35AD (Sec 73A):",
+     "→ Set off ONLY against Specified Business Income",
+     "→ C/F for UNLIMITED PERIOD",
+     "→ Return on time = YES",
+     "⭐ B/f business loss can be set off even if BUSINESS DISCONTINUED",
+   ],
+   trick:"🧠 Trick: '3 business losses: Normal=8yr any biz | Speculative=4yr spec only | Specified=Unlimited spec | Business DISCONTINUED = C/F still allowed | All need return on time'"
+  },
+  {tp:"Capital Loss — STCL & LTCL",ch:"setoff",col:"red",star:true,
+   title:"Capital Losses — STCL & LTCL (Sec 74)",
+   bullets:[
+     "SHORT TERM CAPITAL LOSS (STCL):",
+     "→ Set off against BOTH STCG + LTCG in same year (any asset)",
+     "→ C/F for 8 AYs → Set off against STCG + LTCG",
+     "LONG TERM CAPITAL LOSS (LTCL):",
+     "→ Set off ONLY against LTCG (NOT against STCG)",
+     "→ C/F for 8 AYs → Set off ONLY against LTCG",
+     "⭐ Capital losses CANNOT be set off against any other head (salary, HP, PGBP, IFOS)",
+     "BUYBACK LOSS (after Oct 2024): Capital loss (STCL or LTCL) → Can set off against other CG normally",
+     "Return filing in time = MANDATORY for C/F of capital losses (unlike HP loss)",
+     "STCL from speculative ≠ PGBP speculative loss: STCL can set off STCG/LTCG | Speculative PGBP loss → only spec biz income",
+   ],
+   trick:"🧠 Trick: 'STCL = Kills STCG + LTCG | LTCL = Only kills LTCG | Both C/F 8 years | Return on time MUST | CG losses stay in CG family only'"
+  },
+  {tp:"Other Losses — Race-horse & IFOS",ch:"setoff",col:"red",star:false,
+   title:"Race-Horse Loss (Sec 74A) & Other IFOS Losses",
+   bullets:[
+     "RACE-HORSE LOSS (Sec 74A — Owning & Maintaining):",
+     "→ Step 1: Set off against race-horse income only",
+     "→ Step 2: C/F for 4 AYs → Set off against race-horse income only",
+     "→ Return on time = YES",
+     "OTHER IFOS LOSSES (e.g., interest income losses etc.):",
+     "→ Step 1: Intra-head adjustment",
+     "→ Step 2: Inter-head adjustment (can set off against other heads)",
+     "→ Step 3: CARRY FORWARD → NOT ALLOWED (cannot carry forward IFOS losses other than race-horse)",
+     "⭐ Lottery/card game losses → NOT eligible for set off AND cannot C/F",
+     "⭐ Losses cannot be set off against unexplained income u/s 68-69D charged u/s 115BBE",
+   ],
+   trick:"🧠 Trick: 'Race horse = 4yr C/F | Other IFOS = Intra + Inter but NO C/F | Lottery loss = Dead loss (no set off, no C/F) | 68-69D unexplained = No set off against'"
+  },
+  {tp:"Unabsorbed Depreciation",ch:"setoff",col:"red",star:true,
+   title:"Unabsorbed Depreciation — Sec 32(2)",
+   bullets:[
+     "Unabsorbed Depreciation = Depreciation that couldn't be absorbed against PGBP income",
+     "Set off: Against ANY HEAD EXCEPT SALARY",
+     "C/F: UNLIMITED PERIOD (no time limit!)",
+     "Return on time: NOT required (can file late and still C/F)",
+     "ORDER of set off within PGBP:",
+     "1. First: CURRENT YEAR DEPRECIATION",
+     "2. Then: B/F BUSINESS LOSSES",
+     "3. Then: UNABSORBED DEPRECIATION",
+     "⭐ Unabsorbed depreciation vs Business loss: Both unlimited? NO!",
+     "→ Unabsorbed dep: Unlimited C/F + No ROT requirement",
+     "→ Normal business loss: Only 8 years + ROT required",
+   ],
+   trick:"🧠 Trick: 'Unabsorbed dep = UNLIMITED C/F | Any head except salary | NO need to file return on time | Order: Current dep → B/F biz loss → Unabsorbed dep'"
+  },
+  {tp:"Stock Market — Classification",ch:"setoff",col:"red",star:true,
+   title:"Stock & Commodity Market — Head of Income",
+   bullets:[
+     "1. SHARES WITH DELIVERY (delivery effected):",
+     "   → Held as STOCK IN TRADE → PGBP",
+     "   → Held as CAPITAL ASSET → Capital Gain",
+     "2. SHARES WITHOUT DELIVERY (Intraday):",
+     "   → ALWAYS SPECULATIVE BUSINESS INCOME (under PGBP)",
+     "3. DERIVATIVES (Futures, Options, Currency Futures at recognised stock exchange):",
+     "   → ALWAYS NORMAL BUSINESS INCOME (NOT speculative)",
+     "⭐ Speculative business = treated as SEPARATE & DISTINCT business",
+     "⭐ This is a favourite exam question — know the classification!",
+   ],
+   trick:"🧠 Trick: 'Delivery = PGBP (SIT) or CG (CA) | No delivery = Speculative | Derivatives/F&O = Normal Business | 3-way classification must know!'"
+  },
+  {tp:"Set-Off Special Notes",ch:"setoff",col:"red",star:true,
+   title:"Set-Off — 7 Special Notes (Exam Favourite)",
+   bullets:[
+     "1. Exempt income → Losses from exempt income have NO tax treatment (ignored)",
+     "2. Lottery/card games/race → Losses NOT eligible for set off/C/F | Cannot set off against 115BB income",
+     "3. B/f business loss → Can set off even if BUSINESS DISCONTINUED (unlike depreciation which needs use)",
+     "4. ORDER of set off: (1) Current year dep → (2) B/F biz losses → (3) Unabsorbed dep",
+     "5. Income from any head + eligible losses from another head → Loss set off BEFORE any unexplained income",
+     "6. Set off NOT permissible against UNEXPLAINED income u/s 68-69D charged u/s 115BBE",
+     "7. 115BAC Default Regime: HP loss CANNOT set off against other head AND cannot be carried forward",
+     "⭐ Return filing deadline: HP loss C/F → No ROT | Unabsorbed dep → No ROT | All other losses → ROT mandatory",
+   ],
+   trick:"🧠 Trick: '7 notes: Exempt loss=ignored | Lottery loss=dead | Biz C/F even if discontinued | Order=current>biz>dep | 115BBE=no setoff | 115BAC=no HP loss | ROT needed except HP loss + unabsorbed dep'"
+  },
+  {tp:"C/F Master Summary",ch:"setoff",col:"red",star:true,
+   title:"Carry Forward Master Table — All Losses",
+   bullets:[
+     "Sec 71B: HP Loss → 8 years → HP income only | ROT: NO",
+     "Sec 72: Normal Business Loss → 8 years → Any business income | ROT: YES",
+     "Sec 73: Speculative Business Loss → 4 years → Speculative income only | ROT: YES",
+     "Sec 73A: Specified Business Loss (35AD) → UNLIMITED → Specified income | ROT: YES",
+     "Sec 74: STCL → 8 years → STCG + LTCG | ROT: YES",
+     "Sec 74: LTCL → 8 years → LTCG only | ROT: YES",
+     "Sec 74A: Race-horse loss → 4 years → Race-horse income only | ROT: YES",
+     "Sec 32(2): Unabsorbed Depreciation → UNLIMITED → Any head except salary | ROT: NO",
+     "IFOS (other) losses → CANNOT carry forward (zero C/F period)",
+     "Salary → Loss NOT possible at all",
+   ],
+   trick:"🧠 Trick: 'C/F periods: Speculative+Race-horse = 4yr | HP+Normal biz+CG = 8yr | Specified biz+Unabsorbed dep = Unlimited | HP loss & Dep = No ROT needed | All others = ROT mandatory'"
+  },
+];
+
+// ═══════════════════════════════════════════════
+// ALL CARDS COMBINED
+// ═══════════════════════════════════════════════
+// REMOVED DUPLICATE ALL
+
+
+
+// ═══════════════════════════════════════════════
+// CH VIA — DEDUCTIONS UNDER CHAPTER VI-A
+// ═══════════════════════════════════════════════
+const CHVIA = [
+  {tp:"VI-A Overview",ch:"via",col:"green",star:true,title:"Ch 10 — Deductions u/c VI-A — Key Framework",bullets:["Deduction u/c VI-A = Deductions from GTI to arrive at NTI","Exemption (u/s 10) reduces income BEFORE GTI | Deduction u/c VI-A reduces income AFTER GTI","Deduction CANNOT EXCEED GTI — restricted to GTI always","Deduction cannot be carried forward (unlike losses)","NOT allowed against special rate income: LTCG (112/112A), STCG (111A), Winnings, Deemed Income (68-69D)","Under 115BAC (Default Regime): NO deduction u/c VI-A EXCEPT 80CCD(2), 80CCH(2), 80JJAA","Sections: 10AA, 80C, 80CCC, 80CCD, 80CCH, 80D, 80DD, 80DDB, 80E, 80EE/EEA/EEB, 80G, 80GG, 80GGB/GGC, 80U, 80QQB, 80RRB, 80TTA, 80TTB, 80JJAA + AMT"],trick:"Trick: 'VI-A = GTI se ghataao | GTI se zyada nahi | C/F nahi | Special income pe nahi | 115BAC mein almost kuch nahi except 80CCD(2)+80CCH(2)+80JJAA'"},
+  {tp:"Sec 10AA — SEZ",ch:"via",col:"green",star:true,title:"Sec 10AA — SEZ Unit Special Deduction",bullets:["Manufacturing Business OR Software Development in any SEZ","Approval: SEZ unit must receive approval upto 31st March 2020","Business start: Manufacturing/software must begin upto 31st March 2021","DEDUCTION SLABS: (1) First 5 years (0-5): 100% of EXPORT PROFIT","(2) Next 5 years (6-10): 50% of Export Profit","(3) Next 5 years (11-15): LOWER of 50% of Export Profit OR SEZ Re-investment Reserve","Export Profit = PGBP of SEZ unit × (Export Turnover / Total Turnover)","Export T/O = Consideration in convertible foreign currency within 6 months from end of PY (or RBI extended time)","Deduction u/s 10AA available AFTER claiming all other VI-A deductions from GTI"],trick:"Trick: '10AA = SEZ magic: 100-50-50 for 15 yrs | Export profit = PGBP x ET/TT | Approval by Mar20 + Business by Mar21 | FITCDD excluded from T/O'"},
+  {tp:"Sec 10AA Export T/O",ch:"via",col:"green",star:false,title:"Sec 10AA — Export T/O Exclusions & SEZ Reserve",bullets:["Export T/O and Total T/O both EXCLUDE: Freight charges, Insurance charges, Telecommunication charges, Technical service expenses outside India, Cash Compensatory Support (CCS), Duty Drawback, Import Entitlement Licence profits","Note 1: Sale proceeds deemed received in India if credited to separate a/c outside India with RBI approval","Note 2: SEZ Re-investment Reserve used for acquiring NEW P&M + put to use within 3 years from end of PY in which reserve created","DEEMED INCOME if reserve misutilized: (a) Misutilized = taxable in year of misutilization | (b) Unutilized = taxable in year after 3-year period","Note 3: Deduction u/s 10AA only AFTER claiming all other VI-A deductions from GTI"],trick:"Trick: 'FITCDD = Freight, Insurance, Telecom, CCS, Drawback, DFRC — excluded from both T/Os | Reserve = New P&M 3 years | Misuse/non-use = Deemed PGBP income'"},
+  {tp:"Sec 80C — Investments",ch:"via",col:"teal",star:true,title:"Sec 80C — 17 Specified Investments (Max Rs 1,50,000)",bullets:["Eligible: Individual & HUF only | Max: Rs 1,50,000 | Sec 80CCE: 80C+80CCC+80CCD(1) combined = Rs 1,50,000","(i) LIP: Pre-Apr12 = min(premium,20%SA) | Post-Apr12 = min(premium,10%SA) | Disability post-Apr13 = 15%SA","(ii) PPF: Self, spouse, children | HUF = any member","(iii) Employee contribution to SPF/RPF/ASF","(iv) Fixed Deposit in Scheduled Bank/Post Office (min 5 years)","(v) Tuition fees — max 2 children, full-time in India","(vi) NSC + interest accrued on NSC","(vii) Senior Citizen Saving Scheme | (viii) ULIP | (ix) Sukanya Samriddhi","(x) NABARD bonds | (xi) MF/UTI notified units | (xii) Pension scheme MF/UTI","(xiii) Housing Loan Principal repayment — Bank/FI only","(xiv) Stamp Duty/Registration charges for HP | (xv) Contribution to National Housing Bank","(xvi) CG employee NPS Tier-II (min 3 years) | (xvii) ELSS"],trick:"Trick: '80C = 17 items, max 1.5L, Individual+HUF | LIP-PPF-PF-FD-Tuition-NSC-SCSS-ULIP-Sukanya-NABARD-MF-PensionMF-HousingLoan-StampDuty-NHB-NPSTier2-ELSS | 80CCE = 80C+80CCC+80CCD(1) combined 1.5L'"},
+  {tp:"Sec 80CCC & 80CCD NPS",ch:"via",col:"teal",star:true,title:"Sec 80CCC — Pension & 80CCD — NPS (Complete)",bullets:["80CCC: Pension fund of LIC/any insurance co | Individual+HUF | Max Rs 1,50,000 (within 80CCE)","80CCD(1): Own contribution to NPS | Salaried = lower of actual or 10% salary (Basic+DA(T)) | Self-employed = lower of actual or 20% GTI | WITHIN 80CCE ceiling","80CCD(1B): Additional NPS contribution — MAX Rs 50,000 OVER 80CCE ceiling (extra deduction!)","80CCD(2): EMPLOYER contribution to NPS — Available under 115BAC!","Normal employer = lower of contribution or 10% salary | CG/SG or 115BAC = lower of contribution or 14% salary","NOT counted in 80CCE ceiling","NPS Vatsalya: 80CCD(1B) for parent/guardian of minor child's NPS (up to Rs 50,000)","NPS closure: 60% exempt, 40% taxable | Death = fully exempt for legal heir","Partial withdrawal: up to 25% of own contribution = exempt"],trick:"Trick: '80CCD(1) = own NPS in 1.5L | 80CCD(1B) = extra 50K over 1.5L | 80CCD(2) = employer 10%/14% over and above, available in 115BAC | Salary = Basic+DA(T) for 80CCD | Total NPS benefit = 1.5L+50K+80CCD(2)'"},
+  {tp:"Sec 80CCH Agnipath",ch:"via",col:"teal",star:true,title:"Sec 80CCH — Agnipath/Agniveer Corpus Fund",bullets:["Eligible: Individual enrolled in Agnipath Scheme subscribing to Agniveer Corpus Fund on/after 01.11.2022","80CCH(1): 100% deduction of OWN contribution to Agniveer Corpus Fund","80CCH(2): 100% deduction of CG contribution to Agniveer Corpus Fund (first taxable as salary, then deductible)","BOTH 80CCH(1) and 80CCH(2) available under 115BAC default regime","Note 1: Any amount received by assessee/legal heir from Agniveer Fund = FULLY EXEMPT","Note 2: 30% of total Agnipath package goes to Agniveer Fund (15% assessee + 15% CG)"],trick:"Trick: '80CCH = Agniveer both own+Govt 100% | Available in 115BAC | Receipt fully exempt | 30% package = corpus | New section from Nov 2022'"},
+  {tp:"Sec 80D Medical",ch:"via",col:"purple",star:true,title:"Sec 80D — Medical Insurance, Health Scheme & PHC",bullets:["Eligible: Individual/HUF | Mode: Any except CASH (PHC = cash ok, max Rs 5,000 within limit)","Items covered: (i) Medical Insurance Premium (MIP), (ii) CG Health Scheme, (iii) Preventive Health Checkup (PHC)","CG Health Scheme: For Self, Spouse, Dependent children ONLY — parents NOT covered","PHC max Rs 5,000 within the overall general limit of Rs 25,000 or Rs 50,000","DEDUCTION TABLE: Self+Spouse+Children = Max Rs 25,000 (Rs 50,000 if mediclaim for senior 60+)","Parents = Max Rs 25,000 (Rs 50,000 if parent is senior citizen 60+)","B. Medical expenses of senior citizen (no mediclaim): Max Rs 50,000 (replaces A for that senior)","Maximum total = Rs 50,000 (own family) + Rs 50,000 (parents) = Rs 1,00,000","Lumpsum premium for >1 year: Deduction = Lumpsum premium / PYs insurance in force"],trick:"Trick: '80D table: Rs 25K per side (Rs 50K if senior) | Self+family one side + Parents other side | Max Rs 1L total | PHC cash ok Rs 5K | Regular MIP cash NOT ok | CG Health NOT for parents'"},
+  {tp:"Sec 80DD & 80DDB",ch:"via",col:"purple",star:true,title:"Sec 80DD — Handicapped Dependent & 80DDB — Specified Disease",bullets:["SEC 80DD: Medical treatment + maintenance of handicapped DEPENDENT RELATIVE","Eligible: Resident Individual/HUF","FLAT deduction irrespective of actual expenses: Normal Disability = Rs 75,000 | Severe Disability (80%+) = Rs 1,25,000","Relative (Individual): Spouse, children, parents, siblings | HUF = any member","Condition: Must incur expenses or deposit amount for maintenance","SEC 80DDB: Medical expenses for SPECIFIED DISEASE (not all diseases)","Eligible: Resident Individual/HUF","Formula: LOWER of (i) Actual expenses OR (ii) Rs 40,000 (Rs 1,00,000 if patient is senior 60+) MINUS Insurance claim received","Relative (Individual): Self or dependent (spouse, children, parents, siblings)","HUF: Any dependent member"],trick:"Trick: '80DD = FLAT Rs 75K/Rs 1.25L for dependent handicapped (no actual needed) | 80DDB = Actual capped at 40K/1L(senior) minus insurance | DD=flat, DDB=actual | Both Resident Ind/HUF'"},
+  {tp:"Sec 80E & 80EE/EEA/EEB",ch:"via",col:"purple",star:true,title:"Sec 80E — Education Loan & 80EE/EEA/EEB — Housing & EV",bullets:["80E: Interest on EDUCATION LOAN for higher education (after 12th) India/abroad | Individual only | Any FI | For self/spouse/children/legal guardian student | 100% interest for 8 consecutive years from year interest starts | NO upper limit","80EE: Additional HP interest (SOP) — Rs 50,000 max | 5 conditions: Bank/FI + HP cost <= Rs 50L + Loan <= Rs 35L + Sanctioned 01.04.16 to 31.03.17 + No other HP | First use 24(b) Rs 2L then 80EE up to Rs 50K","80EEA: Additional HP interest (SOP) — Rs 1,50,000 max | 4 conditions: Bank/FI + SDV of HP <= Rs 45L + Sanctioned 01.04.19 to 31.03.22 + No other HP | First use 24(b) Rs 2L then 80EEA up to Rs 1.5L","80EEB: EV loan interest — Rs 1,50,000 max | Bank/FI/NBFC | Loan sanctioned 01.04.19 to 31.03.23 | If claimed here = cannot claim under any other section","Quick summary: D/DD/DDB = Dependent | E = Education no limit | EE = Old HP 50K | EEA = New HP 1.5L | EEB = EV 1.5L"],trick:"Trick: '80E = Education no limit 8 years | 80EE = Old housing 50K (loan Apr16-Mar17) | 80EEA = New housing 1.5L (loan Apr19-Mar22) | 80EEB = EV 1.5L (loan Apr19-Mar23) | All Individual only'"},
+  {tp:"Sec 80G Donations",ch:"via",col:"orange",star:true,title:"Sec 80G — Donations (All Assessee)",bullets:["All assessees eligible | Cash > Rs 2,000 NOT eligible | In-kind donations NOT eligible","UNLIMITED CATEGORY (No 10% ATI limit):","100% unlimited: National Defence Fund, PM National Relief Fund, PM Armenia Earthquake, CM+LG Relief, Zilla Saksharta Samiti, National Sports Fund, National Children Fund, National Cultural Fund, Swachh Bharat Kosh, Clean Ganga Fund, Drug Abuse Control Fund, PM Care Fund, Fund for Army (13 items)","50% unlimited: PM Drought Relief Fund (only this one)","LIMITED CATEGORY (Eligible donation capped at 10% of ATI):","100% limited: Family Planning (F) + Indian Olympic Association/Sports infra (O)","50% limited: Housing Dev Authority (H) + Temple renovation (T) + Public Charitable Trust (C) + Minority community India (M)","ATI = GTI minus All VI-A deductions (except 80G) minus LTCG/STCG 111A/112A/Winnings/Deemed income"],trick:"Trick: '80G All assessee | Unlimited = National funds | 100% unlimited (13) + 50% unlimited (PM Drought) | 100% limited = FO | 50% limited = HTCM | 10% ATI cap on limited | Cash >2K = out | In-kind = out'"},
+  {tp:"Sec 80GG & Political",ch:"via",col:"orange",star:false,title:"Sec 80GG — Rent (No HRA) & 80GGB/GGC — Political Donations",bullets:["80GG: Rent paid when HRA NOT received | Individual only | Condition: No HP at place of duty (self/spouse/minor child/HUF)","Deduction = LOWEST of 3: (i) Rs 5,000 pm (ii) 25% of Adjusted GTI (iii) Rent paid minus 10% of Adjusted GTI","Adjusted GTI = GTI minus all VI-A deductions","80GGB: INDIAN COMPANY donating to Political Party or Electoral Trust = 100% deduction | NOT in cash","80GGC: ANY OTHER PERSON donating to Political Party or Electoral Trust = 100% deduction | NOT in cash","Advertisement in newspaper/brochure of Political Party: Indian Company = deductible u/s 80GGB (per CA 2013 it is a donation) | Others = NO deduction"],trick:"Trick: '80GG = No HRA + No own HP | Lowest of 5K/mo, 25% adj-GTI, rent-10%adj-GTI | 80GGB = Company to political 100% | 80GGC = Others to political 100% | Both NO CASH | Company ad in political paper = 80GGB | Other = No deduction'"},
+  {tp:"Sec 80U & Royalties",ch:"via",col:"orange",star:true,title:"Sec 80U — Self Disability & 80QQB/80RRB — Royalties",bullets:["80U: SELF (assessee himself) handicapped | Resident Individual only","Flat: Normal Disability = Rs 75,000 | Severe Disability (80%+) = Rs 1,25,000 | No actual expense needed","80QQB: Royalty from BOOKS of literary/artistic/scientific nature | Resident Individual only","Deduction = LOWER of: Eligible Royalty OR Rs 3,00,000","Eligible Royalty: Lumpsum royalty = actual received | Otherwise = max 15% of value of books sold","Foreign royalty: must repatriate to India in convertible foreign currency within 6 months from PY end (or RBI time)","80RRB: Royalty from PATENT (registered under Patents Act 2006) | Resident Individual only","Deduction = LOWER of: Royalty received OR Rs 3,00,000 | Same foreign currency condition"],trick:"Trick: '80U = SELF disability flat 75K/1.25L (no actual needed) | 80QQB = Book royalty max 3L (lumpsum or 15% book value) | 80RRB = Patent royalty max 3L | Both Resident Individual | Foreign = 6 months repatriation'"},
+  {tp:"Sec 80TTA & 80TTB",ch:"via",col:"orange",star:true,title:"Sec 80TTA — Savings Interest & 80TTB — Senior Citizen",bullets:["80TTA: Interest on SAVINGS ACCOUNT only (Bank/Co-op/Post Office) | Individual/HUF (NOT senior citizens) | Max Rs 10,000","Example: ICICI savings interest Rs 20,000 → IFOS Rs 20,000 | Less 80TTA Rs 10,000 | Taxable = Rs 10,000","Post Office savings: Rs 3,500 (individual)/Rs 7,000 (joint) exempt u/s 10(15) first, then 80TTA on balance","80TTB: Interest on ALL DEPOSITS (savings+FD+RD) Bank/Co-op/Post Office | Resident SENIOR CITIZEN (60+) only | Max Rs 50,000","If 80TTB claimed → 80TTA NOT available (mutually exclusive | 80TTB replaces 80TTA for seniors)","Senior citizen with 80TTB also gets higher 194A TDS threshold (Rs 1 lakh instead of Rs 50,000)"],trick:"Trick: '80TTA = Savings only, max 10K, non-seniors | 80TTB = ALL deposits, max 50K, seniors 60+ only | TTB replaces TTA for seniors | Cannot claim both | TDS threshold also higher for 80TTB claimers'"},
+  {tp:"Sec 80JJAA New Employees",ch:"via",col:"green",star:true,title:"Sec 80JJAA — Deduction for New Employees",bullets:["Eligible: Any assessee to whom 44AB applies (T/O > Rs 1Cr or Rs 10Cr) — business only","Amount: 30% of ADDITIONAL EMPLOYEE COST for 3 CONSECUTIVE years","New business 1st year: All employees = additional | Existing business: Net increase = Closing minus Opening (additions minus leavers)","Example: Opening 100, Joined 20, Left 15 → Net 5 new → Deduction on salary of 5 employees","EMPLOYEE must satisfy ALL 4 conditions: (1) Salary paid by A/c Payee cheque/DD/ECS only (2) Monthly salary <= Rs 25,000 pm (3) Employed for at least 240 days in PY (150 days for footwear/leather/apparel manufacturing) (4) Participates in RPF (Recognised Provident Fund)","Available under 115BAC default regime also!","Books must be audited and audit report submitted within 44AB due date","Casual workers (no RPF) NOT eligible | Employee with >Rs 25K salary NOT eligible"],trick:"Trick: '80JJAA = 30% new employee salary 3 yrs | 4 conditions: Cheque payment + Rs 25K limit + 240days(150 footwear) + RPF | Available 115BAC | Audit needed | Net new = Joining minus Left'"},
+  {tp:"AMT Sec 115JC",ch:"via",col:"red",star:true,title:"Sec 115JC — Alternate Minimum Tax (AMT)",bullets:["AMT applies to ALL assessees EXCEPT COMPANY (companies have MAT u/s 115JB)","Sec 115JC: Tax = HIGHER of (i) Normal Tax u/IT Act OR (ii) 18.5% x Adjusted Total Income (ATI)","AMT applicable ONLY when assessee claimed: 10AA, 35AD, 80JJAA, 80QQB, 80RRB deductions","AMT NOT applicable if: ATI <= Rs 20 lakhs (Individual/HUF/AOP/BOI/AJP) OR Assessee pays under 115BAC","ATI = NTI (normal provision) + (i) 10AA (ii) 35AD (iii) 80JJAA/80QQB/80RRB MINUS Dep allowable if 35AD not claimed","Sec 115JD — AMT CREDIT: If AMT > Normal Tax = Excess = AMT Credit | Carry forward 15 AYs","Set off AMT credit when Normal Tax > AMT in subsequent years (up to difference)","AMT credit can be set off even in year when AMT itself is not applicable","Example: AY 24-25 AMT Rs 8L, Normal Rs 5L → Pay Rs 8L | AMT credit = Rs 3L → C/F 15 yrs"],trick:"Trick: 'AMT = 18.5% ATI | Higher of normal/AMT | Except Company+115BAC+ATI<=20L | ATI = NTI + add 10AA/35AD/80JJAA/QQB/RRB - dep | Credit C/F 15 yrs | Set off when normal > AMT'"},
+];
+
+// ═══════════════════════════════════════════════
+// CH RTN — RETURN FILING & SELF ASSESSMENT
+// ═══════════════════════════════════════════════
+const CHRTN = [
+  {tp:"Sec 139(1) — Who Must File",ch:"rtn",col:"skyblue",star:true,title:"Ch 11 — Sec 139(1): Who Must File Return",bullets:["A. COMPANY / FIRM / LLP: Return filing is COMPULSORY (always, regardless of income)","B. OTHER ASSESSEE: Must file if GTI (before exemptions u/s 54/54B/54D/54EC/54F) > Basic Exemption","Example 1: PGBP Rs 2L + IFOS Rs 1.2L = GTI Rs 3.2L > Rs 2.5L → File (even if NTI = Rs 2.2L after 80C)","Example 2: PGBP Rs 1.5L + Agri Rs 10L (exempt 10(1)) = GTI Rs 1.5L < Rs 2.5L → No return","Example 3: PGBP Rs 1.5L + LTCG Rs 50L - Exemption 54EC Rs 50L → GTI Rs 51.5L > Rs 2.5L → File","C. R&OR Individual: Must file if beneficial owner of foreign asset OR beneficiary of foreign asset OR signing authority of foreign bank account","D. OTHER PERSONS: Must file if ANY: (1) Current a/c deposit > Rs 1Cr in Bank/Co-op/Post | Savings >= Rs 50L (2) Foreign travel > Rs 2L (3) Electricity > Rs 1L (4) Business T/O > Rs 60L or Profession GR > Rs 10L (5) TDS/TCS >= Rs 25,000 (Rs 50,000 senior)"],trick:"Trick: 'Return compulsory: Company/Firm=Always | Others=GTI>Basic exemption | R&OR=Foreign asset | High value: 1Cr current/50L savings/2L travel/1L electricity/60L T-O/25K TDS | GTI = BEFORE CG exemptions'"},
+  {tp:"Due Dates of Return",ch:"rtn",col:"skyblue",star:true,title:"Due Dates for Filing Return of Income",bullets:["THREE categories:","Category 1 — COMPANY + Person required to audit BOA under IT Act/other law + PARTNER of audited firm → 31st OCTOBER of AY","Category 2 — Person on whom TRANSFER PRICING provisions apply (Sec 92E) → 30th NOVEMBER of AY","Category 3 — ALL OTHER PERSONS → 31st JULY of AY","AY 2026-27: Company/Audit = 31.10.2026 | TP = 30.11.2026 | Others = 31.07.2026","Note: If partner governed by Portuguese Civil Court (Goa, Dadra-Nagar Haveli, Daman-Diu) → spouse's due date also = 31st October of AY"],trick:"Trick: 'Due date order: Jul31 (others) < Oct31 (company/audit) < Nov30 (transfer pricing) | CAP = Company/Audit/Partner = Oct | TP = Nov | Others = Jul'"},
+  {tp:"Sec 139(3) Loss Return",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(3) — Loss Return (Sec 80 Condition)",bullets:["Sec 80: If loss u/h PGBP, Capital Gain, or Race horses → MUST file return by due date u/s 139(1)","If return filed LATE → Such losses CANNOT be carried forward (they die)","EXCEPTIONS — These CAN carry forward even with belated return:","House Property Loss (u/s 71B) → CAN C/F with belated return","Unabsorbed Depreciation (u/s 32(2)) → CAN C/F with belated return","Sec 80 condition applies ONLY in year of loss incurrence, not in subsequent set-off years","Example 1: PGBP loss Rs 2L + CG loss Rs 1L filed late (15.09.26 vs due 31.07.26) → PGBP+CG CANNOT C/F | HP loss Rs 1.5L + Unabsorbed dep Rs 50K → CAN C/F","Example 2: PGBP Rs 5L loss filed on time → C/F ok | Next year PGBP Rs 12L, late filed → Set-off of B/F loss STILL allowed (Sec 80 applied only in loss year)","Example 3: PGBP Rs 5L loss filed late, same year PGBP Rs 2L income → Set-off within year = OK | C/F of remaining = NOT OK"],trick:"Trick: 'File return on time = PGBP+CG losses survive | Late = PGBP+CG losses die | HP loss + Unabsorbed dep = Immortal even if late | Sec 80 = Only in loss year rule'"},
+  {tp:"Sec 139(4) Belated Return",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(4) — Belated Return & Consequences",bullets:["Missed due date → File BELATED RETURN u/s 139(4)","Last date: EARLIER of (i) 3 months before end of AY = 31st December of AY OR (ii) Before completion of Assessment","AY 2026-27 belated deadline = 31st December 2026","CONSEQUENCES of belated return:","No carry forward of PGBP/CG/Race horse losses (Sec 80)","No deduction u/c VI-A: 80JJAA, 80QQB, 80RRB, and 10AA NOT allowed","Interest u/s 234A: 1% per month or part of month from due date till actual filing","Late filing fee u/s 234F: Rs 5,000 if NTI > Rs 5L | Rs 1,000 if NTI <= Rs 5L"],trick:"Trick: 'Belated = by 31st Dec of AY | 4 consequences: No C/F losses + No 80JJAA/10AA + 234A interest + 234F fee Rs5K/Rs1K | 31 December = Last chance!'"},
+  {tp:"Sec 139(5) Revised Return",ch:"rtn",col:"skyblue",star:false,title:"Sec 139(5) — Revised Return",bullets:["Filed 139(1)/139(3)/139(4) and found OMISSION or WRONG STATEMENT → File REVISED RETURN","Time limit: EARLIER of (i) 31st December of AY (3 months before AY end) OR (ii) Before completion of Assessment","Note 1: Belated return filed u/s 139(4) CAN be revised u/s 139(5)","Note 2: Revised return SUBSTITUTES original return from date original return was filed","Note 3: Assessee can revise ANY NUMBER OF TIMES within time limit"],trick:"Trick: 'Revised return = same 31st Dec deadline | Replaces original from original date | Can revise unlimited times | Even belated can be revised | Found error? 139(5) fix karo'"},
+  {tp:"Sec 139(8A) Updated Return",ch:"rtn",col:"skyblue",star:true,title:"Sec 139(8A) — Updated Return (ITR-U)",bullets:["Can be filed within 4 YEARS (48 months) from end of relevant AY","WHO CAN file: (1) No return filed at all OR (2) Filed 139(1)/139(4) wanting to declare additional income","WHO CANNOT file: (3) Cannot declare LOSS | (4) Cannot REDUCE income already declared | (5) Cannot file 2nd updated return for same AY","ADDITIONAL TAX + interest: Year 1 (0-12 months) = 25% extra | Year 2 (12-24) = 50% extra | Year 3 (24-36) = 60% extra | Year 4 (36-48) = 70% extra","Example: AY 24-25 loss return filed. PGBP was Rs 5L (shown). Updated return: PGBP Rs 9L (increased) → Can file. Original PGBP was Rs 5L and B/F loss Rs 5L set off. Updated return shows PGBP Rs 9L → C/F reduced to Rs 1L"],trick:"Trick: 'Updated = 4 years window | Extra tax 25-50-60-70% year 1-2-3-4 | Can add income | Cannot reduce income or add losses | Only once per AY | ITR-U form'"},
+  {tp:"Sec 139(9) & 140A",ch:"rtn",col:"skyblue",star:false,title:"Sec 139(9) — Defective Return & Sec 140A — Self Assessment",bullets:["DEFECTIVE RETURN u/s 139(9): Return defective if (a) Not in prescribed form OR (b) Tax proofs not attached OR (c) 44AB audit report not submitted","AO intimates defect → 15 days (or extended) to rectify | If NOT rectified → Return INVALID/VOID (ab-initio)","SEC 140A — SELF ASSESSMENT TAX (SAT): Tax on total income minus TDS minus TCS minus Advance Tax minus Relief minus AMT credit = SAT","SAT > 0 = Pay before filing return | SAT < 0 = Tax refund from Govt","WHO SIGNS return: Individual = Self | HUF = Karta | Company = MD (or Director if MD unavailable) | Firm/LLP = Managing Partner","SEC 139AA — AADHAAR: Quote Aadhaar in PAN application AND ITR (w.e.f. 01.07.2017) | PAN-Aadhaar link deadline: 31.03.2022 | PAN inoperative if not linked by 01.07.2023 | Not applicable to: NR, Non-Indian citizen, J&K/Assam/Meghalaya, 80+ age"],trick:"Trick: 'Defective = Wrong form/no tax proof/no audit → 15 days to fix or VOID | SAT = Pay before filing | Who signs: Self/Karta/MD/Managing Partner | Aadhaar = link PAN by Jul23 or inoperative'"},
+];
+
+
 const ALL=[...CH1,...CH2,...CH3,...CH4,...CH6,...CH11];
+const MEGA=[...CH1,...CH2,...CH3,...CH4,...CH6,...CH11,...CHHP,...CHIFOS,...CHCLUB,...CHSETOFF,...CHVIA,...CHRTN];
 
 let allCards=CH3;
 let cur=0;
 let fil="All";
 let activeCh=3;
+let activeChCol="purple"; // fixed colour per chapter — never changes on Next
 
 const topicsAll=["All",...new Set(ALL.map(c=>c.tp))];
 const topicsCh1=["All",...new Set(CH1.map(c=>c.tp))];
@@ -539,10 +1815,17 @@ const topicsCh11=["All",...new Set(CH11.map(c=>c.tp))];
 document.getElementById("tab-ch1").textContent="Ch 1 — Basics & Tax Rates ("+CH1.length+")";
 document.getElementById("tab-ch2").textContent="Ch 2 — Residential Status ("+CH2.length+")";
 document.getElementById("tab-ch3").textContent="Ch 3 — Salaries ("+CH3.length+")";
-document.getElementById("tab-ch4").textContent="Ch 4 — PGBP ("+CH4.length+")";
+document.getElementById("tab-hp").textContent="Ch 4 — House Property ("+CHHP.length+")";
+document.getElementById("tab-ch4").textContent="Ch 5 — PGBP ("+CH4.length+")";
 document.getElementById("tab-ch6").textContent="Ch 6 — Capital Gain ("+CH6.length+")";
-document.getElementById("tab-ch11").textContent="Ch 11 — TDS/TCS ("+CH11.length+")";
-document.getElementById("tab-all").textContent="All Chapters ("+(CH1.length+CH2.length+CH3.length+CH4.length+CH6.length+CH11.length)+")";
+document.getElementById("tab-ifos").textContent="Ch 7 — Other Sources ("+CHIFOS.length+")";
+document.getElementById("tab-club").textContent="Ch 8 — Clubbing of Income ("+CHCLUB.length+")";
+document.getElementById("tab-setoff").textContent="Ch 9 — Set-Off & C/F ("+CHSETOFF.length+")";
+document.getElementById("tab-via").textContent="Ch 10 — Deductions from GTI ("+CHVIA.length+")";
+document.getElementById("tab-ch11").textContent="Ch 11 — Advance Tax, TDS & TCS ("+CH11.length+")";
+document.getElementById("tab-rtn").textContent="Ch 12 — Return Filing & Self Assessment ("+CHRTN.length+")";
+document.getElementById("tab-mega").textContent="🔀 ALL Chapters ("+MEGA.length+")";
+
 
 const CM={
   orange:{bg:"#3D2200",border:"#E8A000",title:"#FFF3CD",sub:"#F0C040",dot:"#D4A000",trick:"#5C3700",trickTxt:"#F0C040",topicBg:"#E8A000",topicTxt:"#3D2200"},
@@ -550,7 +1833,7 @@ const CM={
   teal:  {bg:"#04342C",border:"#1D9E75",title:"#E1F5EE",sub:"#9FE1CB",dot:"#5DCAA5",trick:"#085041",trickTxt:"#9FE1CB",topicBg:"#1D9E75",topicTxt:"#04342C"},
   purple:{bg:"#26215C",border:"#7F77DD",title:"#EEEDFE",sub:"#CECBF6",dot:"#AFA9EC",trick:"#3C3489",trickTxt:"#CECBF6",topicBg:"#7F77DD",topicTxt:"#26215C"},
   amber: {bg:"#412402",border:"#BA7517",title:"#FAEEDA",sub:"#FAC775",dot:"#EF9F27",trick:"#633806",trickTxt:"#FAC775",topicBg:"#BA7517",topicTxt:"#412402"},
-  coral: {bg:"#4A1B0C",border:"#D85A30",title:"#FAECE7",sub:"#F5C4B3",dot:"#F0997B",trick:"#712B13",trickTxt:"#F5C4B3",topicBg:"#D85A30",topicTxt:"#4A1B0C"},
+    coral: {bg:"#4A1B0C",border:"#D85A30",title:"#FAECE7",sub:"#F5C4B3",dot:"#F0997B",trick:"#712B13",trickTxt:"#F5C4B3",topicBg:"#D85A30",topicTxt:"#4A1B0C"},
   blue:  {bg:"#042C53",border:"#378ADD",title:"#E6F1FB",sub:"#B5D4F4",dot:"#85B7EB",trick:"#0C447C",trickTxt:"#B5D4F4",topicBg:"#378ADD",topicTxt:"#042C53"},
   green: {bg:"#173404",border:"#639922",title:"#EAF3DE",sub:"#C0DD97",dot:"#97C459",trick:"#27500A",trickTxt:"#C0DD97",topicBg:"#639922",topicTxt:"#173404"},
   pink:  {bg:"#4B1528",border:"#D4537E",title:"#FBEAF0",sub:"#F4C0D1",dot:"#ED93B1",trick:"#72243E",trickTxt:"#F4C0D1",topicBg:"#D4537E",topicTxt:"#4B1528"},
@@ -565,43 +1848,73 @@ function switchChapter(ch){
   const t4=document.getElementById("tab-ch4");
   const t6=document.getElementById("tab-ch6");
   const t11=document.getElementById("tab-ch11");
-  const tall=document.getElementById("tab-all");
+  const tall=null; // removed old-all tab
   if(document.getElementById("tab-ch1")) document.getElementById("tab-ch1").className="ch-tab";
+  ["tab-hp","tab-ifos","tab-club","tab-setoff","tab-via","tab-rtn","tab-mega"].forEach(id=>{const el=document.getElementById(id);if(el)el.className="ch-tab";});
   if(document.getElementById("tab-ch2")) document.getElementById("tab-ch2").className="ch-tab";
   t3.className="ch-tab";
   t4.className="ch-tab";
   t6.className="ch-tab";
   t11.className="ch-tab";
-  tall.className="ch-tab";
+  if(tall)tall.className="ch-tab";
   const pf=document.getElementById("pf");
   const bp=document.getElementById("btnPrev");
   const bn=document.getElementById("btnNext");
   if(ch===1){
-    allCards=CH1; document.getElementById("tab-ch1").className="ch-tab active-ch1";
+    allCards=CH1; activeChCol="orange"; document.getElementById("tab-ch1").className="ch-tab active-ch1";
     pf.className="pfill pfill-ch1"; bp.className="btn-ch1"; bn.className="btn-ch1";
     renderPills(topicsCh1,"ch1");
   } else if(ch===2){
-    allCards=CH2; document.getElementById("tab-ch2").className="ch-tab active-ch2";
+    allCards=CH2; activeChCol="skyblue"; document.getElementById("tab-ch2").className="ch-tab active-ch2";
     pf.className="pfill pfill-ch2"; bp.className="btn-ch2"; bn.className="btn-ch2";
     renderPills(topicsCh2,"ch2");
   } else if(ch===3){
-    allCards=CH3; t3.className="ch-tab active-ch3";
+    allCards=CH3; activeChCol="purple"; t3.className="ch-tab active-ch3";
     pf.className="pfill pfill-ch3"; bp.className="btn-ch3"; bn.className="btn-ch3";
     renderPills(topicsCh3,"ch3");
   } else if(ch===4){
-    allCards=CH4; t4.className="ch-tab active-ch4";
+    allCards=CH4; activeChCol="amber"; t4.className="ch-tab active-ch4";
     pf.className="pfill pfill-ch4"; bp.className="btn-ch4"; bn.className="btn-ch4";
     renderPills(topicsCh4,"ch4");
   } else if(ch===6){
-    allCards=CH6; t6.className="ch-tab active-ch6";
+    allCards=CH6; activeChCol="green"; t6.className="ch-tab active-ch6";
     pf.className="pfill pfill-ch6"; bp.className="btn-ch6"; bn.className="btn-ch6";
     renderPills(topicsCh6,"ch6");
   } else if(ch===11){
-    allCards=CH11; t11.className="ch-tab active-ch11";
+    allCards=CH11; activeChCol="teal"; t11.className="ch-tab active-ch11";
     pf.className="pfill pfill-ch11"; bp.className="btn-ch11"; bn.className="btn-ch11";
     renderPills(topicsCh11,"ch11");
+
+  } else if(ch==='via'){
+    allCards=CHVIA; activeChCol="green"; document.getElementById("tab-via").className="ch-tab active-via";
+    pf.className="pfill pfill-via"; bp.className="btn-via"; bn.className="btn-via";
+    renderPills(["All",...new Set(CHVIA.map(c=>c.tp))],"active-via");
+  } else if(ch==='rtn'){
+    allCards=CHRTN; activeChCol="blue"; document.getElementById("tab-rtn").className="ch-tab active-rtn";
+    pf.className="pfill pfill-rtn"; bp.className="btn-rtn"; bn.className="btn-rtn";
+    renderPills(["All",...new Set(CHRTN.map(c=>c.tp))],"active-rtn");
+  } else if(ch==='hp'){
+    allCards=CHHP; activeChCol="teal"; document.getElementById("tab-hp").className="ch-tab active-hp";
+    pf.className="pfill pfill-hp"; bp.className="btn-hp"; bn.className="btn-hp";
+    renderPills(["All",...new Set(CHHP.map(c=>c.tp))],"active-hp");
+  } else if(ch==='ifos'){
+    allCards=CHIFOS; activeChCol="purple"; document.getElementById("tab-ifos").className="ch-tab active-ifos";
+    pf.className="pfill pfill-ifos"; bp.className="btn-ifos"; bn.className="btn-ifos";
+    renderPills(["All",...new Set(CHIFOS.map(c=>c.tp))],"active-ifos");
+  } else if(ch==='club'){
+    allCards=CHCLUB; activeChCol="orange"; document.getElementById("tab-club").className="ch-tab active-club";
+    pf.className="pfill pfill-club"; bp.className="btn-club"; bn.className="btn-club";
+    renderPills(["All",...new Set(CHCLUB.map(c=>c.tp))],"active-club");
+  } else if(ch==='setoff'){
+    allCards=CHSETOFF; activeChCol="red"; document.getElementById("tab-setoff").className="ch-tab active-setoff";
+    pf.className="pfill pfill-setoff"; bp.className="btn-setoff"; bn.className="btn-setoff";
+    renderPills(["All",...new Set(CHSETOFF.map(c=>c.tp))],"active-setoff");
+  } else if(ch==='mega'){
+    allCards=MEGA; activeChCol="coral"; document.getElementById("tab-mega").className="ch-tab active-ch3";
+    pf.className="pfill pfill-ch3"; bp.className="btn-ch3"; bn.className="btn-ch3";
+    renderPills(["All",...new Set(MEGA.map(c=>c.tp))],"active-ch3");
   } else {
-    allCards=ALL; tall.className="ch-tab active-ch1";
+    allCards=ALL; if(tall)tall.className="ch-tab active-ch1";
     pf.className="pfill pfill-ch1"; bp.className="btn-ch1"; bn.className="btn-ch1";
     renderPills(topicsAll,"ch1");
   }
@@ -618,7 +1931,7 @@ function setFil(t,ac){
   fil=t; cur=0;
   const pills=document.querySelectorAll(".tpill");
   pills.forEach(p=>{
-    p.classList.remove("active-ch3","active-ch4","active-ch6","active-ch11");
+    p.className="tpill";
     if(p.textContent===t) p.classList.add(ac);
   });
   renderCard();
@@ -639,7 +1952,7 @@ function renderCard(){
   if(cur>=list.length)cur=0;
   if(cur<0)cur=list.length-1;
   const c=list[cur];
-  const m=CM[c.col]||CM.teal;
+  const m=CM[activeChCol]||CM.teal; // use chapter colour, not card colour
   const pct=Math.round(((cur+1)/list.length)*100);
   document.getElementById("pf").style.width=pct+"%";
   document.getElementById("ctr").textContent=(cur+1)+" / "+list.length;
