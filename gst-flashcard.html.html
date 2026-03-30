@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Inter GST — Complete Flashcards May 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f0f;color:#f0f0f0;min-height:100vh;padding:16px}
+  .app-header{background:linear-gradient(135deg,#003d22,#003366);border-radius:14px;padding:18px 22px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #00A86B44}
+  .app-header h1{font-size:18px;font-weight:700;color:#b3ffe0;letter-spacing:0.3px}
+  .app-header .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .app-header .badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px}
+  .b1{background:#d0fff0;color:#004d2e}
+  .b2{background:#cce0ff;color:#003d80}
+  .b3{background:#fff0d0;color:#664400}
+  .b4{background:#ffe0cc;color:#662200}
+
+  .chapter-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .ch-tab{padding:9px 18px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:2px solid #333;background:#1a1a1a;color:#aaa;transition:all 0.2s}
+  .ch-tab.active-ch1{background:#003d22;color:#b3ffe0;border-color:#00A86B}
+  .ch-tab.active-ch2{background:#003366;color:#cce0ff;border-color:#0066CC}
+  .ch-tab.active-ch3{background:#1a3300;color:#d4f0b0;border-color:#4d9900}
+  .ch-tab.active-ch4{background:#3d2200;color:#ffe5b3;border-color:#FF8C00}
+  .ch-tab.active-ch6{background:#002244;color:#cce5ff;border-color:#3388ff}
+  .ch-tab.active-ch11{background:#1a0033;color:#e5ccff;border-color:#9933ff}
+  .ch-tab.active-hp{background:#003d22;color:#b3ffe0;border-color:#00A86B}
+  .ch-tab.active-ifos{background:#003366;color:#cce0ff;border-color:#0066CC}
+  .ch-tab.active-club{background:#3d2200;color:#ffe5b3;border-color:#FF8C00}
+  .ch-tab.active-setoff{background:#330000;color:#ffcccc;border-color:#cc0000}
+  .ch-tab.active-via{background:#1a3300;color:#d4f0b0;border-color:#4d9900}
+  .ch-tab.active-rtn{background:#001a33;color:#cce0ff;border-color:#0055bb}
+  .ch-tab.active-mega{background:#003d22;color:#b3ffe0;border-color:#00A86B}
+
+  .topic-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+  .tpill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;border:1.5px solid #444;background:#1e1e1e;color:#aaa;transition:all 0.2s}
+  .tpill.active-ch1{background:#003d22;color:#b3ffe0;border-color:#00A86B}
+  .tpill.active-ch2{background:#003366;color:#cce0ff;border-color:#0066CC}
+  .tpill.active-ch3{background:#1a3300;color:#d4f0b0;border-color:#4d9900}
+  .tpill.active-ch4{background:#3d2200;color:#ffe5b3;border-color:#FF8C00}
+  .tpill.active-ch6{background:#002244;color:#cce5ff;border-color:#3388ff}
+  .tpill.active-ch11{background:#1a0033;color:#e5ccff;border-color:#9933ff}
+  .tpill.active-hp{background:#003d22;color:#b3ffe0;border-color:#00A86B}
+  .tpill.active-ifos{background:#003366;color:#cce0ff;border-color:#0066CC}
+  .tpill.active-club{background:#3d2200;color:#ffe5b3;border-color:#FF8C00}
+  .tpill.active-setoff{background:#330000;color:#ffcccc;border-color:#cc0000}
+  .tpill.active-via{background:#1a3300;color:#d4f0b0;border-color:#4d9900}
+  .tpill.active-rtn{background:#001a33;color:#cce0ff;border-color:#0055bb}
+
+  .pbar{height:7px;background:#2a2a2a;border-radius:4px;margin-bottom:14px;overflow:hidden}
+  .pfill{height:100%;border-radius:4px;transition:width 0.4s}
+  .pfill-ch1{background:#00A86B}
+  .pfill-ch2{background:#0066CC}
+  .pfill-ch3{background:#4d9900}
+  .pfill-ch4{background:#FF8C00}
+  .pfill-ch6{background:#3388ff}
+  .pfill-ch11{background:#9933ff}
+  .pfill-hp{background:#00A86B}
+  .pfill-ifos{background:#0066CC}
+  .pfill-club{background:#FF8C00}
+  .pfill-setoff{background:#cc0000}
+  .pfill-via{background:#4d9900}
+  .pfill-rtn{background:#0055bb}
+
+  .cnav{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .cnav button{border:none;border-radius:8px;padding:9px 22px;font-size:13px;font-weight:700;cursor:pointer;color:#fff;transition:opacity 0.2s}
+  .cnav button:hover{opacity:0.85}
+  .btn-ch1{background:#007a4d}
+  .btn-ch2{background:#004d99}
+  .btn-ch3{background:#336600}
+  .btn-ch4{background:#cc6600}
+  .btn-ch6{background:#2266bb}
+  .btn-ch11{background:#7722bb}
+  .btn-hp{background:#007a4d}
+  .btn-ifos{background:#004d99}
+  .btn-club{background:#cc6600}
+  .btn-setoff{background:#991100}
+  .btn-via{background:#336600}
+  .btn-rtn{background:#003d88}
+  .ctr{font-size:14px;font-weight:700;color:#ddd;min-width:80px;text-align:center}
+
+  .fc{border-radius:14px;padding:22px 24px;min-height:300px;border-width:2px;border-style:solid;cursor:pointer;position:relative;transition:opacity 0.15s;margin-bottom:6px}
+  .fc:active{opacity:0.9}
+  .fc-topic{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:10px;letter-spacing:0.4px}
+  .fc-title{font-size:18px;font-weight:700;margin-bottom:14px;line-height:1.35}
+  .fc-bullets{list-style:none;padding:0;margin:0 0 12px}
+  .fc-bullets li{font-size:13px;font-weight:600;padding:3px 0;display:flex;gap:9px;line-height:1.6;align-items:flex-start}
+  .fc-bullets li .dot{flex-shrink:0;margin-top:7px;width:7px;height:7px;border-radius:50%;display:inline-block}
+  .fc-trick{border-radius:8px;padding:12px 14px;margin-top:6px;font-size:13px;font-weight:700;line-height:1.5}
+  .fc-star{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:#cc6600;color:#ffe5b3}
+  .hint{font-size:12px;color:#555;text-align:center;margin-top:6px;margin-bottom:20px}
+
+  .summary-section{background:#161616;border-radius:12px;padding:18px;margin-top:20px;border:1px solid #2a2a2a}
+  .summary-section h2{font-size:15px;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #2a2a2a}
+  .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+  .s-card{border-radius:10px;padding:14px 16px;border-left:4px solid}
+  .s-card h3{font-size:13px;font-weight:700;margin-bottom:8px}
+  .s-card ul{list-style:none;padding:0}
+  .s-card ul li{font-size:12px;font-weight:500;padding:2px 0;line-height:1.5}
+  .s-card ul li::before{content:"▸ ";opacity:0.7}
+
+  .rate-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+  .rate-table th{background:#1e1e1e;padding:8px 10px;text-align:left;font-weight:700;color:#ccc;border-bottom:1px solid #333}
+  .rate-table td{padding:7px 10px;border-bottom:1px solid #222;color:#bbb}
+  .rate-table tr:hover td{background:#1a1a1a}
+
+  .footer{text-align:center;margin-top:24px;font-size:12px;color:#555;padding-bottom:10px}
+  .footer span{color:#00A86B;font-weight:700}
+
+  .qr-chapter{background:#111;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-left:4px solid #444}
+  .qr-ch-head{font-size:13px;font-weight:800;padding:8px 14px;border-radius:8px;margin-bottom:12px;letter-spacing:0.4px}
+  .qr-sub{font-size:12px;font-weight:800;margin-bottom:6px;margin-top:4px;letter-spacing:0.3px}
+  .qr-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .qr-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .qr-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:14px;line-height:1.5}
+
+  @media(max-width:700px){.qr-grid2{grid-template-columns:1fr}}
+  @media(max-width:500px){
+    .app-header h1{font-size:14px}
+    .fc-title{font-size:15px}
+    .fc-bullets li{font-size:12px}
+    .ch-tab{padding:7px 12px;font-size:11px}
+  }
+
+  .qr-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .qr-btn{padding:8px 15px;border-radius:9px;font-size:11.5px;font-weight:700;cursor:pointer;border:2px solid #333;background:#1a1a1a;color:#aaa;transition:all 0.22s ease;letter-spacing:0.2px}
+  .qr-btn:hover{filter:brightness(1.25);transform:translateY(-1px)}
+  .qr-btn.qr-active{color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.5)}
+
+  .qr-btn[data-ch="1"].qr-active  {background:#003d22;border-color:#00A86B;color:#b3ffe0}
+  .qr-btn[data-ch="2"].qr-active  {background:#003366;border-color:#0066CC;color:#cce0ff}
+  .qr-btn[data-ch="3"].qr-active  {background:#003d22;border-color:#00A86B;color:#b3ffe0}
+  .qr-btn[data-ch="4"].qr-active  {background:#3d1a00;border-color:#FF8C00;color:#ffe5b3}
+  .qr-btn[data-ch="5"].qr-active  {background:#003366;border-color:#0066CC;color:#cce0ff}
+  .qr-btn[data-ch="6"].qr-active  {background:#003d22;border-color:#00A86B;color:#b3ffe0}
+  .qr-btn[data-ch="7"].qr-active  {background:#3d1a00;border-color:#FF8C00;color:#ffe5b3}
+  .qr-btn[data-ch="8"].qr-active  {background:#003366;border-color:#0066CC;color:#cce0ff}
+  .qr-btn[data-ch="9"].qr-active  {background:#003d22;border-color:#00A86B;color:#b3ffe0}
+  .qr-btn[data-ch="10"].qr-active {background:#003366;border-color:#0066CC;color:#cce0ff}
+  .qr-btn[data-ch="11"].qr-active {background:#3d1a00;border-color:#FF8C00;color:#ffe5b3}
+  .qr-btn[data-ch="12"].qr-active {background:#003d22;border-color:#00A86B;color:#b3ffe0}
+  .qr-btn[data-ch="13"].qr-active {background:#003366;border-color:#0066CC;color:#cce0ff}
+  .qr-btn[data-ch="14"].qr-active {background:#3d1a00;border-color:#FF8C00;color:#ffe5b3}
+  .qr-btn[data-ch="tricks"].qr-active{background:#3D1A00;border-color:#FF8C00;color:#FFD580}
+
+  .qr-panel{display:none;animation:qrFadeIn 0.28s ease}
+  .qr-panel.qr-open{display:block}
+  @keyframes qrFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>🟢 CA Inter GST — Complete Flashcards (Ch 1–14) | May 2026 Exam</h1>
+  <div class="badges">
+    <span class="badge b1">Ch 1 Basic Concepts</span>
+    <span class="badge b2">Ch 2 Supply</span>
+    <span class="badge b1">Ch 3 RCM &amp; ECO</span>
+    <span class="badge b3">Ch 4 Composition</span>
+    <span class="badge b2">Ch 5 Time of Supply</span>
+    <span class="badge b1">Ch 6 Value of Supply</span>
+    <span class="badge b2">Ch 7 Place of Supply</span>
+    <span class="badge b3">Ch 8 Exemptions</span>
+    <span class="badge b4">Ch 9 Payment &amp; TDS</span>
+    <span class="badge b1">Ch 10 ITC</span>
+    <span class="badge b2">Ch 11 Registration</span>
+    <span class="badge b3">Ch 12 Tax Invoice</span>
+    <span class="badge b4">Ch 13 Accounts &amp; EWB</span>
+    <span class="badge b1">Ch 14 Returns</span>
+  </div>
+</div>
+
+<div class="chapter-tabs">
+  <button class="ch-tab active-ch1" id="tab-ch1" onclick="switchChapter(1)">Ch 1</button>
+  <button class="ch-tab" id="tab-ch2" onclick="switchChapter(2)">Ch 2</button>
+  <button class="ch-tab" id="tab-ch3" onclick="switchChapter(3)">Ch 3</button>
+  <button class="ch-tab" id="tab-hp" onclick="switchChapter('hp')">Ch 4</button>
+  <button class="ch-tab" id="tab-ch4" onclick="switchChapter(4)">Ch 5</button>
+  <button class="ch-tab" id="tab-ch6" onclick="switchChapter(6)">Ch 6</button>
+  <button class="ch-tab" id="tab-ifos" onclick="switchChapter('ifos')">Ch 7</button>
+  <button class="ch-tab" id="tab-club" onclick="switchChapter('club')">Ch 8</button>
+  <button class="ch-tab" id="tab-setoff" onclick="switchChapter('setoff')">Ch 9</button>
+  <button class="ch-tab" id="tab-via" onclick="switchChapter('via')">Ch 10</button>
+  <button class="ch-tab" id="tab-ch11" onclick="switchChapter(11)">Ch 11</button>
+  <button class="ch-tab" id="tab-rtn" onclick="switchChapter('rtn')">Ch 12</button>
+  <button class="ch-tab" id="tab-mega" onclick="switchChapter('mega')">🔀 ALL Chapters</button>
+</div>
+
+<div class="topic-pills" id="tpills"></div>
+<div class="pbar"><div class="pfill pfill-ch1" id="pf" style="width:4%"></div></div>
+<div class="cnav">
+  <button class="btn-ch1" id="btnPrev" onclick="prev()">&#8592; Prev</button>
+  <span class="ctr" id="ctr">1 / ?</span>
+  <button class="btn-ch1" id="btnNext" onclick="next()">Next &#8594;</button>
+</div>
+<div class="fc" id="fc" onclick="next()"></div>
+<div class="hint">Click card / Arrow keys to navigate &nbsp;|&nbsp; Topic pills to filter &nbsp;|&nbsp; ★ = Exam Important</div>
+
+<div class="summary-section">
+<h2 style="color:#00A86B;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 14 CHAPTERS | CA Inter GST May 2026</h2>
+
+<div class="qr-nav" id="qrNav">
+  <button class="qr-btn" data-ch="1"  onclick="showQR('1')">Ch 1 — Basic Concepts</button>
+  <button class="qr-btn" data-ch="2"  onclick="showQR('2')">Ch 2 — Concept of Supply</button>
+  <button class="qr-btn" data-ch="3"  onclick="showQR('3')">Ch 3 — RCM &amp; ECO</button>
+  <button class="qr-btn" data-ch="4"  onclick="showQR('4')">Ch 4 — Composition Scheme</button>
+  <button class="qr-btn" data-ch="5"  onclick="showQR('5')">Ch 5 — Time of Supply</button>
+  <button class="qr-btn" data-ch="6"  onclick="showQR('6')">Ch 6 — Value of Supply</button>
+  <button class="qr-btn" data-ch="7"  onclick="showQR('7')">Ch 7 — Place of Supply</button>
+  <button class="qr-btn" data-ch="8"  onclick="showQR('8')">Ch 8 — Exemptions</button>
+  <button class="qr-btn" data-ch="9"  onclick="showQR('9')">Ch 9 — Payment &amp; TDS/TCS</button>
+  <button class="qr-btn" data-ch="10" onclick="showQR('10')">Ch 10 — Input Tax Credit</button>
+  <button class="qr-btn" data-ch="11" onclick="showQR('11')">Ch 11 — Registration</button>
+  <button class="qr-btn" data-ch="12" onclick="showQR('12')">Ch 12 — Tax Invoice</button>
+  <button class="qr-btn" data-ch="13" onclick="showQR('13')">Ch 13 — Accounts &amp; E-Way Bill</button>
+  <button class="qr-btn" data-ch="14" onclick="showQR('14')">Ch 14 — Returns</button>
+  <button class="qr-btn" data-ch="tricks" onclick="showQR('tricks')">⚡ Memory Tricks</button>
+</div>
+
+<!-- QR PANEL 1 -->
+<div class="qr-panel" id="qr-panel-1">
+<div class="qr-chapter" style="border-left-color:#00A86B">
+  <div class="qr-ch-head" style="background:#003d22;color:#b3ffe0">Ch 1 — Basic Concepts of GST</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#00A86B">GST Framework — Acts &amp; Rates</div>
+      <table class="rate-table">
+        <tr><th>Tax</th><th>Act</th><th>Levy On</th></tr>
+        <tr><td>CGST</td><td>CGST Act 2017</td><td>Intra-State Supply</td></tr>
+        <tr><td>SGST</td><td>SGST Act 2017</td><td>Intra-State Supply</td></tr>
+        <tr><td>UTGST</td><td>UTGST Act 2017</td><td>Intra-UT Supply</td></tr>
+        <tr><td>IGST</td><td>IGST Act 2017</td><td>Inter-State / Import</td></tr>
+        <tr><td>GST Cess</td><td>Compensation Cess Act</td><td>Notified Goods/Services</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#00A86B">GST Rate Slabs</div>
+      <table class="rate-table">
+        <tr><th>CGST Rate</th><th>SGST Rate</th><th>Total GST</th></tr>
+        <tr><td>0%</td><td>0%</td><td>0% (Nil)</td></tr>
+        <tr><td>2.5%</td><td>2.5%</td><td>5%</td></tr>
+        <tr><td>6%</td><td>6%</td><td>12%</td></tr>
+        <tr><td>9%</td><td>9%</td><td>18%</td></tr>
+        <tr><td>14%</td><td>14%</td><td>28%</td></tr>
+        <tr><td colspan="3">Special Rate: 0.25% (rough diamonds), 3% (gold)</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-sub" style="color:#00A86B;margin-top:10px">Taxes Subsumed in GST</div>
+  <table class="rate-table">
+    <tr><th>Central Taxes Subsumed</th><th>State Taxes Subsumed</th><th>NOT Subsumed</th></tr>
+    <tr><td>Central Excise Duty, Service Tax, Additional Customs Duty, CVD</td><td>VAT/Sales Tax, Entertainment Tax (non-local body), Luxury Tax, Entry Tax</td><td>Basic Customs Duty, Excise on Alcohol, Property Tax, Stamp Duty, Electricity Duty</td></tr>
+  </table>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">GST = Destination-based Value Added Tax | Burden on Consumer</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">ITC available throughout value chain | Eliminates cascading effect</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Art 246A = Concurrent power to Centre &amp; States | Art 269A = IGST Parliament power</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Petroleum, Alcohol = Outside GST (still under VAT/Excise)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 2 -->
+<div class="qr-panel" id="qr-panel-2">
+<div class="qr-chapter" style="border-left-color:#0066CC">
+  <div class="qr-ch-head" style="background:#003366;color:#cce0ff">Ch 2 — Concept of Supply (Sec 7)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Supply Includes — Sec 7(1)</div>
+      <table class="rate-table">
+        <tr><th>Type</th><th>Condition</th></tr>
+        <tr><td>7(1)(a) All forms of supply</td><td>For consideration + in course of business</td></tr>
+        <tr><td>7(1)(b) Import of Services</td><td>For consideration, even if not for business</td></tr>
+        <tr><td>7(1)(c) Deemed Supply (Sch I)</td><td>Without consideration — 4 situations</td></tr>
+        <tr><td>7(1)(aa) Club/Association</td><td>To members for cash/deferred payment</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Schedule I — Deemed Supply (No Consideration)</div>
+      <table class="rate-table">
+        <tr><th>Entry</th><th>Description</th></tr>
+        <tr><td>1</td><td>Permanent transfer of business assets (ITC availed)</td></tr>
+        <tr><td>2</td><td>Supply between related/distinct persons in course of business</td></tr>
+        <tr><td>3</td><td>Principal-Agent supply (invoice in agent's name)</td></tr>
+        <tr><td>4</td><td>Import of services from related person / own establishment outside India</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Schedule III — NOT Supply (Neither Goods nor Services)</div>
+      <table class="rate-table">
+        <tr><th>Entry</th><th>Activity</th></tr>
+        <tr><td>1</td><td>Services by employee to employer in course of employment</td></tr>
+        <tr><td>2</td><td>Services by court/tribunal</td></tr>
+        <tr><td>3</td><td>Functions by MPs, MLAs, Panchayat members, etc.</td></tr>
+        <tr><td>4</td><td>Funeral, burial, crematorium services</td></tr>
+        <tr><td>5</td><td>Sale of land and completed building (after CC/1st occupancy)</td></tr>
+        <tr><td>6</td><td>Actionable claims (except specified — betting, casino, lottery)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Types of Supply</div>
+      <table class="rate-table">
+        <tr><th>Type</th><th>Meaning</th></tr>
+        <tr><td>Taxable Supply</td><td>Leviable to GST at applicable rate</td></tr>
+        <tr><td>Zero Rated (ZRS)</td><td>Export of G/S or supply to SEZ — Sec 16 IGST</td></tr>
+        <tr><td>Nil Rated</td><td>Taxable but rate is 0% as per tariff</td></tr>
+        <tr><td>Exempt Supply</td><td>Temporarily exempted by Govt notification</td></tr>
+        <tr><td>Non-Taxable</td><td>Petroleum, Alcohol — outside GST levy</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Composite Supply: Naturally bundled + principal supply = Tax at principal supply rate</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Mixed Supply: Artificially bundled for single price = Tax at HIGHEST rate item</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Gift to employee ≤ ₹50,000 p.a. = NOT a supply (Proviso to Sch I para 2)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 3 -->
+<div class="qr-panel" id="qr-panel-3">
+<div class="qr-chapter" style="border-left-color:#00A86B">
+  <div class="qr-ch-head" style="background:#003d22;color:#b3ffe0">Ch 3 — Reverse Charge Mechanism &amp; ECO (Sec 9)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#00A86B">Key RCM Services — Sec 9(3)</div>
+      <table class="rate-table">
+        <tr><th>Service</th><th>Supplier</th><th>Recipient (liable)</th></tr>
+        <tr><td>GTA (5% without ITC)</td><td>GTA</td><td>Registered Person</td></tr>
+        <tr><td>Legal Services</td><td>Advocate / Law Firm</td><td>Business Entity</td></tr>
+        <tr><td>Arbitral Tribunal</td><td>Arbitral Tribunal</td><td>Business Entity</td></tr>
+        <tr><td>Sponsorship</td><td>Any Person</td><td>Body Corporate / Firm</td></tr>
+        <tr><td>Govt Services (specified)</td><td>Govt / Local Authority</td><td>Business Entity</td></tr>
+        <tr><td>Director Services</td><td>Director (non-employment)</td><td>Company / Body Corporate</td></tr>
+        <tr><td>Insurance Agent</td><td>Insurance Agent</td><td>Insurance Company</td></tr>
+        <tr><td>Recovery Agent</td><td>Recovery Agent</td><td>Bank / NBFC</td></tr>
+        <tr><td>Security Services (non-corporate)</td><td>Any person other than BC</td><td>Registered Person</td></tr>
+        <tr><td>Renting of Motor Vehicle</td><td>Non-corporate person</td><td>Body Corporate</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#00A86B">ECO Liability — Sec 9(5)</div>
+      <table class="rate-table">
+        <tr><th>Service via ECO</th><th>Who Pays Tax</th></tr>
+        <tr><td>Passenger Transport (Cab/Ola/Uber) — non-company supplier</td><td>ECO</td></tr>
+        <tr><td>Passenger Transport — company supplier</td><td>Supplier</td></tr>
+        <tr><td>Restaurant (non-specified premises)</td><td>ECO</td></tr>
+        <tr><td>Restaurant (specified premises, rent &gt;₹7500)</td><td>Supplier</td></tr>
+        <tr><td>Hotel Accommodation (b)</td><td>ECO</td></tr>
+        <tr><td>Housekeeping services (c)</td><td>ECO</td></tr>
+        <tr><td>Local delivery services (e)</td><td>ECO</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">Sec 9(4) — Purchases from Unregistered Persons</div>
+      <table class="rate-table">
+        <tr><th>Situation</th><th>RCM on?</th></tr>
+        <tr><td>Promoter buying cement from URP</td><td>Yes — 100% RCM</td></tr>
+        <tr><td>Promoter buying capital goods from URP</td><td>Yes — 100% RCM</td></tr>
+        <tr><td>Value of I/IS from RP &lt; 80% of total (construction)</td><td>Yes — RCM on shortfall</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">GTA opts FC: Rate 18% with ITC or 5% without ITC | Declare on invoice</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">GTA to URP notified category (factory, society, BC, CTP) = RCM applicable</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">ECO TCS = 0.5% IGST or 0.25% CGST+SGST on Net Value of Taxable Supplies</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 4 -->
+<div class="qr-panel" id="qr-panel-4">
+<div class="qr-chapter" style="border-left-color:#FF8C00">
+  <div class="qr-ch-head" style="background:#3d1a00;color:#ffe5b3">Ch 4 — Composition Scheme (Sec 10)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Composition Rates — Rule 7</div>
+      <table class="rate-table">
+        <tr><th>Category</th><th>CGST</th><th>SGST</th><th>Total</th><th>Basis</th></tr>
+        <tr><td>Manufacturer</td><td>0.5%</td><td>0.5%</td><td>1%</td><td>T/O in State</td></tr>
+        <tr><td>Catering/Restaurant</td><td>2.5%</td><td>2.5%</td><td>5%</td><td>T/O in State</td></tr>
+        <tr><td>Trader</td><td>0.5%</td><td>0.5%</td><td>1%</td><td>Taxable SOG in State</td></tr>
+        <tr><td>Sec 10(2A) — Service</td><td>3%</td><td>3%</td><td>6%</td><td>T/O in State</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Eligibility Limits</div>
+      <table class="rate-table">
+        <tr><th>Scheme</th><th>Limit (Agg T/O PFY)</th></tr>
+        <tr><td>Sec 10(1)/(2) — Mfr/Trader/Restaurant</td><td>₹1.5 Cr (₹75L for SCS)</td></tr>
+        <tr><td>Sec 10(2A) — Service providers</td><td>₹50 Lakh</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Conditions &amp; Restrictions</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Rule</th></tr>
+        <tr><td>Can collect tax on outward supply?</td><td>NO — issue Bill of Supply</td></tr>
+        <tr><td>Can avail ITC?</td><td>NO</td></tr>
+        <tr><td>Inter-State outward supply?</td><td>NOT allowed</td></tr>
+        <tr><td>Supply through ECO (TCS)?</td><td>NOT allowed for services</td></tr>
+        <tr><td>CTP/NRTP can opt?</td><td>NO</td></tr>
+        <tr><td>Return to file</td><td>CMP-08 (Quarterly) + GSTR-4 (Annual by 30 June)</td></tr>
+        <tr><td>Marginal services (Mfr/Trader)</td><td>Upto 10% of State T/O or ₹5L (higher)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Notified Excluded Goods</div>
+      <div class="qr-pills">
+        <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Ice cream / Pan Masala / Aerated water / Tobacco products / Fly ash bricks = CANNOT opt composition</span>
+      </div>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Lapse: Agg T/O exceeds ₹150L/75L/50L in CFY = Composition levy lapses from that date</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">All GSTINs on same PAN must choose same scheme — one can't opt out alone</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Board display: "Composition Taxable Person, not eligible to collect tax on supplies"</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 5 -->
+<div class="qr-panel" id="qr-panel-5">
+<div class="qr-chapter" style="border-left-color:#0066CC">
+  <div class="qr-ch-head" style="background:#003366;color:#cce0ff">Ch 5 — Time of Supply (Sec 12 &amp; 13)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#0066CC">TOS — Forward Charge</div>
+      <table class="rate-table">
+        <tr><th>Case</th><th>Sec 12 (SOG)</th><th>Sec 13 (SOS)</th></tr>
+        <tr><td>Invoice issued in time</td><td>Earlier of: Invoice date OR last date of invoice</td><td>Earlier of: Invoice date OR date of receipt of payment</td></tr>
+        <tr><td>Invoice NOT issued in time</td><td>Date of receipt of goods by recipient</td><td>Date of completion of service OR payment — whichever earlier</td></tr>
+        <tr><td>Cannot determine above</td><td>Date of entry in recipient's books</td><td>Date recipient shows receipt in books</td></tr>
+        <tr><td>Payment upto ₹1000 in excess of invoice</td><td colspan="2">TOS = Date of invoice (option of supplier)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#0066CC">TOS — Reverse Charge</div>
+      <table class="rate-table">
+        <tr><th>Case</th><th>Sec 12(3) SOG-RCM</th><th>Sec 13(3) SOS-RCM</th></tr>
+        <tr><td>Normal</td><td>Earliest of: Receipt of goods / Payment / 31st day from invoice</td><td>Earliest of: Payment / 61st day from invoice</td></tr>
+        <tr><td>Cannot determine</td><td>Date of entry in books of recipient</td><td>Date of entry in books of recipient</td></tr>
+        <tr><td>Associated Enterprise (supplier outside India)</td><td>—</td><td>Earlier of: Entry in books OR date of payment</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Special TOS Rules</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>TOS</th></tr>
+        <tr><td>Interest/Late fee/Penalty on delayed payment</td><td>Date when supplier receives the additional amount</td></tr>
+        <tr><td>Specified Actionable Claims (lottery, gambling)</td><td>Earliest of invoice / last date / payment receipt</td></tr>
+        <tr><td>Vouchers (goods determinable)</td><td>Date of issue of voucher</td></tr>
+        <tr><td>Vouchers (goods not determinable)</td><td>Date of redemption of voucher</td></tr>
+        <tr><td>Residual Cases</td><td>Periodical return date OR tax payment date</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Invoice for SOG: Before/at time of removal (movement) or delivery (no movement)</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Invoice for SOS: Within 30 days from supply (45 days for Banks/FI/NBFC)</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">TOS for SOG: NOT date of receipt except specified actionable claims [N/N 66/2017]</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 6 -->
+<div class="qr-panel" id="qr-panel-6">
+<div class="qr-chapter" style="border-left-color:#00A86B">
+  <div class="qr-ch-head" style="background:#003d22;color:#b3ffe0">Ch 6 — Value of Supply (Sec 15)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#00A86B">Sec 15(2) — Inclusions in Transaction Value</div>
+      <table class="rate-table">
+        <tr><th>Item (a to e)</th><th>Included?</th></tr>
+        <tr><td>(a) Taxes/duties/fees under any law (except GST itself)</td><td>YES — include</td></tr>
+        <tr><td>(b) 3rd party payment: amount supplier liable to pay but paid by recipient</td><td>YES — include</td></tr>
+        <tr><td>(c) Incidental expenses (packing, commission) at/before delivery</td><td>YES — include</td></tr>
+        <tr><td>(d) Interest/late fee/penalty for delayed payment of consideration</td><td>YES — include</td></tr>
+        <tr><td>(e) Subsidy directly linked to price (except CG/SG subsidy)</td><td>YES — include</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">Sec 15(3) — Discount Deduction</div>
+      <table class="rate-table">
+        <tr><th>Discount Type</th><th>Deductible?</th></tr>
+        <tr><td>(a) Pre-supply discount (shown in invoice)</td><td>YES — always</td></tr>
+        <tr><td>(b) Post-supply (year-end/volume) — agreed at time of supply + ITC reversed by recipient</td><td>YES — with conditions</td></tr>
+        <tr><td>Secondary discount (not known at TOS / not agreed)</td><td>NO — not deductible</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#00A86B">Price Inclusive of GST Formula</div>
+      <table class="rate-table">
+        <tr><th>Formula</th><th>Example (18%)</th></tr>
+        <tr><td>VOS = Price × 100/(100+Rate)</td><td>₹2,00,000 × 100/118 = ₹1,69,491</td></tr>
+        <tr><td>GST = Price × Rate/(100+Rate)</td><td>₹2,00,000 × 18/118 = ₹30,509</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">Pure Agent &amp; Related Party</div>
+      <table class="rate-table">
+        <tr><th>Situation</th><th>Treatment</th></tr>
+        <tr><td>Pure Agent (actual expenditure passed on)</td><td>Exclude from value — not part of supply</td></tr>
+        <tr><td>Related persons / Distinct persons</td><td>Value = Open Market Value / Rule 28</td></tr>
+        <tr><td>TCS under IT Act included in value?</td><td>NO — TCS amount excluded from GST value</td></tr>
+        <tr><td>NCB (No Claim Bonus) by insurance company</td><td>Deductible discount from premium</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Sec 15(1): TV = Price paid/payable IF (a) Not related persons AND (b) Price = sole consideration</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Interest on loan/deposits = Exempt SOS | Interest on delayed payment = TAXABLE (added to value)</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Central Excise Duty included in value (unlike GST which is excluded)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 7 -->
+<div class="qr-panel" id="qr-panel-7">
+<div class="qr-chapter" style="border-left-color:#FF8C00">
+  <div class="qr-ch-head" style="background:#3d1a00;color:#ffe5b3">Ch 7 — Place of Supply (IGST Act)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">POS of Goods — Sec 10</div>
+      <table class="rate-table">
+        <tr><th>Nature</th><th>POS</th></tr>
+        <tr><td>(a) Movement of goods</td><td>Where movement terminates for delivery to recipient</td></tr>
+        <tr><td>(b) Bill-to-Ship-to</td><td>Principal POB of third person (on whose direction goods delivered)</td></tr>
+        <tr><td>(c) No movement</td><td>Location of goods at time of delivery</td></tr>
+        <tr><td>(ca) Supply to URP</td><td>Address in invoice; if no address = LOS</td></tr>
+        <tr><td>(d) Installation/assembly at site</td><td>Place of installation/assembly</td></tr>
+        <tr><td>(e) On board conveyance</td><td>Location where goods taken on board</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Key POS of Services — Sec 12</div>
+      <table class="rate-table">
+        <tr><th>Service</th><th>POS</th></tr>
+        <tr><td>General Rule B2B (12(2))</td><td>Location of Registered Recipient (LOR)</td></tr>
+        <tr><td>General Rule B2C (12(2))</td><td>LOR if address exists; else LOS</td></tr>
+        <tr><td>Immovable Property (12(3))</td><td>Location of immovable property</td></tr>
+        <tr><td>Restaurant/Personal Grooming (12(4))</td><td>Where service actually performed</td></tr>
+        <tr><td>Training/Performance (12(5))</td><td>Where service actually performed</td></tr>
+        <tr><td>Events (12(7))</td><td>Where event is held</td></tr>
+        <tr><td>Transport of Goods (12(8))</td><td>Where goods handed over for transport</td></tr>
+        <tr><td>Passenger Transport (12(9))</td><td>Where passenger embarks on continuous journey</td></tr>
+        <tr><td>On-board Conveyance (12(10))</td><td>First point of departure of conveyance</td></tr>
+        <tr><td>Telecom (Fixed line) (12(11)(a))</td><td>Where fixed line installed</td></tr>
+        <tr><td>Insurance (12(13))</td><td>LOR on record of insurance company</td></tr>
+        <tr><td>Banking (12(12))</td><td>LOR if exists; else LOS</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Export of Services: 5 conditions — LOS in India, LOR outside India, POS outside India, CFE received, S &amp; R not DDP</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Territorial Water supply: LOS/POS = nearest coastal State/UT baseline point</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">ZRS = Export of G/S or supply to SEZ developer/unit for authorised operations [Sec 16 IGST]</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 8 -->
+<div class="qr-panel" id="qr-panel-8">
+<div class="qr-chapter" style="border-left-color:#0066CC">
+  <div class="qr-ch-head" style="background:#003366;color:#cce0ff">Ch 8 — Exemptions (N/N 12/2017 &amp; Others)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Key Passenger Transport Exemptions</div>
+      <table class="rate-table">
+        <tr><th>Mode</th><th>Exempt?</th></tr>
+        <tr><td>Non-AC Bus (Stage Carriage)</td><td>EXEMPT (if not through ECO)</td></tr>
+        <tr><td>AC Bus (Stage Carriage)</td><td>TAXABLE</td></tr>
+        <tr><td>Metro/Monorail/Tramway</td><td>EXEMPT</td></tr>
+        <tr><td>Railway — Other class (non-AC/non-1st)</td><td>EXEMPT</td></tr>
+        <tr><td>Railway — AC/First Class</td><td>TAXABLE</td></tr>
+        <tr><td>Air — Economy class (NE states + Bagdogra)</td><td>EXEMPT</td></tr>
+        <tr><td>Inland waterways — public use vessel</td><td>EXEMPT</td></tr>
+        <tr><td>Meter cab/Auto rickshaw (not through ECO)</td><td>EXEMPT</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Health Care — Key Points</div>
+      <table class="rate-table">
+        <tr><th>Service</th><th>Treatment</th></tr>
+        <tr><td>Clinical establishment — diagnosis/treatment</td><td>EXEMPT (Sl.No. 74)</td></tr>
+        <tr><td>ICU/ICCU/NICU room rent</td><td>EXEMPT (no limit)</td></tr>
+        <tr><td>Room rent &gt; ₹5,000/day (non-ICU)</td><td>TAXABLE on excess</td></tr>
+        <tr><td>Hair transplant / cosmetic surgery (beauty)</td><td>TAXABLE</td></tr>
+        <tr><td>Plastic surgery to restore body function</td><td>EXEMPT</td></tr>
+        <tr><td>Ambulance service</td><td>EXEMPT</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Education Sector Exemptions — Sl.No. 66</div>
+      <table class="rate-table">
+        <tr><th>Service</th><th>Exempt?</th></tr>
+        <tr><td>Services by EI to its students/faculty/staff</td><td>EXEMPT</td></tr>
+        <tr><td>Conduct of entrance examination by EI</td><td>EXEMPT</td></tr>
+        <tr><td>Transport of students (supplied to school)</td><td>EXEMPT (only to school)</td></tr>
+        <tr><td>Catering/mid-day meals (supplied to school)</td><td>EXEMPT (only to school)</td></tr>
+        <tr><td>Security/housekeeping (supplied to college)</td><td>EXEMPT (only to college)</td></tr>
+        <tr><td>Private coaching classes</td><td>TAXABLE</td></tr>
+        <tr><td>IIM — long duration programmes</td><td>EXEMPT (IIM Act)</td></tr>
+        <tr><td>Affiliation services to Pvt schools</td><td>TAXABLE</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">RWA Exemption Limits</div>
+      <table class="rate-table">
+        <tr><th>Condition</th><th>Treatment</th></tr>
+        <tr><td>Contribution ≤ ₹7,500/member/month AND ATO ≤ ₹20L</td><td>EXEMPT</td></tr>
+        <tr><td>Contribution &gt; ₹7,500 OR ATO &gt; ₹20L</td><td>TAXABLE on entire amount</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">GTA DROMNA exemption: Defence/Relief/Organic manure/Milk-salt-grains/Newspapers/Agriculture produce</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Renting Residential Dwelling to RP = TAXABLE under RCM | To URP for residence = EXEMPT</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Accommodation services (hostel etc.) ≤ ₹20,000 PM for 90+ continuous days = EXEMPT</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Interest on loan/deposits = EXEMPT | Interest on credit card = TAXABLE</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 9 -->
+<div class="qr-panel" id="qr-panel-9">
+<div class="qr-chapter" style="border-left-color:#00A86B">
+  <div class="qr-ch-head" style="background:#003d22;color:#b3ffe0">Ch 9 — Payment of Tax, TDS &amp; TCS (Sec 49, 51, 52)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#00A86B">ITC Utilisation Order — Sec 49(5)</div>
+      <table class="rate-table">
+        <tr><th>ITC of</th><th>First Use</th><th>Then Use</th></tr>
+        <tr><td>IGST</td><td>IGST liability</td><td>CGST then SGST (any order)</td></tr>
+        <tr><td>CGST</td><td>CGST liability</td><td>IGST liability (2nd)</td></tr>
+        <tr><td>SGST/UTGST</td><td>SGST/UTGST liability</td><td>IGST liability (2nd)</td></tr>
+        <tr><td colspan="3" style="color:#ff9966;font-weight:700">CGST cannot set off SGST/UTGST and vice versa</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">TDS — Sec 51</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Rate</td><td>2% IGST or 1% CGST + 1% SGST</td></tr>
+        <tr><td>Threshold</td><td>Contract value &gt; ₹2.5 Lakh</td></tr>
+        <tr><td>Due date</td><td>10th of succeeding month</td></tr>
+        <tr><td>Return</td><td>GSTR-7 by 10th of next month</td></tr>
+        <tr><td>Certificate</td><td>GSTR-7A to deductee</td></tr>
+        <tr><td>Who deducts</td><td>Govt/LA/PSU/Notified bodies + RP buying metal scrap from RP</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#00A86B">TCS — Sec 52</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Rate</td><td>0.5% IGST or 0.25% CGST + 0.25% SGST</td></tr>
+        <tr><td>Who collects</td><td>Every ECO (not being agent) where consideration collected by ECO</td></tr>
+        <tr><td>Base</td><td>Net Value of Taxable Supplies (monthly, per supplier)</td></tr>
+        <tr><td>Monthly Statement</td><td>GSTR-8 by 10th of next month (within 3 years)</td></tr>
+        <tr><td>Annual Statement</td><td>GSTR-9B by 31st Dec of next FY</td></tr>
+        <tr><td>Not applicable when</td><td>Supplier not liable for reg / Composition / Import / ECO 9(5)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">Interest — Sec 50</div>
+      <table class="rate-table">
+        <tr><th>Section</th><th>Rate</th><th>On</th></tr>
+        <tr><td>50(1) Delayed payment</td><td>18% p.a.</td><td>Net GST liability (E-cash)</td></tr>
+        <tr><td>50(3) Wrong ITC utilised</td><td>18% p.a.</td><td>From date of utilisation to reversal</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">E-Cash Ledger: Deposit via net banking/NEFT/RTGS/UPI | OTC cash limit ₹10,000/challan</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">E-Credit Ledger: Only for output tax | Cannot use for RCM / interest / penalty / late fee</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Order of discharge: Self-assessed previous tax period → Current period → Demand recovery</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">PMT-09: Transfer between major/minor heads of same E-Cash Ledger | Also between IGST/CGST of DDP</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 10 -->
+<div class="qr-panel" id="qr-panel-10">
+<div class="qr-chapter" style="border-left-color:#0066CC">
+  <div class="qr-ch-head" style="background:#003366;color:#cce0ff">Ch 10 — Input Tax Credit (Sec 16–18)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Conditions for ITC — Sec 16(2)</div>
+      <table class="rate-table">
+        <tr><th>Condition</th><th>Detail</th></tr>
+        <tr><td>(a) Tax Invoice / Document</td><td>Valid invoice, debit note, bill of entry etc.</td></tr>
+        <tr><td>(aa) GSTR-2B reflected</td><td>Supplier must have furnished in GSTR-1/1A AND reflected in recipient's GSTR-2B</td></tr>
+        <tr><td>(b) Goods/Services received</td><td>Including Bill-to-Ship-to deemed receipt</td></tr>
+        <tr><td>(ba) Not blacklisted in Sec 38</td><td>Details not restricted by portal</td></tr>
+        <tr><td>(c) Tax paid to Govt</td><td>Supplier must have actually paid tax; Rule 37A reversal if not</td></tr>
+        <tr><td>(d) Return filed u/s 39</td><td>Recipient must file GSTR-3B</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Key Time Limits for ITC</div>
+      <table class="rate-table">
+        <tr><th>Rule</th><th>Time Limit</th></tr>
+        <tr><td>Sec 16(4) — Last date to claim ITC</td><td>Earlier of: 30th Nov of next FY OR date of annual return</td></tr>
+        <tr><td>Rule 37 — Payment to supplier</td><td>Within 180 days from invoice date; else reverse ITC</td></tr>
+        <tr><td>Rule 37A — Supplier not filed GSTR-3B</td><td>Reverse by 30th Nov; re-avail when supplier files</td></tr>
+        <tr><td>Sec 18(2) — ITC on switching from composition</td><td>Cannot avail ITC after 1 year from invoice date</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Sec 17(5) — Blocked Credits (Key Items)</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>ITC?</th><th>Exception</th></tr>
+        <tr><td>Motor vehicle (≤13 seater, passenger)</td><td>NO</td><td>Yes if: further supply/transport/training</td></tr>
+        <tr><td>Motor vehicle (goods carrier)</td><td>YES</td><td>—</td></tr>
+        <tr><td>Food &amp; Beverages / Outdoor catering</td><td>NO</td><td>Yes if outward supply of same category</td></tr>
+        <tr><td>Health/beauty treatment</td><td>NO</td><td>Yes if outward supply of same category</td></tr>
+        <tr><td>Membership of club/gym</td><td>NO</td><td>—</td></tr>
+        <tr><td>Travel benefit to employee (LTC/vacation)</td><td>NO</td><td>—</td></tr>
+        <tr><td>Works contract for construction of IP</td><td>NO</td><td>Yes if for providing WC services</td></tr>
+        <tr><td>Goods/services for construction of IP (cap)</td><td>NO</td><td>Yes if for construction to sell (before CC)</td></tr>
+        <tr><td>Goods received by NRTP</td><td>NO</td><td>Except imported goods</td></tr>
+        <tr><td>CSR activities goods/services</td><td>NO</td><td>—</td></tr>
+        <tr><td>Tax paid u/s 74 (fraud cases up to FY 23-24)</td><td>NO</td><td>—</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">ITC reversal on capital goods switching: ITC taken − 5% per quarter or part thereof, OR GST on TV — higher</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Rule 86B: T/O &gt;₹50L/month → 99% output tax by ITC allowed, 1% must be from cash</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">ITC Transfer on sale/merger: RP transfers to transferee via FORM GST ITC-02</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Buy-one-get-one free: Single price → No ITC reversal needed (not a free supply)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 11 -->
+<div class="qr-panel" id="qr-panel-11">
+<div class="qr-chapter" style="border-left-color:#FF8C00">
+  <div class="qr-ch-head" style="background:#3d1a00;color:#ffe5b3">Ch 11 — Registration (Sec 22–30)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Threshold Limits — Sec 22</div>
+      <table class="rate-table">
+        <tr><th>State/UT Category</th><th>SOG Only</th><th>SOS or SOG+SOS</th></tr>
+        <tr><td>Manipur, Mizoram, Nagaland, Tripura</td><td>₹10 L</td><td>₹10 L</td></tr>
+        <tr><td>Puducherry, Uttarakhand, Meghalaya, Arunachal Pradesh, Telangana, Sikkim</td><td>₹20 L</td><td>₹20 L</td></tr>
+        <tr><td>All other States incl. Assam, J&amp;K, H.P.</td><td>₹40 L</td><td>₹20 L</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Compulsory Registration — Sec 24 (Key)</div>
+      <table class="rate-table">
+        <tr><th>#</th><th>Person</th></tr>
+        <tr><td>i</td><td>Inter-State taxable supply (goods)</td></tr>
+        <tr><td>ii</td><td>CTP/NRTP making taxable supply</td></tr>
+        <tr><td>iii</td><td>Person liable to pay under RCM</td></tr>
+        <tr><td>iv</td><td>Person liable to pay tax u/s 9(5) ECO</td></tr>
+        <tr><td>vi</td><td>Person required to deduct TDS u/s 51</td></tr>
+        <tr><td>viii</td><td>ISD (separate registration)</td></tr>
+        <tr><td>ix</td><td>Agent issuing own invoice on behalf of taxable person</td></tr>
+        <tr><td>x</td><td>ECO required to collect TCS u/s 52</td></tr>
+        <tr><td>xi</td><td>Person supplying OIDAR from outside India to non-RP in India</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Registration Timelines</div>
+      <table class="rate-table">
+        <tr><th>Person</th><th>Apply Within</th><th>Effective From</th></tr>
+        <tr><td>Person liable u/s 22/24</td><td>30 days from liability date</td><td>Date of liability (if within 30 days)</td></tr>
+        <tr><td>CTP / NRTP</td><td>5 days before commencement</td><td>Date of registration</td></tr>
+        <tr><td>Late application</td><td>After 30 days</td><td>Date of grant of registration</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Grant of Registration Timelines</div>
+      <table class="rate-table">
+        <tr><th>Scenario</th><th>Deemed Registration</th></tr>
+        <tr><td>No Aadhaar Auth opted, no deficiency</td><td>Within 30 days of application</td></tr>
+        <tr><td>Aadhaar Auth opted, no deficiency</td><td>Within 7 WD of application</td></tr>
+        <tr><td>After satisfactory clarification</td><td>Within 7 WD of clarification</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Cancellation (Sec 29) &amp; Revocation (Sec 30)</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Non-filing monthly returns (continuous)</td><td>6 months → cancellation</td></tr>
+        <tr><td>Non-filing QRMP returns (continuous)</td><td>2 tax periods → cancellation</td></tr>
+        <tr><td>Revocation application</td><td>Within 90 days of cancellation order</td></tr>
+        <tr><td>Extension by AC/JC</td><td>Further 180 days</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">UIN: For UN agencies, embassies, etc. — for refund of taxes paid; granted within 3 WD</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">GSTIN = 15 digit: State code (2) + PAN (10) + Entity no. (2) + Check digit (1)</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">CTP: Register 5 days before + deposit estimated tax in advance | Max 90 days validity</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Bank details to be furnished within 30 days of RC or before GSTR-1 filing (whichever earlier)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 12 -->
+<div class="qr-panel" id="qr-panel-12">
+<div class="qr-chapter" style="border-left-color:#00A86B">
+  <div class="qr-ch-head" style="background:#003d22;color:#b3ffe0">Ch 12 — Tax Invoice, Debit Note &amp; Credit Note (Sec 31–34)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#00A86B">Invoice Issuance Timing</div>
+      <table class="rate-table">
+        <tr><th>Supply Type</th><th>SOG Invoice Timing</th><th>SOS Invoice Timing</th></tr>
+        <tr><td>Normal supply</td><td>Before/at time of removal (with movement) or delivery</td><td>Within 30 days of supply (45 for banks)</td></tr>
+        <tr><td>Continuous supply</td><td>On/before successive statement or payment</td><td>On/before due date or payment receipt — whichever earlier</td></tr>
+        <tr><td>Sale/return basis</td><td>Before/at approval OR 6 months from removal — earlier</td><td>—</td></tr>
+        <tr><td>Cessation of services</td><td>—</td><td>At time of cessation (to extent supplied)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">E-Invoice Applicability</div>
+      <table class="rate-table">
+        <tr><th>Turnover Threshold</th><th>Applicability</th></tr>
+        <tr><td>Agg. T/O &gt; ₹5 Crore (any PFY from 2017-18)</td><td>E-Invoice MANDATORY for B2B + exports + DN/CN</td></tr>
+        <tr><td>Upto ₹5 Crore</td><td>E-Invoice NOT mandatory</td></tr>
+        <tr><td>IRN = Invoice Reference Number</td><td>64-character unique number from IRP portal</td></tr>
+        <tr><td>Cancellation of IRN</td><td>Within 24 hours on IRP portal</td></tr>
+        <tr><td>Exemptions from E-Invoice</td><td>SEZ units, Insurance, Banks, NBFC, GTA, Passenger transport, Multiplex, ISD, Govt</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#00A86B">HSN Code &amp; QR Code Requirements</div>
+      <table class="rate-table">
+        <tr><th>Turnover</th><th>B2B HSN</th><th>B2C HSN</th><th>QR Code</th></tr>
+        <tr><td>Upto ₹5 Cr</td><td>4-digit</td><td>4-digit (optional)</td><td>Not required</td></tr>
+        <tr><td>&gt;₹5 Cr</td><td>6-digit</td><td>6-digit</td><td>B2C: if &gt;₹500 Cr</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#00A86B;margin-top:8px">Credit Note Time Limits</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Rule</th></tr>
+        <tr><td>Declare credit note</td><td>Earlier of: 30th Nov following FY OR Annual return date</td></tr>
+        <tr><td>Effect on output tax</td><td>Reduce in month of issue</td></tr>
+        <tr><td>Restriction</td><td>Cannot reduce if recipient has NOT reversed ITC; or burden passed on</td></tr>
+        <tr><td>Debit note</td><td>NO time limit for issuance; declared in return of month issued</td></tr>
+        <tr><td>Single CN/DN</td><td>Can address multiple invoices</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Receipt Voucher: On receiving advance | if rate unknown = 18% | if nature unknown = inter-State</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Refund Voucher: If advance taken but no supply made and no invoice issued</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Self Invoice + Payment Voucher: Recipient must issue within 30 days of URP supply (Rule 47A)</span>
+    <span class="qr-pill" style="background:#003d22;color:#b3ffe0">Bill of Supply: Composition dealers + Exempt supplies (no GST charged)</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 13 -->
+<div class="qr-panel" id="qr-panel-13">
+<div class="qr-chapter" style="border-left-color:#0066CC">
+  <div class="qr-ch-head" style="background:#003366;color:#cce0ff">Ch 13 — Accounts, Records &amp; E-Way Bill (Sec 35–36, Sec 68)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Retention of Records — Sec 36</div>
+      <table class="rate-table">
+        <tr><th>Situation</th><th>Period</th></tr>
+        <tr><td>Normal retention</td><td>72 months from due date of Annual Return</td></tr>
+        <tr><td>Subject matter of appeal/revision</td><td>LATER of: 1 year after final disposal OR 72 months from AR due date</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">E-Way Bill — Key Rules</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Detail</th></tr>
+        <tr><td>Mandatory threshold</td><td>Consignment value &gt; ₹50,000</td></tr>
+        <tr><td>Inter-State movement</td><td>EWB mandatory irrespective of value</td></tr>
+        <tr><td>Validity — Normal goods</td><td>1 day for upto 200 km; +1 day per additional 200 km</td></tr>
+        <tr><td>Validity — Over-dimensional cargo</td><td>1 day for upto 20 km; +1 day per additional 20 km</td></tr>
+        <tr><td>Extension of validity</td><td>Within 8 hours before expiry</td></tr>
+        <tr><td>Cancellation</td><td>Within 24 hours (cannot cancel if verified in transit)</td></tr>
+        <tr><td>Part B optional</td><td>Distance ≤ 50 km within State (POB to transporter / vice versa)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#0066CC">Goods NOT Requiring EWB</div>
+      <table class="rate-table">
+        <tr><th>Category</th></tr>
+        <tr><td>Non-taxable goods, Currency, Jewellery &amp; precious stones (except imitation)</td></tr>
+        <tr><td>Postal/baggage/personal effects</td></tr>
+        <tr><td>Empty cargo containers</td></tr>
+        <tr><td>Non-motorised vehicle transport</td></tr>
+        <tr><td>Movement under Ministry of Defence</td></tr>
+        <tr><td>Exempt goods (except de-oiled cake)</td></tr>
+        <tr><td>Supply under Schedule III (non-GST)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#0066CC;margin-top:8px">Rule 138E — EWB Restriction</div>
+      <div class="qr-pills">
+        <span class="qr-pill" style="background:#003366;color:#cce0ff">Part A of EWB cannot be furnished if: Composition — 2 consecutive TPs not filed | Others — 2 consecutive TPs (monthly/quarterly) returns not filed | Registration suspended</span>
+      </div>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Transporter — multiple consignments: Can generate consolidated EWB (EWB-02)</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Person in charge of conveyance must carry: Invoice/Challan + EWB (physical or EWB no. or RFID)</span>
+    <span class="qr-pill" style="background:#003366;color:#cce0ff">Acceptance/Rejection by recipient: Within 72 hours or before delivery (earlier) else deemed acceptance</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 14 -->
+<div class="qr-panel" id="qr-panel-14">
+<div class="qr-chapter" style="border-left-color:#FF8C00">
+  <div class="qr-ch-head" style="background:#3d1a00;color:#ffe5b3">Ch 14 — Returns (Sec 37–45)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Return Due Dates Summary</div>
+      <table class="rate-table">
+        <tr><th>Form</th><th>Taxpayer</th><th>Frequency</th><th>Due Date</th></tr>
+        <tr><td>GSTR-1</td><td>Regular RP (monthly)</td><td>Monthly</td><td>11th of next month</td></tr>
+        <tr><td>GSTR-1A</td><td>Regular RP (amendment)</td><td>Monthly</td><td>After GSTR-1, before GSTR-3B</td></tr>
+        <tr><td>IFF</td><td>QRMP scheme — B2B only</td><td>Monthly (M1, M2)</td><td>13th of next month</td></tr>
+        <tr><td>GSTR-3B</td><td>Regular RP</td><td>Monthly</td><td>20th of next month</td></tr>
+        <tr><td>GSTR-4</td><td>Composition dealer</td><td>Annual</td><td>30th June of next FY</td></tr>
+        <tr><td>CMP-08</td><td>Composition dealer</td><td>Quarterly</td><td>18th of month after quarter</td></tr>
+        <tr><td>GSTR-5</td><td>NRTP</td><td>Monthly</td><td>13th of next month</td></tr>
+        <tr><td>GSTR-5A</td><td>OIDAR / Online money gaming</td><td>Monthly</td><td>20th of next month</td></tr>
+        <tr><td>GSTR-7</td><td>TDS deductor</td><td>Monthly</td><td>10th of next month</td></tr>
+        <tr><td>GSTR-8</td><td>ECO (TCS)</td><td>Monthly</td><td>10th of next month</td></tr>
+        <tr><td>GSTR-9</td><td>Regular RP</td><td>Annual</td><td>31st Dec of next FY</td></tr>
+        <tr><td>GSTR-9A</td><td>Composition dealer</td><td>Annual</td><td>31st Dec of next FY</td></tr>
+        <tr><td>GSTR-10</td><td>Cancelled registration</td><td>Final Return</td><td>Within 3 months of cancellation</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">QRMP Scheme — Payment Methods</div>
+      <table class="rate-table">
+        <tr><th>Method</th><th>M1 &amp; M2 Payment</th></tr>
+        <tr><td>Fixed Sum Method (FSM)</td><td>35% of tax paid in cash in preceding quarter (monthly scheme) OR 100% of last month's cash payment (quarterly scheme)</td></tr>
+        <tr><td>Self-Assessment Method (SAM)</td><td>Actual tax based on supplies and ITC; no fixed formula</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#FF8C00;margin-top:8px">Late Fee — Sec 47</div>
+      <table class="rate-table">
+        <tr><th>Return</th><th>Nil Return</th><th>Other</th></tr>
+        <tr><td>GSTR-1 / GSTR-3B (T/O ≤₹1.5Cr)</td><td>₹20/day (max ₹500)</td><td>₹50/day (max ₹2,000)</td></tr>
+        <tr><td>GSTR-1 / GSTR-3B (₹1.5Cr–₹5Cr)</td><td>₹20/day (max ₹500)</td><td>₹50/day (max ₹5,000)</td></tr>
+        <tr><td>GSTR-1 / GSTR-3B (T/O &gt;₹5Cr)</td><td>₹20/day (max ₹500)</td><td>₹50/day (max ₹10,000)</td></tr>
+        <tr><td>GSTR-4 (Composition, Nil)</td><td>₹20/day (max ₹500)</td><td>₹50/day (max ₹2,000)</td></tr>
+        <tr><td>GSTR-7 (TDS)</td><td>₹25/day (max ₹1,000)</td><td>₹25/day (max ₹1,000)</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="qr-pills" style="margin-top:8px">
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">GSTR-2B: Auto-generated statement of ITC; 14th of every month (based on supplier's GSTR-1/IFF)</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Annual return not required: OIDAR, CTP, NRTP, ISD, TDS/TCS persons | Agg T/O ≤₹2Cr optional</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">Rectification of error in GSTR-1 &amp; 3B: Earlier of 30th Nov of next FY OR annual return date</span>
+    <span class="qr-pill" style="background:#3d1a00;color:#ffe5b3">QRMP: Opt in from 1st day of 2nd month of preceding quarter to last day of 1st month of current quarter</span>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL TRICKS -->
+<div class="qr-panel" id="qr-panel-tricks">
+<div class="qr-chapter" style="border-left-color:#FF8C00">
+  <div class="qr-ch-head" style="background:#3D1A00;color:#FFD580">⚡ GST Memory Tricks &amp; Mnemonics</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Key Mnemonics</div>
+      <div class="qr-pills" style="flex-direction:column;gap:8px">
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">🧠 GTA exemptions = DROMNA: Defence, Relief, Organic manure, Milk/salt/grains, Newspapers, Agriculture produce</span>
+        <span class="qr-pill" style="background:#1a2200;color:#d4f0b0;padding:8px 12px;border-radius:8px;font-size:12px">🧠 Schedule III (Not Supply) = SECFAS: Services by employee, Courts, functions by Elected reps, Funeral, Actionable claims, Sale of land/completed building</span>
+        <span class="qr-pill" style="background:#003366;color:#cce0ff;padding:8px 12px;border-radius:8px;font-size:12px">🧠 ITC Utilisation = "IGST is the KING — uses all; CGST uses CGST first then IGST; SGST uses SGST first then IGST; CGST and SGST NEVER cross-utilise each other"</span>
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">🧠 Blocked ITC 17(5) = FACE-BMWHT: Food/beverages, Aesthetics (beauty/cosmetic), Club membership, Employee travel, Beauty treatment, Motor vehicle (passenger), Works contract (IP), Health services, Travel (LTC)</span>
+        <span class="qr-pill" style="background:#003d22;color:#b3ffe0;padding:8px 12px;border-radius:8px;font-size:12px">🧠 Composite vs Mixed: "COMPOSITE = NATURALLY BUNDLED (like train ticket includes meals) → Principal supply rate | MIXED = ARTIFICIALLY BUNDLED (gift basket) → HIGHEST rate item"</span>
+        <span class="qr-pill" style="background:#003366;color:#cce0ff;padding:8px 12px;border-radius:8px;font-size:12px">🧠 Schedule I Deemed Supply (no consideration) = PAST: Permanent transfer of assets (ITC availed), Agent-Principal (invoice in agent's name), Supply between related/distinct persons, Transfer of services from overseas related entity</span>
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">🧠 Export of Services (5 conditions) = SLPCS: Supplier in India, Location of recipient outside India, Place of Supply outside India, Consideration in Convertible foreign exchange, Supplier and recipient are not DDP</span>
+      </div>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#FF8C00">Quick Recall Numbers</div>
+      <div class="qr-pills" style="flex-direction:column;gap:8px">
+        <span class="qr-pill" style="background:#003d22;color:#b3ffe0;padding:8px 12px;border-radius:8px;font-size:12px">📌 TDS: ₹2.5L threshold | 2% rate | 10th of next month deposit | GSTR-7 return</span>
+        <span class="qr-pill" style="background:#003366;color:#cce0ff;padding:8px 12px;border-radius:8px;font-size:12px">📌 TCS: 0.5% IGST / 0.25% CGST+SGST | ECO collects | GSTR-8 by 10th</span>
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">📌 Interest: Delayed tax = 18% | Wrong ITC utilised = 18% | Both daywise</span>
+        <span class="qr-pill" style="background:#003d22;color:#b3ffe0;padding:8px 12px;border-radius:8px;font-size:12px">📌 ITC time limit: 30th Nov of next FY OR annual return — EARLIER</span>
+        <span class="qr-pill" style="background:#003366;color:#cce0ff;padding:8px 12px;border-radius:8px;font-size:12px">📌 Rule 37 (180 days): Pay supplier within 180 days or reverse ITC proportionately</span>
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">📌 EWB validity: 200 km = 1 day | Over-dimensional: 20 km = 1 day</span>
+        <span class="qr-pill" style="background:#003d22;color:#b3ffe0;padding:8px 12px;border-radius:8px;font-size:12px">📌 Registration: Apply within 30 days of liability | CTP: 5 days before + advance tax</span>
+        <span class="qr-pill" style="background:#003366;color:#cce0ff;padding:8px 12px;border-radius:8px;font-size:12px">📌 E-Invoice: ₹5 Cr threshold | IRN = 64 chars | Cancel within 24 hrs on IRP</span>
+        <span class="qr-pill" style="background:#3D1A00;color:#FFD580;padding:8px 12px;border-radius:8px;font-size:12px">📌 Credit Note deadline: 30th Nov of next FY or annual return — EARLIER | No time limit for Debit Note</span>
+        <span class="qr-pill" style="background:#003d22;color:#b3ffe0;padding:8px 12px;border-radius:8px;font-size:12px">📌 Records retention: 72 months from Annual Return due date</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- /summary-section -->
+
+<div class="footer">Made with 💚 for CA Inter May 2026 | <span>GST Flashcards — V'smart Academy Style</span></div>
+
+<script>
+// ══════════════════════════════════════
+// COLOR MAP
+// ══════════════════════════════════════
+const CM={
+  green :{bg:"#001a0e",border:"#00A86B",title:"#4dffb3",topicBg:"#003d22",topicTxt:"#b3ffe0",sub:"#99ffcc",dot:"#00A86B",trick:"#002211",trickTxt:"#80ffcc"},
+  blue  :{bg:"#00081a",border:"#0066CC",title:"#66aaff",topicBg:"#003366",topicTxt:"#cce0ff",sub:"#99c2ff",dot:"#0066CC",trick:"#001133",trickTxt:"#99ccff"},
+  teal  :{bg:"#001a14",border:"#00bfa0",title:"#4dffd4",topicBg:"#00332b",topicTxt:"#b3fff0",sub:"#80ffdd",dot:"#00bfa0",trick:"#001a11",trickTxt:"#80ffe6"},
+  amber :{bg:"#1a0d00",border:"#FF8C00",title:"#ffbb66",topicBg:"#3d1a00",topicTxt:"#ffe5b3",sub:"#ffcc88",dot:"#FF8C00",trick:"#2a1200",trickTxt:"#ffcc99"},
+  purple:{bg:"#0a001a",border:"#9933ff",title:"#cc88ff",topicBg:"#1a0033",topicTxt:"#e5ccff",sub:"#bb99ff",dot:"#9933ff",trick:"#0d001f",trickTxt:"#cc99ff"},
+  coral :{bg:"#1a0008",border:"#ff3366",title:"#ff99aa",topicBg:"#33001a",topicTxt:"#ffccdd",sub:"#ff99bb",dot:"#ff3366",trick:"#1a000d",trickTxt:"#ffaabb"},
+  skyblue:{bg:"#001a2a",border:"#33aaff",title:"#88ccff",topicBg:"#002244",topicTxt:"#cce5ff",sub:"#88ddff",dot:"#33aaff",trick:"#001122",trickTxt:"#99ddff"},
+  lime  :{bg:"#0d1a00",border:"#88cc00",title:"#ccff66",topicBg:"#1a3300",topicTxt:"#d4f0b0",sub:"#bbee88",dot:"#88cc00",trick:"#0a1100",trickTxt:"#ccee99"},
+  orange:{bg:"#1a0800",border:"#ff6600",title:"#ffaa66",topicBg:"#331100",topicTxt:"#ffd5b3",sub:"#ffbb88",dot:"#ff6600",trick:"#1a0600",trickTxt:"#ffbb99"},
+  red   :{bg:"#1a0000",border:"#cc2200",title:"#ff8888",topicBg:"#330000",topicTxt:"#ffcccc",sub:"#ff9999",dot:"#cc2200",trick:"#110000",trickTxt:"#ff9999"},
+};
+
+// ══════════════════════════════════════
+// CHAPTER 1 — BASIC CONCEPTS OF GST
+// ══════════════════════════════════════
+const CH1=[
+  {tp:"GST Basics",ch:1,col:"green",star:true,title:"What is GST? Concept &amp; Principles",bullets:["GST = Goods &amp; Services Tax | Broad-based Value Added Tax (VAT)","Destination-based tax: Tax goes to the state where goods/services are CONSUMED","Technically paid by suppliers but borne by consumers (burden passed on)","Collected at multiple stages of production &amp; distribution — INPUT TAX CREDIT available","GST is a tax on consumption from business sources, not personal/hobby activities","Under GST, ITC is provided throughout the value chain — eliminates cascading","Article 366(12A) defines GST: 'Any tax on supply of G/S except tax on Alcoholic Liquor for human consumption'","Art 246A: Concurrent power to Parliament AND State Legislatures to make GST laws","Art 269A: Parliament has EXCLUSIVE power to legislate IGST (inter-State)"],trick:"Trick: 'GST = Destination + Value-Added + Multi-stage with ITC | Alcoholic liquor = EXCLUDED from GST definition | Central gets IGST | Both get CGST/SGST!'"},
+  {tp:"GST Framework",ch:1,col:"blue",star:true,title:"CGST / SGST / IGST / UTGST — Framework",bullets:["CGST: Central Goods &amp; Services Tax Act 2017 | Levied by Central Govt | On Intra-State supply","SGST: State Goods &amp; Services Tax Act 2017 | Levied by State Govt | On Intra-State supply","UTGST: Union Territory GST Act 2017 | Levied by UT without legislature | On Intra-UT supply","IGST: Integrated GST Act 2017 | Levied by Central Govt | On Inter-State supply + Import","GST Cess: Compensation Cess Act 2017 | Central Govt | On notified goods/services (luxury + sin goods)","Rate structure: CGST Rate = SGST Rate (always equal) | IGST Rate = CGST + SGST","Intra-State: CGST 50% + SGST 50% of total GST | Inter-State: IGST 100%","Delhi, Puducherry, J&amp;K = UT WITH Legislature = SGST (not UTGST) + CGST/IGST applies"],trick:"Trick: 'CGST + SGST = Intra-State | IGST = Inter-State | UTGST only for UTs WITHOUT legislature | Andaman, Lakshadweep, Ladakh, Chandigarh, Daman &amp; Diu, Dadra &amp; NH = UTGST!'"},
+  {tp:"Taxes Subsumed",ch:1,col:"teal",star:true,title:"Taxes Subsumed in GST &amp; Taxes NOT Subsumed",bullets:["CENTRAL TAXES SUBSUMED: Central Excise Duty, Additional Excise Duty, Excise Duty (Medicinal/Toiletries), Additional Customs Duty (CVD), Service Tax, Surcharges &amp; Cesses, Central Sales Tax","STATE TAXES SUBSUMED: State VAT/Sales Tax, Central Sales Tax, Purchase Tax, Entertainment Tax (non-local body), Luxury Tax, Entry Tax (all forms), Taxes on lottery/betting/gambling, Surcharges &amp; Cesses","TAXES NOT SUBSUMED (still continue): 1) Property Tax &amp; Stamp Duty 2) Electricity Duty 3) Excise Duty on Alcohol 4) Basic Customs Duty 5) Excise Duty on Petrol/Diesel","Entertainment Tax by State Govt = Subsumed in GST | Entertainment Tax by LOCAL BODY = NOT subsumed (continues)","Petroleum products + Alcoholic liquor = OUTSIDE GST levy (still VAT/Excise)","Tobacco products = BOTH Central Excise + GST applicable (manufacture + supply)"],trick:"Trick: 'Entertainment Tax: State ET = Gone in GST | Local body ET = Stays! | PASTA = Property/Alcohol/Stamp/Basic customs/ATF&amp;Petrol — NOT subsumed | Tobacco = Double taxation (Excise + GST)'"},
+  {tp:"ITC Utilisation",ch:1,col:"amber",star:true,title:"Manner of ITC Utilisation — Sec 49(5) + 49A + 49B",bullets:["IGST ITC: Use against IGST FIRST; remaining can be used against CGST (any) OR SGST/UTGST (any)","CGST ITC: Use against CGST FIRST; remaining ONLY against IGST (SECOND); NEVER against SGST","SGST/UTGST ITC: Use against SGST/UTGST FIRST; remaining ONLY against IGST (SECOND); NEVER against CGST","MANDATORY ORDER: Must exhaust IGST ITC first before using CGST/SGST ITC — Sec 49A","RESTRICTION: CGST CANNOT be used for SGST/UTGST payment and vice versa — Sec 49B","Sec 49(7): E-cash ledger can pay: Tax (output/RCM) + Interest + Penalty + Late fee + Other dues","E-credit ledger: ONLY for output tax — CANNOT pay RCM, interest, penalty, late fee"],trick:"Trick: 'IGST is the KING — Can go anywhere (IGST→CGST/SGST/IGST) | CGST = CGST first, then IGST only | SGST = SGST first, then IGST only | CGST &amp; SGST NEVER cross! | Cross credit = ZERO MARKS in exam!'"},
+  {tp:"Benefits of GST",ch:1,col:"lime",star:false,title:"Benefits of GST &amp; GST Council",bullets:["1) Creation of Unified National Market — one India, one tax","2) Mitigating Cascading Effect — ITC available on all inputs","3) Elimination of multiple taxes and double taxation","4) Promotes 'Make in India' initiative — export competitive","5) Increases overall revenue of Government","GST COUNCIL: Constitutional body u/s 279A | Chaired by Union Finance Minister","Members: Central Govt + Finance Ministers of all States/UTs","Recommendations: Taxes to be subsumed, Exemptions, GST Model Laws, Threshold limits, Rates, Special provisions for special category states, Special rates for natural calamity","Special Category States: Arunachal Pradesh, Assam, J&amp;K, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura, Himachal Pradesh, Uttarakhand (11 states)"],trick:"Trick: 'GST Council = FM chairs + All State FMs | MEUTHER = Market unification, Eliminate cascade, Uniform tax, Tax revenue increase, Hinder double tax, Export boost, Remove cascading | 11 Special Category States = HAMM SNAT!'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 2 — CONCEPT OF SUPPLY
+// ══════════════════════════════════════
+const CH2=[
+  {tp:"Supply — Sec 7",ch:2,col:"blue",star:true,title:"What is Supply? — Sec 7 Definition",bullets:["Supply INCLUDES [Sec 7(1)(a)]: ALL forms of supply — Sale, Transfer, Barter, Exchange, Licence, Rental, Lease, Disposal","Conditions: FOR CONSIDERATION + IN COURSE or FURTHERANCE OF BUSINESS","7(1)(b): Import of Services — for consideration, whether or not in course of business","7(1)(aa): Activities by club/association/society to its members for cash/deferred payment/other consideration","7(1)(c): DEEMED SUPPLY — Supply without consideration as per Schedule I (4 situations)","Supply EXCLUDES [Sec 7(2)(a)]: Activities in Schedule III — neither goods nor services","7(2)(b): Activities notified by Govt (e.g., Panchayat/Municipality services u/s 243G/243W, Liquor license by SG)"],trick:"Trick: 'Supply 7(1)(a) = STBLERD: Sale, Transfer, Barter, Licence, Exchange, Rental, Disposal | For consideration + Business purpose | Import of services = Without business purpose also supply | Club to member = Supply!'"},
+  {tp:"Schedule I — Deemed Supply",ch:2,col:"green",star:true,title:"Schedule I — Supply Without Consideration (4 Situations)",bullets:["Para 1: Permanent transfer/disposal of BUSINESS ASSETS where ITC has been availed on such assets","Para 2: Supply between RELATED PERSONS or DISTINCT PERSONS in course/furtherance of business | Gift to employee ≤ ₹50,000 in FY = NOT a supply (proviso)","Para 3: Supply of goods by Principal to Agent (selling agent — invoice in agent's name) OR Agent to Principal (buying agent — invoice in agent's name)","Para 4: Import of Services from RELATED PERSON outside India or from own establishment outside India, in course/furtherance of business","DISTINCT PERSONS (Sec 25(4)): Same person with multiple registrations (in same or different State) = Each registration = Distinct person","DISTINCT PERSONS (Sec 25(5)): Same PAN but establishment in different State = Distinct persons","NOTE: Free import services from non-related, non-DDP foreign entity = NOT supply"],trick:"Trick: 'Schedule I = PAST: Permanent asset transfer (ITC availed), Agent-Principal supply (invoice in agent name), Supply between Related/Distinct persons, Transfer from overseas related entity | Para 2 proviso: Gift ≤₹50K = NOT supply!'"},
+  {tp:"Schedule II — SOG vs SOS",ch:2,col:"teal",star:true,title:"Schedule II — Activity Treated as Supply of Goods or Services",bullets:["Para 1: TRANSFER — Transfer of title in goods = SOG | Transfer of right without title transfer = SOS | Transfer on future date (Hire Purchase) = SOG","Para 2: LAND &amp; BUILDING — Any lease/tenancy/licence to occupy land = SOS | Lease of building for commerce = SOS | Sale of land = NOT supply (Sch III) | Sale of BUILDING BEFORE CC/1st occupancy = SOS (Para 5(b))","Para 3: TREATMENT/PROCESS — Job work on another person's goods = SOS","Para 4: TRANSFER OF BUSINESS ASSETS — Permanent transfer = SOG | Temporary transfer for private use = SOS","Para 5: ALWAYS SOS — Renting IP, Construction of complex for sale (before CC), Temporary transfer of IPR, Development of IT software, Agreeing to tolerate/refrain/do an act, Transfer of right to use goods","Para 6: COMPOSITE SUPPLY treated as SOS — Works contract (labour + material) = SOS | Restaurant/catering service = SOS"],trick:"Trick: 'Para 5 Always SOS = RADICAL: Renting IP, Agreement to tolerate (NCA), Development of software, IT software, Construction (pre-CC), Leasing goods | Works contract = SOS always | Restaurant = SOS!'"},
+  {tp:"Composite &amp; Mixed Supply",ch:2,col:"amber",star:true,title:"Composite Supply vs Mixed Supply — Sec 8",bullets:["COMPOSITE SUPPLY [Sec 2(30)]: Two or more taxable supplies NATURALLY BUNDLED and supplied in conjunction in ordinary course of business — one of which is PRINCIPAL SUPPLY","RULE: Tax at rate applicable to PRINCIPAL SUPPLY","Illustration: Goods + packing + transport + insurance — all naturally bundled — SOG is principal supply","MIXED SUPPLY [Sec 2(74)]: Two or more individual supplies made in conjunction for SINGLE PRICE that does NOT constitute composite supply","RULE: Tax at rate applicable to supply attracting HIGHEST RATE OF TAX","Illustration: Package of canned food + sweets + chocolates + dry fruits + aerated drinks = Mixed supply (each can be sold separately)","Key test: Natural bundle? → Composite | Artificial bundle for single price? → Mixed | Each sold separately? → Mixed","If supply is partly taxable and partly exempt = Sec 17(2) ITC restriction"],trick:"Trick: 'COMPOSITE = NATURALLY tied together (airline ticket WITH meal) → Principal supply rate | MIXED = Put together ARTIFICIALLY for single price → HIGHEST rate | Ask: Can items be sold separately easily? YES = Mixed!'"},
+  {tp:"Consideration — Sec 2(31)",ch:2,col:"skyblue",star:false,title:"Consideration — Definition &amp; Inclusions/Exclusions",bullets:["Consideration [Sec 2(31)] = Any payment made/agreed (in money or otherwise) by supplier OR any other person OR monetary value of any act/forbearance in respect of / response to / for inducement of the supply","Includes: Monetary payment + non-monetary payment + deferred payment","EXCLUDES: 1) Subsidy given by CG/SG | 2) Deposits unless supplier treats as consideration","Zero consideration = Gift, donation (BUT check Schedule I — related person supply = deemed supply even without consideration)","Advance received = Consideration received = Supply may be triggered (check TOS)","Subsidies: CG/SG subsidy not included in value | Other subsidies linked to price = INCLUDED in value"],trick:"Trick: 'Consideration = Money + Money's worth + Forbearance in response to supply | Govt subsidy = EXCLUDE from value | Third party payment (buyer's parent pays) = STILL consideration | Deposits = Not consideration unless applied as such!'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 3 — RCM & ECO
+// ══════════════════════════════════════
+const CH3=[
+  {tp:"RCM — Sec 9(3)",ch:3,col:"green",star:true,title:"Reverse Charge Mechanism — Sec 9(3) Key Services",bullets:["Under RCM: RECIPIENT of supply is liable to pay GST (not supplier)","GTA (Goods Transport Agency): If GTA does NOT opt forward charge = RCM @ 5% payable by Registered Person recipient | If GTA to URP = Exempt | If GTA to notified URP categories (factory, society, body corporate, CTP, etc.) = RCM applicable","LEGAL SERVICES: Advocate/firm of advocates to business entity = RCM on business entity | To non-business entity = Exempt | Senior advocate = RCM on recipient (option for forward charge available)","GOVT SERVICES: Any service by Govt/LA to business entity (except specified exemptions) = RCM on business entity","DIRECTOR: Services by director to company = RCM on company (not employment services where TDS u/s 192)","INSURANCE AGENT: Service by insurance agent to insurance company = RCM on insurer","SECURITY SERVICES (non-corporate supplier to RP): RCM on registered recipient"],trick:"Trick: 'GTA + Legal + Govt + Director + Insurance Agent + Security = KEY RCM services | Remember: Under RCM, RECIPIENT pays but gets ITC! | GTA FC opt = 18% with ITC or 5% without ITC (declare on invoice) | Director employment = NOT RCM (Sch III)'"},
+  {tp:"ECO — Sec 9(5)",ch:3,col:"blue",star:true,title:"E-Commerce Operator Liability — Sec 9(5)",bullets:["ECO [Sec 2(45)] = Person owning/operating/managing digital/electronic facility for e-commerce","Sec 9(5): If notified services supplied THROUGH ECO — ECO is liable to pay tax (as if ECO is the supplier)","Entry (a): Passenger transport by cab/motor vehicle through ECO — ECO liable | Exception: If supplier is a COMPANY → Supplier pays | Omnibus (all cases) → ECO pays","Entry (d): Restaurant service (other than specified premises) through ECO → ECO pays | Exception: If restaurant in specified premises (room rent &gt;₹7,500) → Restaurant (supplier) pays","Entries (b), (c), (e): Hotel accommodation (inn etc.), Housekeeping (plumbing etc.), Local delivery services through ECO → ECO pays","If supplier NOT liable for registration + supply through ECO → ECO liable | If supplier liable for registration + supply through ECO → Supplier liable (for b/c/e)","If ECO has no physical presence in India → Representative liable | No rep either → Appoint person as liable"],trick:"Trick: 'Sec 9(5) = ECO becomes tax payer for notified services | Cab: Non-company supplier through ECO → ECO pays | Company driver's cab → Company pays | Restaurant → ECO pays (unless in luxury hotel) | Accommodation/Housekeeping/Local delivery through ECO → ECO pays!'"},
+  {tp:"RCM — Sec 9(4)",ch:3,col:"amber",star:true,title:"Sec 9(4) — Purchases from Unregistered Persons",bullets:["Sec 9(4): Tax liability on REGISTERED RECIPIENT for specified purchases from UNREGISTERED PERSONS","CURRENTLY applicable to: PROMOTERS in construction sector only","Construction Sector RCM [Sec 9(4)]:","1) Cement purchased by PROMOTER from URP = 100% RCM on Promoter","2) Capital goods purchased by PROMOTER from URP = 100% RCM on Promoter","3) Value of inputs and input services purchased from REGISTERED SUPPLIER is less than 80% of total inputs = RCM on PROMOTER for shortfall | Calculate: 80% of total inputs — purchases from RP = Amount subject to RCM | Rate = 18% (as if cement supplied by URP unless otherwise notified)","PROMOTER CANNOT avail ITC on RCM paid on composition supplies (cement at composition rate)","This ensures promoters don't avoid GST by buying from unregistered suppliers"],trick:"Trick: '9(4) = Promoter + Construction = RCM trigger! | Cement from URP = 100% RCM | Capital goods from URP = 100% RCM | RP purchases &lt; 80% = Pay RCM on shortfall at 18% | Think of 80% as minimum threshold for registered purchases'"},
+  {tp:"GTA — Forward vs Reverse Charge",ch:3,col:"teal",star:true,title:"GTA — Forward Charge vs Reverse Charge Options",bullets:["GTA = Goods Transport Agency (issues consignment note for road transport)","OPTION 1 — REVERSE CHARGE (Default): GTA doesn't opt FC → Recipient RP pays @ 5% without ITC | GTA to URP (non-notified categories, e.g., individual HUF Trust) = EXEMPT","OPTION 2 — FORWARD CHARGE (Optional): GTA opts to pay tax under FC → Must register + file declaration + issue Tax Invoice mentioning FC","FC RATES: With ITC = 18% | Without ITC = 5% | Default = GTA to RP under RCM = 5%","NOTIFIED URP categories (where RCM applies even though URP): 1) Factory 2) Society 3) Co-operative society 4) Body corporate 5) Partnership firm/LLP/AOP 6) CTP","GTA to Govt/LA/Govt Agencies (registered ONLY for TDS) = No FCM, No RCM = EXEMPT","NOTE: Once GTA opts FC in a FY, it continues unless declaration filed in 4th quarter of PFY to switch back to RCM"],trick:"Trick: 'GTA default = RCM @5% on RP recipient | Notified URP (FSCBPC) = Factory, Society, Co-op, Body corporate, Partnership, CTP → also RCM even though URP | GTA to Govt only for TDS = EXEMPT | GTA opts FC = 5% (no ITC) or 18% (with ITC) + Tax Invoice with FC declaration'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 4 — COMPOSITION SCHEME (hp)
+// ══════════════════════════════════════
+const CHHP=[
+  {tp:"Composition Scheme — Basics",ch:"hp",col:"green",star:true,title:"Composition Scheme — Sec 10(1)/(2) Overview",bullets:["Optional scheme for SMALL dealers — pay tax at flat rates, no ITC","APPLICABILITY: Manufacturer + Trader + Catering/Restaurant | Sec 10(1)/(2)","ELIGIBILITY: Aggregate T/O of PFY does not exceed ₹1.5 Crore (₹75 Lakh for Special Category States including Assam, HP, J&amp;K)","RATES: Manufacturer = 1% | Catering/Restaurant = 5% | Trader = 1% (on taxable SOG only)","MARGINAL SERVICES: Manufacturer/Trader may supply services upto 10% of T/O in State of PFY OR ₹5 Lakhs (whichever is HIGHER)","LAPSE: If Agg T/O in CFY exceeds ₹150L/75L → Composition levy lapses from that date","KEY: Cannot collect tax on outward supply | Cannot issue Tax Invoice (issue Bill of Supply) | Cannot avail ITC | Cannot make inter-State outward supply"],trick:"Trick: 'Composition = Small dealer, flat rate, no ITC, no inter-State, no tax collection | 1%=Mfr/Trader | 5%=Restaurant | ₹1.5Cr limit | 75L for SCS | Marginal service = 10% of State T/O or ₹5L (higher) | ALL GSTINs on same PAN must choose same scheme!'"},
+  {tp:"Composition Sec 10(2A)",ch:"hp",col:"blue",star:true,title:"Composition Scheme for Service Providers — Sec 10(2A)",bullets:["Sec 10(2A): Special composition for persons NOT eligible under Sec 10(1)/(2)","APPLICABLE TO: (a) Person engaged in SOS | (b) Manufacturer/Trader/Caterer where service is PRE-DOMINANT","ELIGIBILITY: Agg T/O in PFY does not exceed ₹50 Lakhs","RATE: 3% CGST + 3% SGST = 6% on T/O in State (including T/O of SOG + SOS)","RESTRICTIONS (same as 10(1)/(2)): No inter-State supply, No ECO supply (TCS), Not a manufacturer of notified goods, Neither CTP nor NRTP","EXCLUSION: Not engaged in non-taxable supply","Sec 10(2A) conditions: Not applicable for conditions a, b, c, d of Sec 10(1) but same spirit","All GSTINs with same PAN must choose same scheme"],trick:"Trick: '10(2A) = Service provider Composition | ₹50L limit (less than 10(1) limit of ₹1.5Cr) | 6% rate (higher than goods — 1%) | Think: Services = 50 lakhs limit, 6% rate | Cannot be used if already eligible u/s 10(1)/(2)'"},
+  {tp:"Composition — Returns &amp; Procedure",ch:"hp",col:"amber",star:false,title:"Composition Scheme — Returns, Procedure &amp; Intimation",bullets:["RETURN: GSTR-4 — ANNUALLY — due by 30th June of following FY | GSTR-9A — Annual return — due by 31st Dec","QUARTERLY STATEMENT: Form CMP-08 — by 18th of month following the quarter | For payment of self-assessed tax","INTIMATION: URP opting composition = Part B of FORM GST REG-01 (deemed intimation)","Already RP opting = Electronic intimation in CMP-02 BEFORE commencement of FY","Any intimation for one state = Deemed for all GSTINs on same PAN","VALIDITY: Continues till conditions u/s 10(2)/(2A) / Rule-5 are fulfilled","WITHDRAWAL: File CMP-04 within 7 days if ceases to fulfill conditions | Voluntary opt-out = CMP-04 before withdrawal | After withdrawal = issue tax invoice + avail ITC on stock"],trick:"Trick: 'CMP = CMP-08 (quarterly statement 18th) + CMP-02 (opt in before FY) + CMP-04 (opt out 7 days) | GSTR-4 Annual by 30 June | After opt-out = Back to normal scheme with ITC on stock allowed | Think CMP as Composition forms!'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 5 — TIME OF SUPPLY
+// ══════════════════════════════════════
+const CH4=[
+  {tp:"TOS — SOG Forward Charge",ch:4,col:"green",star:true,title:"Time of Supply for SOG — Sec 12(2) Forward Charge",bullets:["TOS for SOG (Forward Charge) = EARLIER of: (1) Date of ISSUE OF INVOICE or (2) LAST DATE of issue of invoice","LAST DATE OF INVOICE for SOG: Date of removal (where supply involves movement) OR date of delivery/availability (other cases)","NOTE: As per N/N 66/2017, TOS for goods is NOT on date of receipt except for SPECIFIED ACTIONABLE CLAIMS","SPECIFIED ACTIONABLE CLAIMS (Sch I Goods): TOS = EARLIEST of: 1) Date of invoice 2) Last date of invoice 3) Date of RECEIPT OF PAYMENT","Continuous Supply of Goods: Invoice before/at time of each successive statement OR each payment — whichever EARLIER","Supply on Sale or Return: Invoice at time of approval OR within 6 months from removal — whichever EARLIER","If invoice not issued by last date = TOS = date of receipt of goods by recipient (safety provision)"],trick:"Trick: 'SOG TOS = Earlier of Invoice date OR Last date (removal/delivery) | NOT receipt date for normal goods | Specified actionable claims = Add receipt date to the options | Continuous supply = Each statement or payment, whichever earlier'"},
+  {tp:"TOS — SOS Forward Charge",ch:4,col:"blue",star:true,title:"Time of Supply for SOS — Sec 13(2) Forward Charge",bullets:["TOS for SOS (FC) = EARLIER of: (1) Date of invoice (if issued timely) OR Date of receipt of payment","(a) Invoice issued within time: EARLIER of Invoice date OR Date of RECEIPT of payment","(b) Invoice NOT issued within prescribed time: EARLIER of Date of COMPLETION of service OR Date of receipt of payment","(c) If TOS cannot be determined by (a) or (b): Date when RECIPIENT SHOWS RECEIPT OF SERVICE in books","Continuous Supply of Services: Invoice on/before due date of payment (if ascertainable) OR date of receipt | If event-based = last date of event","Cessation of Services: Invoice at time of cessation to extent of supply made","Payment up to ₹1,000 in EXCESS of invoice: Supplier option — TOS = Invoice date of next invoice where payment adjusted"],trick:"Trick: 'SOS TOS = Invoice vs Receipt, whichever earlier | Invoice not issued in time? = Completion vs Receipt earlier | Event-based continuous = Last date of event | ₹1,000 extra margin = Defer to next invoice at supplier's option'"},
+  {tp:"TOS — RCM",ch:4,col:"teal",star:true,title:"Time of Supply under RCM — Sec 12(3) &amp; 13(3)",bullets:["SOG RCM [Sec 12(3)]: TOS = EARLIEST of: (a) Date of RECEIPT of goods (b) Date of PAYMENT (c) 31st day from SUPPLIER'S INVOICE | If none determinable = Date of entry in books of recipient","SOS RCM [Sec 13(3)]: TOS = EARLIEST of: (a) Date of PAYMENT (b) 61st day from SUPPLIER'S INVOICE (c) Date of invoice issued by RECIPIENT (self invoice) | If none = Date of entry in books","ASSOCIATED ENTERPRISES (overseas supplier) [2nd Proviso Sec 13(3)]: TOS = EARLIER of: Entry in books of recipient OR Date of payment","Note: For SOG RCM = 31st day | For SOS RCM = 61st day | KEY DIFFERENCE!","Note: Date of payment = Date of book entry (debit in books) OR Bank debit — whichever EARLIER","Note: Date of receipt of payment = Date of book entry (credit) OR Bank credit — whichever EARLIER"],trick:"Trick: 'RCM TOS: SOG = 31st day | SOS = 61st day | SOG has extra: Receipt of goods | All options: take EARLIEST | Books of accounts = Safety net if others can't be determined | Associated Enterprise abroad = Books or payment, earlier'"},
+  {tp:"TOS — Special Cases",ch:4,col:"amber",star:false,title:"TOS — Interest, Penalties, Residual &amp; Spectrum",bullets:["INTEREST / LATE FEE / PENALTY on delayed payment: TOS = Date on which supplier RECEIVES such addition in value","RESIDUAL CASES [Sec 12(5) / 13(5)]: If TOS cannot be determined by any other provision = (a) If periodical return is to be filed = Date of filing that return | (b) Other cases = Date of PAYMENT of tax","TELECOM SPECTRUM SERVICES: Deferred payment spectrum = Continuous SOS | Invoices by payment due date per contract | Full upfront: TOS = payment made/due (earlier) | Deferred: TOS with each instalment when due or paid (earlier)","ROAD CONSTRUCTION (NHAI HAM Model): If invoice on time = TOS = earlier of invoice date OR payment receipt date | If invoice NOT on time = TOS = earlier of service provision date OR payment receipt date","VOUCHERS (SOG determinable): TOS = Date of issue of voucher | Vouchers (SOG not determinable): TOS = Date of REDEMPTION"],trick:"Trick: 'Interest/Penalty = TOS when RECEIVED by supplier (not when incurred) | Residual = Return date or tax payment date | Voucher GOD (Goods determinable = date of Issue) vs Voucher GND (Not determinable = date of Redemption) | Spectrum = Continuous SOS = each instalment's due/paid date'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 6 — VALUE OF SUPPLY
+// ══════════════════════════════════════
+const CH6=[
+  {tp:"Value — Sec 15(1)",ch:6,col:"green",star:true,title:"Value of Supply — Sec 15(1) Transaction Value",bullets:["VALUE OF SUPPLY = TRANSACTION VALUE = Price ACTUALLY PAID or PAYABLE for the supply of goods or services","TWO CONDITIONS for TV to be valid: 1) Supplier and recipient are NOT RELATED PERSONS | 2) Price is the SOLE CONSIDERATION for the supply","If conditions not met = Value as per Rules 27–35 (Open Market Value / Cost + 10% / Comparable transaction etc.)","RELATED PERSONS [as per explanation to Sec 15]: Officers/directors of each other, Legal partners, Employer-employee, 25%+ voting control, Direct/indirect control, Same family, Sole agent/distributor","FAMILY [Sec 2(49)]: Spouse + Children + Parents + Grandparents + Brothers/Sisters (if wholly/mainly dependent)","DISTINCT PERSONS: Multiple registrations on same PAN = Distinct persons for GST purposes","PRICE INCLUSIVE OF GST: VOS = Price × 100/(100+Rate) | GST = Price × Rate/(100+Rate)"],trick:"Trick: 'Transaction Value = Valid when NOT RELATED + Price = SOLE consideration | Related persons test: Control/Directors/Partners/25%+/Same family/Sole agent | Price inclusive of GST? Divide by (100+rate) to get base value | ₹118 at 18% → ₹100 value + ₹18 GST'"},
+  {tp:"Value — Sec 15(2) Inclusions",ch:6,col:"blue",star:true,title:"Inclusions in Transaction Value — Sec 15(2)(a to e)",bullets:["(a) TAXES, DUTIES, FEES under any other law charged by seller = INCLUDED | EXCEPT: GST itself (CGST/SGST/IGST/UTGST/Cess) is excluded","(b) 3RD PARTY PAYMENTS: Any amount supplier is liable to pay for supply but paid by recipient and NOT included in price = INCLUDE (e.g., supplier's freight paid by buyer)","(c) INCIDENTAL EXPENSES: Commission, packing, labelling, designing, royalty, warranty charges, insurance, dharmada, freight (if separately charged), erection/installation charges, PDI charges — ALL INCLUDED if charged at/before delivery","(d) INTEREST, LATE FEE, PENALTY for DELAYED PAYMENT of consideration for supply = INCLUDED in VOS | Rate based on original supply rate | TOS = When received","(e) SUBSIDY directly linked to price EXCEPT subsidy given by CG/SG = INCLUDED | Govt subsidy = EXCLUDED | Other subsidy = INCLUDED"],trick:"Trick: 'TIPIS = Tax(other laws), Incidentals, 3rd party payment, Interest/penalty on delay, Subsidy (non-govt) — ALL INCLUDED | BUT: GST itself + Govt subsidy = EXCLUDED | Remember: TCS under IT Act is NOT included in GST value (Circular)'"},
+  {tp:"Value — Sec 15(3) Discounts",ch:6,col:"teal",star:true,title:"Discounts — Sec 15(3) Deduction from Value",bullets:["(a) PRE-SUPPLY DISCOUNT (given before or at time of supply): Always DEDUCTIBLE if RECORDED IN INVOICE","(b) POST-SUPPLY DISCOUNT (after supply — volume/year-end): DEDUCTIBLE only if: (i) Agreed at time of supply AND (ii) Linked to invoice (specific invoices identified) AND (iii) ITC reversed by recipient proportionately","STAGGERED DISCOUNT (Buy more, save more): Usually shown on invoice = deductible","PERIODIC/YEAR-END VOLUME DISCOUNT: Not on invoice; deductible subject to Sec 15(3)(b) conditions + ITC reversal by recipient","SECONDARY DISCOUNT (not known at TOS, not agreed): NOT deductible at all (cannot issue credit note that reduces output tax liability)","Circular 251/2025: ITC on Discounts via financial/commercial credit notes — NO ITC reversal required for such notes","CA/CMA certificate: Required to confirm ITC reversal for post-supply discounts [Cir. 212/6/2024]"],trick:"Trick: 'Pre-supply on invoice = Always deduct | Post-supply = 3 conditions: Agreed+Invoice-linked+ITC reversed by recipient | Secondary discount = NO deduction, NO credit note for tax adjustment | Staggered = On invoice = Deductible | Volume = Year end = Sec 15(3)(b) conditions apply'"},
+  {tp:"Value — Important Clarifications",ch:6,col:"amber",star:true,title:"Value of Supply — Circulars &amp; Special Cases",bullets:["NO CLAIM BONUS (NCB) by Insurance Co: NOT a supply | IS a deductible discount from premium [Cir 186/2022]","PURE AGENT: Supplier incurs expenditure on behalf of recipient, recovers on ACTUAL basis = EXCLUDE from value | Conditions: 1) Acts as agent 2) Procures supply from 3rd party 3) Recipient authorises 4) Recipient is liable to pay 3rd party 5) Expense separately shown in invoice","ELECTRICITY as Pure Agent: Real estate owners/developers/RWAs supplying as pure agent = NOT included in value","EXTENDED WARRANTY (EW) [Cir 216/2024]: Opted at time of SOG = Composite supply (SOG is principal) | After supply = Separate SOS | If different EW supplier = Separate SOS | GST at applicable rate","TCS UNDER IT ACT: NOT included in value of supply for GST purposes","INTEREST ON LOAN/DEPOSIT: Exempt SOS | Interest on DELAYED PAYMENT of consideration = TAXABLE (add to value | same rate as supply)"],trick:"Trick: 'Pure agent = Just passing through cost, not adding value = EXCLUDE | NCB = Discount not supply | EW at time of sale = bundle it with goods | After sale = Separate service | IT TCS ≠ GST value | Interest on delay = Tax it at original supply rate | Interest on loan = Exempt'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 7 — PLACE OF SUPPLY (ifos)
+// ══════════════════════════════════════
+const CHIFOS=[
+  {tp:"POS — Goods (Sec 10)",ch:"ifos",col:"blue",star:true,title:"Place of Supply for Goods — Sec 10 IGST Act",bullets:["(a) MOVEMENT of goods: POS = Location where movement of goods TERMINATES for delivery to recipient","(b) BILL-TO-SHIP-TO: Goods delivered to 3rd person on direction of recipient | POS = Principal POB of 3rd person (billing address) | NOT the ship-to address","(c) NO MOVEMENT: POS = Location of goods at time of DELIVERY to recipient","(ca) SUPPLY TO URP (overrides (a) and (c) but NOT (b)): POS = Address of recipient recorded in invoice | If no address = LOS (Location of Supplier)","(d) INSTALLATION/ASSEMBLY at site: POS = Place of installation or assembly","(e) ON BOARD conveyance (vessel/aircraft/train/motor vehicle): POS = Location where goods are TAKEN ON BOARD","Supply through ECO to URP: POS = Address of delivery recorded in invoice (override of (ca))","Where POS cannot be determined = As per Sec 10(2) prescribed rules"],trick:"Trick: 'Movement ends = POS there | Bill-to-ship-to = Third person's billing address is POS | No movement = delivery location | URP = Invoice address or LOS | On board = Boarding point | Install = Site of installation | B2S2T rule: Tax goes where third party (billing) is located'"},
+  {tp:"POS — Services B2B &amp; B2C (Sec 12)",ch:"ifos",col:"green",star:true,title:"POS of Services — General Rules Sec 12(2)",bullets:["Sec 12 applies when BOTH LOS (Location of Supplier) and LOR (Location of Recipient) are in INDIA","GENERAL RULE B2B [Sec 12(2) — supply to REGISTERED PERSON]: POS = LOCATION OF RECIPIENT (LOR) — The state where recipient is registered","GENERAL RULE B2C [Sec 12(2) — supply to UNREGISTERED PERSON]: POS = (i) LOR if address exists on record (ii) LOS if no address on record","This means: Most services follow recipient's location for POS determination","Exceptions to general rule: Sec 12(3) to 12(14) cover specific services with different POS rules","These specific rules OVERRIDE the general rule in Sec 12(2)","Online services to unregistered recipients [Cir 242/2024]: State of recipient must be recorded on invoice (acts as POS under Sec 12(2)(b)(i)) — failure = penalty u/s 122(3)(e)"],trick:"Trick: 'B2B = Follow the buyer (LOR) | B2C = Follow the buyer if address known, else follow seller (LOS) | Think: Tax should go to where service is consumed, recipient's state = consumption state | Exceptions override: Check if specific rule in 12(3)–12(14) applies first!'"},
+  {tp:"POS — Specific Services",ch:"ifos",col:"teal",star:true,title:"POS — Specific Services Sec 12(3) to 12(14)",bullets:["Sec 12(3) IMMOVABLE PROPERTY: POS = Location of immovable property or boat/vessel | If IP outside India = LOR","Sec 12(4) RESTAURANT/PERSONAL GROOMING: POS = Where service is ACTUALLY PERFORMED","Sec 12(5) TRAINING/PERFORMANCE APPRAISAL: POS = Where service is ACTUALLY PERFORMED","Sec 12(7) EVENTS: POS = Where event is ACTUALLY HELD | If outside India = LOR | If in multiple states = As per Rule 5 (GAAP apportionment)","Sec 12(8) TRANSPORT OF GOODS: POS = Where goods are HANDED OVER for transportation","Sec 12(9) PASSENGER TRANSPORT: POS = Where passenger EMBARKS on conveyance for continuous journey | Right to passage (future use, unknown point) = Sec 12(2)","Sec 12(10) ON-BOARD CONVEYANCE: POS = First scheduled point of DEPARTURE for the journey","Sec 12(11) TELECOM: Fixed line = Where fixed line installed | Post-paid mobile = LOR (if exists) else LOS | Pre-paid through agent = Agent's address | Pre-paid direct = Where voucher sold","Sec 12(12) BANKING/FINANCIAL: POS = LOR if on record | Else LOS","Sec 12(13) INSURANCE: POS = LOR on record of insurance company","Sec 12(14) ADVERTISEMENT to Govt/LA: POS = Each State/UT where ad broadcast/run (as per Rule 6)"],trick:"Trick: 'TRIPS = Transport (goods) = handover point | Restaurant = Actual performance | Insurance = Insurer's record LOR | Property = Property location | Sports/Events = Event location | Passenger = Embarkation point | Banking = LOR else LOS | Telecom fixed = Installation'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 8 — EXEMPTIONS (club)
+// ══════════════════════════════════════
+const CHCLUB=[
+  {tp:"Exemptions — Healthcare",ch:"club",col:"green",star:true,title:"Healthcare Exemptions — Sl. No. 74 &amp; Related",bullets:["Sl.No. 74: Health care services by clinical establishment, authorised medical practitioner, paramedics = EXEMPT","MEANS: Diagnosis OR Treatment OR Care for illness, injury, pregnancy, deformity — all EXEMPT","Recognised systems: Allopathy, Yoga, Ayurveda, Naturopathy, Homeopathy, Siddha, Unani","NOT INCLUDED (Taxable): Hair transplant, Cosmetic/plastic surgery for beauty purposes only","INCLUDED (Exempt): Plastic surgery to RESTORE function/anatomy due to congenital defects/injury/trauma","Room rent: ICU/ICCU/NICU = EXEMPT (no limit) | Normal room ≤ ₹5,000/day = EXEMPT | Normal room &gt; ₹5,000/day = Taxable on excess","Ambulance service by anyone = EXEMPT | Food to admitted patients by hospital canteen = EXEMPT","Food to non-admitted patients / staff by hospital = TAXABLE","ART/IVF services = EXEMPT (covered under healthcare) | Retention money by hospital = EXEMPT","Services to/by senior doctors/consultants/technicians to hospital = EXEMPT"],trick:"Trick: 'Healthcare = EXEMPT (diagnosis, treatment, care) | Cosmetic beauty = TAX | Restore body function = EXEMPT | ICU room = Always exempt | Normal room &gt; ₹5K = Tax | Hospital canteen to admitted patients = Exempt | Private canteen or non-admitted = TAXABLE'"},
+  {tp:"Exemptions — Education",ch:"club",col:"blue",star:true,title:"Education Sector Exemptions — Sl. No. 66",bullets:["EDUCATIONAL INSTITUTION (EI) = Pre-school OR Higher/Secondary school OR University/College or degree-granting institution OR ITI/ITC approved vocational courses","ALL SERVICES BY EI TO ITS STUDENTS/FACULTY/STAFF = EXEMPT (education fees, lab charges, transport, catering, security, housekeeping, etc.)","Service by EI = Conduct of entrance examination for admission against fees = EXEMPT","SERVICES TO EI (5 exempt input services — but only to relevant EI):","1) Transport of students/faculty (only if supplied TO school) = EXEMPT to school","2) Catering/mid-day meals (only if supplied TO school) = EXEMPT to school","3) Security/cleaning/housekeeping (only if supplied TO school or college) = EXEMPT","4) Online education/journals/periodicals (to college/university) = EXEMPT","5) Admission/examination services (to any EI) = EXEMPT","Private coaching classes = TAXABLE | IIM long duration = EXEMPT | IIM short duration = TAXABLE","Affiliation services to GOVT schools (by Boards) = EXEMPT | Affiliation to PRIVATE schools = TAXABLE"],trick:"Trick: 'EI to students = ALL EXEMPT | 5 services TO school: TCSOE = Transport, Catering, Security/cleaning, Online edu, Exam services | Private coaching = TAX | IIM long = EXEMPT | Affiliation to Pvt school = TAXABLE | For each EI type, check 5 services apply to which level!'"},
+  {tp:"Exemptions — Transport",ch:"club",col:"teal",star:true,title:"Passenger Transport Exemptions — Road, Rail, Air, Water",bullets:["ROAD: Non-AC Stage Carriage (bus) = EXEMPT | AC Stage Carriage = TAXABLE | Contract Carriage: Tourism/charter/hire = TAXABLE | Point-to-point (non-tourism) = EXEMPT | Meter cab/Auto rickshaw (incl. e-rickshaw) = EXEMPT (if NOT through ECO) | Other cab/non-AC motor vehicle (not ECO) = EXEMPT | If supplied through ECO u/s 9(5) = TAXABLE (ECO pays)","RAILWAY: Metro/Monorail/Tramway = EXEMPT | First class or AC coach = TAXABLE | Other class = EXEMPT","WATER: Inland waterways = EXEMPT (public use vessel) | Vessel mainly for tourism = TAXABLE","AIR: Economy class from NE state airports (Arunachal, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura) or Bagdogra (West Bengal) = EXEMPT | All other cases = TAXABLE","NOTE: If cab service through ECO under Sec 9(5) = TAXABLE (override of exemption)"],trick:"Trick: 'EXEMPTS: Non-AC bus, Metro/monorail, Non-AC Railway, Inland waterways (public), NE State airports economy air, Meter cab (no ECO), Auto | TAX: AC bus, AC/First class rail, Tourism charter, Ola/Uber (ECO), Airline (normal routes) | ECO override = Taxable always!'"},
+  {tp:"Exemptions — GTA &amp; Agriculture",ch:"club",col:"amber",star:true,title:"GTA Transport of Goods &amp; Agriculture Exemptions",bullets:["TRANSPORT OF GOODS by GTA — EXEMPT for: D-R-O-M-N-A: Defence equipment, Relief material for victims, Organic manure, Milk/salt/food grains/flour/pulses/rice, Newspapers/magazines, Agriculture produce","Transport by GTA to Govt/LA/Govt Agencies (registered ONLY for TDS u/s 51) = EXEMPT (no FCM, no RCM)","AGRICULTURE EXEMPTIONS [Sl. No. 54]: Services related to agricultural operations — cultivation, harvesting, threshing, plant protection, seed testing = EXEMPT","Supply of farm labour = EXEMPT | Loading/unloading/packing/storage/warehousing of Agricultural Produce = EXEMPT","Agricultural Extension Services = EXEMPT | Services by APMC/commission agent for sale/purchase of AP = EXEMPT","AGRICULTURAL PRODUCE = No processing or processing as usually done by cultivator that doesn't alter essential character but makes marketable (e.g., ginning raw cotton, paddy, pulses)","Non-agriculture produce examples: Flour (from wheat), Potato chips (from potato), Ketchup (from tomato), Sugar (from sugarcane) — these are taxable"],trick:"Trick: 'GTA DROMNA = Exempt goods transported | DROMNA: Defence, Relief, Organic manure, Milk/salt/grains, Newspaper, Agriculture | AP = Process that's USUAL by farmer, doesn't change character = Still AP = Exempt | Unusual processing = Not AP = Taxable | Ginned cotton = AP | Cotton yarn = Not AP'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 9 — PAYMENT &amp; TDS/TCS (setoff)
+// ══════════════════════════════════════
+const CHSETOFF=[
+  {tp:"Payment — Sec 49",ch:"setoff",col:"green",star:true,title:"Payment of Tax — Sec 49 Electronic Ledgers",bullets:["THREE ELECTRONIC LEDGERS: E-Cash Ledger + E-Credit Ledger + E-Liability Register","E-CASH LEDGER [Sec 49(1)]: Created by depositing money | Used for any payment (tax, interest, penalty, late fee)","E-CREDIT LEDGER [Sec 49(2)/(4)]: ITC self-assessed in GSTR-3B credited here | ONLY for OUTPUT TAX payment (cannot use for RCM, interest, penalty, late fee)","E-LIABILITY REGISTER: All liabilities recorded here | Discharged by E-Cash + E-Credit","ORDER OF DISCHARGE [Sec 49(8)]: 1st: Self-assessed tax of Previous Tax Period + Other dues (previous) | 2nd: Self-assessed tax of Current Tax Period + Other dues | 3rd: Any other demand/recovery u/s 73/74/74A","REFUND: E-Cash excess = Immediately on RFD-01 application | E-Credit excess = Only for ZRS and Inverted Duty Structure","Rule 86B: If monthly taxable supply &gt; ₹50L, max 99% of output by ITC; 1% must be cash"],trick:"Trick: 'E-Cash = All payments | E-Credit = Only OUTPUT TAX (not RCM, not interest) | E-Liability = All dues | Order: Previous period first, then current, then demand | Refund: Cash always | Credit only for ZRS/ITS | 86B: 1% cash rule for big taxpayers'"},
+  {tp:"ITC Utilisation Order",ch:"setoff",col:"blue",star:true,title:"ITC Utilisation Order — Sec 49(5) + 49A + 49B",bullets:["STEP 1: Use IGST ITC FIRST (mandatory — Sec 49A)","IGST ITC: Against IGST → then CGST → then SGST/UTGST (any order for remaining)","CGST ITC: Against CGST FIRST → then IGST only","SGST/UTGST ITC: Against SGST/UTGST FIRST → then IGST only","RESTRICTION (Sec 49B): CGST ITC CANNOT be used for SGST/UTGST | SGST ITC CANNOT be used for CGST","Sec 49A: Must exhaust IGST ITC before using CGST or SGST ITC — this is a MANDATORY ORDER","TRANSFER between E-Cash Ledger heads (PMT-09): Transfer between major/minor heads WITHIN own E-Cash | Also between IGST/CGST heads of Distinct Persons (NO SGST/UTGST transfer between DDP)","ITC balance in E-Credit: Can be carried forward indefinitely (no time limit for carry forward, only claim by 30th Nov)"],trick:"Trick: 'IGST is VIP — use first, goes anywhere | CGST = CGST first, IGST second, NEVER SGST | SGST = SGST first, IGST second, NEVER CGST | Cross credit (CGST↔SGST) = STRICTLY PROHIBITED | Think: IGST is like universal currency | CGST/SGST are state-specific!'"},
+  {tp:"TDS — Sec 51",ch:"setoff",col:"teal",star:true,title:"Tax Deduction at Source (TDS) — Sec 51",bullets:["WHO DEDUCTS: CG, SG, LA, Govt Agencies, PSUs, Societies set up by CG/SG, Authorities (51%+ Govt equity), RP receiving metal scrap from RP","RATE: 2% IGST or 1% CGST + 1% SGST on TAXABLE VALUE","THRESHOLD: Contract value EXCEEDS ₹2.5 Lakh (excluding GST)","WHEN: At time of CREDIT OR PAYMENT — whichever is EARLIER","DUE DATE: Deposit TDS by 10th of SUCCEEDING month","RETURN: GSTR-7 by 10th of month following the calendar month (within 3 years)","TDS CERTIFICATE: GSTR-7A to be provided to deductee","NON-COMPLIANCE: Failure to deposit = Interest @ 18% u/s 50(1) + Penalty u/s 73/74/74A/122","EXCESS/ERRONEOUS: Refund u/s 54 | But NO refund if TDS credited to deductee's E-Cash Ledger","NON-APPLICABLE: Contract ≤₹2.5L | Exempt supplies | RCM | Supplier is URP | LOS &amp; POS in same state, LOR in different state"],trick:"Trick: 'TDS = 2% (or 1+1) | Threshold ₹2.5L (excluding GST) | 10th of next month | GSTR-7 | Government entities only + Metal scrap RP | Credit/payment: whichever EARLIER triggers TDS | Contract value means TAXABLE value (not including GST)'"},
+  {tp:"TCS — Sec 52",ch:"setoff",col:"amber",star:true,title:"Tax Collection at Source (TCS) — Sec 52",bullets:["WHO COLLECTS: Every ECO NOT being an agent — when consideration for supply collected by ECO","RATE: 0.5% IGST or 0.25% CGST + 0.25% SGST on NET VALUE OF TAXABLE SUPPLIES","NET VALUE = Aggregate taxable supplies (excluding Sec 9(5) services) LESS: supplies returned to supplier","NOTE: Net value calculated PER SUPPLIER, MONTHLY basis | If net value is NIL or negative = No TCS","MONTHLY STATEMENT: GSTR-8 by 10th of next month (max within 3 years of due date)","ANNUAL STATEMENT: GSTR-9B before 31st Dec of next FY","RECTIFICATION: Omissions/errors rectifiable within earlier of: 30th Nov of next FY OR annual statement date","FOREIGN ECO: No physical presence in India but supplier &amp; customers in India → liable for TCS | Register in each State/UT","NOT APPLICABLE: Supplier not liable for registration | Exempt supplies | Composition supplier | Import of goods/services | ECO selling own products | Goods bought from vendors and sold under own billing"],trick:"Trick: 'TCS = 0.5% IGST | ECO collects, not agent ECO | Net value per supplier monthly | GSTR-8 by 10th | Sec 9(5) ECO services excluded from TCS base (ECO already pays full tax there) | Foreign ECO with Indian supplier-customer = Must register in each State'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 10 — INPUT TAX CREDIT (via)
+// ══════════════════════════════════════
+const CHVIA=[
+  {tp:"ITC — Conditions Sec 16",ch:"via",col:"green",star:true,title:"Input Tax Credit — Eligibility &amp; Conditions Sec 16",bullets:["ELIGIBILITY: Registered person | Supply used/intended for course/furtherance of business","4+1 CONDITIONS FOR ITC [Sec 16(2)]: (a) Tax Invoice/document | (aa) Supplier reflected in GSTR-2B | (b) Goods/services received | (ba) Not blacklisted | (c) Tax actually paid to Govt | (d) Return u/s 39 filed","RECEIPT OF GOODS: Bill-to-Ship-to = Goods deemed received when delivered to 3rd person | Last lot/instalment = ITC available only on receipt of LAST LOT (not partial)","180 DAYS RULE [Rule 37]: Must pay supplier within 180 days from invoice date | Else: Reverse ITC proportionate to unpaid amount + interest u/s 50(3) | Re-avail when payment made","Rule 37A: If supplier doesn't file GSTR-3B by Sep 30 = Recipient must reverse ITC by Nov 30 | If supplier later files = Can re-avail","SEC 16(4) TIME LIMIT: Cannot claim ITC after EARLIER of: 30th Nov of next FY OR Annual Return filing date","Documents for ITC: Tax Invoice, Debit Note, Bill of Entry, Revised Invoice, ISD document"],trick:"Trick: '4 CONDITIONS = TRAP: Tax Invoice, Received goods/services, Actual tax paid, Periodic return filed | PLUS: Supplier in GSTR-2B (condition aa) | 180 days to pay supplier | 30th Nov time limit (same as credit note deadline!) | GSTR-2B is the gateway to ITC'"},
+  {tp:"ITC — Blocked Credits 17(5)",ch:"via",col:"blue",star:true,title:"Blocked Credits — Sec 17(5) Key Categories",bullets:["(a) MOTOR VEHICLES &amp; CONVEYANCE: Passenger MV (≤13 seater incl driver) = ITC BLOCKED | Exception = Further supply / Passenger transport / Training | Cargo MV (trucks) = ITC ALLOWED","(aa) VESSEL/AIRCRAFT: For passenger transport = ITC BLOCKED | Exception = Further supply/transport/training | For goods = ITC ALLOWED","(ab) SPECIFIED SERVICES: General insurance/servicing/repair of ineligible MV/vessel/aircraft = BLOCKED | Leasing/hiring/renting of ineligible MV = BLOCKED | Exception: outward supply of same","(b) FOOD &amp; BEVERAGES, OUTDOOR CATERING, BEAUTY TREATMENT, HEALTH SERVICES, COSMETIC SURGERY, LIFE/HEALTH INSURANCE, TRAVEL BENEFITS (LTC): ITC BLOCKED | Exception: Outward supply of same/composite supply or statutory obligation","(c) WORKS CONTRACT for CONSTRUCTION of IMMOVABLE PROPERTY (except P&amp;M): BLOCKED | Exception: WC services to provide WC services | Construction for sale before CC = allowed","(d) GOODS/SERVICES for CONSTRUCTION of IP capitalised (except P&amp;M): BLOCKED | P&amp;M = Apparatus/equipment/machinery fixed to earth for making outward supply","(fa) CSR ACTIVITIES: BLOCKED | (i) Tax paid u/s 74 up to FY 2023-24: BLOCKED"],trick:"Trick: 'Blocked ITC = FACE MC-WC-CSR: Food/Beverages, Aesthetics, Club membership, Employee LTC benefits, Motor vehicle (passenger), Club/gym, Works contract (IP construction), Construction of IP, CSR | Exceptions: Outward supply of same = Allowed | Plant &amp; Machinery = ALWAYS ITC allowed'"},
+  {tp:"ITC — Availment Sec 18",ch:"via",col:"teal",star:true,title:"ITC Availment on Registration — Sec 18(1)",bullets:["Sec 18(1)(a) — Person APPLIED for registration within 30 days: ITC of Inputs (stock, semi-finished, finished) on date IMMEDIATELY PRECEDING date of liability | NO ITC on Capital Goods","Sec 18(1)(b) — VOLUNTARY REGISTRATION: ITC of Inputs + Capital Goods (ITC − 5% per quarter) on date immediately preceding RC date","Sec 18(1)(c) — SWITCHING from Composition to Normal: ITC of Inputs + Capital Goods on date immediately preceding switching date","Sec 18(1)(d) — Exempt supply becoming TAXABLE: ITC on inputs related to that supply on date preceding taxability","IMPORTANT: Declaration in prescribed form within 30 days of switching | If claim &gt; ₹2L = CA/CMA certificate required | Sec 18(2): ITC not available if invoice &gt; 1 year old at time of switching","TRANSFER OF ITC [Sec 18(3)]: Sale/amalgamation/lease/transfer of business = Transfer unutilized ITC to transferee | Demerger = Apportion ITC in ratio of value of assets transferred"],trick:"Trick: 'Switching to Normal GST = ITC windfall! | From URP to RP = Inputs only (no CG) | From Composition = Inputs + CG (reduced by 5%/quarter) | Exempt to taxable = Inputs only | Transfer of business = ITC follows business | Demerger = Ratio of asset value'"},
+  {tp:"ITC — Reversal Sec 17 &amp; 18",ch:"via",col:"amber",star:true,title:"ITC Reversal — Sec 17(2) &amp; Sec 18(4) Key Rules",bullets:["Sec 17(2) PROPORTIONATE ITC: If supplies are partly taxable + partly exempt = ITC for common inputs allocated proportionately | Exempt supply includes nil rate, wholly exempt, non-taxable supply [Sec 2(47)]","Sec 18(4) REVERSAL on SWITCHING: Normal to Composition OR Taxable to Exempt OR Cancellation of Registration = Reverse ITC on inputs + CG (on preceding day)","CAPITAL GOODS REVERSAL [Rule 44]: Life = 5 years | Reversal = ITC taken × Remaining months/60 | E.g., CG used for 4 yrs 6 months = Remaining = 5 months | Reverse = ITC × 5/60","Balance after reversal in E-Credit Ledger = LAPSE (cannot carry forward or refund)","SUPPLY OF CAPITAL GOODS/P&amp;M [Sec 18(6)]: Pay HIGHER of: (a) ITC taken − 5% per quarter or part | (b) GST on Transaction Value","RULE 86A: Commissioner can restrict ITC use if fraudulently claimed | Restriction for 1 year | ITC cannot pay liability | No refund of blocked ITC","Rule 44A: Reversal of ITC on disposal of GOLD DORE bars (mining)"],trick:"Trick: '18(4) reversal: Normal→Composition or Exempt or Cancel = Reverse ITC | CG formula: ITC × Remaining months/60 | If leftover in ledger = LAPSE | Sell CG? Pay HIGHER of: (ITC−5%/qtr) vs GST on sale value | 86A = Commissioner blocks fraudulent ITC for 1 year'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 11 — REGISTRATION (ch11)
+// ══════════════════════════════════════
+const CH11=[
+  {tp:"Registration — Sec 22 &amp; 23",ch:11,col:"green",star:true,title:"Persons Liable for Registration — Sec 22",bullets:["Every supplier liable to register if Agg T/O in FY EXCEEDS threshold in the State/UT from where taxable supply is made","THRESHOLDS: NE states (Manipur, Mizoram, Nagaland, Tripura) = ₹10L | Other SCS + Puducherry, Uttarakhand, Meghalaya, Arunachal, Telangana, Sikkim = ₹20L | All other states incl. Assam, J&amp;K, HP = ₹40L (goods) or ₹20L (services/mixed)","AGG T/O: Taxable + Exempt + Export + Inter-State supplies (same PAN) MINUS GST taxes","AGG T/O INCLUDES: Interest/discount on loans/deposits | AGG T/O for EXTENDED LIMIT (40L): EXCLUDES interest/discount","NOT LIABLE [Sec 23]: Exclusively exempt supplies | Agriculturist (cultivation produce) | Person making ONLY RCM supplies (except metal scrap suppliers)","Sec 23 exemption DOES NOT apply to metal scrap suppliers (must register)","AGENT: Supplies by agent on behalf of principal = Added to agent's T/O | JOB WORKER: Supplies on behalf of principal = NOT added to job worker's T/O"],trick:"Trick: 'Threshold = ₹40L goods | ₹20L services | ₹10L NE states | Interest on loans = Counted in T/O | Agriculturist = No reg needed | Only RCM supplies = No reg needed (except metal scrap) | Agent takes T/O | Job worker doesn't | Extended 40L excludes interest on deposits'"},
+  {tp:"Compulsory Registration — Sec 24",ch:11,col:"blue",star:true,title:"Persons Compulsorily Liable — Sec 24",bullets:["(i) Inter-State taxable supply of GOODS (no threshold) | Exception: CTP with handicraft goods (threshold available) | Exception: Person with inter-State services (threshold available for handicraft services)","(ii) CTP and NRTP making taxable supply (no threshold)","(iii) Person liable to pay under RCM","(iv) Person liable to pay under Sec 9(5) — ECO platform liability","(v) NRTP making taxable supply","(vi) Person required to DEDUCT TDS u/s 51 (separate registration for TDS)","(vii) Persons making taxable supply on behalf of taxable persons — AGENTS issuing own invoices","(viii) ISD — Input Service Distributor (SEPARATE REGISTRATION mandatory)","(ix) ECO required to COLLECT TCS u/s 52 (separate registration for TCS)","(x) OIDAR service provider from outside India to non-RP in India","(xi) Person supplying online money gaming from outside India to person in India","(xii) Any other person notified by CG"],trick:"Trick: 'Compulsory 12 categories — INTERN-RECAP: Inter-State goods, NRTP, TDS deductor, ECO 9(5), RCM payer, NRTP, Comp. ECO TCS, Agent (own invoice), Payer, [ISD], OIDAR, Online gaming | Remember: ISD and TDS need SEPARATE registrations'"},
+  {tp:"Registration Procedure — Sec 25",ch:11,col:"teal",star:false,title:"Registration Procedure — Timeline &amp; Aadhaar Authentication",bullets:["APPLY WITHIN 30 DAYS of becoming liable | CTP/NRTP = At least 5 days BEFORE commencement","PART A: PAN + Mobile + Email (validated on portal) | PART B: Complete registration details","AADHAAR AUTHENTICATION: Individual must authenticate or furnish proof of possession | For others: Karta/MD/Director/Managing Committee/Board of Trustees/Authorised Signatory","GRANT TIMELINE: With AA + No deficiency = 7 WD | Without AA + No deficiency = 30 days | With deficiency = SCN within 7 WD (AA) or 30 days (no AA) | Reply within 7 WD | Approval within 7 WD of reply","DEEMED REGISTRATION: If not granted within above timelines","GSTIN: 15-digit code: State code (2) + PAN (10) + Entity no. (2) + Check digit (1)","DISPLAY: RC and GSTIN on name board at entry and prominent location at all POBs","BANK DETAILS: Within 30 days of RC grant or before GSTR-1 filing — whichever EARLIER"],trick:"Trick: 'GSTIN = State(2) + PAN(10) + Entity(2) + Check(1) = 15 digits | AA = 7 WD | No AA = 30 days | Bank details: 30 days or before GSTR-1 | Aadhaar = Individual self | Company = MD or Director | HUF = Karta | Display RC = Mandatory at entry'"},
+  {tp:"Cancellation &amp; Revocation — Sec 29/30",ch:11,col:"amber",star:true,title:"Cancellation of Registration — Sec 29 &amp; Revocation Sec 30",bullets:["VOLUNTARY CANCELLATION: Business discontinued, transferred, merged, demerged, disposed | TP no longer liable to register | Intends to opt out voluntarily","SUO MOTO CANCELLATION BY PO: Contravenes provisions (dummy POB, fake invoice, anti-profiteering, 86B, Sec 16 violation) | Mismatch GSTR-1 vs 3B | Non-filing: 6 continuous months (normal) or 2 tax periods (QRMP) or 3 months from FY due date (Composition) | No start of business within 6 months (voluntary reg) | Fraudulent registration","SUSPENSION: While application for cancellation pending OR when PO initiates cancellation | During suspension: No taxable supply, No invoice, No return filing","CANCELLATION PROCEDURE: RP applies within 30 days of event | Submit stock details | PO issues order within 30 days of application | PO must give OOBH before cancellation","REVOCATION [Sec 30]: Apply within 90 days of cancellation order | Extension: up to 180 days by AC/JC | File all pending returns within 30 days of revocation order"],trick:"Trick: 'Cancel: Voluntary (business stopped) + Suo Moto (by PO for violations/non-filing/fraud) | 6 months non-filing = Cancel | Revoke within 90 days | Aadhaar auth required for revocation application | After revocation = File returns for period between cancel and revoke within 30 days'"},
+];
+
+// ══════════════════════════════════════
+// CHAPTER 12 — TAX INVOICE (rtn)
+// ══════════════════════════════════════
+const CHRTN=[
+  {tp:"Tax Invoice — Sec 31",ch:"rtn",col:"green",star:true,title:"Tax Invoice — Timing, Contents &amp; Rules",bullets:["SOG INVOICE TIMING: Before/at time of REMOVAL (with movement) OR DELIVERY (no movement)","SOS INVOICE TIMING: Before or after provision of service BUT NOT BEYOND 30 DAYS from supply | Banks/FI/NBFC/Insurers = 45 DAYS","CONTENT OF INVOICE [Rule 46]: Name+Address+GSTIN | Consecutive serial no. (max 16 chars, per FY per series) | Date | Recipient GSTIN/UIN | Other URP details | HSN Code | Description | Quantity | Total value | Taxable value | Rate of tax | Tax amount | POS (inter-State) | Delivery address | RCM applicability | Signature/Digital signature | Nature of document | QR code","B2C supply &lt; ₹200: May NOT issue Tax Invoice (issue consolidated daily) UNLESS recipient asks or supply is mandatory (Multiplex, exports, B2B)","TRIPLICATE (goods) / DUPLICATE (services): For normal invoices | E-Invoice = No triplicate/duplicate needed | No digital signature needed for E-Invoice","INVOICE SERIES: Serial number not exceeding 16 characters, maintained per FY"],trick:"Trick: 'SOG = Before/at removal or delivery | SOS = Within 30 days (45 for Banks) | Content = NAG-DH-QTVRPSN: Name, Address, GSTIN, Date, HSN, Qty, Tax value, Rate, POS, Signature, Nature | &lt;₹200 B2C = No invoice needed | Triplicate goods, Duplicate services'"},
+  {tp:"E-Invoice — Rule 48(4)",ch:"rtn",col:"blue",star:true,title:"E-Invoice System — Applicability &amp; Process",bullets:["APPLICABLE: RP with Agg T/O &gt; ₹5 Crore in any PFY from 2017-18 onwards | For B2B + Exports + Supply to SEZ + Debit Note + Credit Note","PROCESS: Supplier uploads invoice to IRP (Invoice Registration Portal) → IRP validates → Generates IRN (64-character Invoice Reference Number) + QR Code → Auto-uploads to GSTR-1 and EWB portal","EXEMPTIONS from E-Invoice: SEZ UNITS (not developers), Insurance, Banks, NBFC, GTA, Passenger transport service, Multiplex, Govt/LA, ISD, Persons with T/O ≤₹5Cr, Reverse charge scenarios (URP to RP)","NOTE: SEZ Units = Exempt | SEZ Developers = NOT exempt (E-Invoice applicable to them)","CANCELLATION: Within 24 hours on IRP portal | After 24 hours = Cancel manually on GST portal BEFORE filing returns | Once cancelled = Same invoice number CANNOT be reused","AMENDMENTS: Only on GST Portal (not on IRP) | Normal computer invoice = Void if E-Invoice mandatory","Govt Departments/Agencies/LA = E-Invoice applicable if supplier exceeds ₹5Cr threshold [Cir 198/2023]"],trick:"Trick: 'E-Invoice threshold = ₹5 Crore | IRP→IRN (64 chars)+QR | Auto fills GSTR-1 and EWB | Exempt: SEZ units, Banks, Insurance, GTA, Govt | Cancel: 24 hours on IRP | After 24hr = Portal cancel before returns | Same invoice no. cannot reuse | SEZ unit = EXEMPT but SEZ developer = TAXABLE E-Invoice!'"},
+  {tp:"Credit Note &amp; Debit Note — Sec 34",ch:"rtn",col:"teal",star:true,title:"Credit Note &amp; Debit Note — Sec 34",bullets:["CREDIT NOTE: Issued when invoice value EXCEEDS actual supply value (return, deficiency, price reduction) | Reduces supplier's output tax liability | Reduces recipient's ITC","CREDIT NOTE DEADLINE: Declare in return of month issued | Deadline = EARLIER of: 30th Nov following FY OR Annual return date","RESTRICTION ON CN: Cannot reduce output tax if (i) Recipient RP has NOT reversed ITC | (ii) Tax burden passed on to another person","FINANCIAL CREDIT NOTE: Can be issued (doesn't affect GST) if secondary discount given (Cir 251/2025)","DEBIT NOTE: Issued when invoice value is LESS than actual supply value (more goods received, etc.) | Increases tax liability | NO TIME LIMIT for issuing debit note","BOTH can address MULTIPLE INVOICES in a single note","E-INVOICE: Credit notes and Debit notes also require IRN if supplier above threshold","GST credit note CANNOT be issued for secondary discounts not agreed at time of supply"],trick:"Trick: 'CN = Supplier gives back (price too high or goods returned) → Reduce OUTPUT TAX | CN Deadline = 30 Nov or Annual return earlier | DN = Supplier charges more → INCREASE tax | DN = NO time limit | CN restriction: If recipient hasn't reversed ITC = Cannot reduce | Financial CN = No GST impact'"},
+  {tp:"Vouchers &amp; Special Invoices",ch:"rtn",col:"amber",star:false,title:"Receipt Voucher, Refund Voucher, Payment Voucher &amp; Bill of Supply",bullets:["RECEIPT VOUCHER: Issued by supplier on receiving ADVANCE PAYMENT | If rate unknown at advance = 18% | If nature unknown = Inter-State supply assumed","REFUND VOUCHER: Issued if advance received but NO SUPPLY made and NO INVOICE issued | Cannot issue if supply made (even without invoice — issue credit note instead)","PAYMENT VOUCHER: Issued by RECIPIENT when making payment to URP supplier under RCM","SELF-INVOICE: Issued by RECIPIENT when purchasing from URP (inward supply under RCM) | Must be issued within 30 DAYS of receiving goods/services [Rule 47A]","BILL OF SUPPLY: Used by Composition Dealers + For Exempt Supplies (cannot issue tax invoice)","INVOICE-CUM-BILL OF SUPPLY: Single document for combined taxable + exempt supplies","DELIVERY CHALLAN: For liquid gas (unknown quantity), job work transport, non-supply movement, CKD/SKD supply","REVISED INVOICE: Issued from effective registration date to RC issuance date within 1 month of RC | B2B = Individual revised invoices | B2C inter-State ≤₹2.5L = Consolidated"],trick:"Trick: 'Receipt = Advance received | Refund = Advance given back (no supply) | Payment = RCM recipient pays URP | Self-invoice = Receipt from URP, issue within 30 days | Bill of Supply = Composition + Exempt | CKD supply = Invoice first, then Challans for each lot!'"},
+];
+
+// ══════════════════════════════════════
+// MEGA — ALL CHAPTERS
+// ══════════════════════════════════════
+const MEGA=[
+  {tp:"Ch 1 — Must Know",ch:"mega",col:"green",star:true,title:"Ch 1 Critical: GST Framework Quick Recall",bullets:["GST = Destination-based VAT | Technically by supplier, borne by consumer","IGST (inter-State) = Central only | CGST + SGST (intra-State) = Equal share | CGST + UTGST for UTs without legislature","Rates: 0%, 5%, 12%, 18%, 28% (+ 3% gold, 0.25% rough diamonds)","Petroleum + Alcohol = OUTSIDE GST | Tobacco = Both Excise + GST","ITC utilisation order: IGST first (anywhere), then CGST→IGST only, SGST→IGST only; No cross credit between CGST and SGST","GST Council: Finance Minister chairs | All State FMs members | Recommends rates, exemptions, laws"],trick:"Trick: 'IGST = All routes open | CGST/SGST = One-way to IGST only | Never CGST-SGST highway | Petro + Alcohol = VAT zone | Tobacco = Double duty zone!'"},
+  {tp:"Ch 2 — Must Know",ch:"mega",col:"blue",star:true,title:"Ch 2 Critical: Supply Definition Quick Recall",bullets:["Supply = STBLERD (Sale, Transfer, Barter, Licence, Exchange, Rental, Disposal) + For consideration + In business","Schedule I (Deemed, no consideration) = PAST: Permanent transfer(ITC), Agent-Principal, Same PAN/related persons, Transfer from overseas related entity","Schedule III (Not supply) = SECFAS: Services by employee, Courts, Elected reps, Funeral, Actionable claims, Sale of land/completed building","Composite = Naturally bundled = Principal supply rate | Mixed = Artificially bundled = HIGHEST rate","Gift to employee ≤₹50,000 = NOT supply (proviso to Sch I para 2)"],trick:"Trick: 'SECFAS = Not supply ever! | PAST = Supply without consideration (Sch I) | Composite = Natural = Principal | Mixed = Artificial = Highest | ₹50K gift exception!'"},
+  {tp:"Ch 3 — Must Know",ch:"mega",col:"teal",star:true,title:"Ch 3 Critical: RCM &amp; ECO Quick Recall",bullets:["RCM 9(3) key: GTA + Legal + Govt + Director + Insurance Agent + Security (non-corporate)","GTA to URP notified category (factory, society, BC, etc.) = RCM even if URP","ECO 9(5): Cab (non-company) + Restaurant (non-luxury) + Hotel + Housekeeping + Local delivery through ECO = ECO liable","ECO 9(4): Promoter buys cement/CG from URP or &lt;80% from RP = RCM on promoter","GTA opts FC: 5% no ITC or 18% with ITC | Must declare on invoice | Continues unless declaration in 4th qtr of PFY"],trick:"Trick: 'RCM = Recipient pays | ECO 9(5) = ECO pays | 9(4) = Promoter pays for URP purchases | GTA to URP ordinary = Exempt | GTA to notified URP (FSCBPC) = RCM applies!'"},
+  {tp:"Ch 5 — Must Know",ch:"mega",col:"amber",star:true,title:"Ch 5 Critical: Time of Supply Quick Recall",bullets:["SOG TOS = Earlier: Invoice date vs Last date | NOT receipt date (except Specified Actionable Claims)","SOS TOS = Earlier: Invoice date vs Receipt of payment | If invoice late = Completion vs Receipt","RCM SOG = 31st day from invoice | RCM SOS = 61st day from invoice","Interest/Penalty = When RECEIVED by supplier","Voucher (goods determinable) = Issue date | Voucher (not determinable) = Redemption date"],trick:"Trick: 'SOG = 31 days RCM | SOS = 61 days RCM | Normal SOG = Invoice vs Last date | Normal SOS = Invoice vs Payment | Interest = Receipt date | Voucher = Issue vs Redemption'"},
+  {tp:"Ch 6 — Must Know",ch:"mega",col:"purple",star:true,title:"Ch 6 Critical: Value of Supply Quick Recall",bullets:["TV = Price paid/payable IF not related AND price = sole consideration","TIPIS included: Tax (other laws), Incidentals, 3rd party payment, Interest on delay, Subsidy (non-govt)","GST excluded from value | CG/SG subsidy excluded | IT TCS excluded","Discount deduction: Pre-supply on invoice = Always | Post-supply = Agreed+Invoice+ITC reversed | Secondary = Never","Price inclusive of GST: VOS = Price×100/(100+Rate) | Same as: VOS = Price/1.18 for 18%"],trick:"Trick: 'TIPIS = Tax, Incidentals, 3rd party, Interest on delay, Subsidy = ALL INCLUDED | GST + Govt subsidy + IT TCS = EXCLUDED | Pre-supply discount on invoice = Easy deduction | Post-supply = Prove 3 things!'"},
+  {tp:"Ch 10 — Must Know",ch:"mega",col:"lime",star:true,title:"Ch 10 Critical: ITC Key Rules Quick Recall",bullets:["ITC conditions: Tax Invoice + GSTR-2B reflected + Received + Tax paid to Govt + Return filed","180 days = Pay supplier | Reverse proportionate ITC if not paid + interest 18%","30 Nov deadline: Last date to claim ITC (or annual return — earlier)","Blocked: Food, beauty, club, LTC, Passenger MV, Works contract (IP), IP construction, CSR, NRTP, 74 fraud","Rule 86B: Big taxpayers (T/O &gt;₹50L/month) = 99% ITC + 1% cash compulsory"],trick:"Trick: 'TRAP conditions: Tax Invoice, Received, Actual tax paid, Periodic return | GSTR-2B = New gateway condition (aa) | 180 days pay supplier | 30 Nov last date | Blocked = FACE MC-WC: Food, Aesthetics, Club, Employee travel, MV passenger, Club, Works contract, Construction'"},
+  {tp:"Ch 11 — Must Know",ch:"mega",col:"orange",star:true,title:"Ch 11 Critical: Registration Key Points",bullets:["Threshold: ₹40L goods (most states) | ₹20L services | ₹10L NE 4 states","Compulsory: Inter-State goods, RCM payer, ECO 9(5), TDS, ISD, ECO TCS, Agent (own invoice), OIDAR, Online gaming","GSTIN = 15 digits: State(2)+PAN(10)+Entity(2)+Check(1)","Apply within 30 days | CTP = 5 days before + advance | Revoke within 90 days of cancellation","Non-filing: 6 months (monthly) or 2 quarters (QRMP) = Cancellation"],trick:"Trick: '40-20-10 threshold | Compulsory = 12 types | 30 days to apply | 90 days to revoke | GSTIN = State+PAN+2+1 = 15 chars | CTP = 5 days early + pay advance!'"},
+  {tp:"Ch 14 — Must Know",ch:"mega",col:"red",star:true,title:"Ch 14 Critical: Returns Key Dates Quick Recall",bullets:["GSTR-1: 11th of next month | GSTR-3B: 20th of next month | GSTR-7 (TDS): 10th | GSTR-8 (TCS): 10th","GSTR-4 (Composition Annual): 30th June | CMP-08 (Composition quarterly): 18th","GSTR-9 (Annual): 31st Dec | GSTR-9A (Composition annual): 31st Dec","GSTR-10 (Final): Within 3 months of cancellation date","QRMP: Opt by last day of 1st month of quarter | M1 &amp; M2 pay by 25th | M3 = GSTR-3B balance","Late fee GSTR-1/3B nil return: ₹20/day max ₹500 | Others: ₹50/day (₹2K to ₹10K based on T/O)"],trick:"Trick: '11-20-10 rhythm: GSTR-1 on 11th, 3B on 20th, TDS/TCS on 10th | Annual GSTR-9: 31 Dec | Composition GSTR-4: 30 June | Final return: 3 months from cancel | QRMP M1/M2 = 25th | Late fee nil = ₹20/day (₹500 max)'"},
+];
+
+const ALL=[...CH1,...CH2,...CH3,...CHHP,...CH4,...CH6,...CHIFOS,...CHCLUB,...CHSETOFF,...CHVIA,...CH11,...CHRTN,...MEGA];
+
+let allCards=CH1, cur=0, fil="All", activeChCol="green";
+
+function switchChapter(ch){
+  cur=0; fil="All";
+  const t3=document.getElementById("tab-ch3");
+  const t4=document.getElementById("tab-ch4");
+  const t6=document.getElementById("tab-ch6");
+  const t11=document.getElementById("tab-ch11");
+  const tall=document.getElementById("tab-mega");
+  ["tab-hp","tab-ifos","tab-club","tab-setoff","tab-via","tab-rtn","tab-mega"].forEach(id=>{const el=document.getElementById(id);if(el)el.className="ch-tab";});
+  if(document.getElementById("tab-ch2")) document.getElementById("tab-ch2").className="ch-tab";
+  t3.className="ch-tab"; t4.className="ch-tab"; t6.className="ch-tab"; t11.className="ch-tab";
+  if(tall)tall.className="ch-tab";
+  const pf=document.getElementById("pf");
+  const bp=document.getElementById("btnPrev");
+  const bn=document.getElementById("btnNext");
+  if(ch===1){
+    allCards=CH1; activeChCol="green"; document.getElementById("tab-ch1").className="ch-tab active-ch1";
+    pf.className="pfill pfill-ch1"; bp.className="btn-ch1"; bn.className="btn-ch1";
+    renderPills(["All",...new Set(CH1.map(c=>c.tp))],"active-ch1");
+  } else if(ch===2){
+    allCards=CH2; activeChCol="blue"; document.getElementById("tab-ch2").className="ch-tab active-ch2";
+    pf.className="pfill pfill-ch2"; bp.className="btn-ch2"; bn.className="btn-ch2";
+    renderPills(["All",...new Set(CH2.map(c=>c.tp))],"active-ch2");
+  } else if(ch===3){
+    allCards=CH3; activeChCol="green"; t3.className="ch-tab active-ch3";
+    pf.className="pfill pfill-ch3"; bp.className="btn-ch3"; bn.className="btn-ch3";
+    renderPills(["All",...new Set(CH3.map(c=>c.tp))],"active-ch3");
+  } else if(ch==='hp'){
+    allCards=CHHP; activeChCol="green"; document.getElementById("tab-hp").className="ch-tab active-hp";
+    pf.className="pfill pfill-hp"; bp.className="btn-hp"; bn.className="btn-hp";
+    renderPills(["All",...new Set(CHHP.map(c=>c.tp))],"active-hp");
+  } else if(ch===4){
+    allCards=CH4; activeChCol="blue"; t4.className="ch-tab active-ch4";
+    pf.className="pfill pfill-ch4"; bp.className="btn-ch4"; bn.className="btn-ch4";
+    renderPills(["All",...new Set(CH4.map(c=>c.tp))],"active-ch4");
+  } else if(ch===6){
+    allCards=CH6; activeChCol="green"; t6.className="ch-tab active-ch6";
+    pf.className="pfill pfill-ch6"; bp.className="btn-ch6"; bn.className="btn-ch6";
+    renderPills(["All",...new Set(CH6.map(c=>c.tp))],"active-ch6");
+  } else if(ch==='ifos'){
+    allCards=CHIFOS; activeChCol="blue"; document.getElementById("tab-ifos").className="ch-tab active-ifos";
+    pf.className="pfill pfill-ifos"; bp.className="btn-ifos"; bn.className="btn-ifos";
+    renderPills(["All",...new Set(CHIFOS.map(c=>c.tp))],"active-ifos");
+  } else if(ch==='club'){
+    allCards=CHCLUB; activeChCol="green"; document.getElementById("tab-club").className="ch-tab active-club";
+    pf.className="pfill pfill-club"; bp.className="btn-club"; bn.className="btn-club";
+    renderPills(["All",...new Set(CHCLUB.map(c=>c.tp))],"active-club");
+  } else if(ch==='setoff'){
+    allCards=CHSETOFF; activeChCol="green"; document.getElementById("tab-setoff").className="ch-tab active-setoff";
+    pf.className="pfill pfill-setoff"; bp.className="btn-setoff"; bn.className="btn-setoff";
+    renderPills(["All",...new Set(CHSETOFF.map(c=>c.tp))],"active-setoff");
+  } else if(ch==='via'){
+    allCards=CHVIA; activeChCol="green"; document.getElementById("tab-via").className="ch-tab active-via";
+    pf.className="pfill pfill-via"; bp.className="btn-via"; bn.className="btn-via";
+    renderPills(["All",...new Set(CHVIA.map(c=>c.tp))],"active-via");
+  } else if(ch===11){
+    allCards=CH11; activeChCol="amber"; t11.className="ch-tab active-ch11";
+    pf.className="pfill pfill-ch11"; bp.className="btn-ch11"; bn.className="btn-ch11";
+    renderPills(["All",...new Set(CH11.map(c=>c.tp))],"active-ch11");
+  } else if(ch==='rtn'){
+    allCards=CHRTN; activeChCol="green"; document.getElementById("tab-rtn").className="ch-tab active-rtn";
+    pf.className="pfill pfill-rtn"; bp.className="btn-rtn"; bn.className="btn-rtn";
+    renderPills(["All",...new Set(CHRTN.map(c=>c.tp))],"active-rtn");
+  } else if(ch==='mega'){
+    allCards=MEGA; activeChCol="green"; if(tall)tall.className="ch-tab active-ch1";
+    pf.className="pfill pfill-ch1"; bp.className="btn-ch1"; bn.className="btn-ch1";
+    renderPills(["All",...new Set(MEGA.map(c=>c.tp))],"active-ch1");
+  } else {
+    allCards=ALL; if(tall)tall.className="ch-tab active-ch1";
+    pf.className="pfill pfill-ch1"; bp.className="btn-ch1"; bn.className="btn-ch1";
+    renderPills(["All"],"active-ch1");
+  }
+  renderCard();
+}
+
+function renderPills(topics,activeClass){
+  document.getElementById("tpills").innerHTML=topics.map(t=>
+    `<span class="tpill${fil===t?" "+activeClass:""}" onclick="setFil('${t}','${activeClass}')">${t}</span>`
+  ).join('');
+}
+
+function setFil(t,ac){
+  fil=t; cur=0;
+  const pills=document.querySelectorAll(".tpill");
+  pills.forEach(p=>{ p.className="tpill"; if(p.textContent===t) p.classList.add(ac); });
+  renderCard();
+}
+
+function getFil(){ return fil==="All"?allCards:allCards.filter(c=>c.tp===fil); }
+
+function renderCard(){
+  const fc=document.getElementById("fc");
+  const list=getFil();
+  if(!list.length){
+    fc.style.background="#1a1a1a"; fc.style.borderColor="#333";
+    fc.innerHTML='<p style="color:#666;text-align:center;padding:40px 0;font-weight:600">No cards for this topic</p>';
+    return;
+  }
+  if(cur>=list.length)cur=0;
+  if(cur<0)cur=list.length-1;
+  const c=list[cur];
+  const m=CM[activeChCol]||CM.green;
+  const pct=Math.round(((cur+1)/list.length)*100);
+  document.getElementById("pf").style.width=pct+"%";
+  document.getElementById("ctr").textContent=(cur+1)+" / "+list.length;
+  fc.style.background=m.bg;
+  fc.style.borderColor=m.border;
+  const bHtml=c.bullets.map(b=>`<li><span class="dot" style="background:${m.dot}"></span><span style="color:${m.sub}">${b}</span></li>`).join('');
+  fc.innerHTML=`
+    ${c.star?'<span class="fc-star">&#9733; EXAM IMPORTANT</span>':''}
+    <span class="fc-topic" style="background:${m.topicBg};color:${m.topicTxt}">${c.tp}</span>
+    <div class="fc-title" style="color:${m.title}">${c.title}</div>
+    <ul class="fc-bullets">${bHtml}</ul>
+    <div class="fc-trick" style="background:${m.trick};color:${m.trickTxt}">${c.trick}</div>
+  `;
+}
+
+function next(){const l=getFil();if(!l.length)return;cur=(cur+1)%l.length;renderCard();}
+function prev(){const l=getFil();if(!l.length)return;cur=(cur-1+l.length)%l.length;renderCard();}
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();next();}
+  if(e.key==="ArrowLeft"){e.preventDefault();prev();}
+});
+
+switchChapter(1);
+
+function showQR(chId){
+  document.querySelectorAll('.qr-panel').forEach(p=>p.classList.remove('qr-open'));
+  document.querySelectorAll('.qr-btn').forEach(b=>b.classList.remove('qr-active'));
+  const panel=document.getElementById('qr-panel-'+chId);
+  const btn=document.querySelector('.qr-btn[data-ch="'+chId+'"]');
+  if(panel){panel.classList.add('qr-open');}
+  if(btn){btn.classList.add('qr-active');}
+  const sec=document.querySelector('.summary-section');
+  if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
