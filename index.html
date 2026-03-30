@@ -3,589 +3,379 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prince Learning Hub — Master Tax, Law, Accounts & GST with AI-powered flashcards" />
   <title>Prince Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
-  <style>
-  
-.flashcard-focus{
-text-align:center;
-margin-bottom:20px;
-position:relative;
-}
-
-.click-indicator{
-color:#f0c050;
-font-size:14px;
-margin-top:8px;
-animation: bounce 1.5s infinite;
-}
-
-.pulse-focus{
-animation: glow 2s infinite;
-}
-
-@keyframes glow{
-0%{box-shadow:0 0 0 rgba(255,215,0,0)}
-50%{box-shadow:0 0 25px rgba(255,215,0,0.6)}
-100%{box-shadow:0 0 0 rgba(255,215,0,0)}
-}
-
-@keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(6px)}
-}
-.premium-flash-btn{
-display:inline-block;
-padding:14px 28px;
-border-radius:12px;
-background:linear-gradient(45deg,#f5c16c,#ffd700);
-color:#000;
-font-weight:600;
-text-decoration:none;
-box-shadow:0 0 15px rgba(255,215,0,0.5);
-animation:premiumGlow 2s infinite;
-transition:0.3s;
-}
-
-.premium-flash-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 0 25px rgba(255,215,0,0.8);
-}
-
-@keyframes premiumGlow{
-0%{box-shadow:0 0 5px rgba(255,215,0,0.3)}
-50%{box-shadow:0 0 25px rgba(255,215,0,0.8)}
-100%{box-shadow:0 0 5px rgba(255,215,0,0.3)}
-}
-
-.flash-top{
-text-align:center;
-margin:15px 0;
-}
-
-.flash-arrow{
-display:block;
-margin-top:6px;
-color:#f5c16c;
-animation:bounce 1.5s infinite;
-}
-  .featured-flashcard{
-text-align:center;
-margin:30px 0;
-}
-
-.flash-preview img{
-width:90%;
-max-width:700px;
-border-radius:12px;
-border:1px solid rgba(255,215,0,0.3);
-box-shadow:0 0 25px rgba(255,215,0,0.2);
-transition:.3s;
-}
-
-.flash-preview img:hover{
-transform:scale(1.02);
-box-shadow:0 0 35px rgba(255,215,0,0.4);
-}
-
-.open-btn{
-display:inline-block;
-margin-top:15px;
-padding:12px 22px;
-border-radius:8px;
-background:linear-gradient(45deg,#f5c16c,#ffd700);
-color:#000;
-text-decoration:none;
-font-weight:600;
-}  
-    .featured-flashcard{
-position:relative;
-text-align:center;
-margin:30px 0;
-}
-
-.overlay-btn{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:linear-gradient(45deg,#f5c16c,#ffd700);
-padding:14px 28px;
-border-radius:10px;
-font-weight:600;
-color:#000;
-text-decoration:none;
-box-shadow:0 5px 20px rgba(0,0,0,0.3);
-}
-</style>
-
 </head>
 
 <body>
- 
- 
+
+  <!-- ══════════════ SKIP LINK ══════════════ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- ══════════════ HEADER ══════════════ -->
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="header-inner">
-      <a href="#" class="logo">
-        <span class="logo-icon">◈</span>
-        <span class="logo-text">Prince <em>Learning Hub</em></span>
+      <a href="#" class="logo" aria-label="Prince Learning Hub home">
+        <div class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <polygon points="14,7 21,11 21,17 14,21 7,17 7,11" fill="currentColor" opacity="0.3"/>
+            <circle cx="14" cy="14" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Prince</span>
+          <span class="logo-sub">Learning Hub</span>
+        </div>
       </a>
-      <nav class="main-nav" id="mainNav">
-        <a href="#flashcards" class="nav-link" onclick="closeNav()">Flashcards</a>
-        <a href="#upload"     class="nav-link" onclick="closeNav()">Upload</a>
-        <a href="#ai"         class="nav-link" onclick="closeNav()">AI Assistant</a>
-        <a href="#categories" class="nav-link" onclick="closeNav()">Categories</a>
+
+      <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main navigation">
+        <a href="#flashcards" class="nav-link" onclick="closeNav()">
+          <span class="nav-icon">⬡</span> Flashcards
+        </a>
+        <a href="#upload" class="nav-link" onclick="closeNav()">
+          <span class="nav-icon">⬡</span> Upload
+        </a>
+        <a href="#ai" class="nav-link" onclick="closeNav()">
+          <span class="nav-icon">⬡</span> AI Assistant
+        </a>
+        <a href="#categories" class="nav-link" onclick="closeNav()">
+          <span class="nav-icon">⬡</span> Categories
+        </a>
       </nav>
+
       <div class="header-actions">
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
-          <span class="theme-icon">☽</span>
+          <span class="theme-icon" aria-hidden="true">☽</span>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
- <div class="featured-flashcard">
 
-<a href="gst-flashcard.html" class="flash-preview">
-<img src="./gst-preview.png" alt="GST Flashcards">
-</a>
-
-<a href="gst-flashcard.html" class="open-btn overlay-btn">
-Open GST Flashcards →
-</a>
-
-</div>
-
-<a href="tax-flashcard.html" class="flash-preview">
-<img src="./tax-preview.png" alt="Tax Flashcards">
-</a>
-
-<a href="tax-flashcard.html" class="open-btn overlay-btn">
-Open Flashcards →
-</a>
-</div>
+  <main id="main-content">
 
   <!-- ══════════════ HERO ══════════════ -->
-  <!-- TAX FLASHCARD TOP BUTTON --> 
-  
-  <section class="hero">
-    
-    <div class="hero-bg-grid"></div>
+  <section class="hero" aria-label="Welcome section">
+    <div class="hero-backdrop">
+      <div class="hero-grid-overlay"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
+
     <div class="hero-content">
-      <p class="hero-eyebrow">Welcome to your study companion</p>
-      <h1 class="hero-title">Master Tax, Law,<br/>Accounts & GST</h1>
-      <p class="hero-subtitle">Upload flashcards, study smarter, and get AI-powered help — all in one beautiful hub.</p>
-      <div class="hero-search">
-        <span class="search-icon">⌕</span>
-        <input type="text" id="globalSearch" class="search-input" placeholder="Search flashcards, topics…" autocomplete="off" />
-        <button class="search-btn" onclick="runSearch()">Search</button>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>CA Inter · May 2026 Preparation</span>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><span id="statCards">0</span><em>Flashcards</em></div>
-        <div class="stat-sep">|</div>
-        <div class="stat"><span id="statFiles">0</span><em>Files</em></div>
-        <div class="stat-sep">|</div>
-        <div class="stat"><span>4</span><em>Categories</em></div>
+
+      <h1 class="hero-title">
+        <span class="title-line">Master Tax, Law,</span>
+        <span class="title-line title-accent">Accounts & GST</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Upload flashcards, study smarter, and get AI-powered help —<br class="br-hide"/>
+        all in one beautiful hub.
+      </p>
+
+      <div class="hero-search" role="search">
+        <label for="globalSearch" class="sr-only">Search flashcards and topics</label>
+        <div class="search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+        <input type="text" id="globalSearch" class="search-input"
+               placeholder="Search flashcards, topics…"
+               autocomplete="off"
+               aria-label="Search flashcards and topics" />
+        <button class="search-btn" onclick="runSearch()" aria-label="Run search">Search</button>
+      </div>
+
+      <div class="hero-stats" role="region" aria-label="Statistics">
+        <div class="stat-item">
+          <span class="stat-num" id="statCards">0</span>
+          <span class="stat-label">Flashcards</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" id="statFiles">0</span>
+          <span class="stat-label">Files</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Categories</span>
+        </div>
+      </div>
+
+      <!-- ── Quick Access Buttons ── -->
+      <div class="hero-quick-links">
+        <a href="gst-flashcard.html" class="quick-link quick-link-gst">
+          <span class="ql-icon">📋</span>
+          <span class="ql-text">
+            <strong>GST Flashcards</strong>
+            <small>Full chapter coverage</small>
+          </span>
+          <span class="ql-arrow">→</span>
+        </a>
+        <a href="tax-flashcard.html" class="quick-link quick-link-tax">
+          <span class="ql-icon">📊</span>
+          <span class="ql-text">
+            <strong>Direct Tax Flashcards</strong>
+            <small>CA Inter DT · All chapters</small>
+          </span>
+          <span class="ql-arrow">→</span>
+        </a>
       </div>
     </div>
-    <div class="hero-deco"></div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
   <!-- ══════════════ CATEGORIES ══════════════ -->
-  <section class="section" id="categories">
+  <section class="section" id="categories" aria-labelledby="cat-title">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title">Categories</h2>
-        <p class="section-sub">Filter your study material by subject</p>
+        <div class="section-eyebrow">Browse by Subject</div>
+        <h2 class="section-title" id="cat-title">Categories</h2>
+        <p class="section-sub">Filter your study material by subject area</p>
       </div>
-      <div class="category-grid">
-        <button class="cat-btn active" data-cat="all">All</button>
-        <button class="cat-btn" data-cat="tax"><span class="cat-icon">📊</span> Tax</button>
-        <button class="cat-btn" data-cat="law"><span class="cat-icon">⚖️</span> Law</button>
-        <button class="cat-btn" data-cat="accounts"><span class="cat-icon">🧾</span> Accounts</button>
-        <button class="cat-btn" data-cat="gst"><span class="cat-icon">📋</span> GST</button>
+
+      <div class="category-grid" role="group" aria-label="Category filters">
+        <button class="cat-btn active" data-cat="all">
+          <span class="cat-icon-wrap" aria-hidden="true">⬡</span>
+          <span>All Subjects</span>
+        </button>
+        <button class="cat-btn" data-cat="tax">
+          <span class="cat-icon-wrap" aria-hidden="true">📊</span>
+          <span>Direct Tax</span>
+        </button>
+        <button class="cat-btn" data-cat="law">
+          <span class="cat-icon-wrap" aria-hidden="true">⚖️</span>
+          <span>Law</span>
+        </button>
+        <button class="cat-btn" data-cat="accounts">
+          <span class="cat-icon-wrap" aria-hidden="true">🧾</span>
+          <span>Accounts</span>
+        </button>
+        <button class="cat-btn" data-cat="gst">
+          <span class="cat-icon-wrap" aria-hidden="true">📋</span>
+          <span>GST</span>
+        </button>
       </div>
     </div>
   </section>
 
- <!-- TOP TAX FLASHCARD BUTTON -->
-<div style="text-align:center;margin:20px 0;">
-  <a href="tax-flashcard.html" 
-     style="padding:15px 30px;
-     background:linear-gradient(45deg,#007bff,#00c6ff);
-     color:white;
-     text-decoration:none;
-     border-radius:10px;
-     font-size:18px;
-     font-weight:bold;
-     box-shadow:0 4px 10px rgba(0,0,0,0.2);">
-     📚 Tax Flashcards
-  </a>
-</div>
-
-
-<!-- ══════════════ FLASHCARDS ══════════════ -->
-<section class="section" id="flashcards">
-  <div style="text-align:center;margin:20px 0;">
-  <button onclick="scrollToFlashcard()" 
-  style="
-  padding:14px 28px;
-  background:linear-gradient(45deg,#007bff,#00c6ff);
-  color:white;
-  border:none;
-  border-radius:30px;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  animation: pulse 1.5s infinite;
-  ">
-  👇 Click Here to Open Flashcards
-  </button>
-</div>
-  <div class="container">
-    
-    <div class="section-head">
-      <h2 class="section-title">Flashcards</h2>
-      <p class="section-sub">Click a card to reveal the answer</p>
-    </div>
-
-    <div class="flashcard-grid" id="flashcardGrid"></div>
-
-    <p class="empty-state" id="noCards" style="display:none">
-      No flashcards found. Upload HTML files or try a different category.
-    </p>
-
-  </div>
-</section>
-
-
-  <!-- ══════════════ UPLOAD ══════════════ -->
-  <section class="section section-alt" id="upload">
+  <!-- ══════════════ FLASHCARDS ══════════════ -->
+  <section class="section section-dark" id="flashcards" aria-labelledby="flash-title">
     <div class="container">
       <div class="section-head">
-        <h2 class="section-title">Upload Flashcards</h2>
-        <p class="section-sub">Upload your HTML flashcard files — they are stored locally in your browser</p>
+        <div class="section-eyebrow">Interactive Study</div>
+        <h2 class="section-title" id="flash-title">Flashcards</h2>
+        <p class="section-sub">Click a card to reveal the answer · Use keyboard ← → to navigate</p>
       </div>
-      <div class="upload-area" id="uploadArea">
-        <input type="file" id="fileInput" accept=".html" multiple hidden />
-        <div class="upload-icon">⬆</div>
-        <p class="upload-label">Drag & drop <strong>.html</strong> flashcard files here</p>
-        <p class="upload-hint">or</p>
-        <button class="btn-primary" onclick="document.getElementById('fileInput').click()">Browse Files</button>
-        <p class="upload-formats">Supported: .html flashcard files</p>
+
+      <div class="flashcard-toolbar">
+        <div class="fc-count" id="fcCount" aria-live="polite">Loading cards…</div>
+        <button class="fc-shuffle-btn" onclick="shuffleCards()" title="Shuffle cards">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+            <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+          </svg>
+          Shuffle
+        </button>
       </div>
-      <div class="upload-category-select">
-        <label>Assign category to uploaded files:</label>
-        <select id="uploadCategory">
-          <option value="tax">Tax</option>
-          <option value="law">Law</option>
-          <option value="accounts">Accounts</option>
-          <option value="gst">GST</option>
-        </select>
+
+      <div class="flashcard-grid" id="flashcardGrid" role="list" aria-label="Flashcards"></div>
+
+      <p class="empty-state" id="noCards" style="display:none" role="alert">
+        <span class="empty-icon" aria-hidden="true">🔍</span>
+        <strong>No flashcards found.</strong>
+        <span>Upload HTML files or try a different category.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════ UPLOAD ══════════════ -->
+  <section class="section" id="upload" aria-labelledby="upload-title">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <div class="section-eyebrow">Your Content</div>
+        <h2 class="section-title" id="upload-title">Upload Flashcards</h2>
+        <p class="section-sub">Upload your HTML flashcard files — stored locally in your browser</p>
       </div>
-      <div class="uploaded-list" id="uploadedList"></div>
+
+      <div class="upload-card">
+        <div class="upload-area" id="uploadArea" role="button" tabindex="0"
+             aria-label="Upload area — drag and drop HTML files or click to browse">
+          <input type="file" id="fileInput" accept=".html" multiple hidden aria-hidden="true" />
+          <div class="upload-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <p class="upload-label">Drag & drop <strong>.html</strong> flashcard files here</p>
+          <p class="upload-hint">or</p>
+          <button class="btn-primary" type="button" onclick="document.getElementById('fileInput').click()">
+            Browse Files
+          </button>
+          <p class="upload-formats">Accepted format: <code>.html</code> flashcard files only</p>
+        </div>
+
+        <div class="upload-options">
+          <label class="upload-option-label" for="uploadCategory">Assign category:</label>
+          <select id="uploadCategory" aria-label="Category for uploaded files">
+            <option value="tax">📊 Direct Tax</option>
+            <option value="law">⚖️ Law</option>
+            <option value="accounts">🧾 Accounts</option>
+            <option value="gst">📋 GST</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="uploaded-list" id="uploadedList" aria-label="Uploaded files"></div>
     </div>
   </section>
 
   <!-- ══════════════ AI ASSISTANT ══════════════ -->
-  <section class="section" id="ai">
-    <div class="container">
+  <section class="section section-dark" id="ai" aria-labelledby="ai-title">
+    <div class="container container-narrow">
       <div class="section-head">
-        <h2 class="section-title">AI Assistant</h2>
+        <div class="section-eyebrow">Powered by Gemini</div>
+        <h2 class="section-title" id="ai-title">AI Study Assistant</h2>
         <p class="section-sub">Ask any question about Tax, Law, Accounts or GST</p>
       </div>
 
       <!-- ── API Key Setup ── -->
-      <div class="ai-key-setup" id="aiKeySetup">
-        <p>🔑 <strong>Enter your free Gemini API key to activate the AI.</strong>
-          Get one free at <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a>
-          → Sign in → Create API Key → Copy & paste below.
-        </p>
-        <div class="ai-key-row">
-          <input type="password" id="geminiKeyInput" placeholder="Paste Gemini API key (AIza…)" autocomplete="off" />
-          <button onclick="saveGeminiKey()">Save & Connect</button>
+      <div class="ai-key-panel" id="aiKeySetup">
+        <div class="ai-key-header">
+          <span class="key-icon" aria-hidden="true">🔑</span>
+          <div>
+            <strong>Connect Gemini AI (Free)</strong>
+            <p>Get a free key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">aistudio.google.com</a> → Sign in → Create API Key</p>
+          </div>
         </div>
-        <p id="aiKeyStatus" class="ai-key-status"></p>
+        <div class="ai-key-row">
+          <input type="password" id="geminiKeyInput"
+                 placeholder="Paste your Gemini API key (AIza…)"
+                 autocomplete="off"
+                 aria-label="Gemini API key input" />
+          <button class="btn-primary" onclick="saveGeminiKey()" type="button">Save & Connect</button>
+        </div>
+        <p id="aiKeyStatus" class="ai-key-status" role="status" aria-live="polite"></p>
       </div>
 
       <!-- ── Chat Box ── -->
-      <div class="ai-chat-box">
-        <div class="ai-messages" id="aiMessages">
+      <div class="ai-chat-box" aria-label="AI Chat interface">
+        <div class="ai-chat-header">
+          <div class="ai-status-dot"></div>
+          <span>CA Study Assistant</span>
+          <span class="ai-model-tag">Gemini 1.5 Flash</span>
+        </div>
+
+        <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-label="Chat messages">
           <div class="ai-msg bot">
-            <div class="ai-avatar">◈</div>
-            <div class="ai-bubble">Hi! I'm your study assistant. Ask me anything about Tax, Law, Accounts, or GST. 📚</div>
+            <div class="ai-avatar" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 28 28" fill="none">
+                <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="14" cy="14" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="ai-bubble">
+              Hi! I'm your CA study assistant. Ask me anything about <strong>Tax, Law, Accounts,</strong> or <strong>GST</strong> 📚
+            </div>
           </div>
         </div>
+
         <div class="ai-input-row">
-          <input type="text" id="aiInput" class="ai-input" placeholder="Ask a question…" autocomplete="off" />
-          <button class="btn-primary ai-send" id="aiSend" onclick="sendAI()">Send ↗</button>
+          <label for="aiInput" class="sr-only">Your question</label>
+          <input type="text" id="aiInput" class="ai-input"
+                 placeholder="Ask a question about Tax, Law, GST…"
+                 autocomplete="off"
+                 aria-label="Ask AI assistant a question" />
+          <button class="ai-send-btn" id="aiSend" onclick="sendAI()" type="button" aria-label="Send message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
         </div>
-        <p class="ai-disclaimer">Powered by Google Gemini (free) · Responses are educational, not legal advice.</p>
+        <p class="ai-disclaimer">Powered by Google Gemini (free) · Responses are for educational purposes only, not legal or financial advice.</p>
       </div>
     </div>
   </section>
 
+  </main>
+
   <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <div class="footer-brand"><span class="logo-icon">◈</span> Prince Learning Hub</div>
-      <p class="footer-copy">© 2025 Prince Learning Hub · Built for learners, by learners.</p>
-      <div class="footer-links">
-        <a href="#flashcards">Flashcards</a>
-        <a href="#upload">Upload</a>
-        <a href="#ai">AI Help</a>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="14" cy="14" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <div class="footer-brand-name">Prince Learning Hub</div>
+            <div class="footer-brand-sub">CA Inter · May 2026</div>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#flashcards">Flashcards</a>
+          <a href="#upload">Upload</a>
+          <a href="#ai">AI Help</a>
+          <a href="#categories">Categories</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Prince Learning Hub · Built for learners, by learners.</p>
+        <p class="footer-tech">Tax · Law · Accounts · GST</p>
       </div>
     </div>
   </footer>
 
   <!-- ══════════════ MODAL ══════════════ -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Flashcard viewer">
     <div class="modal" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <iframe id="modalFrame" src="" title="Flashcard Viewer"></iframe>
+      <div class="modal-header">
+        <span class="modal-title">Flashcard Viewer</span>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <iframe id="modalFrame" src="" title="Flashcard Viewer" loading="lazy"></iframe>
     </div>
   </div>
 
   <!-- ══════════════ TOAST ══════════════ -->
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ══════════════ BACK TO TOP ══════════════ -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
 
   <script src="script.js"></script>
-
-  <!-- ══════════════ AI FIX — GEMINI API ══════════════ -->
-  <script>
-    // ── Inline styles for the key setup box (no style.css changes needed) ──
-    const aiStyle = document.createElement('style');
-    aiStyle.textContent = `
-      .ai-key-setup {
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 14px;
-        padding: 18px 20px;
-        margin-bottom: 18px;
-        font-size: 14px;
-        line-height: 1.6;
-        color: inherit;
-      }
-      .ai-key-setup a { color: #f0c050; }
-      .ai-key-row {
-        display: flex;
-        gap: 10px;
-        margin-top: 12px;
-        flex-wrap: wrap;
-      }
-      .ai-key-row input {
-        flex: 1;
-        min-width: 220px;
-        padding: 9px 14px;
-        border-radius: 10px;
-        border: 1px solid rgba(255,255,255,0.15);
-        background: rgba(0,0,0,0.3);
-        color: inherit;
-        font-size: 13px;
-        font-family: monospace;
-        outline: none;
-      }
-      .ai-key-row input:focus { border-color: #f0c050; }
-      .ai-key-row button {
-        padding: 9px 18px;
-        border-radius: 10px;
-        border: none;
-        background: #f0c050;
-        color: #111;
-        font-weight: 600;
-        cursor: pointer;
-        font-size: 13px;
-        white-space: nowrap;
-      }
-      .ai-key-row button:hover { opacity: 0.85; }
-      .ai-key-status { margin-top: 8px; font-size: 13px; }
-      .ai-key-status.ok  { color: #5dde8b; }
-      .ai-key-status.err { color: #f07070; }
-      .ai-typing-dots span {
-        display: inline-block;
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        background: currentColor;
-        opacity: 0.6;
-        margin: 0 2px;
-        animation: aiDot 1.2s infinite;
-      }
-      .ai-typing-dots span:nth-child(2) { animation-delay:.2s }
-      .ai-typing-dots span:nth-child(3) { animation-delay:.4s }
-      @keyframes aiDot {
-        0%,60%,100% { transform:translateY(0) }
-        30% { transform:translateY(-6px) }
-      }
-    `;
-    document.head.appendChild(aiStyle);
-
-    // ── Gemini system prompt ──
-    const GEMINI_SYSTEM = `You are a knowledgeable CA (Chartered Accountant) study assistant for Indian CA students.
-You specialise in: Income Tax, GST, Company Law, Indian Contract Act, Partnership Act, Accounting Standards, Journal Entries, CA Inter and CA Final syllabus.
-Give clear, structured, concise answers. Use bullet points and examples where helpful.
-Responses are for study purposes only — not personal legal or financial advice.`;
-
-    // ── Save / load key ──
-    function saveGeminiKey() {
-      const key = document.getElementById('geminiKeyInput').value.trim();
-      const status = document.getElementById('aiKeyStatus');
-      if (!key) {
-        status.className = 'ai-key-status err';
-        status.textContent = '❌ Please paste your API key first.';
-        return;
-      }
-      if (!key.startsWith('AI')) {
-        status.className = 'ai-key-status err';
-        status.textContent = '❌ Key looks wrong — Gemini keys start with "AIza…". Try again.';
-        return;
-      }
-      localStorage.setItem('plh_gemini_key', key);
-      status.className = 'ai-key-status ok';
-      status.textContent = '✅ Connected! You can now ask questions below.';
-    }
-
-    // Load saved key on page load
-    window.addEventListener('load', function () {
-      const saved = localStorage.getItem('plh_gemini_key');
-      if (saved) {
-        document.getElementById('geminiKeyInput').value = saved;
-        const status = document.getElementById('aiKeyStatus');
-        status.className = 'ai-key-status ok';
-        status.textContent = '✅ API key loaded. AI is ready!';
-      }
-    });
-
-    // ── Enter key to send ──
-    document.getElementById('aiInput').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') sendAI();
-    });
-
-    // ── Helper: append message ──
-    function appendAIMsg(role, html) {
-      const box = document.getElementById('aiMessages');
-      const wrap = document.createElement('div');
-      wrap.className = 'ai-msg ' + role;
-      const av = document.createElement('div');
-      av.className = 'ai-avatar';
-      av.textContent = role === 'bot' ? '◈' : 'U';
-      const bub = document.createElement('div');
-      bub.className = 'ai-bubble';
-      bub.innerHTML = html;
-      wrap.appendChild(av);
-      wrap.appendChild(bub);
-      box.appendChild(wrap);
-      box.scrollTop = box.scrollHeight;
-      return bub;
-    }
-
-    function showTyping() {
-      const box = document.getElementById('aiMessages');
-      const wrap = document.createElement('div');
-      wrap.className = 'ai-msg bot';
-      wrap.id = 'aiTyping';
-      const av = document.createElement('div');
-      av.className = 'ai-avatar';
-      av.textContent = '◈';
-      const bub = document.createElement('div');
-      bub.className = 'ai-bubble ai-typing-dots';
-      bub.innerHTML = '<span></span><span></span><span></span>';
-      wrap.appendChild(av);
-      wrap.appendChild(bub);
-      box.appendChild(wrap);
-      box.scrollTop = box.scrollHeight;
-    }
-
-    function removeTyping() {
-      const t = document.getElementById('aiTyping');
-      if (t) t.remove();
-    }
-
-    function formatAI(text) {
-      text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      text = text.replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>');
-      text = text.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
-      text = text.replace(/\n\n/g, '<br/><br/>');
-      text = text.replace(/\n/g, '<br/>');
-      return text;
-    }
-
-    // ── Main send function (overrides script.js sendAI if any) ──
-    async function sendAI() {
-      const inputEl = document.getElementById('aiInput');
-      const sendBtn = document.getElementById('aiSend');
-      const text = inputEl.value.trim();
-      if (!text) return;
-
-      const apiKey = localStorage.getItem('plh_gemini_key') ||
-                     document.getElementById('geminiKeyInput').value.trim();
-
-      if (!apiKey) {
-        const status = document.getElementById('aiKeyStatus');
-        status.className = 'ai-key-status err';
-        status.textContent = '❌ Please enter and save your Gemini API key above first!';
-        document.getElementById('geminiKeyInput').focus();
-        return;
-      }
-
-      appendAIMsg('user', text);
-      inputEl.value = '';
-      sendBtn.disabled = true;
-      showTyping();
-
-      try {
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              system_instruction: { parts: [{ text: GEMINI_SYSTEM }] },
-              contents: [{ role: 'user', parts: [{ text }] }],
-              generationConfig: { temperature: 0.7, maxOutputTokens: 800 }
-            })
-          }
-        );
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          removeTyping();
-          const errMsg = data?.error?.message || 'Unknown error';
-          appendAIMsg('bot',
-            `❌ <strong>Error:</strong> ${errMsg}<br/>
-            <small style="opacity:.7">Fix: Get a fresh key from
-            <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#f0c050">aistudio.google.com</a>
-            and re-paste it above.</small>`
-          );
-          sendBtn.disabled = false;
-          return;
-        }
-
-        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
-                      || 'Sorry, no response generated. Try again.';
-        removeTyping();
-        appendAIMsg('bot', formatAI(reply));
-
-      } catch (err) {
-        removeTyping();
-        appendAIMsg('bot', `❌ <strong>Network error:</strong> ${err.message}<br/><small style="opacity:.7">Check your internet and try again.</small>`);
-      }
-
-      sendBtn.disabled = false;
-    }
-    <script>
-function scrollToFlashcard(){
-document.getElementById("flashcardGrid")
-.scrollIntoView({behavior:"smooth"});
-}
-</script>
-  </script>
-
+  <script src="ai.js"></script>
 </body>
 </html>
