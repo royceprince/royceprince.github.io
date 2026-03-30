@@ -75,22 +75,39 @@
     </div>
   </section>
 
- <!-- ══════════════ FLASHCARDS ══════════════ -->
-  <section class="section" id="flashcards">
-    <div style="text-align:center;margin:20px;">
-      <a href="tax-flashcard.html" style="padding:15px 25px;background:#007bff;color:white;text-decoration:none;border-radius:8px;">
-        📚 Tax Flashcards
-      </a>
+ <!-- TOP TAX FLASHCARD BUTTON -->
+<div style="text-align:center;margin:20px 0;">
+  <a href="tax-flashcard.html" 
+     style="padding:15px 30px;
+     background:linear-gradient(45deg,#007bff,#00c6ff);
+     color:white;
+     text-decoration:none;
+     border-radius:10px;
+     font-size:18px;
+     font-weight:bold;
+     box-shadow:0 4px 10px rgba(0,0,0,0.2);">
+     📚 Tax Flashcards
+  </a>
+</div>
+
+
+<!-- ══════════════ FLASHCARDS ══════════════ -->
+<section class="section" id="flashcards">
+  <div class="container">
+    
+    <div class="section-head">
+      <h2 class="section-title">Flashcards</h2>
+      <p class="section-sub">Click a card to reveal the answer</p>
     </div>
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Flashcards</h2>
-        <p class="section-sub">Click a card to reveal the answer</p>
-      </div>
-      <div class="flashcard-grid" id="flashcardGrid"></div>
-      <p class="empty-state" id="noCards" style="display:none">No flashcards found. Upload HTML files or try a different category.</p>
-    </div>
-  </section>
+
+    <div class="flashcard-grid" id="flashcardGrid"></div>
+
+    <p class="empty-state" id="noCards" style="display:none">
+      No flashcards found. Upload HTML files or try a different category.
+    </p>
+
+  </div>
+</section>
 
 
   <!-- ══════════════ UPLOAD ══════════════ -->
