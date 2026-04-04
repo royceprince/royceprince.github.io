@@ -418,4 +418,6 @@
    setTimeout(()=>{
 document.getElementById("virtualBanner").style.display="none";
 },10000);
-
+function closeBanner(){
+document.getElementById("virtualBanner").style.display="none";
+}
