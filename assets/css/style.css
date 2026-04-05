@@ -1011,37 +1011,35 @@ transform:translateY(0);
 body{
 margin-top:50px;
 }
-.timer-box{
-background:var(--surface);
+.study-timer{
+position:fixed;
+left:20px;
+bottom:20px;
+background:#111;
+color:white;
 padding:20px;
-border-radius:10px;
-text-align:center;
-margin-bottom:20px;
+border-radius:12px;
+width:180px;
+z-index:999;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
 }
 
-.timer-box h3{
-font-size:40px;
+.study-timer h4{
 margin-bottom:10px;
 }
 
-.timer-buttons button{
-padding:10px 20px;
-margin:5px;
+.study-timer #timer{
+font-size:30px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.timer-controls button{
+margin:2px;
+padding:5px 8px;
 border:none;
 background:#7C3AED;
 color:white;
 border-radius:5px;
 cursor:pointer;
-}
-.progress-bar{
-background:#ddd;
-height:10px;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-.progress-bar div{
-background:#7C3AED;
-height:100%;
-border-radius:10px;
 }
