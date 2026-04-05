@@ -435,12 +435,11 @@ document.documentElement.setAttribute("data-theme","dark");
 }
 });
 }
- 
-// Study Timer
+ // Study Timer
 let timer;
 let time = 1500;
 
-function startTimer(){
+window.startTimer = function(){
 clearInterval(timer);
 timer = setInterval(()=>{
 time--;
@@ -452,11 +451,11 @@ clearInterval(timer);
 },1000);
 }
 
-function pauseTimer(){
+window.pauseTimer = function(){
 clearInterval(timer);
 }
 
-function resetTimer(){
+window.resetTimer = function(){
 clearInterval(timer);
 time = 1500;
 updateTimer();
@@ -470,4 +469,6 @@ document.getElementById("timer").innerText =
 minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 
+document.addEventListener("DOMContentLoaded",()=>{
 updateTimer();
+});
