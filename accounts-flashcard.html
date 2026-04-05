@@ -40,6 +40,10 @@
   .ch-tab.active-c15{background:rgba(249,115,22,0.12);color:#fdba74;border-color:rgba(249,115,22,0.4)}
   .ch-tab.active-c16{background:rgba(236,72,153,0.12);color:#f9a8d4;border-color:rgba(236,72,153,0.4)}
   .ch-tab.active-mega{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.4)}
+  .ch-tab.active-c17{background:rgba(239,68,68,0.12);color:#fca5a5;border-color:rgba(239,68,68,0.4)}
+  .ch-tab.active-c18{background:rgba(234,179,8,0.12);color:#fde68a;border-color:rgba(234,179,8,0.4)}
+  .ch-tab.active-c19{background:rgba(20,184,166,0.12);color:#5eead4;border-color:rgba(20,184,166,0.4)}
+  .ch-tab.active-c20{background:rgba(34,197,94,0.12);color:#86efac;border-color:rgba(34,197,94,0.4)}
 
   .topic-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
   .tpill{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--muted);transition:all 0.18s}
@@ -64,6 +68,14 @@
   .pfill-c14{background:linear-gradient(90deg,#4338ca,#6366f1)}
   .pfill-c15{background:linear-gradient(90deg,#c2410c,#f97316)}
   .pfill-c16{background:linear-gradient(90deg,#9d174d,#ec4899)}
+  .pfill-c17{background:linear-gradient(90deg,#991b1b,#ef4444)}
+  .pfill-c18{background:linear-gradient(90deg,#b45309,#f59e0b)}
+  .pfill-c19{background:linear-gradient(90deg,#0f766e,#14b8a6)}
+  .pfill-c20{background:linear-gradient(90deg,#15803d,#22c55e)}
+  .btn-c17{background:linear-gradient(135deg,#7f1d1d,#991b1b)}
+  .btn-c18{background:linear-gradient(135deg,#92400e,#b45309)}
+  .btn-c19{background:linear-gradient(135deg,#134e4a,#0f766e)}
+  .btn-c20{background:linear-gradient(135deg,#14532d,#15803d)}
 
   .cnav{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
   .cnav button{border:none;border-radius:10px;padding:9px 24px;font-size:13px;font-weight:700;cursor:pointer;color:#fff;transition:all 0.2s;font-family:'Sora',sans-serif;letter-spacing:0.2px}
@@ -144,7 +156,10 @@
   .qr-btn[data-ch="14"].qr-active{background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.4);color:#a5b4fc}
   .qr-btn[data-ch="15"].qr-active{background:rgba(249,115,22,0.12);border-color:rgba(249,115,22,0.4);color:#fdba74}
   .qr-btn[data-ch="16"].qr-active{background:rgba(236,72,153,0.12);border-color:rgba(236,72,153,0.4);color:#f9a8d4}
-  .qr-btn[data-ch="tricks"].qr-active{background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.4);color:#fcd34d}
+  .qr-btn[data-ch="17"].qr-active{background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.4);color:#fca5a5}
+  .qr-btn[data-ch="18"].qr-active{background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.4);color:#fde68a}
+  .qr-btn[data-ch="19"].qr-active{background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.4);color:#5eead4}
+  .qr-btn[data-ch="20"].qr-active{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.4);color:#86efac}
   .qr-panel{display:none;animation:qrFadeIn 0.28s ease}
   .qr-panel.qr-open{display:block}
   @keyframes qrFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -156,7 +171,7 @@
 <body>
 
 <div class="app-header">
-  <h1>📚 CA Inter Advanced Accounts — Complete Flashcards (All AS) | Prince Learning Hub</h1>
+  <h1>📚 CA Inter Advanced Accounts — Complete Flashcards (All Chapters) | Prince Learning Hub</h1>
   <div class="badges">
     <span class="badge" style="background:rgba(234,179,8,0.15);color:#fde68a;border:1px solid rgba(234,179,8,0.3)">Ch 1 Intro AS</span>
     <span class="badge" style="background:rgba(14,165,233,0.15);color:#7dd3fc;border:1px solid rgba(14,165,233,0.3)">Ch 2 Framework</span>
@@ -174,6 +189,10 @@
     <span class="badge b2">Ch 14 AS 20</span>
     <span class="badge b3">Ch 15 AS 24</span>
     <span class="badge" style="background:rgba(236,72,153,0.15);color:#f9a8d4;border:1px solid rgba(236,72,153,0.3)">Ch 16 Prep FS</span>
+    <span class="badge" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)">Ch 17 Buyback</span>
+    <span class="badge" style="background:rgba(234,179,8,0.15);color:#fde68a;border:1px solid rgba(234,179,8,0.3)">Ch 18 Amalgamation</span>
+    <span class="badge" style="background:rgba(20,184,166,0.15);color:#5eead4;border:1px solid rgba(20,184,166,0.3)">Ch 19 Int. Reconstruction</span>
+    <span class="badge" style="background:rgba(34,197,94,0.15);color:#86efac;border:1px solid rgba(34,197,94,0.3)">Ch 20 Branch Accounting</span>
   </div>
 </div>
 
@@ -194,6 +213,10 @@
   <button class="ch-tab" id="tab-c14" onclick="switchCh('c14')">Ch 14 AS 20</button>
   <button class="ch-tab" id="tab-c15" onclick="switchCh('c15')">Ch 15 AS 24</button>
   <button class="ch-tab" id="tab-c16" onclick="switchCh('c16')">Ch 16 Prep FS</button>
+  <button class="ch-tab" id="tab-c17" onclick="switchCh('c17')">Ch 17 Buyback</button>
+  <button class="ch-tab" id="tab-c18" onclick="switchCh('c18')">Ch 18 Amalgamation</button>
+  <button class="ch-tab" id="tab-c19" onclick="switchCh('c19')">Ch 19 Int. Recon</button>
+  <button class="ch-tab" id="tab-c20" onclick="switchCh('c20')">Ch 20 Branch A/c</button>
   <button class="ch-tab" id="tab-mega" onclick="switchCh('mega')">🔀 ALL Chapters</button>
 </div>
 
@@ -211,7 +234,7 @@
      QUICK REFERENCE SECTION
 ══════════════════════════════════════════════ -->
 <div class="summary-section">
-<h2 style="color:#fbbf24;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 16 CHAPTERS | CA Inter Advanced Accounts May 2026</h2>
+<h2 style="color:#fbbf24;text-align:center;font-size:17px;letter-spacing:0.5px">📋 QUICK REFERENCE — ALL 20 CHAPTERS | CA Inter Advanced Accounts May 2026</h2>
 
 <div class="qr-nav" id="qrNav">
   <button class="qr-btn" data-ch="1" onclick="showQR('1')">Ch 1 — Intro to AS</button>
@@ -230,6 +253,10 @@
   <button class="qr-btn" data-ch="14" onclick="showQR('14')">Ch 14 — AS 20 EPS</button>
   <button class="qr-btn" data-ch="15" onclick="showQR('15')">Ch 15 — AS 24</button>
   <button class="qr-btn" data-ch="16" onclick="showQR('16')">Ch 16 — Prep FS</button>
+  <button class="qr-btn" data-ch="17" onclick="showQR('17')">Ch 17 — Buyback</button>
+  <button class="qr-btn" data-ch="18" onclick="showQR('18')">Ch 18 — Amalgamation</button>
+  <button class="qr-btn" data-ch="19" onclick="showQR('19')">Ch 19 — Int. Reconstruction</button>
+  <button class="qr-btn" data-ch="20" onclick="showQR('20')">Ch 20 — Branch Accounting</button>
   <button class="qr-btn" data-ch="tricks" onclick="showQR('tricks')">⚡ Memory Tricks</button>
 </div>
 
@@ -873,6 +900,202 @@
 </div>
 </div>
 
+<!-- QR PANEL 17 -->
+<div class="qr-panel" id="qr-panel-17">
+<div class="qr-chapter" style="border-left-color:rgba(239,68,68,0.5)">
+  <div class="qr-ch-head" style="background:rgba(239,68,68,0.1);color:#fca5a5">Ch 17 — Buyback of Securities (Section 68–70, Companies Act 2013)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#f87171">4 Journal Entries — Core Buyback</div>
+      <table class="rate-table">
+        <tr><th>Entry</th><th>Dr</th><th>Cr</th></tr>
+        <tr><td>(i) Buyback payment</td><td>Equity Share Buyback A/c</td><td>Bank</td></tr>
+        <tr><td>(ii) Capital adjustment</td><td>Equity Share Capital (paidup) + Premium on Buyback</td><td>Equity Share Buyback A/c</td></tr>
+        <tr><td>(iii) Premium write-off</td><td>Security Premium / General Reserve (1st pref)</td><td>Premium on Buyback</td></tr>
+        <tr><td>(iv) CRR creation</td><td>Revenue Reserve (or S/Premium)</td><td>Capital Redemption Reserve (CRR)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#f87171;margin-top:8px">CRR Calculation</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Amount</th></tr>
+        <tr><td>Paid-up value of capital bought back</td><td>XXX</td></tr>
+        <tr><td>(–) Fresh issue of shares for buyback purpose</td><td>XXX</td></tr>
+        <tr><td>= CRR Required</td><td>XXX</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#f87171">Section 68 — Buyback Limits (Take LOWEST)</div>
+      <table class="rate-table">
+        <tr><th>Limit</th><th>Formula</th></tr>
+        <tr><td>(a) 25% of Paid-up Equity Shares (number)</td><td>No. of equity shares × 25%</td></tr>
+        <tr><td>(b) 25% of (Total paid-up + Free Reserves)</td><td>Divided by Buyback price per share</td></tr>
+        <tr><td>(c) Debt-Equity Ratio ≤ 2:1 post buyback</td><td>Secured + Unsecured Debt ÷ (S/Capital + Free Reserves) ≤ 2</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#f87171;margin-top:8px">Preference Priority — What to use for what</div>
+      <table class="rate-table">
+        <tr><th>Purpose</th><th>Use</th></tr>
+        <tr><td>Equity Buyback Premium</td><td>Security Premium first, then Revenue Reserves</td></tr>
+        <tr><td>Pref Share Redemption Premium (Sec 133 co.)</td><td>P&amp;L / General Reserve only</td></tr>
+        <tr><td>Pref Share Redemption Premium (non-133)</td><td>S/Premium first, then Revenue Reserve</td></tr>
+        <tr><td>CRR (Sec 55 — Pref Redemption)</td><td>Revenue Reserve ONLY</td></tr>
+        <tr><td>CRR (Sec 69 — Buyback)</td><td>S/Premium allowed (but ICAI uses Revenue Reserve)</td></tr>
+        <tr><td>Buyback Expenses</td><td>P&amp;L Account</td></tr>
+        <tr><td>Bonus Issue</td><td>CRR first, then S/Premium, then Revenue Reserve</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">CRR can ONLY be used for Bonus Issue (Section 69)</span>
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Sec 70: Prohibits indirect buyback via subsidiary</span>
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">No fresh issue for 6 months; No further buyback for 1 year</span>
+        <span class="qr-pill" style="background:rgba(239,68,68,0.1);color:#fca5a5">Only FULLY PAID equity shares can be bought back</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 18 -->
+<div class="qr-panel" id="qr-panel-18">
+<div class="qr-chapter" style="border-left-color:rgba(234,179,8,0.5)">
+  <div class="qr-ch-head" style="background:rgba(234,179,8,0.1);color:#fde68a">Ch 18 — Amalgamation, Absorption &amp; External Reconstruction (AS-14)</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#fbbf24">Purchase vs Merger — Key Differences</div>
+      <table class="rate-table">
+        <tr><th>Point</th><th>Purchase</th><th>Merger</th></tr>
+        <tr><td>Assets/Liabilities</td><td>Selected A/L can be taken</td><td>ALL A/L must be taken</td></tr>
+        <tr><td>Values</td><td>Agreed / new values</td><td>Book values only</td></tr>
+        <tr><td>Difference in PC vs Net Assets</td><td>Goodwill or Capital Reserve</td><td>GR or P&amp;L A/c</td></tr>
+        <tr><td>Reserves &amp; Surplus</td><td>NOT taken by new co.</td><td>TAKEN by new co.</td></tr>
+        <tr><td>Expenses paid by new co.</td><td>Added to Goodwill</td><td>Debited to P&amp;L/GR</td></tr>
+        <tr><td>Statutory Reserves</td><td>Create via Amalg. Adjustment</td><td>No entry required</td></tr>
+        <tr><td>Shareholder payment</td><td>Any form</td><td>Equity shares ONLY (≥90% agree)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#fbbf24;margin-top:8px">Purchase Consideration Methods</div>
+      <table class="rate-table">
+        <tr><th>Method</th><th>When to Use</th></tr>
+        <tr><td>Net Payment Method (NPM)</td><td>Complete payment details for ESH + PSH given</td></tr>
+        <tr><td>Net Asset Method (NAM)</td><td>Any other case (residual method)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#fbbf24">Books of New Company — Purchase Method JEs</div>
+      <table class="rate-table">
+        <tr><th>Entry</th><th>Dr</th><th>Cr</th></tr>
+        <tr><td>Business Purchase</td><td>Business Purchase A/c (PC)</td><td>Liquidator of old co. (PC)</td></tr>
+        <tr><td>Assets/Liabilities</td><td>Sundry Assets (agreed value)</td><td>Liabilities + Business Purchase (PC)</td></tr>
+        <tr><td>Diff = Goodwill/CR</td><td>Goodwill (if PC &gt; Net Assets)</td><td>Capital Reserve (if PC &lt; Net Assets)</td></tr>
+        <tr><td>PC Payment</td><td>Liquidator of old co.</td><td>Share Capital + Cash + S/Premium</td></tr>
+        <tr><td>Statutory Reserve</td><td>Amalgamation Adjustment A/c</td><td>Statutory Reserve (Inv. All., Export etc.)</td></tr>
+        <tr><td>Unrealised Profit</td><td>Goodwill/CR (upstream) or P&amp;L (downstream)</td><td>Stock</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">NAM formula: Assets at agreed value – Liabilities at agreed value = PC</span>
+        <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Amalgamation Adjustment A/c = shown as NEGATIVE in Reserves (BS)</span>
+        <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Statutory reserves: Investment Allowance, Export Profit, Foreign Project, Shipping, Mining</span>
+        <span class="qr-pill" style="background:rgba(234,179,8,0.1);color:#fde68a">Intrinsic Value = (Fair Assets – Fair Liabilities – Pref SH value) ÷ No. of Eq Shares</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 19 -->
+<div class="qr-panel" id="qr-panel-19">
+<div class="qr-chapter" style="border-left-color:rgba(20,184,166,0.5)">
+  <div class="qr-ch-head" style="background:rgba(20,184,166,0.1);color:#5eead4">Ch 19 — Internal Reconstruction</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#2dd4bf">Methods of Internal Reconstruction</div>
+      <table class="rate-table">
+        <tr><th>Method</th><th>What happens</th></tr>
+        <tr><td>Share Subdivision</td><td>1 share of ₹10 → 10 shares of ₹1 (more shares, same total)</td></tr>
+        <tr><td>Share Consolidation</td><td>10 shares of ₹1 → 1 share of ₹10 (fewer shares, same total)</td></tr>
+        <tr><td>Share Surrender</td><td>Shareholders surrender shares; used to settle liabilities</td></tr>
+        <tr><td>Capital Reduction Scheme</td><td>Write off losses using Capital Reduction A/c</td></tr>
+        <tr><td>Stock to Share Conversion</td><td>Share Capital → Stock Capital (no face value)</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#2dd4bf;margin-top:8px">Capital Reduction A/c — Uses</div>
+      <table class="rate-table">
+        <tr><th>Dr Side (Uses)</th><th>Cr Side (Sources)</th></tr>
+        <tr><td>Write off P&amp;L loss</td><td>Capital reduced from shares</td></tr>
+        <tr><td>Write off Sundry Assets (goodwill, prelim exp)</td><td>Increase in asset value</td></tr>
+        <tr><td>Pay contingent liabilities</td><td>Decrease in liability value</td></tr>
+        <tr><td>Pay reconstruction expenses</td><td>Fresh share issue premium</td></tr>
+        <tr><td>Transfer to Capital Reserve (surplus)</td><td>Creditors' sacrifice</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#2dd4bf">IBC Process — Steps</div>
+      <table class="rate-table">
+        <tr><th>Step</th><th>Action</th></tr>
+        <tr><td>1</td><td>Application to NCLT for Insolvency</td></tr>
+        <tr><td>2</td><td>Appointment of IRP (Insolvency Resolution Professional)</td></tr>
+        <tr><td>3</td><td>IRP collects claims; constitutes COC (Committee of Creditors)</td></tr>
+        <tr><td>4</td><td>COC appoints Resolution Professional (RP)</td></tr>
+        <tr><td>5</td><td>RP formulates Resolution Plan</td></tr>
+        <tr><td>6</td><td>COC approves Resolution Plan</td></tr>
+        <tr><td>7</td><td>NCLT + Govt + Shareholders approve</td></tr>
+        <tr><td>8</td><td>Execute and do accounting</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Capital Reduction A/c must be CLOSED at end — any surplus → Capital Reserve</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">After reconstruction: Company name must add "And Reduced"</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">If share surrender unused: Cancel it via Capital Reduction A/c</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Contingent liabilities waived → No entry; if paid → Dr Capital Reduction, Cr Bank</span>
+        <span class="qr-pill" style="background:rgba(20,184,166,0.1);color:#5eead4">Internal + Amalgamation: First do Internal Reconstruction, THEN apply AS-14</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- QR PANEL 20 -->
+<div class="qr-panel" id="qr-panel-20">
+<div class="qr-chapter" style="border-left-color:rgba(34,197,94,0.5)">
+  <div class="qr-ch-head" style="background:rgba(34,197,94,0.1);color:#86efac">Ch 20 — Branch Accounting</div>
+  <div class="qr-grid2">
+    <div>
+      <div class="qr-sub" style="color:#4ade80">Conversion Rules — Foreign Branch (IFO vs NIFO)</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>IFO Rate</th><th>NIFO Rate</th></tr>
+        <tr><td>Fixed Assets + Depreciation</td><td>Rate on date of transaction</td><td>Closing Rate</td></tr>
+        <tr><td>Current Assets, Current Liabilities, Other LT Liabilities</td><td>Closing Rate</td><td>Closing Rate</td></tr>
+        <tr><td>Inter-related (H.O A/c, Goods sent, Remittance)</td><td>Actual (as in H.O books)</td><td>Actual (as in H.O books)</td></tr>
+        <tr><td>Opening Stock</td><td>Opening Rate</td><td>Opening Rate</td></tr>
+        <tr><td>All other Income &amp; Expenses (incl. Closing Stock)</td><td>Average Rate</td><td>Average Rate</td></tr>
+        <tr><td>Exchange Difference</td><td>P&amp;L (Income/Expense)</td><td>FCTR (Reserve in BS)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="qr-sub" style="color:#4ade80">Dependent Branch Methods</div>
+      <table class="rate-table">
+        <tr><th>Method</th><th>Accounts Prepared</th></tr>
+        <tr><td>Debtors Method</td><td>Branch A/c + Goods Sent to Branch A/c + Stock Reserve A/c</td></tr>
+        <tr><td>Stock and Debtors Method</td><td>Branch Stock A/c (IP) + Branch Debtors A/c + Branch Adjustment A/c + Branch P&amp;L A/c</td></tr>
+        <tr><td>Final Accounts Method</td><td>Trading A/c + P&amp;L A/c</td></tr>
+      </table>
+      <div class="qr-sub" style="color:#4ade80;margin-top:8px">Key Default Assumptions</div>
+      <table class="rate-table">
+        <tr><th>Item</th><th>Assumption</th></tr>
+        <tr><td>Sales</td><td>All credit sales (unless stated)</td></tr>
+        <tr><td>Cash remittance</td><td>Branch remits ALL collections after paying expenses</td></tr>
+        <tr><td>Expenses</td><td>All paid by H.O (unless stated)</td></tr>
+        <tr><td>Goods sent to Branch</td><td>At Invoice Price (IP)</td></tr>
+        <tr><td>Trade discount</td><td>NOT journalised (reduces sale price)</td></tr>
+        <tr><td>Cash discount</td><td>Journalised as Expense</td></tr>
+        <tr><td>Normal loss</td><td>No treatment in Branch A/c; credited to Stock A/c</td></tr>
+        <tr><td>Abnormal loss</td><td>Credited to Stock A/c; separately shown in Trading A/c</td></tr>
+      </table>
+      <div class="qr-pills" style="margin-top:8px">
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Best assumption: Branch = Integral Foreign Operation (IFO)</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">H.O and Branch = Separate persons for accounting; consolidated for presentation</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Branch A/c balance (H.O books) = H.O A/c balance (Branch books) — always equal &amp; opposite</span>
+        <span class="qr-pill" style="background:rgba(34,197,94,0.1);color:#86efac">Stock Reserve on closing stock of branch (from H.O) → Debit H.O P&amp;L A/c</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 <!-- QR PANEL TRICKS -->
 <div class="qr-panel" id="qr-panel-tricks">
 <div class="summary-grid">
@@ -935,7 +1158,21 @@
       <li>Schedule III: Division I = AS companies; 12 months rule for current classification</li>
     </ul>
   </div>
-  <div class="s-card" style="background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.35)">
+  <div class="s-card" style="background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.35)">
+    <h3 style="color:#f87171">Ch 17-20 — Buyback, Amalg, Recon, Branch Tricks</h3>
+    <ul>
+      <li>Buyback: CRR = Paidup bought back – Fresh issue made for buyback</li>
+      <li>CRR only for Bonus Issue (Sec 69) | CRR Sec 55 from Revenue Reserve ONLY</li>
+      <li>No fresh issue 6 months; no further buyback 1 year post-buyback</li>
+      <li>Amalgamation: NPM if complete payment info; NAM otherwise (residual)</li>
+      <li>Merger: ALL assets/liabilities at book values; ≥90% ESH agree; equity only</li>
+      <li>Statutory reserve → Amalgamation Adjustment A/c (negative in BS)</li>
+      <li>Internal Recon: Capital Reduction A/c MUST close; surplus → Capital Reserve</li>
+      <li>IBC steps: NCLT → IRP → COC → RP → Plan → COC → NCLT → Execute</li>
+      <li>Branch: IFO = Fixed assets at transaction rate | NIFO = all at closing rate</li>
+      <li>Branch A/c (HO) = equal &amp; opposite of H.O A/c (Branch) always</li>
+    </ul>
+  </div>
     <h3 style="color:#6ee7b7">Framework &amp; Qualitative — Tricks</h3>
     <ul>
       <li>URRC = Understandable, Relevant, Reliable, Comparable</li>
@@ -1094,7 +1331,42 @@ const C16=[
 {tp:"Notes to Accounts",col:"pink",star:false,title:"Schedule III — Notes to Accounts Key Requirements",bullets:["Notes are INTEGRAL PART of financial statements — cannot be separate from FS","Significant Accounting Policies (Note 1 usually): Basis of preparation, all significant policies as per AS 1","Share Capital Note: Authorised, Issued, Subscribed, Paid-up; Reconciliation; Shareholders with >5%; Rights attached","PPE Note/Schedule: Gross Block + Additions – Disposals = Closing Gross Block | Less: Accumulated Dep = Net Block","Borrowings Note: Nature of loan, rate of interest, security given, repayment terms, period","Inventories Note: Break-up by category (RM, WIP, FG, Stock in trade, Stores & spares)","Contingent Liabilities Note: Pending court cases, disputed taxes, guarantees given"],trick:"Trick: 'Notes = INTEGRAL part always! | Note 1 = Accounting Policies (AS 1) | PPE Note = Gross Block schedule | Borrowings Note = rate + security + repayment | All BS/P&L items need notes!'"},
 ];
 
-const MEGA=[...C1,...C2,...C3,...C4,...C5,...C6,...C7,...C8,...C9,...C10,...C11,...C12,...C13,...C14,...C15,...C16];
+const C17=[
+{tp:"Buyback Meaning",col:"red",star:true,title:"Buyback of Securities — Meaning & Purpose (Section 68–70)",bullets:["BUYBACK = Cancellation by repayment of securities (generally equity shares) — way to REPAY CAPITAL to shareholders","4 Reasons: (1) INCREASE controlling shares (2) AVOID TAKEOVER (3) IMPROVE capital ratios like D/E ratio or DPS (4) LOWER shareholder participation — management control","Buyback RESTRICTED by Section 68 limits — to SECURE CREDITORS | ONLY FULLY PAID equity shares can be bought back","Section 68: Sources + Conditions + Limits | Section 69: CRR creation required | Section 70: Prohibits indirect buyback via subsidiary or investment company","Sources of Buyback: Fresh issue of any shares (not same kind) OR Free Reserves (including Security Premium for Sec 68)"],trick:"Trick: '68 = Source+Condition+Limit | 69 = CRR banao | 70 = Subsidiary se prohibited | Only FULLY PAID equity | Buyback = Capital wapas dena to shareholders!'"},
+{tp:"Core Journal Entries",col:"red",star:true,title:"Buyback — 4 Mandatory Core Journal Entries",bullets:["Entry (i): Eq. Share Buyback A/c Dr → To Bank [Amount paid for buyback]","Entry (ii): Eq. Share Capital Dr (paidup) + Premium on Buyback Dr (excess amount) → To Eq. Share Buyback A/c [Adjust capital account]","Entry (iii): Security Premium Dr (1st pref) OR General Reserve Dr (2nd pref) → To Premium on Buyback [Premium written off from reserves]","Entry (iv): Revenue Reserve Dr (or S/Premium*) → To Capital Redemption Reserve (CRR) [CRR created as per Sec 69]","*For Sec 69 buyback: S/Premium treated as free reserve; ICAI exam = use Revenue Reserve and give a note for S/Premium","CRR Amount = Paid-up value of capital bought back – Fresh issue of shares made for buyback purpose = CRR required"],trick:"Trick: 'FOUR entries: Pay → Adjust capital → Write off premium (S/P first!) → Create CRR | CRR = Bought-back paidup – Fresh issue for buyback | If no fresh issue → Full CRR from reserves!'"},
+{tp:"CRR Rules",col:"red",star:true,title:"Capital Redemption Reserve — Rules, Sources & Usage",bullets:["WHY CRR: To PROTECT CREDITORS when permanent capital (share capital) is reduced via buyback/redemption — CRR maintains the nominal capital level","CRR = Paid-up value of shares bought back – Fresh issue made for buyback purpose","For BUYBACK (Sec 69): CRR from Revenue Reserves OR Security Premium (both allowed); ICAI exam = Revenue Reserve + give note for S/P","For PREF SHARE REDEMPTION (Sec 55): CRR from REVENUE RESERVE ONLY (Security Premium NOT allowed for Sec 55 CRR)","CRR can ONLY be used for BONUS ISSUE of shares (Section 69 provision) — no other use","Revenue Reserves = Free reserves: GR, P&L, Retained Earnings, Surplus A/c, Dividend Equalisation Reserve"],trick:"Trick: 'CRR = Shield for creditors | Sec 69 CRR = S/P ok but ICAI uses RR | Sec 55 CRR = RR ONLY (S/P not allowed!) | CRR use = BONUS shares only! | Remember the Sec 55 vs 69 difference!'"},
+{tp:"Section 68 Conditions & Limits",col:"red",star:true,title:"Section 68 — Conditions & Limits for Buyback",bullets:["CONDITIONS: (a) Allowed by Articles of Association (b) Shares must be FULLY PAID (c) SPECIAL RESOLUTION in General Meeting required","EXCEPTION: If buyback < 10% of total paid-up capital + free reserves → BOARD RESOLUTION sufficient (no special resolution)","THREE LIMITS — TAKE LOWEST: (a) 25% of NO. OF equity shares = max shares | (b) 25% of (total paid-up equity+pref+free reserves) ÷ buyback price = max shares | (c) Post-buyback Debt-to-Equity ≤ 2:1","Formula for (c): (Total Paid-up + Free Reserves – ½ Debt) ÷ (Buyback Price + Paidup per share)","COMPLIANCES: SEBI regulations + Solvency certificate + NO fresh issue of same kind for 6 months + NO further buyback for 1 year","Section 70: PROHIBITS indirect buyback through SUBSIDIARY company or through investment company"],trick:"Trick: 'Conditions: AOA ok + Fully paid + Special resolution (Board if <10%) | Limits LOWEST: 25% shares, 25% capital, 2:1 D/E ratio | Post-buyback: 6 months no issue; 1 year no buyback!'"},
+{tp:"Reserve Preference Chart",col:"red",star:true,title:"Buyback — Complete Reserve Usage Chart",bullets:["EQUITY BUYBACK PREMIUM: 1st → Security Premium | 2nd → General Reserve / Revenue Reserves","PREF SHARE REDEMPTION PREMIUM (Sec 133 company — covered by CA): Revenue reserves ONLY (P&L/GR); S/Premium NOT allowed","PREF SHARE REDEMPTION PREMIUM (Non-Sec 133 company): 1st → Security Premium | 2nd → Revenue Reserve","CRR for Pref Redemption (Sec 55): ONLY Revenue Reserve (S/Premium NOT allowed!)","CRR for Equity Buyback (Sec 69): Revenue Reserve OR S/Premium; but ICAI exam = Revenue Reserve + give note","BUYBACK EXPENSES: Written off directly to P&L Account","BONUS ISSUE: 1st → CRR | 2nd → Security Premium | 3rd → Revenue Reserve","ESOP CANCELLATION: Credited to GENERAL RESERVE (special Guidance Note treatment)"],trick:"Trick: 'Big chart: Buyback premium = S/P first | Pref redemption 133 = RR only | Non-133 = S/P then RR | CRR Sec55 = RR only | CRR Sec69 = S/P ok but ICAI RR | Bonus = CRR→S/P→RR!'"},
+{tp:"Additional Journal Entries",col:"red",star:false,title:"Buyback — Additional Journal Entries (Practical)",bullets:["SALE OF INVESTMENT: Bank Dr → To Investment (diff = Gain/Loss to P&L)","RAISING BANK LOAN: Bank Dr → To Bank Loan","BUYBACK EXPENSES: Buyback Expense A/c Dr → To Bank; then P&L Dr → To Buyback Expense","ISSUE OF PREF SHARES (REDUCES CRR needed): Bank Dr → To Pref Share Application/Allotment; Allotment Dr → To Pref Share Capital","ISSUE OF DEBENTURES (does NOT affect CRR): Bank Dr → To Debenture A/A; Allotment Dr → To Debentures A/c","CANCELLATION OF OWN DEBENTURES: Debentures Liability Dr (paidup) → To Investment in Own Debentures (BV) + Gain/Loss on cancellation (BF to P&L)","BONUS SHARE ISSUE: CRR Dr + Other Reserve Dr → To Bonus Issue; Bonus Issue Dr → To Share Capital","After buyback: Balance Sheet prepared with note in capital about buyback (Schedule III requirement)"],trick:"Trick: 'Debenture issue = No CRR effect | Pref share issue = Reduces CRR needed | Own debenture cancellation = Gain/Loss to P&L | Bonus = CRR first | Expenses = Always P&L!'"},
+];
+
+const C18=[
+{tp:"Types of Combinations",col:"amber",star:true,title:"Amalgamation vs Absorption vs External Reconstruction (AS-14)",bullets:["AMALGAMATION: Two or more companies combine → BRAND NEW COMPANY formed (A + B → C Ltd) — reason: economies of scale","ABSORPTION: Existing company takes over another existing company (A absorbs B; B dissolves) — reason: reduce competition or growth","EXTERNAL RECONSTRUCTION: One existing company restructured into a new company (A Ltd → New A Ltd) — reason: restructure capital/business","INTERNAL RECONSTRUCTION: Saving bankrupt company by changing debt/share capital — EXTERNAL STRUCTURE REMAINS SAME (same company, no new co formed)","AS-14 specifies TWO METHODS: (1) Purchase/Acquisition Method (2) Merger/Pooling of Interest Method","DEMERGER/SPIN-OFF: Company splits into 2+ companies — CA Final syllabus (not CA Inter)"],trick:"Trick: 'Amalg = New co | Absorption = Existing co takes over | External = Restructure into new co | Internal = Same co, internal fix | AS-14 = 2 methods (Purchase vs Merger)!'"},
+{tp:"Purchase Consideration",col:"amber",star:true,title:"Purchase Consideration — Definition & Calculation Methods",bullets:["PC (Purchase Consideration) per AS-14 = Amount paid by NEW COMPANY to EQUITY SHAREHOLDERS + PREFERENCE SHAREHOLDERS of OLD COMPANY","NOT INCLUDED in PC: Payment to debenture holders, creditors, or any other party","METHOD 1 — NET PAYMENT METHOD (NPM): Sum all payments to ESH + PSH (in any form: shares/cash/debentures/other) — USE WHEN complete payment details are given for both ESH and PSH","METHOD 2 — NET ASSET METHOD (NAM/Residual): Sundry Assets at agreed value + Goodwill – Sundry Liabilities at agreed value (incl. debentures at agreed) = PC — USE IN ALL OTHER CASES","INTRINSIC VALUE (Break-up/Net Asset Value/Net Worth per share) = (Fair Assets – Fair Liabilities – Pref SH value) ÷ No. of Equity Shares of that company","Shares to issue = (Intrinsic value of old co. share × no. of old co. shares) ÷ Intrinsic/Market value of new co. share"],trick:"Trick: 'PC = Payment to ESH + PSH ONLY | Not debentures, not creditors | NPM = Complete details given | NAM = All other cases (missing info) | Intrinsic = Net worth per equity share!'"},
+{tp:"New Company JEs — Purchase",col:"amber",star:true,title:"Books of New Company — Purchase Method Journal Entries",bullets:["(a) Business Purchase A/c Dr (PC) → To Liquidator of Old Company (PC) [Business purchased]","(b) Sundry Assets Dr (agreed value) → To Debenture holders + Sundry Liabilities + Business Purchase (PC) | DIFFERENCE = Goodwill (if PC > net assets) or Capital Reserve (if PC < net assets)","(c) Liquidator A/c Dr (PC) → To Eq. Share Capital + Pref Share Capital + Cash + Security Premium [PC discharged]","(d) Old company expenses paid by new co. → Dr Goodwill → Cr Bank [added to goodwill in purchase]","(e) Payment to creditors/debenture holders → Creditors Dr + Debentures Dr → To Bank/New Debentures [settle liabilities]","(f) Preliminary expenses paid → Dr Prelim Exp → Cr Bank [write off to P&L]","(g) Statutory Reserve → Dr Amalgamation Adjustment A/c → Cr Statutory Reserve [e.g., Export Profit Reserve, Inv. Allowance Reserve, Shipping Reserve] | Amalg. Adj. shown as NEGATIVE in BS Reserves","(h) Contra elimination → Dr Payables → Cr Receivables | (i) Unrealised profit → Dr Goodwill/CR (upstream) or P&L (downstream) → Cr Stock"],trick:"Trick: 'New co purchase: Buy business → Take assets/liabilities → Pay PC → Handle expenses → Create statutory reserves via Amalg.Adj. | Amalg.Adj = NEGATIVE item in Reserves & Surplus!'"},
+{tp:"Old Company Books",col:"amber",star:true,title:"Books of Vendor (Old) Company — 6 Steps",bullets:["STEP 1: Transfer ALL balance sheet items: ESH capital + ALL reserves/losses/surplus → Equity Shareholders A/c | PSH capital → Pref Shareholders A/c | All others → Realisation A/c","STEP 2: Realise assets/pay liabilities NOT taken over: Asset realised → Dr Cash, Cr Realisation | Liability paid → Dr Realisation, Cr Cash | Silent on asset realisation = assume no realisation | Silent on liability = pay at book value | Liability settled vs asset = No entry","STEP 3: Takeover by new company: New Company Dr (PC) → To Realisation A/c (PC)","STEP 4: Pay realisation expenses: Realisation Dr → To Cash","STEP 5: Check PSH settlement: If new co pays MORE to PSH than book value → Dr Realisation, Cr PSH | If LESS → Dr PSH, Cr Realisation | Also receive any cash sent by new co for old co. expenses","STEP 6: Close everything: Receive PC from new co. | Distribute to ESH + PSH | Close Realisation (profit/loss → ESH) | Balance in Cash → ESH | ESH A/c and PSH A/c should both tally"],trick:"Trick: 'Old co = 6 steps | Transfer all → Realise remaining → Takeover entry → Expenses → Check PSH diff → Close | Realisation profit = ESH gets it | Close in sequence: Realisation → Cash → ESH!'"},
+{tp:"Purchase vs Merger",col:"amber",star:true,title:"Difference — Purchase Method vs Merger Method",bullets:["PURCHASE: Selected assets/liabilities can be taken over vs MERGER: ALL assets + ALL liabilities must be taken over","PURCHASE: Taken over at agreed/new values vs MERGER: Taken over at BOOK VALUES ONLY (no change allowed)","PURCHASE: Difference = Goodwill or Capital Reserve vs MERGER: Difference = General Reserve or P&L Account","PURCHASE: Reserves & Surplus NOT taken by new company vs MERGER: Reserves & Surplus TAKEN by new company","PURCHASE: Expenses paid for old co. → Adjusted in Goodwill vs MERGER: Expenses adjusted in P&L or GR","PURCHASE: Statutory Reserve → Amalgamation Adjustment A/c created vs MERGER: NO ENTRY for statutory reserves","MERGER CONDITIONS: All A/L taken | At book values | ≥90% ESH agree to become ESH of new co | Payment in EQUITY SHARES ONLY","UNREALISED PROFIT: Purchase → Goodwill/CR (upstream) or P&L (downstream) vs Merger → P&L/GR (both upstream and downstream)"],trick:"Trick: 'PURCHASE = Selective, new values, Goodwill/CR, no reserves, expenses to Goodwill | MERGER = ALL, book values, GR/P&L, reserves taken, expenses to P&L | Merger = 4 conditions!'"},
+{tp:"Merger Method JEs",col:"amber",star:false,title:"Merger/Pooling of Interest — Journal Entries in New Company",bullets:["(i) Business Merger A/c Dr (Consideration) → To Liquidator of Old Company","(ii) Sundry Assets Dr (Book Value) → To Sundry Liabilities (BV) + Reserve & Surplus of old co (BV) + Business Merger A/c | Difference = Transferred to General Reserve or P&L","(iii) Liquidator Dr → To Equity Share Capital + Pref Share Capital + Security Premium [PC paid in equity]","(iv) P&L / GR Dr → To Cash [Expenses paid by new company]","(v) P&L/GR Dr (upstream or downstream both) → To Stock [Unrealised profit eliminated]","(vi) NO ENTRY for Statutory Reserves in merger","(vii) SAME entries as purchase for: Contra elimination, Preliminary Expenses, Underwriting Commission, New public issue","NOTE: Do NOT take DEBIT balances in reserves in Entry (ii) — only credit balance reserves are transferred"],trick:"Trick: 'Merger JEs: Business Merger → Take ALL at BV incl. Reserves → Pay in equity only | Expenses to P&L not Goodwill | Stat reserves = No entry | Debit reserve = Exclude from Sundry Assets entry!'"},
+];
+
+const C19=[
+{tp:"Meaning & Methods",col:"teal",star:true,title:"Internal Reconstruction — Meaning & 4 Methods",bullets:["INTERNAL RECONSTRUCTION = Altering rights of shareholders/creditors to INCREASE GOING CONCERN period — external structure (company name, CIN, registration) remains SAME — only internal changes","DIFFERENCE from External Reconstruction: External → New company formed | Internal → Same company continues","4 METHODS: (1) Share SUBDIVISION or CONSOLIDATION (2) Changes in shareholder RIGHTS (3) CAPITAL REDUCTION SCHEME (4) Share SURRENDER Scheme","LEGAL FRAMEWORK: Under (a) IBC (Insolvency and Bankruptcy Code) — Resolution Plan OR (b) Under scheme for adjustment of shareholder rights (under company law)","IBC PROCESS — 8 Steps: NCLT Application → IRP Appointed → COC Constituted → RP Appointed → Resolution Plan Formulated → COC Approves → NCLT + Govt + SH Approve → Execute | If fails → Liquidation","COMBINED Q: Internal Reconstruction FIRST → THEN Amalgamation (AS-14)"],trick:"Trick: 'Internal = Same company, internal fix | External = New company | 4 methods: Sub/Cons, Rights, Capital Reduction, Surrender | IBC = 8 steps ending in Execute or Liquidate!'"},
+{tp:"Capital Reduction Scheme",col:"teal",star:true,title:"Capital Reduction A/c — Journal Entries & Closure",bullets:["Entry (i) REDUCE SHARE CAPITAL: Eq/Pref Share Capital Dr (old FV) → To Eq/Pref Share Capital (new FV) + Capital Reduction A/c (balancing)","Entry (ii) ASSET VALUE CHANGE: If asset value increases → Dr Asset → Cr Capital Reduction | If asset value decreases → Dr Capital Reduction → Cr Asset","Entry (iii) SETTLEMENT: Asset sold → Dr Bank → Cr Asset + Capital Reduction | Liability settled at less → Dr Liability → Cr Bank + Capital Reduction","Entry (iv) CONTINGENT LIABILITY: If WAIVED → No Entry | If PAID → Dr Capital Reduction → Cr Bank","Entry (v) FRESH ISSUE: Dr Bank → Cr Share Capital + Debentures","Entry (vi) WRITE OFF LOSSES: Dr Capital Reduction → Cr P&L balance + Sundry Assets (goodwill, prelim exp, disc on shares etc.)","CLOSURE: Credit balance in Capital Reduction → Transfer to Capital Reserve | Debit balance → Use GR/P&L/S.Premium to fill first | Must CLOSE at end","After reconstruction → Company name = Original name + 'AND REDUCED'"],trick:"Trick: 'Capital Reduction = Cleanup account | Sources (Cr side): Capital reduced + Asset increase + Liability saved | Uses (Dr side): Loss written off + Asset written down + Expenses paid + Contingent liabilities paid | Surplus → Capital Reserve!'"},
+{tp:"Share Subdivision & Consolidation",col:"teal",star:false,title:"Share Subdivision, Consolidation & Stock Conversion JEs",bullets:["SUBDIVISION (Split): Eq. Share Capital (old FV) Dr → To Eq. Share Capital (new FV) | Example: 1 share ₹10 → 10 shares ₹1 | Total capital UNCHANGED; no. of shares increases","CONSOLIDATION: Eq. Share Capital (old FV) Dr → To Eq. Share Capital (new FV) | Example: 10 shares ₹1 → 1 share ₹10 | Total capital UNCHANGED; no. of shares decreases","SHARE → STOCK CONVERSION: Eq. Share Capital Dr → To Eq. Stock Capital | In BS: Change headings to 'Authorised capital / Issued/Paid-up capital' (no face value mentioned)","STOCK → SHARE RECONVERSION: Eq. Stock Capital Dr → To Eq. Share Capital (new FV)","AUTHORISED CAPITAL CHANGE: NO journal entry needed — only DISCLOSURE required; done by board resolution; not a transaction","Note: Authorised capital = Max that can be issued; changing it doesn't affect paid-up capital"],trick:"Trick: 'Subdivision = MORE shares, SAME total | Consolidation = FEWER shares, SAME total | Share→Stock = Delete face value | Stock→Share = Give face value back | Authorised change = No journal, just disclose!'"},
+{tp:"Share Surrender Scheme",col:"teal",star:true,title:"Share Surrender — Meaning & Journal Entries",bullets:["SHARE SURRENDER = Shareholders surrender shares BACK to company voluntarily (to settle company's liabilities or for reorganisation)","Entry (i): Eq/Pref Share Capital Dr (old paidup) → To Eq/Pref Share Capital (new paidup) + Share Surrender A/c | OR if only surrendered: Share Capital Dr → To Share Surrender A/c","Entry (ii) CONVERSION: Share Surrender A/c → To E/Pref Share Surrender A/c (when converted to specific class)","Entry (iii) SETTLE LIABILITY with surrendered shares: Eq/Pref Share Surrender A/c Dr → To Eq/Pref Share Capital | AND Liability A/c Dr → To Capital Reduction (liability cancelled)","If liability cancelled WITHOUT surrender: Liability A/c Dr → To Capital Reduction directly","Entry (iv) CANCEL UNUSED surrendered shares: Eq/Pref Share Surrender A/c Dr → To Capital Reduction","BALANCE TREATMENT: Credit balance in Share Surrender → Transfer to Capital Reserve | Debit balance in Share Surrender → Use GR/P&L/S.Premium to eliminate"],trick:"Trick: 'Surrender = Give shares back to company | Use to settle liabilities | Unused surrendered shares → Cancel via Capital Reduction | Credit balance = Capital Reserve | Debit balance = Use reserves!'"},
+{tp:"IBC 8-Step Process",col:"teal",star:false,title:"IBC (Insolvency & Bankruptcy Code) — Complete Process",bullets:["Step 1: Creditor/Debtor files APPLICATION to NCLT for insolvency proceedings","Step 2: NCLT admits application → Appoints IRP (Insolvency Resolution Professional); moratorium declared","Step 3: IRP collects CLAIMS information from all creditors; constitutes COC (Committee of Creditors)","Step 4: COC appoints RESOLUTION PROFESSIONAL (RP) — can be same person as IRP","Step 5: RP formulates RESOLUTION PLAN based on admitted claims and viability assessment","Step 6: COC APPROVES Resolution Plan (by vote — 66% voting share required)","Step 7: NCLT approves plan + Government authorities clear it + Shareholders approve","Step 8: EXECUTION of Resolution Plan + Do accounting entries for reconstruction","FAILURE at any step → Company goes into LIQUIDATION (assets sold; proceeds distributed per waterfall)"],trick:"Trick: 'IBC = NCLT → IRP → COC → RP → Plan formulate → COC vote → NCLT + Govt + SH → Execute | Fail at any step = LIQUIDATION | 8 steps like 8 innings in cricket!'"},
+];
+
+const C20=[
+{tp:"Branch Types",col:"green",star:true,title:"Branch Accounting — Types of Branches & Methods",bullets:["Branches = Extensions of business — ALL controlled by HEAD OFFICE (H.O) which is the principal unit","TYPE 1 — DEPENDENT BRANCH: Small; does NOT maintain own books; prepares returns/tables sent to H.O; ALL accounting done by H.O for branch","TYPE 2 — INDEPENDENT BRANCH: Maintains FULL books of accounts; can be DOMESTIC or FOREIGN","Examples: SBI Branch Delhi = Independent | SBI Branch New York = Independent Foreign | KFC Amritsar = Dependent (small, no books)","METHODS for Dependent Branches: (a) Debtors Method (b) Stock and Debtors Method (c) Final Accounts Method","If Q silent about method → Use Debtors Method or Stock & Debtors Method (NOT final accounts method by default)","H.O and Branch = SEPARATE persons for accounting; CONSOLIDATED for presentation to shareholders"],trick:"Trick: 'Dependent = Small, no books, HO does all | Independent = Full books (domestic or foreign) | 3 methods for dependent | Default = Not final A/c method | H.O + Branch = Separate then consolidate!'"},
+{tp:"Debtors Method",col:"green",star:true,title:"Debtors Method — Branch Account Format",bullets:["BRANCH A/C (in H.O books): Dr side = Op. balances (Debtors+Stock@SP+Cash/Petty cash+FA+Prepaid) + Goods sent to branch at SP + Cash sent to branch | Cr side = Op. balances (Creditors+Outstanding exp) + Op. stock reserve + Returns from branch + Remittances (cash to H.O) + Loading on returns + Cl. balances + Cl. stock reserve","PROFIT = Cr balancing figure | LOSS = Dr balancing figure","GOODS SENT TO BRANCH A/C: Dr = Returns + Loading on returns + Transfer to Trading | Cr = Amount sent to branch","STOCK RESERVE A/C: Maintains reserve on unrealised profit in closing stock at SP","DEFAULT ASSUMPTIONS (if Q silent): Sale = ALL credit | Branch remits ALL collections after paying expenses | Discount allowed = Cash discount | All expenses paid by H.O | Trade discount = Not journalised (reduces sale price) | Abnormal loss = No treatment in Branch A/c (treat in Stock A/c)"],trick:"Trick: 'Branch A/c = HO view of branch | Dr = What given to branch | Cr = What received + Closing balances | Profit = Cr balancing | Stock @SP on both sides of Branch A/c | Stock Reserve for closing stock!'"},
+{tp:"Stock & Debtors Method",col:"green",star:true,title:"Stock & Debtors Method — 4 Accounts",bullets:["4 ACCOUNTS: (1) Branch Stock A/c at Invoice Price (2) Branch Debtors A/c (3) Branch Adjustment A/c (4) Branch P&L A/c","BRANCH STOCK A/C (at IP): Dr = Op stock + Goods sent + Surplus (BF) | Cr = Returns to H.O + Sales net of return + Abnormal loss + Normal loss + Cl. stock","BRANCH DEBTORS A/C: Dr = Op balance + Credit sales (net of return) | Cr = Goods returned (via stock A/c) + Discount + Bad debts + Collections + Cl. balance","BRANCH ADJUSTMENT A/C: Dr = Returns-load + Abnormal loss-load + Normal loss-full + Cl. stock-load + GP | Cr = Op stock reserve + Goods sent-load + Surplus from stock A/c","BRANCH P&L A/C: Dr = Abnormal loss at cost + Expenses + Net Profit | Cr = GP transferred from Adjustment A/c","NOTE: If NO loading (goods at cost): Branch Adjustment A/c has only GP and Surplus entries","ADVANTAGE: Stock & Debtors method gives ALL missing figures — surplus/shortage in stock, debtor balance etc."],trick:"Trick: 'S&D = 4 accounts! | Stock@IP → Adj.A/c (loading bridge) → P&L A/c | Debtors separately | Adj A/c = connects stock profit to P&L | Surplus on stock side = missing figure from Adj.A/c!'"},
+{tp:"Independent Domestic Branch",col:"green",star:true,title:"Independent Domestic Branch — JEs & Reconciliation",bullets:["BASIC ENTRIES: H.O books: Branch Dr → To Goods Sent / Cash | Branch books: Goods Sent by H.O Dr / Cash Dr → To H.O A/c","RECONCILIATION required because items may be in transit at year-end:","(a) GOODS IN TRANSIT (Branch not received): Branch books: Goods in Transit Dr → To H.O | Include in Branch closing stock","(b) CASH IN TRANSIT (H.O not received): H.O books: Cash in Transit Dr → To Branch","(c) ABNORMAL LOSS IN TRANSIT (HO responsible): H.O books: Loss in Transit Dr → To Branch","(d) ABNORMAL LOSS IN TRANSIT (Branch responsible): Branch books: Loss in Transit Dr → To H.O","(e) EXPENSES ALLOCATED BY H.O not recorded by Branch: Branch books: Expenses Dr → To H.O","(f) INCOME ALLOCATED BY H.O not recorded: Branch books: H.O Dr → To Income","KEY PRINCIPLE: Branch A/c balance in H.O books = H.O A/c balance in Branch books — ALWAYS EQUAL AND OPPOSITE; if not equal → Need reconciliation"],trick:"Trick: 'Reconciliation = Find transit items + Unrecorded items | Goods in transit = Branch records it | Cash in transit = HO records it | Branch A/c (HO) = opposite of H.O A/c (Branch) | Not equal = Reconcile!'"},
+{tp:"Foreign Branch Conversion",col:"green",star:true,title:"Foreign Branch — AS-11 Currency Conversion Rules",bullets:["STEP 1: Convert Branch Trial Balance from foreign currency to home currency using AS-11","BEST ASSUMPTION: Branch = IFO (Integral Foreign Operation) unless Q specifies NIFO","IFO CONVERSION RULES: Fixed Assets + Depreciation → Rate on DATE OF TRANSACTION | Current Assets/Current Liab./Other LT Liabilities → CLOSING RATE | H.O A/c, Goods Sent to Branch, Remittances → ACTUAL (as per H.O books — don't convert) | Opening Stock → OPENING RATE | All other Income & Expenses → AVERAGE RATE","NIFO CONVERSION RULES: ALL Assets & Liabilities → CLOSING RATE | Income & Expenses → AVERAGE RATE | Related intercompany accounts → ACTUAL (same as IFO)","EXCHANGE DIFFERENCE: IFO → P&L A/c (shown as income/expense) | NIFO → FCTR (Foreign Currency Translation Reserve) — shown in Balance Sheet Reserves","STEP 2: Reconciliation NOT required for foreign branch (different currencies, so H.O A/c values already actual)","STEP 3: Prepare final A/c for H.O and Branch separately | STEP 4: Incorporate Branch into H.O"],trick:"Trick: 'IFO: FA = Transaction rate | Current = Closing | H.O/Remittance = Actual | Op stock = Opening | Others = Average | Diff = P&L | NIFO: ALL = Closing | Diff = FCTR reserve | IFO is default assumption!'"},
+{tp:"Consolidation",col:"green",star:false,title:"Branch Accounting — Consolidation of H.O & Branch",bullets:["STEP 1: Apply ALL reconciliation entries (transit items + unrecorded items) in both sets of books","STEP 2: Prepare final accounts of H.O and Branch from trial balances AFTER reconciliation | If closing stock missing → Prepare Branch Stock A/c at IP to find closing stock","STEP 3: INCORPORATION ENTRIES in H.O books: (i) Branch A/c Dr → To P&L (for profit incorporation) (ii) All Branch Assets Dr → To All Branch Liabilities (incorporate into H.O BS) (iii) P&L Dr → To Stock Reserve (for unrealised profit on H.O goods in Branch closing stock)","Stock Reserve = Closing stock × Loading ÷ (100 + Loading) | Opening stock reserve = Reverse (Cr P&L)","DUAL PROFIT: H.O invoices at wholesale; Branch sells at retail = Two profit levels | H.O P&L: Dr Closing Stock Reserve + Expenses + Own G.P loss | Cr Branch P&L + Own G.P + Op. Stock Reserve","INTER-BRANCH TRANSACTIONS: Treat as if via H.O | H.O records Receiving Branch Dr → To Giving Branch (net entry after combining all)"],trick:"Trick: 'Consolidation = Reconcile → Separate final A/c → Incorporate | Stock Reserve on H.O goods in Branch stock = Debit P&L | Op. stock reserve reversal = Credit P&L | Dual profit = Two separate P&Ls!'"},
+];
+
+const MEGA=[...C1,...C2,...C3,...C4,...C5,...C6,...C7,...C8,...C9,...C10,...C11,...C12,...C13,...C14,...C15,...C16,...C17,...C18,...C19,...C20];
 
 /* ═══════════════════════════════════════════
    ENGINE
@@ -1118,6 +1390,10 @@ const chMap={
   c14:{cards:C14,col:"indigo",pfill:"pfill-c14",btn:"btn-c14",topics:["All",...new Set(C14.map(c=>c.tp))]},
   c15:{cards:C15,col:"orange",pfill:"pfill-c15",btn:"btn-c15",topics:["All",...new Set(C15.map(c=>c.tp))]},
   c16:{cards:C16,col:"pink",pfill:"pfill-c16",btn:"btn-c16",topics:["All",...new Set(C16.map(c=>c.tp))]},
+  c17:{cards:C17,col:"red",pfill:"pfill-c17",btn:"btn-c17",topics:["All",...new Set(C17.map(c=>c.tp))]},
+  c18:{cards:C18,col:"amber",pfill:"pfill-c18",btn:"btn-c18",topics:["All",...new Set(C18.map(c=>c.tp))]},
+  c19:{cards:C19,col:"teal",pfill:"pfill-c19",btn:"btn-c19",topics:["All",...new Set(C19.map(c=>c.tp))]},
+  c20:{cards:C20,col:"green",pfill:"pfill-c20",btn:"btn-c20",topics:["All",...new Set(C20.map(c=>c.tp))]},
   mega:{cards:MEGA,col:"indigo",pfill:"pfill-c14",btn:"btn-c14",topics:["All",...new Set(MEGA.map(c=>c.tp))]},
 };
 
