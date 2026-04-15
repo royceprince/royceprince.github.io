@@ -535,7 +535,10 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
         <div style="text-align:center;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r20);">
           <div style="font-size:40px;margin-bottom:12px;">🃏</div>
           <p style="color:var(--muted);margin-bottom:20px;">Convert flashcard knowledge into MCQ practice with 4 options per question.</p>
-          <button class="btn-primary" onclick="startFcMcq()">Start Flashcard MCQ →</button>
+          <button class="btn-primary" onclick="startFlashcardMCQ()">
+       Start Flashcard MCQ →
+      </button>
+          <script src="mcq_generator.js"></script>
         </div>
       </div>
     </div>
@@ -831,6 +834,49 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
 </footer>
 
 <script>
+<script src="mcq_generator.js"></script>
+
+<script>
+
+function startFlashcardMCQ() {
+
+  const flashcardText = `
+  80C limit ₹1,50,000
+  LTCG after 12 months
+  80D deduction ₹50,000 for senior citizen
+  Gift above ₹50,000 taxable
+  `;
+
+  let questions = generateMCQFromFlashcards(flashcardText);
+  showMCQ(questions);
+}
+
+
+function showMCQ(questions) {
+  let i = 0;
+
+  function render() {
+    let q = questions[i];
+
+    document.body.innerHTML = `
+      <h2>${q.question}</h2>
+      ${q.options.map((opt, index) =>
+        `<button onclick="check(${index})">${opt}</button>`
+      ).join("")}
+    `;
+
+    window.check = function(ans) {
+      alert(ans === q.correct ? "Correct ✅" : "Wrong ❌");
+      i++;
+      if (i < questions.length) render();
+      else alert("Quiz Finished 🎉");
+    }
+  }
+
+  render();
+}
+
+}
 // ===================== USER AUTH =====================
 function getCurrentUser(){return JSON.parse(localStorage.getItem('plh_current_user')||'null');}
 function initUserBar(){
