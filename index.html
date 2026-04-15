@@ -476,21 +476,45 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   </div>
 </section>
 
-<!-- PRACTICE MCQ -->
+<!-- PRACTICE MCQ (UPGRADED) -->
 <section id="practice">
   <div class="section-inner">
     <div class="section-header">
       <div class="tag">🎯 Smart Practice</div>
       <h2>MCQ <em>Practice Mode</em></h2>
-      <p>ICAI exam-level questions with instant explanations. Shuffle enabled.</p>
+      <p>ICAI exam-level questions with instant explanations. Now with Case Scenario Mode!</p>
     </div>
+
+    <!-- Case Scenario Card (NEW) -->
+    <div style="margin-bottom:20px;background:linear-gradient(135deg,rgba(124,106,247,0.12),rgba(79,195,247,0.06));border:1px solid rgba(124,106,247,0.3);border-radius:18px;padding:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:22px;">📂</span>
+          <span style="font-size:11px;font-weight:700;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;">NEW — ICAI Booklet</span>
+        </div>
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:4px;">Case Scenario Practice</h3>
+        <p style="font-size:13px;color:var(--text2);">10 Case Scenarios from ICAI Advanced Accounting booklet — with timer, detailed solutions, and chapter-wise filtering.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+          <span style="padding:3px 10px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);border-radius:20px;font-size:10px;color:var(--green);font-family:var(--mono);">10 Cases</span>
+          <span style="padding:3px 10px;background:rgba(247,201,72,0.1);border:1px solid rgba(247,201,72,0.2);border-radius:20px;font-size:10px;color:var(--gold);font-family:var(--mono);">30+ MCQs</span>
+          <span style="padding:3px 10px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.2);border-radius:20px;font-size:10px;color:var(--accent);font-family:var(--mono);">Adv. Accounting</span>
+          <span style="padding:3px 10px;background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.2);border-radius:20px;font-size:10px;color:var(--accent2);font-family:var(--mono);">Timer Mode</span>
+        </div>
+      </div>
+      <a href="case_practice.html" class="btn-primary" style="padding:13px 28px;white-space:nowrap;">📂 Open Case Practice →</a>
+    </div>
+
+    <!-- Existing MCQ Box -->
     <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;flex-wrap:wrap;">
       <div class="mcq-container" id="mcqBox">
         <div id="mcqContent">
           <div style="text-align:center;padding:20px 0;">
             <div style="font-size:40px;margin-bottom:12px;">🎯</div>
-            <p style="color:var(--muted);margin-bottom:20px;">Start a quick practice session with shuffled questions across all subjects.</p>
-            <button class="btn-primary" onclick="startMCQ()">Start Quiz →</button>
+            <p style="color:var(--muted);margin-bottom:20px;">Quick mixed practice — shuffled questions across all subjects.</p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn-primary" onclick="startMCQ()">Start Quick Quiz →</button>
+              <a href="case_practice.html" class="btn-secondary">📂 Case Scenarios</a>
+            </div>
           </div>
         </div>
       </div>
