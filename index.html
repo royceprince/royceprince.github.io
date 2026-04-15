@@ -535,10 +535,10 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
         <div style="text-align:center;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r20);">
           <div style="font-size:40px;margin-bottom:12px;">🃏</div>
           <p style="color:var(--muted);margin-bottom:20px;">Convert flashcard knowledge into MCQ practice with 4 options per question.</p>
-          <button class="btn-primary" onclick="startFlashcardMCQ()">
-       Start Flashcard MCQ →
-      </button>
-          <script src="mcq_generator.js"></script>
+          <button onclick="startFlashcardMCQ()" class="btn-primary">
+           Start Flashcard MCQ →
+          </button>
+           <script src="mcq_generator.js"></script>
         </div>
       </div>
     </div>
@@ -833,7 +833,6 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
   </div>
 </footer>
 
-<script>
 <script src="mcq_generator.js"></script>
 
 <script>
@@ -850,7 +849,6 @@ function startFlashcardMCQ() {
   let questions = generateMCQFromFlashcards(flashcardText);
   showMCQ(questions);
 }
-
 
 function showMCQ(questions) {
   let i = 0;
@@ -876,7 +874,6 @@ function showMCQ(questions) {
   render();
 }
 
-}
 // ===================== USER AUTH =====================
 function getCurrentUser(){return JSON.parse(localStorage.getItem('plh_current_user')||'null');}
 function initUserBar(){
