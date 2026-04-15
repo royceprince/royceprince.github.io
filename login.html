@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login — Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a28;--border:rgba(255,255,255,0.08);--accent:#7c6af7;--accent2:#4fc3f7;--text:#e8e8f0;--muted:#888;--success:#4ade80;--danger:#f87171;--font:'Sora',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.bg-glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 20% 30%,rgba(124,106,247,0.15) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 70%,rgba(79,195,247,0.1) 0%,transparent 60%);}
+.grid-bg{position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(124,106,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,106,247,0.04) 1px,transparent 1px);background-size:40px 40px;}
+.container{position:relative;z-index:1;width:100%;max-width:460px;padding:24px;}
+.brand{text-align:center;margin-bottom:28px;}
+.brand-logo{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 12px;box-shadow:0 8px 32px rgba(124,106,247,0.4);}
+.brand h1{font-size:20px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.brand p{font-size:13px;color:var(--muted);margin-top:4px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 32px;box-shadow:0 24px 64px rgba(0,0,0,0.5);}
+.tabs{display:flex;gap:4px;background:var(--surface);padding:4px;border-radius:12px;margin-bottom:28px;}
+.tab-btn{flex:1;padding:10px;border:none;background:transparent;color:var(--muted);font-family:var(--font);font-size:14px;font-weight:500;border-radius:8px;cursor:pointer;transition:all 0.25s;}
+.tab-btn.active{background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(124,106,247,0.4);}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;}
+.form-group input{width:100%;padding:13px 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font);font-size:14px;outline:none;transition:all 0.2s;}
+.form-group input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,106,247,0.15);}
+.form-group input::placeholder{color:#555;}
+.btn-primary{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),#5b4fd4);border:none;border-radius:12px;color:#fff;font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.25s;box-shadow:0 8px 24px rgba(124,106,247,0.35);margin-top:8px;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,106,247,0.5);}
+.error-msg{background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--danger);border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:16px;display:none;}
+.success-msg{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:var(--success);border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:16px;display:none;}
+.welcome-card{display:none;text-align:center;}
+.welcome-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;margin:0 auto 20px;box-shadow:0 8px 32px rgba(124,106,247,0.4);color:#fff;}
+.welcome-card h2{font-size:22px;font-weight:700;margin-bottom:6px;}
+.welcome-card p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+.badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 24px;}
+.badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--mono);background:rgba(124,106,247,0.15);color:var(--accent);border:1px solid rgba(124,106,247,0.2);}
+.btn-outline{display:inline-block;padding:10px 20px;border:1px solid var(--border);background:transparent;border-radius:10px;color:var(--text);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.btn-danger{display:inline-block;padding:10px 20px;border:1px solid rgba(248,113,113,0.3);background:rgba(248,113,113,0.08);border-radius:10px;color:var(--danger);font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;margin-left:8px;}
+.btn-danger:hover{background:rgba(248,113,113,0.18);}
+.back-link{text-align:center;margin-top:20px;}
+.back-link a{color:var(--accent);font-size:13px;text-decoration:none;transition:opacity 0.2s;}
+.back-link a:hover{opacity:0.7;}
+@media(max-width:480px){.card{padding:28px 20px;}}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="grid-bg"></div>
+<div class="container">
+  <div class="brand">
+    <div class="brand-logo">◈</div>
+    <h1>Prince Learning Hub</h1>
+    <p>CA Inter May 2026 · Student Portal</p>
+  </div>
+  <div class="card" id="authCard">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" onclick="switchTab('register')">Register</button>
+    </div>
+    <div id="errorMsg" class="error-msg"></div>
+    <div id="successMsg" class="success-msg"></div>
+    <div id="loginForm">
+      <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="your@email.com" autocomplete="email"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password"></div>
+      <button class="btn-primary" onclick="handleLogin()">Sign In →</button>
+    </div>
+    <div id="registerForm" style="display:none">
+      <div class="form-group"><label>Full Name</label><input type="text" id="regName" placeholder="Your full name"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="regPassword" placeholder="Min 6 characters"></div>
+      <button class="btn-primary" onclick="handleRegister()">Create Account →</button>
+    </div>
+    <div class="back-link"><a href="index.html">← Back to Home</a></div>
+  </div>
+  <div class="card welcome-card" id="welcomeCard">
+    <div class="welcome-avatar" id="welcomeAvatar">🎓</div>
+    <h2 id="welcomeName">Welcome back!</h2>
+    <p id="welcomeEmail"></p>
+    <div class="badge-row">
+      <span class="badge">CA Inter</span>
+      <span class="badge">May 2026</span>
+      <span class="badge">Active</span>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline">📚 Go to Study Hub</a>
+      <button class="btn-danger" onclick="handleLogout()">Sign Out</button>
+    </div>
+  </div>
+</div>
+<script>
+function switchTab(tab){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',(tab==='login'&&i===0)||(tab==='register'&&i===1));});
+  document.getElementById('loginForm').style.display=tab==='login'?'block':'none';
+  document.getElementById('registerForm').style.display=tab==='register'?'block':'none';
+  hideMessages();
+}
+function showError(msg){const el=document.getElementById('errorMsg');el.textContent=msg;el.style.display='block';document.getElementById('successMsg').style.display='none';}
+function showSuccess(msg){const el=document.getElementById('successMsg');el.textContent=msg;el.style.display='block';document.getElementById('errorMsg').style.display='none';}
+function hideMessages(){document.getElementById('errorMsg').style.display='none';document.getElementById('successMsg').style.display='none';}
+function getUsers(){return JSON.parse(localStorage.getItem('plh_users')||'[]');}
+function saveUsers(u){localStorage.setItem('plh_users',JSON.stringify(u));}
+function getCurrentUser(){return JSON.parse(localStorage.getItem('plh_current_user')||'null');}
+function setCurrentUser(u){localStorage.setItem('plh_current_user',JSON.stringify(u));}
+function handleRegister(){
+  const name=document.getElementById('regName').value.trim();
+  const email=document.getElementById('regEmail').value.trim().toLowerCase();
+  const password=document.getElementById('regPassword').value;
+  if(!name)return showError('Please enter your name.');
+  if(!email||!email.includes('@'))return showError('Please enter a valid email.');
+  if(password.length<6)return showError('Password must be at least 6 characters.');
+  const users=getUsers();
+  if(users.find(u=>u.email===email))return showError('Email already registered. Please sign in.');
+  users.push({name,email,password,joinedAt:new Date().toISOString()});
+  saveUsers(users);
+  showSuccess('Account created! Welcome, '+name+'. You can now sign in.');
+  setTimeout(()=>switchTab('login'),1500);
+}
+function handleLogin(){
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const password=document.getElementById('loginPassword').value;
+  if(!email)return showError('Please enter your email.');
+  if(!password)return showError('Please enter your password.');
+  const user=getUsers().find(u=>u.email===email&&u.password===password);
+  if(!user)return showError('Invalid email or password. Please try again.');
+  setCurrentUser(user);
+  showWelcome(user);
+}
+function handleLogout(){localStorage.removeItem('plh_current_user');document.getElementById('welcomeCard').style.display='none';document.getElementById('authCard').style.display='block';hideMessages();}
+function showWelcome(user){
+  document.getElementById('authCard').style.display='none';
+  document.getElementById('welcomeCard').style.display='block';
+  document.getElementById('welcomeName').textContent='Welcome, '+user.name+'! 🎉';
+  document.getElementById('welcomeEmail').textContent=user.email;
+  const initials=user.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('welcomeAvatar').textContent=initials||'🎓';
+}
+const current=getCurrentUser();
+if(current)showWelcome(current);
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){if(document.getElementById('loginForm').style.display!=='none')handleLogin();else handleRegister();}});
+</script>
+</body>
+</html>

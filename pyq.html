@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYQ Finder — Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a28;--card2:#1e1e30;--border:rgba(255,255,255,0.08);--accent:#7c6af7;--accent2:#4fc3f7;--gold:#f7c948;--text:#e8e8f0;--muted:#888;--font:'Sora',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;}
+.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 50% 40% at 10% 20%,rgba(124,106,247,0.12) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 90% 80%,rgba(79,195,247,0.08) 0%,transparent 60%);}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);}
+.nav-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-title{font-weight:700;font-size:15px;}
+.nav-links{display:flex;gap:4px;}
+.nav-link{padding:7px 14px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:500;transition:all 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--text);background:rgba(255,255,255,0.06);}
+.nav-link.active{color:var(--accent);}
+/* MAIN */
+main{max-width:1200px;margin:0 auto;padding:40px 24px;position:relative;z-index:1;}
+.page-header{text-align:center;margin-bottom:40px;}
+.page-header .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.25);border-radius:20px;font-size:12px;font-weight:600;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:16px;}
+.page-header h1{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:12px;}
+.page-header h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-header p{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto;}
+/* FILTERS */
+.filters-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px;}
+.filters-top{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.search-wrap{flex:1;min-width:240px;position:relative;}
+.search-wrap input{width:100%;padding:12px 16px 12px 44px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font);font-size:14px;outline:none;transition:all 0.2s;}
+.search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,106,247,0.12);}
+.search-wrap input::placeholder{color:#555;}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+.filter-select{padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font);font-size:14px;outline:none;cursor:pointer;transition:border-color 0.2s;}
+.filter-select:focus{border-color:var(--accent);}
+.subject-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.pill{padding:7px 16px;border-radius:20px;font-size:13px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.pill:hover{border-color:var(--accent);color:var(--accent);}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(124,106,247,0.35);}
+/* RESULTS */
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.results-count{font-size:13px;color:var(--muted);}
+.results-count span{color:var(--accent);font-weight:600;}
+/* QUESTION CARD */
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color 0.2s;}
+.q-card:hover{border-color:rgba(124,106,247,0.3);}
+.q-header{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;cursor:pointer;user-select:none;}
+.q-num{width:32px;height:32px;border-radius:8px;background:rgba(124,106,247,0.12);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.q-meta{flex:1;}
+.q-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.qtag{padding:2px 9px;border-radius:4px;font-size:10px;font-weight:600;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.5px;}
+.qtag.subject-accounts{background:rgba(79,195,247,0.12);color:var(--accent2);}
+.qtag.subject-tax{background:rgba(247,201,72,0.12);color:var(--gold);}
+.qtag.subject-law{background:rgba(167,139,250,0.12);color:#a78bfa;}
+.qtag.subject-costing{background:rgba(52,211,153,0.12);color:#34d399;}
+.qtag.subject-audit{background:rgba(251,146,60,0.12);color:#fb923c;}
+.qtag.subject-fm{background:rgba(236,72,153,0.12);color:#ec4899;}
+.qtag.year{background:rgba(255,255,255,0.06);color:var(--muted);}
+.qtag.marks{background:rgba(247,201,72,0.1);color:var(--gold);}
+.q-text{font-size:14px;line-height:1.6;color:var(--text);padding-right:8px;}
+.q-toggle{font-size:18px;color:var(--muted);transition:transform 0.25s;flex-shrink:0;margin-top:4px;}
+.q-card.open .q-toggle{transform:rotate(180deg);}
+.q-answer{display:none;padding:0 20px 18px 66px;border-top:1px solid var(--border);margin-top:0;}
+.q-card.open .q-answer{display:block;}
+.answer-label{font-size:10px;font-weight:700;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-top:14px;}
+.answer-content{font-size:14px;line-height:1.8;color:#ccc;}
+.answer-content ul{padding-left:18px;margin-top:4px;}
+.answer-content ul li{margin-bottom:4px;}
+.tip-box{background:rgba(247,201,72,0.06);border:1px solid rgba(247,201,72,0.2);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:#e8d88a;}
+.tip-box b{color:var(--gold);}
+.no-results{text-align:center;padding:60px 20px;color:var(--muted);}
+.no-results .emoji{font-size:48px;margin-bottom:12px;}
+.no-results p{font-size:15px;}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .filters-top{flex-direction:column;}
+  .q-answer{padding-left:20px;}
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo">◈</div>
+      <span class="nav-title">Prince Learning Hub</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="pyq.html" class="nav-link active">PYQ</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="https://royceprince.github.io/gst-practice.html" class="nav-link">Practice</a>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="page-header">
+    <div class="tag">📋 10 Year Question Bank</div>
+    <h1>CA Inter <em>PYQ Finder</em></h1>
+    <p>Search past year questions from 2014–2024 across all subjects. Expand to see suggested answers.</p>
+  </div>
+  <div class="filters-box">
+    <div class="filters-top">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search any question, topic, section..." oninput="filterQuestions()">
+      </div>
+      <select class="filter-select" id="yearFilter" onchange="filterQuestions()">
+        <option value="">All Years</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+      </select>
+      <select class="filter-select" id="typeFilter" onchange="filterQuestions()">
+        <option value="">All Types</option>
+        <option value="Past Exam">Past Exam</option>
+        <option value="RTP">RTP</option>
+        <option value="MTP">MTP</option>
+      </select>
+    </div>
+    <div class="subject-pills">
+      <button class="pill active" onclick="setSubject('')" data-subject="">All Subjects</button>
+      <button class="pill" onclick="setSubject('accounts')" data-subject="accounts">📊 Accounts</button>
+      <button class="pill" onclick="setSubject('tax')" data-subject="tax">💰 Tax</button>
+      <button class="pill" onclick="setSubject('law')" data-subject="law">⚖️ Law</button>
+      <button class="pill" onclick="setSubject('costing')" data-subject="costing">🧮 Costing</button>
+      <button class="pill" onclick="setSubject('audit')" data-subject="audit">🔍 Audit</button>
+      <button class="pill" onclick="setSubject('fm')" data-subject="fm">📈 FM</button>
+    </div>
+  </div>
+  <div class="results-header">
+    <div class="results-count">Showing <span id="countDisplay">0</span> questions</div>
+  </div>
+  <div id="questionsContainer"></div>
+</main>
+<script>
+const PYQ_DATA = [
+  // ACCOUNTS
+  {id:1,subject:'accounts',subjectLabel:'Accounts',year:'2024',type:'Past Exam',marks:8,
+   question:'A Ltd. absorbed B Ltd. on 1st April 2023. A Ltd. issued 3 equity shares of ₹10 each (market value ₹15) for every 2 shares of B Ltd. Calculate purchase consideration and pass journal entries in the books of A Ltd.',
+   answer:'Purchase Consideration = Number of shares issued × Market Value per share.\nAssets are recorded at agreed values; liabilities at agreed values.\nDifference = Capital Reserve (if assets > PC) or Goodwill (if PC > Net Assets).\nJournal: Dr. Sundry Assets, Cr. Liquidator of B Ltd., Business Purchase A/c.',
+   tip:'Trick: PC = Shares Issued × Market Value. Net Assets Method = Agreed value of Assets − Agreed value of Liabilities.'},
+  {id:2,subject:'accounts',subjectLabel:'Accounts',year:'2024',type:'Past Exam',marks:6,
+   question:'Explain the concept of Deferred Tax Asset and Deferred Tax Liability as per AS-22. When does DTA arise?',
+   answer:'DTA arises when taxable income > accounting income (timing difference favoring future). DTL arises when accounting income > taxable income.\nDTA must be recognised only if there is virtual certainty (reasonable certainty for MAT credit) of future taxable profits.\nBalance Sheet: DTA is asset, DTL is liability.',
+   tip:'Trick: DTA = Deduction now, tax benefit later. DTL = Tax now, accounting charge later.'},
+  {id:3,subject:'accounts',subjectLabel:'Accounts',year:'2023',type:'Past Exam',marks:10,
+   question:'H Ltd. holds 75% shares in S Ltd. Prepare Consolidated Balance Sheet with minority interest calculation. Inter-company transactions include ₹2,00,000 unrealised profit in closing stock.',
+   answer:'Steps: (1) Calculate MI = 25% of Net Assets of S Ltd.\n(2) Eliminate inter-company balances.\n(3) Unrealised profit: Reduce closing stock by ₹2,00,000 (proportionate if downstream; full if upstream).\n(4) Goodwill = Cost of Investment − Share in Net Assets of S Ltd.',
+   tip:'Trick: MI gets share of ALL net assets. Goodwill = Cost − (H% × Net Assets of S).'},
+  {id:4,subject:'accounts',subjectLabel:'Accounts',year:'2023',type:'RTP',marks:8,
+   question:'A company has a foreign branch. Convert the Trial Balance of the branch from USD to INR using the appropriate method as per AS-11.',
+   answer:'AS-11 requires non-integral foreign operations to use closing rate method:\n• Assets/Liabilities: Closing rate\n• Revenue items: Average rate for the period\n• Opening capital/reserves: Historical rate\nExchange difference goes to Foreign Currency Translation Reserve (FCTR) in equity — NOT to P&L.',
+   tip:'Trick: Closing rate for B/S items, Average rate for P&L items. FCTR = Exchange difference for non-integral ops.'},
+  {id:5,subject:'accounts',subjectLabel:'Accounts',year:'2022',type:'Past Exam',marks:8,
+   question:'Explain Internal Reconstruction. Pass necessary journal entries for cancellation of share capital and reduction of accumulated losses.',
+   answer:'Internal Reconstruction: Reorganisation without dissolving company. Done by:\n• Reducing share capital (cancellation of paid-up capital)\n• Writing off accumulated losses, fictitious assets against reduced capital\nEntries: Dr. Share Capital → Cr. Capital Reduction A/c\nDr. Capital Reduction A/c → Cr. P&L (accumulated loss)\nSurplus in Capital Reduction → Capital Reserve.',
+   tip:'Trick: Capital Reduction A/c is temporary. Surplus = Capital Reserve. Deficit = Must be covered.'},
+  {id:6,subject:'accounts',subjectLabel:'Accounts',year:'2022',type:'MTP',marks:6,
+   question:'What are the disclosure requirements under AS-1 (Disclosure of Accounting Policies)?',
+   answer:'All significant accounting policies must be disclosed as part of financial statements.\nIf policies are changed, disclose: nature of change, reason, and effect (quantified if possible).\nKey concepts: Going Concern, Consistency, Accrual. These are fundamental accounting assumptions.\nIf any fundamental assumption is NOT followed — must disclose.',
+   tip:'Trick: GCA = Going concern, Consistency, Accrual. These 3 are default — no need to disclose unless NOT followed.'},
+  {id:7,subject:'accounts',subjectLabel:'Accounts',year:'2021',type:'Past Exam',marks:10,
+   question:'Branch sends goods to Head Office at cost plus 25%. Calculate loading, stock reserve, and pass necessary entries to incorporate branch trial balance in HO books.',
+   answer:'Loading = Profit included in branch stock.\nIf branch prices goods at 125% of cost: Loading = 25/125 = 1/5 of invoice price.\nStock Reserve = Loading on closing stock of branch.\nEntry: Dr. Branch Stock Reserve Cr. P&L (for opening reserve) and reverse for closing.\nIncorporation: All branch items are added to HO items after adjustments.',
+   tip:'Trick: Loading fraction = Profit%/(100+Profit%). If 25% on cost, loading = 25/125 = 1/5.'},
+  // TAX
+  {id:8,subject:'tax',subjectLabel:'Direct Tax',year:'2024',type:'Past Exam',marks:8,
+   question:'Mr. Arjun sells a residential house property on 15 Nov 2023 (purchased Jan 2015 for ₹20 lakhs). Sale price ₹85 lakhs. Brokerage ₹1 lakh. Compute capital gains. CII 2015-16=254, 2023-24=348.',
+   answer:'Sale Price = ₹85,00,000\nLess: Brokerage = ₹1,00,000\nNet Sale Consideration = ₹84,00,000\nIndexed Cost = 20,00,000 × 348/254 = ₹27,40,157\nLTCG = ₹84,00,000 − ₹27,40,157 = ₹56,59,843\nNote: Under Finance Act 2024 amendments, LTCG indexation removed from FY 2024-25 for new transactions. Rate = 12.5% without indexation (new) or 20% with indexation (old).',
+   tip:'Trick: LTCG on property — Holding >24 months = Long term. Indexed Cost = Cost × (CII of sale year / CII of purchase year).'},
+  {id:9,subject:'tax',subjectLabel:'Direct Tax',year:'2024',type:'Past Exam',marks:6,
+   question:'Explain the new tax regime under Section 115BAC. What are the restrictions on deductions and exemptions under this regime?',
+   answer:'New Regime (Default from FY 2024-25 for individuals):\nSlabs: Up to 3L - NIL, 3L-7L - 5%, 7L-10L - 10%, 10L-12L - 15%, 12L-15L - 20%, Above 15L - 30%.\nNot available: HRA, LTA, Chapter VIA deductions (80C, 80D, 80G etc.), Standard deduction (earlier). Standard deduction of ₹75,000 now available from FY 2024-25.\nAvailable: Section 80CCD(2) - employer NPS contribution, Section 80JJAA.',
+   tip:'Trick: New regime = SIMPLE slabs, NO exemptions (except employer NPS). Rebate u/s 87A: ₹60,000 (if income ≤7L in new regime).'},
+  {id:10,subject:'tax',subjectLabel:'Direct Tax',year:'2023',type:'Past Exam',marks:10,
+   question:'Mrs. Priya, a salaried employee, received the following: Basic Salary ₹6,00,000, HRA ₹2,40,000 (rent paid ₹20,000/month, metro city), DA ₹60,000. Compute taxable HRA.',
+   answer:'HRA exemption is LEAST of:\n(a) Actual HRA received = ₹2,40,000\n(b) 50% of (Basic + DA) for metro = 50% × 6,60,000 = ₹3,30,000\n(c) Rent paid − 10% of (Basic+DA) = 2,40,000 − 66,000 = ₹1,74,000\nExempt HRA = ₹1,74,000 (least of three)\nTaxable HRA = ₹2,40,000 − ₹1,74,000 = ₹66,000.',
+   tip:'Trick: HRA Exemption = Min of 3: (1) Actual HRA, (2) 50%/40% of Basic+DA, (3) Rent paid − 10% of Basic+DA.'},
+  {id:11,subject:'tax',subjectLabel:'Direct Tax',year:'2023',type:'RTP',marks:8,
+   question:'Explain the provisions of TDS under Section 194C (Contractor payments). What are the threshold limits and rates?',
+   answer:'Sec 194C: TDS on payments to contractors/sub-contractors.\nRate: 1% (individual/HUF), 2% (others).\nThreshold: Single payment > ₹30,000 OR aggregate in FY > ₹1,00,000.\nNo TDS: Goods transport operators with PAN.\nTime of deduction: At time of credit or payment, whichever earlier.\nDeductee: Any person (resident contractor).',
+   tip:'Trick: 194C = 1% for individual, 2% for company. Limit: 30K single / 1L aggregate.'},
+  {id:12,subject:'tax',subjectLabel:'Direct Tax',year:'2022',type:'Past Exam',marks:8,
+   question:'Discuss the provisions for set-off and carry forward of losses under the Income Tax Act. Specifically address Business Loss and Speculation Loss.',
+   answer:'Business Loss: Can be set off against any head EXCEPT salary income in same year. Carry forward: 8 years, set off only against business profits.\nSpeculation Loss: Set off only against speculation profit in same year. Carry forward: 4 years.\nImportant: Return must be filed within due date for carry forward (except house property loss).\nSpeculation: Where contract settled otherwise than actual delivery.',
+   tip:'Trick: Business loss carry forward = 8 years. Speculation = 4 years. House Property loss CF = 8 years, no need to file on time.'},
+  {id:13,subject:'tax',subjectLabel:'Direct Tax',year:'2021',type:'Past Exam',marks:6,
+   question:'What deductions are available under Section 80D? Explain with limits for self, family, and senior citizen parents.',
+   answer:'Sec 80D: Deduction for Medical Insurance Premium:\n• Self, spouse, children: ₹25,000 (₹50,000 if any person is senior citizen)\n• Parents: ₹25,000 (₹50,000 if parents are senior citizens)\n• Preventive health check-up: ₹5,000 (included in above limits)\nMaximum possible: ₹50,000 + ₹50,000 = ₹1,00,000 (both assessee and parents are SCs).',
+   tip:'Trick: 80D = 25K for self, 25K for parents. If senior citizen = 50K each. Total max = 1 Lakh.'},
+  // LAW
+  {id:14,subject:'law',subjectLabel:'Corporate Law',year:'2024',type:'Past Exam',marks:8,
+   question:'ABC Pvt. Ltd. wants to appoint Mr. Rajesh as an Additional Director. Explain the provisions regarding appointment, tenure, and regularisation of Additional Directors under Companies Act 2013.',
+   answer:'Section 161: Board may appoint Additional Director.\nTenure: Holds office until next AGM (or last date AGM could have been held).\nRegularisation: Must be appointed as director at next AGM by shareholders.\nLimit: Additional directors cannot exceed the limit fixed by Articles.\nDIN required. Form DIR-12 to be filed within 30 days of appointment.',
+   tip:'Trick: AD = Board power, holds till next AGM. If AGM not held = vacates on last date AGM should have been held.'},
+  {id:15,subject:'law',subjectLabel:'Corporate Law',year:'2024',type:'Past Exam',marks:6,
+   question:'Explain the concept of "Doctrine of Indoor Management" with reference to Company Law. How does it protect third parties?',
+   answer:'Doctrine: Outsiders dealing with company in good faith need not enquire into internal management/compliance.\nOrigin: Turquand\'s case (Royal British Bank v Turquand, 1856).\nProtection: If MOA/AOA show company CAN do an act, outsider can assume all internal requirements have been complied with.\nExceptions: Knowledge of irregularity, forgery, negligence, non-registration.',
+   tip:'Trick: Indoor Management = "I trust you followed your rules inside." EXCEPTIONS: KNFN — Knowledge, Negligence, Forgery, Non-registration.'},
+  {id:16,subject:'law',subjectLabel:'Corporate Law',year:'2023',type:'Past Exam',marks:10,
+   question:'XYZ Ltd. passed a resolution to remove Mr. Sharma (Director) before expiry of his term. Discuss the procedure for removal of directors and compensation payable under Sections 169 and 202.',
+   answer:'Sec 169: Removal by ordinary resolution.\nProcedure: (1) Special Notice of 28 days to company, (2) Company sends copy to director and members, (3) Director may make representation (max 1000 words), (4) Ordinary Resolution at general meeting.\nSec 202: Compensation for loss of office — NOT payable if removed u/s 169.\nException: Compensation payable if removal on grounds of directorship merger/compromise.',
+   tip:'Trick: Removal = Ordinary Resolution. Special Notice = 28 days. NO compensation for removal u/s 169.'},
+  {id:17,subject:'law',subjectLabel:'Corporate Law',year:'2023',type:'RTP',marks:8,
+   question:'What are the provisions for calling an Extraordinary General Meeting (EGM) by requisitionists under Section 100 of the Companies Act 2013?',
+   answer:'Sec 100: Board shall call EGM on requisition by:\n• Listed company: ≥10% paid-up share capital\n• Unlisted (share capital): ≥10% paid-up share capital\n• No share capital: Members holding ≥10% voting rights\nBoard must call within 21 days of requisition for meeting within 45 days.\nIf Board fails: Requisitionists can call meeting themselves (within 3 months).\nRequirements: Purpose of meeting must be stated. Board cannot refuse valid requisition.',
+   tip:'Trick: EGM by requisition = 10% holding. Board has 21 days to call meeting, which must happen in 45 days.'},
+  {id:18,subject:'law',subjectLabel:'Corporate Law',year:'2022',type:'Past Exam',marks:8,
+   question:'Explain the provisions regarding "Lifting of Corporate Veil" with relevant case laws.',
+   answer:'Corporate Veil = Separate legal entity concept (Salomon v Salomon).\nVeil is lifted (ignored) when:\n1. Fraud or improper conduct\n2. Tax evasion\n3. Enemy character (wartime)\n4. Statutory provisions: Sec 339 (fraudulent trading), Sec 340 (wrongful trading)\nKey cases: Daimler Co. v Continental Tyre (enemy character), Jones v Lipman (fraud), Re: Darby (fraud).',
+   tip:'Trick: 4 main grounds — FETS: Fraud, Enemy, Tax evasion, Statutory. Remember Salomon case = Corporate veil origin.'},
+  {id:19,subject:'law',subjectLabel:'Corporate Law',year:'2022',type:'MTP',marks:6,
+   question:'Explain the concept of "Winding Up by Tribunal" — grounds and who can make the petition under Companies Act 2013.',
+   answer:'Sec 271: Tribunal may wind up company on grounds:\n(1) Special Resolution passed\n(2) Acts against sovereignty/integrity of India\n(3) Affairs conducted in fraudulent/unlawful manner\n(4) Default in filing financial statements for 5 consecutive years\n(5) Just and equitable grounds\nPetition may be filed by: Company, Contributory, ROC, Central Government, Person authorised by Central Govt.',
+   tip:'Trick: 5 grounds — SR, National interest, Fraud, 5-year default, Just & equitable. "SNFFJ" mnemonic.'},
+  // COSTING
+  {id:20,subject:'costing',subjectLabel:'Costing',year:'2024',type:'Past Exam',marks:8,
+   question:'A firm manufactures a single product. Fixed Cost ₹5,00,000. Variable Cost ₹60 per unit. Selling Price ₹100 per unit. Calculate: (a) BEP in units and value, (b) Margin of Safety if actual sales are 20,000 units.',
+   answer:'Contribution per unit = 100 − 60 = ₹40\n(a) BEP (units) = FC/Contribution per unit = 5,00,000/40 = 12,500 units\nBEP (value) = 12,500 × 100 = ₹12,50,000\n(b) Actual Sales = 20,000 units. MOS = Actual Sales − BEP = 20,000 − 12,500 = 7,500 units\nMOS % = (7,500/20,000) × 100 = 37.5%',
+   tip:'Trick: BEP units = FC ÷ CPU. MOS = Actual − BEP. P/V Ratio = CPU ÷ SP × 100.'},
+  {id:21,subject:'costing',subjectLabel:'Costing',year:'2024',type:'Past Exam',marks:6,
+   question:'Distinguish between Job Costing and Process Costing. Give two examples of each.',
+   answer:'Job Costing: Cost accumulated per job/order. Suitable for heterogeneous products.\nExamples: Construction contracts, printing orders, ship building, custom furniture.\nProcess Costing: Cost accumulated per process/department. Suitable for homogeneous products.\nExamples: Chemical manufacturing, sugar refining, paper mills, oil refining.\nKey differences: Job = specific order; Process = continuous production. Normal/Abnormal loss concept = Process costing only.',
+   tip:'Trick: Job = unique products, customer-specific. Process = mass production, continuous. Normal loss is expected in Process.'},
+  {id:22,subject:'costing',subjectLabel:'Costing',year:'2023',type:'Past Exam',marks:10,
+   question:'X Ltd. produces Product A and B in joint process. Total joint cost ₹6,00,000. A: 4,000 kg, SP ₹150. B: 2,000 kg, SP ₹200. Apportion joint costs using (1) Sales Value method, (2) Physical Quantity method.',
+   answer:'(1) Sales Value Method:\nSales A = 4,000×150 = 6,00,000; Sales B = 2,000×200 = 4,00,000; Total = 10,00,000\nA gets: 6/10 × 6,00,000 = ₹3,60,000\nB gets: 4/10 × 6,00,000 = ₹2,40,000\n(2) Physical Quantity Method:\nTotal kg = 6,000; A gets: 4,000/6,000 × 6,00,000 = ₹4,00,000; B gets: ₹2,00,000.',
+   tip:'Trick: Sales Value = fair basis if products have different values. Physical = simple, equal weight per kg.'},
+  {id:23,subject:'costing',subjectLabel:'Costing',year:'2023',type:'RTP',marks:8,
+   question:'What is Standard Costing? Explain Material Cost Variance and its sub-variances with formulae.',
+   answer:'Standard Costing: Predetermined costs used as benchmarks.\nMaterial Cost Variance (MCV) = (SQ × SP) − (AQ × AP)\nSub-variances:\n• Material Price Variance (MPV) = (SP − AP) × AQ\n• Material Usage Variance (MUV) = (SQ − AQ) × SP\nMUV further = Material Mix Variance + Material Yield Variance.\nFavourable = Actual cost < Standard cost. Adverse = Actual > Standard.',
+   tip:'Trick: MCV = MPV + MUV. Price variance = actual quantity × price difference. Usage = standard price × quantity difference.'},
+  // AUDIT
+  {id:24,subject:'audit',subjectLabel:'Audit',year:'2024',type:'Past Exam',marks:8,
+   question:'Explain SA-315 "Identifying and Assessing the Risks of Material Misstatement." What are the key requirements?',
+   answer:'SA-315: Auditor must identify and assess risks at (1) Financial statement level and (2) Assertion level.\nKey procedures: Inquiries of management, Analytical procedures, Observation and inspection, Discussion among engagement team.\nRisk components: Inherent Risk × Control Risk = Risk of Material Misstatement (RMM)\nSignificant Risks: Complex transactions, unusual items, fraud risk, estimation uncertainty.\nAuditor must understand: Entity and environment, internal control (5 components of COSO).',
+   tip:'Trick: SA-315 = Risk Assessment Standard. RMM = IR × CR. 5 COSO components: Control Environment, Risk Assessment, Control Activities, Info & Communication, Monitoring.'},
+  {id:25,subject:'audit',subjectLabel:'Audit',year:'2024',type:'Past Exam',marks:6,
+   question:'What is an Audit Programme? Distinguish between Audit Programme and Audit Plan.',
+   answer:'Audit Plan (SA-300): Overall strategy — scope, timing, direction of audit. Prepared before detailed work.\nAudit Programme: Detailed set of instructions for audit team — specific procedures, timing, responsible staff.\nDifferences:\n• Plan = macro level; Programme = micro/detailed\n• Plan covers objectives; Programme covers specific test procedures\n• Programme is working document used by junior staff\nAudit programme avoids: Gaps in audit work, duplication of effort.',
+   tip:'Trick: Audit Plan = "What and Why." Audit Programme = "How, Who, When." Programme is subordinate to Plan.'},
+  {id:26,subject:'audit',subjectLabel:'Audit',year:'2023',type:'Past Exam',marks:10,
+   question:'Write a short note on: (a) Analytical Procedures (SA-520), (b) Written Representations (SA-580)',
+   answer:'(a) SA-520 — Analytical Procedures:\nDefinition: Evaluation of financial info through plausible relationships.\nWhen used: Risk assessment, substantive procedures, overall review at completion.\nTypes: Ratio analysis, trend analysis, regression analysis.\n(b) SA-580 — Written Representations:\nRequired from management — confirms representations made during audit.\nNot substitute for other evidence, but supports other audit evidence.\nMust be dated same as auditor\'s report. If management refuses = limitation on scope → qualified/disclaim opinion.',
+   tip:'Trick: SA-520 = Analytical = Compare relationships. SA-580 = Written Reps = Management confirms in writing.'},
+  {id:27,subject:'audit',subjectLabel:'Audit',year:'2022',type:'Past Exam',marks:8,
+   question:'Explain CARO 2020. What are its applicability criteria? List any five reporting requirements.',
+   answer:'CARO 2020 (Companies Auditor Report Order): Applicable to all companies EXCEPT:\n• Banking companies\n• Insurance companies\n• Section 8 companies (charitable)\n• OPC (One Person Company)\n• Small companies\n• Private company (not subsidiary of public, paid-up capital <₹1Cr, loans <₹1Cr, turnover <₹10Cr)\n\nFive reporting requirements:\n(1) Property, Plant & Equipment (PPE) — title deeds, revaluation\n(2) Inventory — physical verification, discrepancies\n(3) Loans granted — terms, overdue\n(4) Investments — compliance with Section 186\n(5) Deposits accepted — compliance',
+   tip:'Trick: CARO exclusions — BISO-SP: Banks, Insurance, Section-8, OPC, Small, Private (small). Report 20+ matters.'},
+  // FM
+  {id:28,subject:'fm',subjectLabel:'FM',year:'2024',type:'Past Exam',marks:8,
+   question:'A company needs ₹50 lakhs for a project. Capital structure options: (A) 100% equity at ₹10 face value, (B) 50% equity + 50% debentures at 12%. EBIT ₹8 lakhs. Tax 30%. Compute EPS for both and comment.',
+   answer:'Option A (100% Equity): Shares = 50,00,000/10 = 5,00,000\nEBT = 8,00,000; Tax = 2,40,000; EAT = 5,60,000\nEPS(A) = 5,60,000/5,00,000 = ₹1.12\nOption B (50:50): Equity shares = 2,50,000\nInterest = 25,00,000 × 12% = 3,00,000\nEBT = 5,00,000; Tax = 1,50,000; EAT = 3,50,000\nEPS(B) = 3,50,000/2,50,000 = ₹1.40\nOption B gives higher EPS due to financial leverage (trading on equity).',
+   tip:'Trick: Higher debt = higher EPS if EBIT > Interest cost. This is FINANCIAL LEVERAGE / Trading on Equity.'},
+  {id:29,subject:'fm',subjectLabel:'FM',year:'2024',type:'Past Exam',marks:6,
+   question:'What is Working Capital? Explain the concept of Operating Cycle and its relationship with working capital requirement.',
+   answer:'Working Capital = Current Assets − Current Liabilities.\nGross Working Capital = Total Current Assets.\nNet Working Capital = CA − CL.\nOperating Cycle = Time from cash investment to cash recovery:\nRaw Material Storage + WIP conversion + Finished Goods storage + Debtors collection − Creditors payment period.\nLonger operating cycle → Higher WC requirement.\nFormula: Operating Cycle Period (days) = RM days + WIP days + FG days + Debtor days − Creditor days.',
+   tip:'Trick: Operating Cycle = Cash → RM → WIP → FG → Debtors → Cash. Longer cycle = more WC needed.'},
+  {id:30,subject:'fm',subjectLabel:'FM',year:'2023',type:'Past Exam',marks:8,
+   question:'Explain the concept of Capital Budgeting. Discuss NPV and IRR methods with their advantages and disadvantages.',
+   answer:'Capital Budgeting: Process of evaluating long-term investment decisions.\nNPV (Net Present Value): Sum of PV of all future cash flows − Initial Investment. Decision: Accept if NPV > 0.\nAdvantages: Considers time value, absolute measure, additive.\nDisadvantages: Requires correct discount rate, complex for comparing different-size projects.\nIRR (Internal Rate of Return): Rate at which NPV = 0. Decision: Accept if IRR > Cost of Capital.\nAdvantages: Percentage measure, easier communication.\nDisadvantages: Multiple IRR problem, assumes reinvestment at IRR.',
+   tip:'Trick: NPV > 0 = Accept. IRR > Cost of Capital = Accept. NPV is theoretically superior; IRR is easier to explain.'},
+  {id:31,subject:'fm',subjectLabel:'FM',year:'2022',type:'Past Exam',marks:8,
+   question:'Explain Walter\'s Dividend Model. State its assumptions and limitations.',
+   answer:'Walter\'s Model: Dividend policy affects firm value.\nFormula: P = (D + (r/Ke) × (E−D)) / Ke\nWhere: P = Market price, D = Dividend per share, E = EPS, r = ROI, Ke = Cost of equity.\nOptimal policy:\n• If r > Ke: Retain all earnings (growth firm)\n• If r < Ke: Distribute all earnings (decline firm)\n• If r = Ke: Irrelevant (normal firm)\nAssumptions: 100% equity, no external financing, r & Ke constant, 100% retention or distribution.\nLimitations: Unrealistic assumptions, no external financing.',
+   tip:'Trick: Walter = r vs Ke comparison. r > Ke → NO dividend (retain). r < Ke → FULL dividend. r = Ke → doesn\'t matter.'},
+];
+
+let activeSubject = '';
+function setSubject(s){
+  activeSubject = s;
+  document.querySelectorAll('.pill').forEach(p=>{p.classList.toggle('active',p.dataset.subject===s);});
+  filterQuestions();
+}
+function filterQuestions(){
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const year = document.getElementById('yearFilter').value;
+  const type = document.getElementById('typeFilter').value;
+  let filtered = PYQ_DATA.filter(q=>{
+    if(activeSubject && q.subject!==activeSubject) return false;
+    if(year && q.year!==year) return false;
+    if(type && q.type!==type) return false;
+    if(search){
+      const hay = (q.question+q.answer+q.subjectLabel+q.year).toLowerCase();
+      if(!hay.includes(search)) return false;
+    }
+    return true;
+  });
+  document.getElementById('countDisplay').textContent = filtered.length;
+  renderQuestions(filtered);
+}
+function renderQuestions(list){
+  const container = document.getElementById('questionsContainer');
+  if(list.length===0){
+    container.innerHTML='<div class="no-results"><div class="emoji">🔍</div><p>No questions found. Try different filters or search terms.</p></div>';
+    return;
+  }
+  container.innerHTML = list.map((q,i)=>`
+    <div class="q-card" id="qcard${q.id}">
+      <div class="q-header" onclick="toggleQ(${q.id})">
+        <div class="q-num">${i+1}</div>
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="qtag subject-${q.subject}">${q.subjectLabel}</span>
+            <span class="qtag year">${q.year}</span>
+            <span class="qtag year">${q.type}</span>
+            <span class="qtag marks">★ ${q.marks} Marks</span>
+          </div>
+          <div class="q-text">${q.question}</div>
+        </div>
+        <div class="q-toggle">▾</div>
+      </div>
+      <div class="q-answer">
+        <div class="answer-label">✅ Suggested Answer</div>
+        <div class="answer-content">${q.answer.replace(/\n/g,'<br>')}</div>
+        ${q.tip?`<div class="tip-box"><b>💡 Memory Trick:</b> ${q.tip}</div>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+function toggleQ(id){
+  const card = document.getElementById('qcard'+id);
+  card.classList.toggle('open');
+}
+// Init
+filterQuestions();
+</script>
+</body>
+</html>
