@@ -523,7 +523,9 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
 </section>
 
 <!-- FLASHCARD MCQ MODE -->
+ <div id="mcq-container" style="display:none; padding:20px;"></div>
 <section id="flashcard-mcq">
+  
   <div class="section-inner">
     <div class="section-header">
       <div class="tag">🃏 Flashcard → MCQ</div>
@@ -535,9 +537,9 @@ footer{position:relative;z-index:1;background:var(--surface);border-top:1px soli
         <div style="text-align:center;padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r20);">
           <div style="font-size:40px;margin-bottom:12px;">🃏</div>
           <p style="color:var(--muted);margin-bottom:20px;">Convert flashcard knowledge into MCQ practice with 4 options per question.</p>
-          <button onclick="startFlashcardMCQ()" class="btn-primary">
-           Start Flashcard MCQ →
-          </button>
+         <button onclick="startFlashcardMCQ()" class="btn-primary">
+         Start Flashcard MCQ →
+         </button>
            <script src="mcq_generator.js"></script>
         </div>
       </div>
@@ -853,52 +855,39 @@ function startFlashcardMCQ() {
 function showMCQ(questions) {
   let i = 0;
 
+  const container = document.getElementById("mcq-container");
+  container.style.display = "block";
+
   function render() {
     let q = questions[i];
 
-    document.body.innerHTML = `
-      <h2>${q.question}</h2>
-      ${q.options.map((opt, index) =>
-        `<button onclick="check(${index})">${opt}</button>`
-      ).join("")}
+    container.innerHTML = `
+      <div style="background:#111; padding:20px; border-radius:10px;">
+        <h2 style="color:white;">${q.question}</h2>
+
+        ${q.options.map((opt, index) =>
+          `<button onclick="check(${index})"
+            style="display:block; margin:10px 0; padding:10px; width:100%; background:#222; color:white; border:none; border-radius:5px;">
+            ${opt}
+          </button>`
+        ).join("")}
+      </div>
     `;
 
     window.check = function(ans) {
       alert(ans === q.correct ? "Correct ✅" : "Wrong ❌");
+
       i++;
       if (i < questions.length) render();
-      else alert("Quiz Finished 🎉");
+      else container.innerHTML = "<h2 style='color:white;'>Quiz Finished 🎉</h2>";
     }
   }
 
   render();
 }
 
-// ===================== USER AUTH =====================
-function getCurrentUser(){return JSON.parse(localStorage.getItem('plh_current_user')||'null');}
-function initUserBar(){
-  const u=getCurrentUser();
-  if(u){
-    document.getElementById('userWelcomeBar').style.display='block';
-    document.getElementById('navUserName').textContent=u.name;
-    document.getElementById('navLoginLink').textContent='👤 '+u.name.split(' ')[0];
-    document.getElementById('navLogoutBtn').onclick=()=>{localStorage.removeItem('plh_current_user');location.reload();};
-    // update streak
-    updateStreak();
-  }
-}
-function updateStreak(){
-  const today=new Date().toDateString();
-  const data=JSON.parse(localStorage.getItem('plh_streak')||'{"days":[],"last":""}');
-  if(data.last!==today){data.days.push(today);if(data.days.length>7)data.days=data.days.slice(-7);data.last=today;}
-  localStorage.setItem('plh_streak',JSON.stringify(data));
-  document.getElementById('dashStreak').textContent=data.days.length;
-  const dots=document.getElementById('streakDots');
-  const days=['M','T','W','T','F','S','S'];
-  const today_idx=new Date().getDay();
-  dots.innerHTML=days.map((d,i)=>`<div class="streak-dot ${i<=today_idx?'done':'miss'}">${d}</div>`).join('');
-}
-
+</script>
+<script>
 // ===================== TIMER =====================
 let timerInterval=null, timerSeconds=1800, timerTotal=1800;
 function startGstTimer(){
