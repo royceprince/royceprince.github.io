@@ -129,7 +129,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(9,9,15,.94);backdrop-fi
 <main class="main">
   <div class="ch-head">
     <div class="ch-icon" id="chIcon" style="background:rgba(244,185,66,.1)">📖</div>
-    <div class="ch-info"><h2 id="chTitle">All Chapters</h2><p id="chDesc">CA Inter Advanced Accounting —ICAI STUDY MATERIAL</p></div>
+    <div class="ch-info"><h2 id="chTitle">All Chapters</h2><p id="chDesc">CA Inter Advanced Accounting — CA. Parveen Sharma Study Material</p></div>
     <div class="ch-stats">
       <div class="cs"><div class="cs-n" id="chDescCnt" style="color:var(--blu)">370</div><div class="cs-l">Descriptive</div></div>
       <div class="cs"><div class="cs-n" id="chMcqCnt" style="color:var(--acc)">176</div><div class="cs-l">MCQs</div></div>
@@ -350,7 +350,7 @@ function buildAns(q, isMCQ) {
   } else if (q.answer) {
     content = esc(q.answer.trim());
   } else {
-    content = '<em style="color:var(--mut)">Refer: '+esc(q.chapter_name)+' —ICAI STUDY MATERIAL</em>';
+    content = '<em style="color:var(--mut)">Refer: '+esc(q.chapter_name)+' — CA. Parveen Sharma</em>';
   }
   return '<div class="qa"><button class="abtn" data-id="'+q.id+'">👁 Show Answer</button></div>'
     +'<div class="ap" id="ap-'+q.id+'"><div class="albl">✅ '+(isMCQ?"Correct Option":"Answer")+'</div><div>'+content+'</div></div>';
@@ -524,6 +524,183 @@ document.addEventListener("DOMContentLoaded", function() {
 
   applyFilters();
 });
-</script>
+// ═══════════════════════════════════════════════════════════════════
+// DATA IMPORT & EXPORT SYSTEM FOR PDF DATA
+// ═══════════════════════════════════════════════════════════════════
+
+/**
+ * SCHEMA FOR QUESTIONS (JSON Format)
+ * Each question object should have:
+ * {
+ *   "id": 1,                          // Unique identifier
+ *   "chapter": "Chapter Name",        // Chapter from syllabus
+ *   "type": "MCQ" or "Descriptive",   // Question type
+ *   "question": "Question text here",  // Exact question from PDF
+ *   "options": ["A", "B", "C", "D"],  // For MCQ only (ignore for Descriptive)
+ *   "correct_answer": 0-3,            // Index of correct option (for MCQ)
+ *   "answer": "Full answer text..."   // Complete ICAI-format answer
+ * }
+ */
+
+// Import question data from JSON
+function importQuestionData(jsonData) {
+  try {
+    let questions = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+    
+    // Validate and process
+    questions = questions.map((q, idx) => {
+      q.id = q.id || (idx + 1);
+      
+      // Auto-detect missing correct_answer for MCQ
+      if (q.type === 'MCQ' && typeof q.correct_answer === 'undefined' && q.answer) {
+        q.correct_answer = inferCorrectAnswer(q);
+      }
+      
+      // Generate answer for descriptive if missing
+      if (q.type === 'Descriptive' && !q.answer) {
+        q.answer = generateDefaultAnswer(q);
+      }
+      
+      return q;
+    });
+    
+    // Store in global data
+    if (typeof qstns !== 'undefined') qstns = questions;
+    
+    // Rebuild UI
+    const oldLen = questions.length;
+    loadQuestions(questions);
+    renderCh();
+    renderQl();
+    
+    console.log(`✅ Imported ${questions.length} questions`);
+    alert(`✅ Successfully imported ${questions.length} questions!`);
+    
+    return true;
+  } catch (e) {
+    console.error('❌ Import Error:', e.message);
+    alert('❌ Import failed: ' + e.message);
+    return false;
+  }
+}
+
+// Export current questions as JSON
+function exportQuestions() {
+  const json = JSON.stringify(qstns, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ca-questions-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  console.log('✅ Exported questions');
+}
+
+// Infer correct answer for MCQ from answer text
+function inferCorrectAnswer(q) {
+  const ans = q.answer.toLowerCase();
+  const letters = ['a', 'b', 'c', 'd'];
+  
+  // Look for patterns like "Answer: (C)" or "Correct: (B)"
+  for (let i = 0; i < letters.length; i++) {
+    if (ans.includes(`(${letters[i].toUpperCase()})`) || ans.startsWith(letters[i])) {
+      return i;
+    }
+  }
+  
+  // Look for option numbers
+  for (let i = 0; i < q.options.length; i++) {
+    if (ans.includes(q.options[i])) return i;
+  }
+  
+  return 0; // Default fallback
+}
+
+// Generate default ICAI-style answer for questions without answer
+function generateDefaultAnswer(q) {
+  const template = `[ANSWER PENDING]\n\nThis question requires detailed knowledge of ${q.chapter}.\n\nKey points to cover:\n• Concept definition\n• Relevant accounting standards\n• Practical application\n• ICAI guidelines\n\nRefer to: CA Inter Study Material for ${q.chapter}`;
+  return template;
+}
+
+// Parse raw PDF text and convert to JSON
+function parseRawPDFText(rawText) {
+  const lines = rawText.split('\n').filter(l => l.trim());
+  const questions = [];
+  let currentQ = null;
+  let optionMode = false;
+
+  lines.forEach(line => {
+    line = line.trim();
+    
+    // Detect question number (e.g., "1.", "Q.1", "(i)")
+    const qNumMatch = line.match(/^(?:\d+\.|Q\.?\d+|[（(]?[ivxlc]+[)）]?)\s+/);
+    if (qNumMatch) {
+      // Save previous question
+      if (currentQ) questions.push(currentQ);
+      
+      // Start new question
+      currentQ = {
+        id: questions.length + 1,
+        chapter: 'Uncategorized',
+        type: 'Descriptive',
+        question: line.replace(qNumMatch[0], ''),
+        answer: ''
+      };
+      optionMode = false;
+    }
+    
+    // Detect MCQ options (A), (B), (C), (D)
+    const optMatch = line.match(/^\(?([A-D])\)?[\s.]/);
+    if (optMatch && currentQ) {
+      // First option detection = convert to MCQ
+      if (!currentQ.options) {
+        currentQ.type = 'MCQ';
+        currentQ.options = [];
+      }
+      currentQ.options.push(line.replace(optMatch[0], ''));
+      optionMode = true;
+    }
+    
+    // Append to answer if not in option mode
+    else if (currentQ && line && !optionMode) {
+      currentQ.answer += (currentQ.answer ? '\n' : '') + line;
+    }
+  });
+  
+  if (currentQ) questions.push(currentQ);
+  
+  return questions;
+}
+
+// Helper: Create data import dialog
+function showDataImportDialog() {
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:9999';
+  
+  modal.innerHTML = `
+    <div style="background:#111218;border:1px solid #252838;border-radius:14px;padding:26px;width:90%;max-width:600px;color:#e6e8f0">
+      <h2 style="margin-bottom:14px;color:#f4b942">📥 Import Questions</h2>
+      <textarea id="importTextarea" style="width:100%;height:300px;background:#1f2130;border:1px solid #252838;color:#e6e8f0;padding:12px;border-radius:8px;font-family:monospace;font-size:12px;margin-bottom:14px" placeholder="Paste JSON array here..."></textarea>
+      <div style="display:flex;gap:9px">
+        <button onclick="importQuestionData(document.getElementById('importTextarea').value);this.closest('div').parentElement.remove()" style="flex:1;background:#f4b942;color:#000;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:600">✅ Import</button>
+        <button onclick="this.closest('div').parentElement.remove()" style="flex:1;background:#252838;color:#e6e8f0;border:none;padding:10px;border-radius:8px;cursor:pointer">✕ Cancel</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+}
+
+// Global functions for console access
+window.importData = importQuestionData;
+window.exportData = exportQuestions;
+window.parseRawText = parseRawPDFText;
+window.importDialog = showDataImportDialog;
+window.parseAndImport = (rawText, chapterName = 'General') => {
+  const parsed = parseRawPDFText(rawText);
+  parsed.forEach(q => q.chapter = chapterName);
+  return importQuestionData(parsed);
+};</script>
 </body>
 </html>
