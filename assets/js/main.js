@@ -472,3 +472,46 @@ minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 document.addEventListener("DOMContentLoaded",()=>{
 updateTimer();
 });
+function detectAndConvertTable(answerText) {
+    const lines = answerText.split("\n");
+
+    let tableRows = [];
+    let isTable = false;
+
+    lines.forEach(line => {
+        const match = line.match(/(.+?)\s+([\d,]+)/);
+        if (match) {
+            isTable = true;
+            tableRows.push({
+                label: match[1].trim(),
+                value: match[2].trim()
+            });
+        }
+    });
+
+    if (!isTable) return `<pre>${answerText}</pre>`;
+
+    let html = `
+    <table class="finance-table">
+        <thead>
+            <tr>
+                <th>Particulars</th>
+                <th>Amount (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+    `;
+
+    tableRows.forEach(row => {
+        html += `
+            <tr>
+                <td>${row.label}</td>
+                <td style="text-align:right;">${row.value}</td>
+            </tr>
+        `;
+    });
+
+    html += `</tbody></table>`;
+
+    return html;
+}
