@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit & Auditors | Prince Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d0f1a; --bg2:#12151f; --bg3:#181c2e;
+  --card:#1a1f33; --card2:#1f2540;
+  --accent:#f0c040; --accent2:#e07b39;
+  --blue:#4da6ff; --green:#3ecf74; --red:#ff5e5e;
+  --purple:#a78bfa; --pink:#f472b6; --cyan:#22d3ee;
+  --text:#e8eaf0; --muted:#7a82a0; --border:#2a3050;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#0d0f1a,#1a1040,#0d1a2a);border-bottom:2px solid var(--accent);position:sticky;top:0;z-index:200;box-shadow:0 4px 30px rgba(240,192,64,.15)}
+.header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:var(--accent);border-radius:8px;display:grid;place-items:center;font-size:18px;font-weight:900;color:#0d0f1a;font-family:'Rajdhani',sans-serif}
+.logo-text{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--accent)}
+.logo-sub{font-size:10px;color:var(--muted);letter-spacing:1px}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap}
+.badge{background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.3);color:var(--accent);padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.badge.blue{background:rgba(77,166,255,.12);border-color:rgba(77,166,255,.3);color:var(--blue)}
+.badge.green{background:rgba(62,207,116,.12);border-color:rgba(62,207,116,.3);color:var(--green)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#12151f,#1a1040,#0d1a2a);padding:44px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(240,192,64,.07) 0%,transparent 70%);top:-150px;left:50%;transform:translateX(-50%);pointer-events:none}
+.hero-tag{font-size:11px;letter-spacing:3px;color:var(--accent);font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(26px,5vw,46px);font-weight:700;color:#fff;margin-bottom:6px}
+.hero h1 span{color:var(--accent)}
+.hero-desc{color:var(--muted);font-size:13px;max-width:520px;margin:0 auto 18px}
+.sections-pill-row{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
+.sec-pill{background:var(--card2);border:1px solid var(--border);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;font-family:'Fira Code',monospace;color:var(--blue);cursor:pointer;transition:.2s}
+.sec-pill:hover{border-color:var(--blue);background:rgba(77,166,255,.1)}
+
+/* PROGRESS BAR */
+.progress-bar-wrap{background:var(--bg2);padding:8px 20px;border-bottom:1px solid var(--border)}
+.progress-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.progress-label{font-size:11px;color:var(--muted);white-space:nowrap}
+.progress-track{flex:1;background:var(--border);border-radius:20px;height:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:20px;transition:width .5s ease;width:0%}
+.progress-pct{font-size:11px;font-weight:700;color:var(--accent);font-family:'Fira Code',monospace;white-space:nowrap}
+
+/* MAIN NAV */
+.main-nav{background:var(--bg2);border-bottom:2px solid var(--border);position:sticky;top:61px;z-index:150;overflow-x:auto;scrollbar-width:none}
+.main-nav::-webkit-scrollbar{display:none}
+.main-nav-inner{display:flex;max-width:1200px;margin:0 auto;padding:0 12px}
+.main-tab{background:none;border:none;color:var(--muted);padding:12px 16px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s}
+.main-tab:hover{color:var(--text)}
+.main-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* SECTION SUB-NAV */
+.sub-nav{background:var(--bg3);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.sub-nav::-webkit-scrollbar{display:none}
+.sub-nav-inner{display:flex;max-width:1200px;margin:0 auto;padding:0 12px;gap:0}
+.sub-tab{background:none;border:none;color:var(--muted);padding:9px 14px;font-family:'Fira Code',monospace;font-size:11px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s}
+.sub-tab:hover{color:var(--blue)}
+.sub-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+
+/* LAYOUT */
+.page{display:none}
+.page.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.main{max-width:1200px;margin:0 auto;padding:28px 18px 80px}
+.sub-page{display:none}
+.sub-page.active{display:block;animation:fadeIn .25s ease}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.card.starred{border-color:rgba(240,192,64,.35);box-shadow:0 0 0 1px rgba(240,192,64,.1)}
+.card-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sec-badge{background:rgba(240,192,64,.15);border:1px solid rgba(240,192,64,.3);padding:2px 8px;border-radius:5px;font-size:11px;font-family:'Fira Code',monospace}
+.priority-tag{background:rgba(255,94,94,.15);border:1px solid rgba(255,94,94,.3);color:var(--red);padding:2px 8px;border-radius:5px;font-size:10px;font-weight:800;letter-spacing:.5px}
+.priority-tag.med{background:rgba(240,192,64,.12);border-color:rgba(240,192,64,.3);color:var(--accent)}
+
+/* CONCEPT BOXES */
+.cbox{background:var(--bg3);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:13px 15px;margin-bottom:12px;font-size:14px}
+.cbox.blue{border-left-color:var(--blue)}
+.cbox.green{border-left-color:var(--green)}
+.cbox.red{border-left-color:var(--red)}
+.cbox.purple{border-left-color:var(--purple)}
+.cbox.cyan{border-left-color:var(--cyan)}
+
+/* MNEMONIC */
+.mnem{background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(240,192,64,.02));border:1px solid rgba(240,192,64,.25);border-radius:10px;padding:13px 15px;margin:10px 0}
+.mnem-label{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:5px;text-transform:uppercase}
+.mnem-text{font-family:'Fira Code',monospace;font-size:15px;color:#fff;font-weight:600;margin-bottom:4px}
+.mnem-exp{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+.tbl th{background:var(--card2);color:var(--accent);padding:9px 12px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;text-align:left;border-bottom:2px solid var(--border);letter-spacing:.3px}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* HIGHLIGHTS */
+.hl{color:var(--accent);font-weight:700}
+.hl-b{color:var(--blue);font-weight:700}
+.hl-g{color:var(--green);font-weight:700}
+.hl-r{color:var(--red);font-weight:700}
+.hl-p{color:var(--purple);font-weight:700}
+.hl-c{color:var(--cyan);font-weight:700}
+
+/* STEP LIST */
+.step-list{list-style:none;counter-reset:steps}
+.step-list li{counter-increment:steps;padding:7px 0 7px 34px;position:relative;border-bottom:1px solid rgba(255,255,255,.04);font-size:13.5px}
+.step-list li::before{content:counter(steps);position:absolute;left:0;top:7px;background:var(--accent);color:#0d0f1a;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;font-family:'Rajdhani',sans-serif}
+
+/* BULLET LIST */
+.b-list{list-style:none}
+.b-list li{padding:4px 0 4px 16px;position:relative;font-size:13.5px}
+.b-list li::before{content:'◆';position:absolute;left:0;color:var(--accent);font-size:8px;top:9px}
+
+/* FLIP CARD (Flashcard) */
+.flashcard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:10px}
+.flip-card{height:160px;cursor:pointer;perspective:1000px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.flip-front{background:var(--card2);border:1px solid var(--border)}
+.flip-back{background:linear-gradient(135deg,#1a2a1a,#1a1f33);border:1px solid rgba(62,207,116,.25);transform:rotateY(180deg)}
+.flip-q{font-size:13px;font-weight:700;color:var(--blue);text-align:center}
+.flip-a{font-size:12.5px;color:var(--text);text-align:center}
+.flip-hint{font-size:10px;color:var(--muted);text-align:center;margin-top:8px}
+.flip-section{font-size:10px;color:var(--accent);font-family:'Fira Code',monospace;margin-bottom:8px;text-align:center}
+
+/* ACCORDION */
+.accordion{margin-bottom:8px}
+.acc-btn{width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:8px;text-align:left;cursor:pointer;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center;transition:.2s}
+.acc-btn:hover{border-color:var(--accent);color:var(--accent)}
+.acc-btn.open{border-color:var(--accent);color:var(--accent);border-radius:8px 8px 0 0}
+.acc-arrow{transition:transform .3s;font-size:12px}
+.acc-btn.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{background:var(--bg3);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:14px 16px;display:none;font-size:13.5px}
+.acc-body.open{display:block;animation:fadeIn .2s}
+
+/* QA CARDS */
+.qa-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:18px;overflow:hidden}
+.qa-q{background:var(--card2);padding:14px 18px;font-weight:700;font-size:13.5px;color:var(--blue);border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.qa-mark{background:var(--blue);color:#0d0f1a;font-size:10px;font-weight:900;padding:2px 7px;border-radius:4px;margin-top:3px;white-space:nowrap}
+.qa-ans{padding:16px 18px}
+.qa-step{display:flex;gap:10px;margin-bottom:10px}
+.qa-label{border:1px solid;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:800;white-space:nowrap;font-family:'Fira Code',monospace;margin-top:3px;height:fit-content}
+.qa-label.prov{background:rgba(77,166,255,.12);border-color:rgba(77,166,255,.3);color:var(--blue)}
+.qa-label.app{background:rgba(62,207,116,.12);border-color:rgba(62,207,116,.3);color:var(--green)}
+.qa-label.conc{background:rgba(240,192,64,.12);border-color:rgba(240,192,64,.3);color:var(--accent)}
+
+/* PRACTICE */
+.pq{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:15px 18px;margin-bottom:12px}
+.pq-row{display:flex;gap:12px;align-items:flex-start}
+.q-num{background:var(--accent);color:#0d0f1a;font-weight:900;font-size:13px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-family:'Rajdhani',sans-serif}
+.ans-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:10px;display:none;animation:fadeIn .2s;font-size:13.5px}
+.ans-box.show{display:block}
+.show-btn{background:none;border:1px solid var(--accent);color:var(--accent);padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;margin-top:10px;font-family:'Nunito',sans-serif;transition:.2s}
+.show-btn:hover{background:rgba(240,192,64,.1)}
+
+/* REVISION */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.rev-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:15px}
+.rev-card-title{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--accent);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.kw-list{list-style:none}
+.kw-list li{padding:4px 0 4px 16px;position:relative;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03)}
+.kw-list li::before{content:'▸';position:absolute;left:0;color:var(--accent)}
+
+/* MISTAKE CARD */
+.mc{background:rgba(255,94,94,.04);border:1px solid rgba(255,94,94,.18);border-radius:10px;padding:13px 15px;margin-bottom:10px;display:flex;gap:12px}
+.mc-wrong{font-size:13px;color:var(--red);font-weight:600}
+.mc-right{font-size:13px;color:var(--green);margin-top:4px}
+
+/* TEST */
+.test-header{background:linear-gradient(135deg,rgba(62,207,116,.07),rgba(62,207,116,.02));border:1px solid rgba(62,207,116,.2);border-radius:12px;padding:18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.test-meta{display:flex;gap:16px;flex-wrap:wrap}
+.tmv{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--green);display:block}
+.tml{font-size:11px;color:var(--muted)}
+.timer-disp{font-family:'Fira Code',monospace;font-size:28px;font-weight:700;color:var(--accent)}
+#timerBtn{background:var(--green);color:#0d0f1a;border:none;padding:9px 20px;border-radius:8px;font-weight:800;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;transition:.2s}
+#timerBtn:hover{filter:brightness(1.1)}
+.test-q{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.test-qh{background:var(--card2);padding:11px 17px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.test-qnum{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--accent)}
+.test-qm{font-size:12px;color:var(--muted);font-weight:700}
+.test-qb{padding:14px 17px}
+textarea.ai{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:13.5px;padding:11px;resize:vertical;min-height:90px;margin-top:10px;outline:none;transition:border .2s}
+textarea.ai:focus{border-color:var(--accent)}
+.submit-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0d0f1a;border:none;padding:12px 28px;border-radius:8px;font-weight:800;font-size:15px;cursor:pointer;font-family:'Rajdhani',sans-serif;transition:.2s;display:block;width:100%;margin-top:14px;letter-spacing:.5px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,192,64,.3)}
+.eval-box{background:linear-gradient(135deg,rgba(62,207,116,.05),rgba(62,207,116,.01));border:1px solid rgba(62,207,116,.18);border-radius:12px;padding:18px;margin-top:18px;display:none}
+.eval-box.show{display:block;animation:fadeIn .4s}
+.eval-title{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--green);margin-bottom:12px}
+.eval-qr{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin-bottom:12px}
+.eval-qt{font-weight:700;color:var(--blue);margin-bottom:6px;font-size:13px}
+.marks-disp{font-family:'Fira Code',monospace;font-size:20px;font-weight:700;color:var(--accent)}
+.fb-text{font-size:13px;color:var(--muted);margin-top:5px}
+.model-ans{background:var(--bg3);border-radius:8px;padding:12px;margin-top:9px;font-size:13px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;margin:10px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-dot{position:absolute;left:-23px;top:4px;width:14px;height:14px;background:var(--accent);border-radius:50%;border:2px solid var(--bg)}
+.tl-title{font-weight:700;color:var(--accent);font-size:14px;margin-bottom:3px}
+.tl-body{font-size:13.5px;color:var(--text)}
+
+/* TAGS */
+.tag{display:inline-block;background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.25);color:var(--blue);padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;font-family:'Fira Code',monospace;margin:2px}
+.tag.y{background:rgba(240,192,64,.1);border-color:rgba(240,192,64,.25);color:var(--accent)}
+.tag.r{background:rgba(255,94,94,.1);border-color:rgba(255,94,94,.25);color:var(--red)}
+.tag.g{background:rgba(62,207,116,.1);border-color:rgba(62,207,116,.25);color:var(--green)}
+.tag.p{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);color:var(--purple)}
+
+/* SCROLL TOP */
+.scroll-top{position:fixed;bottom:22px;right:22px;background:var(--accent);color:#0d0f1a;border:none;width:38px;height:38px;border-radius:50%;font-size:16px;cursor:pointer;display:none;place-items:center;z-index:99;font-weight:900;transition:.2s;box-shadow:0 4px 14px rgba(240,192,64,.3)}
+.scroll-top.show{display:grid}
+.scroll-top:hover{transform:translateY(-2px)}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:18px}
+.search-input{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:14px;padding:10px 16px 10px 40px;outline:none;transition:.2s}
+.search-input:focus{border-color:var(--accent)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none}
+.search-result-count{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* SCORE TRACKER */
+.score-panel{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:18px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.score-item{text-align:center}
+.score-val{font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;display:block}
+.score-lbl{font-size:11px;color:var(--muted)}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto}
+
+/* SECTION COLOR ACCENTS */
+.s139{border-left:3px solid var(--blue)}
+.s141{border-left:3px solid var(--accent)}
+.s143{border-left:3px solid var(--red)}
+.s144{border-left:3px solid var(--purple)}
+.s147{border-left:3px solid var(--pink)}
+.s148{border-left:3px solid var(--cyan)}
+
+/* DIVIDER */
+hr.sec{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+/* INFO BOX */
+.info-box{background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.2);border-radius:10px;padding:13px 15px;margin:12px 0;font-size:13.5px}
+.warn-box{background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.2);border-radius:10px;padding:13px 15px;margin:12px 0;font-size:13.5px}
+.danger-box{background:rgba(255,94,94,.06);border:1px solid rgba(255,94,94,.2);border-radius:10px;padding:13px 15px;margin:12px 0;font-size:13.5px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">P</div>
+      <div>
+        <div class="logo-text">Prince Learning Hub</div>
+        <div class="logo-sub">CA INTER · MAY 2026</div>
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">Corporate Law</span>
+      <span class="badge blue">Ch.10 · §139–148</span>
+      <span class="badge green">Exam Ready</span>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar-wrap">
+  <div class="progress-inner">
+    <span class="progress-label">📈 Chapter Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-pct" id="progressPct">0%</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Chapter 10 · Companies Act 2013</div>
+  <h1>Audit <span>&</span> Auditors</h1>
+  <p class="hero-desc">Section-wise complete exam system — concepts, flashcards, case studies, practice, revision & test mode</p>
+  <div class="sections-pill-row">
+    <span class="sec-pill" onclick="goSection('s141')">§141 Qualification</span>
+    <span class="sec-pill" onclick="goSection('s139')">§139 Appointment</span>
+    <span class="sec-pill" onclick="goSection('s144')">§144 Services</span>
+    <span class="sec-pill" onclick="goSection('s143')">§143 Fraud</span>
+    <span class="sec-pill" onclick="goSection('s146')">§143/146 Powers</span>
+    <span class="sec-pill" onclick="goSection('s140')">§140 Removal</span>
+    <span class="sec-pill" onclick="goSection('s147')">§147 Punishment</span>
+    <span class="sec-pill" onclick="goSection('s148')">§148 Cost Audit</span>
+    <span class="sec-pill" onclick="goSection('nfra')">NFRA</span>
+  </div>
+</div>
+
+<!-- MAIN NAV TABS -->
+<nav class="main-nav">
+  <div class="main-nav-inner">
+    <button class="main-tab active" onclick="showMain('concepts',this)">📘 Section-Wise Concepts</button>
+    <button class="main-tab" onclick="showMain('flashcards',this)">🃏 Flashcards</button>
+    <button class="main-tab" onclick="showMain('caseqa',this)">📝 Case Studies</button>
+    <button class="main-tab" onclick="showMain('practice',this)">🧠 Active Recall</button>
+    <button class="main-tab" onclick="showMain('revision',this)">⚡ Revision Sheet</button>
+    <button class="main-tab" onclick="showMain('mistakes',this)">❌ Mistakes</button>
+    <button class="main-tab" onclick="showMain('test',this)">🎯 Test Mode</button>
+  </div>
+</nav>
+
+<!-- SECTION SUB-NAV (only for concepts page) -->
+<div class="sub-nav" id="subNav">
+  <div class="sub-nav-inner">
+    <button class="sub-tab active" id="sub-s141" onclick="showSub('s141',this)">§141 Qualification</button>
+    <button class="sub-tab" id="sub-s139" onclick="showSub('s139',this)">§139 Appointment</button>
+    <button class="sub-tab" id="sub-s144" onclick="showSub('s144',this)">§144 Services</button>
+    <button class="sub-tab" id="sub-s143" onclick="showSub('s143',this)">§143 Fraud Reporting</button>
+    <button class="sub-tab" id="sub-s146" onclick="showSub('s146',this)">§143/146 Powers & Duties</button>
+    <button class="sub-tab" id="sub-s140" onclick="showSub('s140',this)">§140 Removal</button>
+    <button class="sub-tab" id="sub-s147" onclick="showSub('s147',this)">§147 Punishment</button>
+    <button class="sub-tab" id="sub-s148" onclick="showSub('s148',this)">§148 Cost Audit</button>
+    <button class="sub-tab" id="sub-nfra" onclick="showSub('nfra',this)">NFRA</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ========== CONCEPTS PAGE ========== -->
+<div id="page-concepts" class="page active">
+
+  <!-- §141 QUALIFICATION -->
+  <div id="sub-page-s141" class="sub-page active">
+    <div class="card starred s141">
+      <div class="card-title">👤 §141 — Qualification of Auditor <span class="sec-badge">§141(1)</span> <span class="priority-tag med">⭐ IMPORTANT</span></div>
+      <div class="grid2">
+        <div class="cbox">
+          <b class="hl">Individual:</b> Chartered Accountant (CA) holding a valid <span class="hl">Certificate of Practice</span>
+        </div>
+        <div class="cbox blue">
+          <b class="hl-b">Firm / LLP:</b> Majority of partners must be <span class="hl">practicing CA in India</span><br>
+          <small style="color:var(--muted)">Only CA partners can sign on behalf of firm</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card s141">
+      <div class="card-title">🚫 §141(3) — Disqualifications <span class="sec-badge">§141(3)</span> <span class="priority-tag">⭐ HIGH PRIORITY</span></div>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Master Mnemonic</div>
+        <div class="mnem-text">" C A S H A ko audit nahi karne do! "</div>
+        <div class="mnem-exp">
+          <b class="hl">C</b> = Body <b>C</b>orporate (LLP excluded from this disq.)<br>
+          <b class="hl">A</b> = Officer / <b>A</b>ppointed employee of company (or partner/employee of officer/employee)<br>
+          <b class="hl">S</b> = <b>S</b>ecurity/Interest holder — relative or partner holds security/interest in company, Assoc., Subsidiary, Holding, or Any subsidiary of Holding (CASHA group) with face value &gt; <span class="hl">₹1 lakh</span><br>
+          <b class="hl">H</b> = <b>H</b>as indebtedness &gt; <span class="hl">₹5 lakhs</span> to CASHA group<br>
+          <b class="hl">A</b> = <b>A</b>udit in more than <span class="hl">20 companies</span> (partner/individual limit)
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">📌 Security Disqualification — Detailed Rules <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>All relatives together may hold security of face value <span class="hl">not exceeding ₹1 lakh</span> in such companies</li>
+            <li>If relative acquires security exceeding ₹1 lakh after appointment → auditor must take <span class="hl-r">corrective action within 60 days</span></li>
+            <li>Guarantor for indebtedness of third person in excess of <span class="hl">₹1 lakh</span> to CASHA → disqualified</li>
+            <li>Business relationship with CASHA = transaction for commercial purpose (except: professional services transactions &amp; transactions in ordinary course at arm's length price)</li>
+            <li>Partner/partner of firm who is auditor in more than <span class="hl">20 companies</span> as on appointment date</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">📊 20 Company Limit — Full Rules <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <table class="tbl">
+            <tr><th>Rule</th><th>Detail</th></tr>
+            <tr><td>Individual limit</td><td>Max <span class="hl">20 companies</span></td></tr>
+            <tr><td>Firm limit</td><td>No. of <span class="hl">CA partners × 20</span></td></tr>
+            <tr><td><span class="hl-g">NOT counted</span> in 20 limit</td><td>Private company (paid-up &lt;₹100 cr, not defaulted u/s 92 &amp; 137), <b>Dormant</b> company, <b>OPC</b>, <b>Small company</b></td></tr>
+          </table>
+          <div class="warn-box" style="margin-top:10px">
+            ⚠️ <b>Private co limit:</b> Appointment in private company having paid-up share capital &lt;₹100 crores (not defaulted u/s 92 &amp; 137), dormant company, OPC and small company — NOT be considered within limit of 20 companies.<br>
+            In case of <b>firm</b>, limit of 20 audits is per person but if a person is partner in multiple firms, all such firms in which he is a partner will together be entitled to 20 audits on his account.
+          </div>
+        </div>
+      </div>
+      <div class="cbox red" style="margin-top:10px">
+        <b class="hl-r">Vacation of Office:</b> If auditor incurs any disqualification AFTER appointment → shall vacate office → treated as <span class="hl">casual vacancy</span>
+      </div>
+    </div>
+
+    <div class="card s141">
+      <div class="card-title">🔢 §141 — Solved Example: 20 Company Limit</div>
+      <div class="cbox">
+        <b>Example:</b> ABC &amp; Co. has Mr. A, B and C as partners who are auditors in 4, 6 and 10 companies respectively. What is maximum number of audits?
+      </div>
+      <div class="cbox green">
+        <b class="hl-g">Solution:</b><br>
+        Total firm limit = 3 × 20 = <span class="hl">60</span><br>
+        Audits already held = 4 + 6 + 10 = <span class="hl">20</span><br>
+        <b>ABC &amp; Co. can accept 40 more audits</b><br>
+        Partner A: 20−4 = <span class="hl">16 more</span> | Partner B: 20−6 = <span class="hl">14 more</span> | Partner C: 20−10 = <span class="hl">10 more</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- §139 APPOINTMENT -->
+  <div id="sub-page-s139" class="sub-page">
+    <div class="card starred s139">
+      <div class="card-title">🏛️ §139 — Appointment of Auditors <span class="sec-badge">§139</span> <span class="priority-tag">⭐ HIGH PRIORITY</span></div>
+      <div class="grid2">
+        <div class="cbox blue">
+          <b class="hl-b">🏛️ Government Company</b>
+          <div class="timeline" style="margin-top:10px">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">First Auditor</div><div class="tl-body"><span class="hl">CAG within 60 days</span> of registration</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">CAG fails?</div><div class="tl-body">BOD appoints within next <span class="hl">30 days</span></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">BOD fails?</div><div class="tl-body">Members inform → appoint at EGM (within 60 days)</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Subsequent Auditor</div><div class="tl-body"><span class="hl">CAG appoints</span> within 180 days of FY commencement</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Casual Vacancy</div><div class="tl-body">CAG fills within <span class="hl">30 days</span>. CAG fails → BOD in 30 days</div></div>
+          </div>
+        </div>
+        <div class="cbox green">
+          <b class="hl-g">🏢 Other Company</b>
+          <div class="timeline" style="margin-top:10px">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">First Auditor</div><div class="tl-body"><span class="hl">BOD within 30 days</span> of registration</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">BOD fails?</div><div class="tl-body">Inform members → Members appoint at EGM</div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Subsequent Auditor</div><div class="tl-body">BOD recommends name → Members appoint at AGM. Hold office till <span class="hl">6th AGM</span></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Casual Vacancy</div><div class="tl-body">BOD fills within <span class="hl">30 days</span>. Hold office till next AGM</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Timeline Trick</div>
+        <div class="mnem-text">GOV = 60 days | OTHERS = 30 days | CASUAL = 30 days (both)</div>
+      </div>
+      <div class="info-box">
+        📌 <b>First Auditor Note:</b> holds office until conclusion of <b>1st AGM</b>. Period as first auditor is <span class="hl-r">NOT to be considered</span> for calculating term as subsequent auditor.
+      </div>
+    </div>
+
+    <div class="card s139">
+      <div class="card-title">📅 Term &amp; Cooling Period <span class="sec-badge">§139(2)</span></div>
+      <table class="tbl">
+        <tr><th>Company Type</th><th>Individual</th><th>Firm / LLP</th></tr>
+        <tr>
+          <td>Listed / Unlisted public (paid-up ≥₹10cr) / Private (paid-up ≥₹50cr) / Public borrowings/deposits ≥₹50cr</td>
+          <td><span class="hl">1 term of 5 years</span></td>
+          <td><span class="hl">2 terms of 5 years each</span></td>
+        </tr>
+        <tr><td>Other companies</td><td colspan="2" style="text-align:center"><span class="hl-g">Any number of terms</span></td></tr>
+      </table>
+      <div class="cbox red" style="margin-top:12px">
+        ⏳ <b class="hl-r">Cooling Period = 5 years</b> — after completing term, NOT eligible for re-appointment in SAME company.<br>
+        <span class="hl-g">Key:</span> Cooling period does NOT apply to subsidiary, holding, or any other company — ONLY same company!
+      </div>
+      <div class="accordion" style="margin-top:12px">
+        <button class="acc-btn" onclick="toggleAcc(this)">📌 Cooling Period — Special Situations <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>On date of appointment of audit firm: shall NOT have any <span class="hl">common partner</span> with outgoing firm whose tenure expired in immediately preceding FY. If common partners exist → cooling period of 5 years.</li>
+            <li>If a partner (who certifies FS) retires from audit firm (which has completed term) and joins another firm → such other firm also becomes <span class="hl-r">ineligible for 5 years</span></li>
+            <li>A person shall NOT be eligible to be appointed as auditor if it is associated with outgoing auditor under <span class="hl">same network</span> (same brand name, trade name or common control)</li>
+            <li>Cooling off period for a company does NOT apply to any other company (example: such auditor can audit company's subsidiary or any service except statutory audit)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card s139">
+      <div class="card-title">📣 §139 — Rotation of Auditor</div>
+      <div class="grid2">
+        <div class="cbox">
+          Members of company may provide that:<br>
+          • Audit conducted by more than 1 auditor, OR<br>
+          • In case of firm: audit partner &amp; his team shall be <span class="hl">rotated at intervals decided by members</span>
+        </div>
+        <div class="cbox blue">
+          If company appointed <b>joint auditors</b> → company may follow rotation in manner that all joint auditors do not complete their term in same year
+        </div>
+      </div>
+    </div>
+
+    <div class="card s139">
+      <div class="card-title">📌 §177 — Audit Committee: Companies Required to Constitute</div>
+      <div class="grid2">
+        <div class="cbox blue">
+          <b class="hl-b">Must Constitute Audit Committee:</b>
+          <ul class="b-list" style="margin-top:8px">
+            <li>Listed public company</li>
+            <li>Unlisted public co having (on date of last audited FS):</li>
+            <li>Paid up capital ≥ <span class="hl">₹10 crores</span>, OR</li>
+            <li>Turnover ≥ <span class="hl">₹100 crores</span>, OR</li>
+            <li>Aggregate outstanding loan, borrowings, debenture &amp; deposits ≥ <span class="hl">₹50 crores</span></li>
+          </ul>
+        </div>
+        <div class="cbox green">
+          <b class="hl-g">Exception:</b> Company is exempt from constituting committee if it was earlier required to constitute but ceases to fulfil above conditions for <span class="hl">3 consecutive years</span>
+        </div>
+      </div>
+      <div class="accordion" style="margin-top:10px">
+        <button class="acc-btn" onclick="toggleAcc(this)">📋 Audit Committee — Appointment Recommendation Process <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <div class="grid2">
+            <div>
+              <b class="hl-b">If Audit Committee required:</b>
+              <ol class="step-list" style="margin-top:8px">
+                <li>Audit Committee recommends auditor name to BOD</li>
+                <li>If BOD agrees → recommend to members at AGM</li>
+                <li>If BOD disagrees → refer back to Audit Committee with reasons</li>
+                <li>If AC still does not reconsider → BOD shall record reasons &amp; send its own recommendation to AGM</li>
+              </ol>
+            </div>
+            <div>
+              <b class="hl-g">If Audit Committee NOT required:</b>
+              <ol class="step-list" style="margin-top:8px">
+                <li>BOD itself recommends name to members</li>
+                <li>Members appoint at AGM</li>
+              </ol>
+              <div class="info-box" style="margin-top:10px">
+                📌 Before appointment: written consent + certificate (eligible, not disqualified, as per term, within limits, no proceedings against) must be obtained
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card s139">
+      <div class="card-title">💰 §142 — Remuneration of Auditors</div>
+      <table class="tbl">
+        <tr><th>Situation</th><th>Who Fixes Remuneration</th></tr>
+        <tr><td>First auditor appointed by BOD</td><td><span class="hl">BOD fixes</span> remuneration</td></tr>
+        <tr><td>Otherwise (subsequent)</td><td><span class="hl">Fixed in General Meeting</span> or in manner determined in GM</td></tr>
+        <tr><td>Includes</td><td>Out-of-pocket expenses, any facility extended to auditor by company</td></tr>
+        <tr><td>Excludes</td><td>Remuneration for any other service rendered at <span class="hl">request of company</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- §144 PROHIBITED SERVICES -->
+  <div id="sub-page-s144" class="sub-page">
+    <div class="card starred s144">
+      <div class="card-title">🚫 §144 — Services Auditor CANNOT Provide <span class="sec-badge">§144</span> <span class="priority-tag med">⭐ IMPORTANT</span></div>
+      <div class="cbox red">
+        <b>Rule:</b> Auditor shall provide services approved by BOD or audit committee ONLY. But shall NOT include following services (directly or indirectly) to company, its <span class="hl">holding</span> or <span class="hl">subsidiary</span> company.
+      </div>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Mnemonic — Remember All 9</div>
+        <div class="mnem-text">" I A D M · I O I A O "</div>
+        <div class="mnem-exp">
+          <b>I</b>nvestment banking services &nbsp;|&nbsp; <b>A</b>ctuarial services &nbsp;|&nbsp; <b>D</b>esign &amp; implementation of FIS &nbsp;|&nbsp; <b>M</b>anagement services<br>
+          <b>I</b>nvestment advisory services &nbsp;|&nbsp; <b>O</b>utsourced financial services (rendering) &nbsp;|&nbsp; <b>I</b>nternal audit &nbsp;|&nbsp; <b>A</b>ccounting &amp; bookkeeping &nbsp;|&nbsp; <b>O</b>ther prescribed services
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:14px">
+        <tr><th>#</th><th>Prohibited Service</th><th>Why Important</th></tr>
+        <tr><td>(i)</td><td>Investment banking services</td><td>Conflict of interest</td></tr>
+        <tr><td>(ii)</td><td>Actuarial services</td><td>Self-review threat</td></tr>
+        <tr><td>(iii)</td><td>Design &amp; implementation of financial information system</td><td>Self-review threat</td></tr>
+        <tr><td>(iv)</td><td>Management services</td><td>Management threat</td></tr>
+        <tr><td>(v)</td><td>Investment advisory services</td><td>Conflict of interest</td></tr>
+        <tr><td>(vi)</td><td>Rendering of outsourced financial services</td><td>Self-review threat</td></tr>
+        <tr><td>(vii)</td><td>Internal audit</td><td>Self-review threat</td></tr>
+        <tr><td>(viii)</td><td>Accounting and book keeping services</td><td>Self-review threat</td></tr>
+        <tr><td>(ix)</td><td>Other prescribed services</td><td>As notified</td></tr>
+      </table>
+      <div class="warn-box" style="margin-top:12px">
+        ⚠️ <b>Note on "directly or indirectly":</b><br>
+        • If auditor is individual: Himself or through his relative or person connected with him<br>
+        • If auditor is firm: Itself or through its partners or its parent, subsidiary or associate entity or other entity in which firm or its partner has significant influence, or whose name, trademark or brand is used by firm or its partners
+      </div>
+    </div>
+  </div>
+
+  <!-- §143 FRAUD REPORTING -->
+  <div id="sub-page-s143" class="sub-page">
+    <div class="card starred s143">
+      <div class="card-title">🔍 §143(12) — Reporting of Frauds <span class="sec-badge">§143(12)</span> <span class="priority-tag">⭐ HIGH PRIORITY</span></div>
+      <div class="danger-box">🚨 Yeh topic ICAI exams mein bahut zyada aata hai! Time limits exactly yaad rakho!</div>
+      <div class="grid2">
+        <div class="cbox red">
+          <b class="hl-r">Fraud &lt; ₹1 Crore</b><br>
+          By officers/employees of company
+          <ol class="step-list" style="margin-top:10px">
+            <li>Report to <span class="hl">Audit Committee or BOD within 2 days</span></li>
+            <li>Specify: Nature, Approximate Amount, Parties involved</li>
+            <li>AC/BOD discloses details in <span class="hl">BOD Report</span></li>
+          </ol>
+        </div>
+        <div class="cbox purple">
+          <b class="hl-p">Fraud ≥ ₹1 Crore</b><br>
+          By officers/employees of company
+          <ol class="step-list" style="margin-top:10px">
+            <li>Report to <span class="hl">Audit Committee/BOD within 2 days</span></li>
+            <li>Seek reply/observation within <span class="hl">45 days</span></li>
+            <li>Reply received → Forward to CG within <span class="hl">15 days</span> of receipt</li>
+            <li>No reply in 45 days → Forward to CG <span class="hl">directly</span> (with note)</li>
+          </ol>
+        </div>
+      </div>
+      <div class="cbox" style="margin-top:12px">
+        <b>📬 How to Send Report to CG:</b><br>
+        Secretary, MCA in <span class="hl">sealed cover</span> by <span class="hl">Registered Post with Acknowledgement Due</span> or Speed Post followed by <b>e-mail in confirmation of same</b><br>
+        Report shall be on <span class="hl">letter head of auditor</span> containing his postal address, e-mail, contact number &amp; be signed by auditor with his seal &amp; indicate his membership number
+      </div>
+      <table class="tbl" style="margin-top:12px">
+        <tr><th>Non-compliance Penalty</th><th>Amount</th></tr>
+        <tr><td>Listed company</td><td><span class="hl-r">₹5 lakhs</span></td></tr>
+        <tr><td>Any other company</td><td><span class="hl-r">₹1 lakh</span></td></tr>
+      </table>
+      <div class="info-box" style="margin-top:12px">
+        📌 <b>Note:</b> Auditor shall report to CG only if he is first person to identify fraud during performance of his duties. But in all cases, he shall still report to BOD/Audit Committee.
+      </div>
+    </div>
+
+    <div class="card s143">
+      <div class="card-title">📋 §143 — Branch Audit <span class="sec-badge">§143</span></div>
+      <div class="grid2">
+        <div class="cbox blue">
+          <b class="hl-b">Branch in India:</b><br>
+          Accounts audited by company's auditor OR person qualified for appointment as auditor of company
+        </div>
+        <div class="cbox green">
+          <b class="hl-g">Branch outside India:</b><br>
+          Accounts audited by company's auditor OR an accountant OR person qualified to be auditor as per laws of that country
+        </div>
+      </div>
+      <div class="info-box">📌 Branch auditor shall submit his report to company's auditor</div>
+    </div>
+
+    <div class="card s143">
+      <div class="card-title">📄 §143 &amp; §145 — Auditor's Report</div>
+      <div class="cbox">
+        Auditor shall express opinion &amp; make report to members on accounts &amp; FS examined by him — as to whether FS give a <span class="hl">true and fair view</span> of state of affairs of company at end of FY and other prescribed matters.
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">📋 What Auditor's Report Shall Also State <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>Whether he has all <span class="hl">obtained information &amp; explanation</span> necessary for audit</li>
+            <li>Whether proper BOA have been kept &amp; proper returns adequate for audit been received</li>
+            <li>Whether report on accounts of <span class="hl">branch office</span> audited by others has been dealt with</li>
+            <li>Whether company's <span class="hl">balance sheet and P&amp;L</span> account are in agreement with BOA and returns</li>
+            <li>Whether FS comply with <span class="hl">Accounting Standards</span></li>
+            <li>Qualification, reservation or adverse remark on maintenance of accounts</li>
+            <li>Observation/comment on <span class="hl">financial transactions</span> having adverse effect on functioning of company</li>
+            <li>Whether any director is disqualified from being appointed u/s 164(2)</li>
+            <li>Whether company has adequate <span class="hl">internal financial controls</span> (not applicable to small private companies)</li>
+            <li>Such other matters as may be prescribed (CARO 2020)</li>
+          </ul>
+          <div class="warn-box" style="margin-top:10px">
+            If any above matter is answered in <b>negative or with qualification</b> → auditor's report shall state <span class="hl">reason for same</span>
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">✍️ §145 — Signing of Auditor's Report <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>Auditor shall sign auditor's report or sign/certify other documents of company</li>
+            <li>Qualifications, observations or comments on financial transactions or matters having adverse effect on functioning of company → shall be <span class="hl">read at general meeting</span> &amp; be open to inspection by any member of company</li>
+            <li>CARO 2020 should be complied by <span class="hl">statutory auditor</span> of every company on which it applies</li>
+            <li>Every auditor shall comply with <span class="hl">auditing standards</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card s143">
+      <div class="card-title">🏛️ Audit of Government Companies</div>
+      <div class="cbox blue">
+        In case of government company → <span class="hl">CAG</span> shall direct the auditor the manner in which accounts of company shall be audited. Then auditor shall submit copy of audit report to CAG which shall include <span class="hl">directions issued by CAG, action taken</span> and its impact on accounts &amp; FS.
+      </div>
+      <div class="grid2" style="margin-top:12px">
+        <div class="cbox">
+          <b>Within 60 days of receipt of audit report, CAG has right to:</b>
+          <ul class="b-list" style="margin-top:8px">
+            <li>Conduct <span class="hl">supplementary audit</span> of FS by person authorized by it</li>
+            <li>Comment on or supplement to audit report</li>
+            <li>Laid before AGM at same time as audit report</li>
+          </ul>
+        </div>
+        <div class="cbox purple">
+          <b>If considered necessary:</b><br>
+          CAG may order <span class="hl">test audit</span> of accounts of company
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- §143/146 POWERS & DUTIES -->
+  <div id="sub-page-s146" class="sub-page">
+    <div class="card s146" style="border-left:3px solid var(--cyan)">
+      <div class="card-title">💪 §143 — Powers of Auditors <span class="sec-badge">§143(1)</span></div>
+      <div class="grid3">
+        <div class="cbox cyan">
+          <b class="hl-c">Power 1</b><br>
+          Right of access to <span class="hl">BOA &amp; Vouchers</span> of company (whether kept at registered office or any other place)
+        </div>
+        <div class="cbox cyan">
+          <b class="hl-c">Power 2</b><br>
+          Right of access to records of <span class="hl">subsidiary &amp; associate</span> company relating to <span class="hl">consolidation of FS</span>
+        </div>
+        <div class="cbox cyan">
+          <b class="hl-c">Power 3</b><br>
+          Require <span class="hl">information &amp; explanation</span> from officers of company (necessary for performance of his duties)
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--cyan)">
+      <div class="card-title">🔎 §143(1) — Duties of Inquiry</div>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Mnemonic — LAST PAB</div>
+        <div class="mnem-text">L · A · S · T · P · A · B</div>
+        <div class="mnem-exp">
+          <b>L</b>oans &amp; Advances given by company — properly <span class="hl">secured</span>? Terms not prejudicial to company or members?<br>
+          <b>A</b>dvances given as deposits — shown as <span class="hl">deposits</span>?<br>
+          <b>S</b>ecurities of company (not investment/banking co.) — sold at <span class="hl">price less than purchase price</span>?<br>
+          <b>T</b>ransactions by <span class="hl">book entry</span> — prejudicial to interest of company?<br>
+          <b>P</b>ersonal expenses charged to <span class="hl">revenue account</span>?<br>
+          <b>A</b>llotment — if shares allotted for cash, whether cash <span class="hl">received on allotment</span>?<br>
+          <b>B</b>ooks &amp; documents state shares allotted for cash — is cash <span class="hl">actually received</span>? If not received, book &amp; balance sheet are correct, regular &amp; not misleading?
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--cyan)">
+      <div class="card-title">📢 §146 — Auditor to Attend General Meeting</div>
+      <div class="grid2">
+        <div class="cbox">
+          All <span class="hl">notice &amp; communication</span> for general meeting shall be forwarded to auditor
+        </div>
+        <div class="cbox blue">
+          Auditor shall <span class="hl">mandatorily attend</span> GM of company either by himself or through his <span class="hl">authorized representative</span> (who shall also be qualified to be auditor)
+        </div>
+      </div>
+      <div class="cbox green">
+        Auditor shall have <span class="hl">right to be heard</span> at such meetings on any part of business which concerns him as auditor
+      </div>
+    </div>
+  </div>
+
+  <!-- §140 REMOVAL -->
+  <div id="sub-page-s140" class="sub-page">
+    <div class="card starred s140" style="border-left:3px solid var(--accent2)">
+      <div class="card-title">🔄 §140 — Removal of Auditor Before Term <span class="sec-badge">§140(1)</span> <span class="priority-tag">⭐ HIGH PRIORITY</span></div>
+      <div class="cbox">
+        <b>Principle:</b> Auditor can be removed from office before expiry of his term after giving him a <span class="hl">reasonable opportunity of being heard</span> (Audi Alteram Partem)
+      </div>
+      <ol class="step-list">
+        <li>Pass <span class="hl">Board Resolution (BR)</span> — after giving auditor reasonable opportunity of being heard</li>
+        <li>Make application in <span class="hl">Form ADT-2</span> to Central Government within <span class="hl">30 days</span> of passing BR</li>
+        <li>Obtain <span class="hl">approval from CG</span></li>
+        <li>Hold <span class="hl">General Meeting</span> within <span class="hl">60 days</span> of CG approval and pass <span class="hl">Special Resolution</span></li>
+      </ol>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Removal Steps</div>
+        <div class="mnem-text">BR → ADT-2 to CG (30 days) → CG Approval → SR in GM (60 days)</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent2)">
+      <div class="card-title">📤 §140(3) — Resignation by Auditor</div>
+      <div class="cbox green">
+        If auditor has resigned from company → file statement in <span class="hl">Form ADT-3</span> indicating reasons &amp; other facts to:<br>
+        • Company<br>
+        • <span class="hl">ROC within 30 days</span> of resignation
+      </div>
+      <div class="cbox blue">
+        <b>Government Company:</b> Also file statement with <span class="hl">CAG</span>
+      </div>
+      <div class="danger-box">
+        <b class="hl-r">Default Penalty:</b><br>
+        Fine: <span class="hl-r">₹50,000</span> or amount equal to remuneration of auditor (whichever is less)<br>
+        + ₹500 per day during which failure continues<br>
+        Subject to maximum of <span class="hl-r">₹2 lakhs</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent2)">
+      <div class="card-title">🔁 §139(9)&amp;(10) — Re-appointment of Retiring Auditor</div>
+      <div class="cbox green">
+        <b>Retiring auditor may be re-appointed at AGM if:</b>
+        <ul class="b-list" style="margin-top:8px">
+          <li>He is <span class="hl-g">not disqualified</span> for re-appointment</li>
+          <li>He has <span class="hl-g">not given notice</span> in writing of his unwillingness to be re-appointed</li>
+          <li>SR is <span class="hl-g">not passed</span> to appoint other auditor or provide he shall not be re-appointed</li>
+        </ul>
+      </div>
+      <div class="cbox red">
+        <b>If no auditor appointed at AGM:</b> existing auditor shall <span class="hl">continue as auditor</span> of company
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent2)">
+      <div class="card-title">📢 Special Notice — Appointing Other than Retiring Auditor</div>
+      <div class="cbox">
+        <b>When required?</b> When company wants to appoint someone OTHER THAN retiring auditor or provide that retiring auditor shall NOT be re-appointed
+      </div>
+      <table class="tbl">
+        <tr><th>Rule</th><th>Detail</th></tr>
+        <tr><td>Who can give?</td><td>Members holding <span class="hl">≥1% voting power</span> OR shares on which <span class="hl">≥₹5 lakhs</span> is paid up</td></tr>
+        <tr><td>Timing</td><td>Not earlier than <span class="hl">3 months</span> but at least <span class="hl">14 days</span> before meeting</td></tr>
+        <tr><td>On receipt of notice</td><td>Company shall send copy of notice to retiring auditor</td></tr>
+        <tr><td>If retiring auditor makes representation</td><td>Company shall: State fact in notice sent to members, Send copy of representation to members</td></tr>
+        <tr><td>If representation not sent</td><td>May be read at meeting &amp; copy filed with ROC</td></tr>
+      </table>
+      <div class="warn-box">
+        ⚠️ If NCLT satisfied that rights are being abused by retiring auditor → representation need NOT be sent &amp; need NOT be read out at meeting
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent2)">
+      <div class="card-title">🔓 Removal of Auditor who has Acted Fraudulently (NCLT)</div>
+      <div class="cbox red">
+        If NCLT is satisfied (suo moto or on application by CG or any concerned person) that auditor has acted in fraudulent manner OR abetted/colluded in fraud → may direct company to <span class="hl">change its auditors</span>
+      </div>
+      <div class="cbox">
+        NCLT shall order within <span class="hl">15 days</span> of receipt of application<br>
+        Auditor against whom final order is passed → <span class="hl-r">NOT appointed as auditor of any company for 5 years</span> &amp; also liable u/s 447
+      </div>
+    </div>
+  </div>
+
+  <!-- §147 PUNISHMENT -->
+  <div id="sub-page-s147" class="sub-page">
+    <div class="card starred s147">
+      <div class="card-title">⚖️ §147 — Punishment for Contravention <span class="sec-badge">§147</span> <span class="priority-tag">⭐ HIGH PRIORITY</span></div>
+      <table class="tbl">
+        <tr><th>Who</th><th>Minimum Fine</th><th>Maximum Fine / Other</th></tr>
+        <tr>
+          <td><b class="hl-b">Company</b></td>
+          <td>₹25,000</td>
+          <td>₹5 lakhs</td>
+        </tr>
+        <tr>
+          <td><b class="hl-b">Officer in Default</b></td>
+          <td>₹10,000</td>
+          <td>₹1 lakh</td>
+        </tr>
+        <tr>
+          <td><b class="hl">Auditor</b> (general contravention u/s 139, 144, 145)</td>
+          <td>₹25,000</td>
+          <td>Lower of <span class="hl">₹5 lakhs</span> OR <span class="hl">4× remuneration</span> of auditor</td>
+        </tr>
+        <tr>
+          <td><b class="hl-r">Auditor</b> — contravention made KNOWINGLY / WILFULLY with intent to deceive company, shareholders, creditors, tax authorities</td>
+          <td colspan="2">
+            <span class="hl-r">Imprisonment up to 1 year</span><br>
+            + Fine: not less than <span class="hl-r">₹50,000</span> extendable to lower of <span class="hl-r">₹25 lakh</span> or <span class="hl-r">8× remuneration</span><br>
+            + <span class="hl-r">Refund remuneration</span> to company<br>
+            + Pay <span class="hl-r">damages</span> to company, statutory body, members, creditors for loss arising due to incorrect/misleading statements in audit report
+          </td>
+        </tr>
+        <tr>
+          <td><b class="hl-p">Audit Firm</b> — partner acted fraudulently</td>
+          <td colspan="2">Liability of concerned partners who acted fraudulently — jointly &amp; severally. For criminal liability: Only concerned partners who acted fraudulently liable for imprisonment.</td>
+        </tr>
+      </table>
+      <div class="mnem">
+        <div class="mnem-label">🧠 Fine Amount Trick</div>
+        <div class="mnem-text">Company: 25K→5L | Officer: 10K→1L | Auditor: 25K→(5L/4×rem) | Knowingly: Jail+50K→(25L/8×rem)+Refund+Damages</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- §148 COST AUDIT -->
+  <div id="sub-page-s148" class="sub-page">
+    <div class="card s148">
+      <div class="card-title">💰 §148 — Cost Records &amp; Cost Audit <span class="sec-badge">§148</span> <span class="priority-tag med">⭐ IMPORTANT</span></div>
+      <table class="tbl">
+        <tr><th>Point</th><th>Rule</th></tr>
+        <tr><td>Who must maintain cost records?</td><td>Companies engaged in goods/services specified in <span class="hl">Table A or B</span> having <span class="hl">turnover from all products &amp; services ≥ ₹35 crores</span> during last FY</td></tr>
+        <tr><td>NOT applicable to</td><td><span class="hl-g">Micro enterprise or Small enterprise</span></td></tr>
+        <tr><td>What to include?</td><td>Particulars relating to utilisation of material, labour or other items of cost in BOA</td></tr>
+        <tr><td>Cost Auditor</td><td><span class="hl">CMA (Cost Accountant)</span> holding Certificate of Practice</td></tr>
+        <tr><td>Can CA be Cost Auditor?</td><td><span class="hl-r">NO</span> — Person u/s 139 (i.e., statutory auditor) CANNOT be appointed as Cost Auditor of same company</td></tr>
+        <tr><td>Approval of cost statements</td><td>Cost statements (including statements annexed to cost audit report) shall be approved by <span class="hl">BOD before signed</span> by director authorised by BOD</td></tr>
+        <tr><td>CG may direct cost audit</td><td>Direct audit of cost records of company having prescribed net worth or turnover</td></tr>
+        <tr><td>Cost Audit Report</td><td>Report on audit of cost records — submitted to <span class="hl">BOD</span></td></tr>
+        <tr><td>Company furnishes to CG</td><td>Within <span class="hl">30 days</span> of receipt of cost audit report, furnish to CG along with information &amp; explanation on reservation/qualification in report</td></tr>
+        <tr><td>Penalty</td><td>Same as provided u/s 147</td></tr>
+      </table>
+      <div class="warn-box" style="margin-top:12px">
+        ⚠️ <b>Same provisions apply mutatis mutandis:</b> All qualification, disqualification, rights, duties, obligation &amp; fraud reporting provisions applicable to statutory auditor (u/s 139–146) apply to cost auditor also. Company must give all assistance &amp; facilities to cost auditor.
+      </div>
+    </div>
+  </div>
+
+  <!-- NFRA -->
+  <div id="sub-page-nfra" class="sub-page">
+    <div class="card" style="border-left:3px solid var(--pink)">
+      <div class="card-title">🏛️ NFRA — National Financial Reporting Authority <span class="tag p">New Topic</span></div>
+      <div class="card-title" style="font-size:15px; color:var(--pink)">Actions for Auditor's Oversight</div>
+      <div class="grid3">
+        <div class="cbox purple">
+          <b class="hl-p">Review</b><br>
+          Review working paper (including audit plan &amp; other documents) and communication related to audit
+        </div>
+        <div class="cbox purple">
+          <b class="hl-p">Evaluate</b><br>
+          Evaluate sufficiency of quality control system and manner of documentation by auditor
+        </div>
+        <div class="cbox purple">
+          <b class="hl-p">Perform</b><br>
+          Perform other testing of audit, supervisory &amp; quality control procedures of auditor as necessary
+        </div>
+      </div>
+      <div class="accordion" style="margin-top:14px">
+        <button class="acc-btn" onclick="toggleAcc(this)">📋 Audit Reporting, Governance &amp; Enforcement Measures <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>Auditor to report on governance practices &amp; internal processes to promote audit quality, protect its reputation &amp; reduce risk (like failure of auditor) &amp; take necessary action on report</li>
+            <li>Additional information or personal presence of auditor for additional information or explanation</li>
+            <li>NFRA shall <span class="hl">NOT publish proprietary/confidential information</span> (except if it has reasons to do so in public interest &amp; records reasons in writing)</li>
+            <li>Sending separate report containing proprietary/confidential information to CG</li>
+            <li>If NFRA believes that any law, professional standard or standard is violated by auditor → it may decide on further course of investigation or enforcement action through its concerned division</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">🔍 Monitoring &amp; Enforcement <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <div class="grid2">
+            <div class="cbox">
+              Perform its monitoring &amp; enforcement activities through its officers or experts with sufficient experience in audit of relevant industry
+            </div>
+            <div class="cbox blue">
+              Publish its findings of non-compliances on its website and in manner as it considers fit (except if it has reasons not to do so in public interest &amp; records reasons in writing)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <button class="acc-btn" onclick="toggleAcc(this)">📈 Overseeing Quality &amp; Suggesting Improvement Measures <span class="acc-arrow">▼</span></button>
+        <div class="acc-body">
+          <ul class="b-list">
+            <li>NFRA may direct auditor to take <span class="hl">measures for improvement of audit quality</span> including changes in audit processes, quality control &amp; audit reports &amp; specify a detailed plan with time-limits</li>
+            <li>It is duty of auditor to <span class="hl">make required improvements and send report</span> to NFRA explaining how it has complied with directions</li>
+            <li>NFRA shall monitor improvements made by auditor &amp; take action as it deems fit</li>
+            <li>NFRA may refer cases of overseeing quality of service of auditor to <span class="hl">Quality Review Board</span></li>
+            <li>NFRA may take assistance of experts for oversight &amp; monitoring activities</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cbox red" style="margin-top:12px">
+        📅 <b>Important:</b> Auditor of company governed by NFRA → shall file return with NFRA on or before <span class="hl">30th November</span> every year in <span class="hl">Form NFRA-2</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end concepts page -->
+
+<!-- ========== FLASHCARDS PAGE ========== -->
+<div id="page-flashcards" class="page">
+  <div class="card">
+    <div class="card-title">🃏 Flashcards — Click to Flip!</div>
+    <p style="color:var(--muted); font-size:13px; margin-bottom:16px">Click any card to see the answer. Click again to flip back.</p>
+    <div class="flashcard-grid" id="flashGrid"></div>
+  </div>
+</div>
+
+<!-- ========== CASE STUDIES PAGE ========== -->
+<div id="page-caseqa" class="page">
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q1 · 4M · §141</span> ABC &amp; Co. has 3 CA partners — A (auditor in 4 cos), B (6 cos), C (10 cos). What is max number of audits ABC &amp; Co. and each partner can still accept?</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 141(3): CA firm cannot be auditor in more than 20 companies. Firm limit = No. of CA partners × 20.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><div>Total firm limit = 3 × 20 = <span class="hl">60</span>. Already held = 4+6+10 = <span class="hl">20</span>. Remaining = <span class="hl-g">40 more</span>.<br>Partner A: 20−4=<span class="hl">16 more</span> | Partner B: 20−6=<span class="hl">14 more</span> | Partner C: 20−10=<span class="hl">10 more</span></div></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span>ABC &amp; Co. can accept 40 more audits. Individual: A=16, B=14, C=10.</span></div>
+    </div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q2 · 4M · §139</span> M Ltd. (listed company) appointed X as first auditor (held till 1st AGM). Then re-appointed till 6th AGM. BOD now wants to re-appoint X again. Valid?</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 139(2): Listed company's individual auditor = 1 term of 5 years. Period as first auditor is NOT counted for subsequent term.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><span>First auditor period (till 1st AGM) — excluded. Subsequent: 1st AGM to 6th AGM = 5 years = <span class="hl">1 completed term</span>. X has completed his allowed 1 term → NOT eligible for re-appointment.</span></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span><span class="hl-r">NOT valid.</span> X must observe <span class="hl">5-year cooling period</span> before re-appointment in M Ltd.</span></div>
+    </div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q3 · 5M · §143</span> Statutory auditor discovers fraud of ₹2 crores committed by CFO of PQR Ltd. Audit Committee takes 60 days to respond. What should auditor do? All time limits.</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 143(12): Fraud ≥ ₹1 Cr by officers/employees → report to AC/BOD within 2 days → seek reply in 45 days → if reply, forward to CG in 15 days → if no reply, forward to CG directly.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><div>₹2 Cr ≥ ₹1 Cr → Step 1: Report to AC/BOD within <span class="hl">2 days</span>. Step 2: Seek reply within <span class="hl">45 days</span>. AC took 60 days = NO reply in 45 days → Step 3: Forward report to CG <span class="hl">directly</span> with note that no reply received. Sent via sealed cover, Registered Post + e-mail.</div></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span>Auditor must forward report directly to CG since AC did not reply within 45 days. Non-compliance penalty: ₹5 lakhs (listed company).</span></div>
+    </div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q4 · 4M · §141</span> Are these persons disqualified? (a) Mr. A — CA, owes ₹6 lakhs to company. (b) XYZ Firm — provides management consulting. (c) Mr. B — relative holds ₹80,000 face value shares. (d) Mr. C — full-time employee elsewhere.</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 141(3) — Disqualifications: indebtedness &gt;₹5L, providing prohibited services u/s 144, security &gt;₹1L face value, full-time employment elsewhere.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><div>(a) <span class="hl-r">DISQUALIFIED</span> — ₹6L &gt; ₹5L threshold [§141(3)(d)]<br>(b) <span class="hl-r">DISQUALIFIED</span> — Management services prohibited u/s 144 [renders auditor disqualified]<br>(c) <span class="hl-g">NOT DISQUALIFIED</span> — ₹80,000 face value &lt; ₹1 lakh threshold [§141(3)(d)]<br>(d) <span class="hl-r">DISQUALIFIED</span> — Full-time employment elsewhere [§141(3)(b)]</div></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span>A, B, D — Disqualified. Only Mr. B — NOT disqualified (₹80K &lt; ₹1L threshold).</span></div>
+    </div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q5 · 4M · §140</span> Board of Directors of Moon Ltd. wants to remove auditor Mr. Verma before expiry of his term. State complete procedure with relevant sections.</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 140(1): Auditor can be removed before term expiry after giving reasonable opportunity of being heard (Audi Alteram Partem) by following prescribed procedure.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><ol class="step-list"><li>Pass <span class="hl">Board Resolution</span> — give Mr. Verma opportunity to be heard</li><li>File <span class="hl">Form ADT-2</span> to CG within <span class="hl">30 days</span> of BR</li><li>Obtain <span class="hl">CG approval</span></li><li>Pass <span class="hl">Special Resolution</span> in GM within <span class="hl">60 days</span> of CG approval</li></ol></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span>Moon Ltd. must follow all 4 steps. Direct removal without CG approval is NOT permitted u/s 140(1).</span></div>
+    </div>
+  </div>
+
+  <div class="qa-card">
+    <div class="qa-q"><span class="qa-mark">Q6 · 5M · §147</span> Mr. Sharma (auditor) wilfully gave incorrect information in audit report to benefit company promoters. What are the legal consequences u/s 147?</div>
+    <div class="qa-ans">
+      <div class="qa-step"><span class="qa-label prov">PROVISION</span><span>Section 147: If contravention is made knowingly or wilfully with intention to deceive company, shareholders, creditors or tax authorities → enhanced punishment applies.</span></div>
+      <div class="qa-step"><span class="qa-label app">APPLICATION</span><div>Since Mr. Sharma acted <span class="hl-r">wilfully with intent to deceive</span>:<br>• <span class="hl-r">Imprisonment up to 1 year</span><br>• Fine: not less than ₹50,000 extendable to lower of <span class="hl-r">₹25 lakh or 8× remuneration</span><br>• <span class="hl-r">Refund</span> remuneration to company<br>• Pay <span class="hl-r">damages</span> to company, statutory body, members, creditors</div></div>
+      <div class="qa-step"><span class="qa-label conc">CONCLUSION</span><span>Mr. Sharma faces criminal prosecution including imprisonment up to 1 year, heavy fine, refund of remuneration, and liability to pay damages.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== ACTIVE RECALL PAGE ========== -->
+<div id="page-practice" class="page">
+  <div class="card">
+    <div class="card-title">🧠 Active Recall — Write Before You See!</div>
+    <div class="cbox" style="margin-bottom:16px">✍️ <b>Method:</b> Pehle apne dimag se jawab likhne ki koshish karo — phir "Show Answer" click karo. Yahi sabse effective method hai ICAI exam ke liye!</div>
+    <div id="practiceQuestions"></div>
+  </div>
+</div>
+
+<!-- ========== REVISION PAGE ========== -->
+<div id="page-revision" class="page">
+  <div class="card starred">
+    <div class="card-title">⚡ One-Page Quick Revision — Section Wise</div>
+    <div class="rev-grid" id="revGrid"></div>
+    <hr class="sec">
+    <div class="card-title" style="margin-bottom:10px">🧠 All Mnemonics at a Glance</div>
+    <div class="grid2">
+      <div class="cbox">
+        <b class="hl">§141 DISQUALIFICATIONS:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--accent)">C A S H A ko audit nahi karne do!</span><br>
+        C=Corporate | A=Appointed employee | S=Security &gt;1L | H=indebt &gt;5L | A=Audit &gt;20 cos
+      </div>
+      <div class="cbox blue">
+        <b class="hl-b">§139 TIMELINES:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--blue)">GOV=60d | Others=30d | Casual=30d (both)</span>
+      </div>
+      <div class="cbox green">
+        <b class="hl-g">§143 DUTIES OF INQUIRY:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--green)">L · A · S · T · P · A · B</span><br>
+        Loans | Advances-deposits | Securities | Transactions-book | Personal expenses | Allotment | Books
+      </div>
+      <div class="cbox purple">
+        <b class="hl-p">§144 PROHIBITED SERVICES:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--purple)">I A D M · I O I A O</span><br>
+        Invest-banking | Actuarial | Design-FIS | Mgmt | Invest-advisory | Outsourced | Internal audit | Accounting | Others
+      </div>
+      <div class="cbox red">
+        <b class="hl-r">§140 REMOVAL STEPS:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--red)">BR → ADT-2 (30d) → CG Approval → SR (60d)</span>
+      </div>
+      <div class="cbox">
+        <b class="hl">§147 PUNISHMENT:</b><br>
+        <span style="font-family:'Fira Code',monospace;color:var(--accent);font-size:11px">Co: 25K→5L | Off: 10K→1L | Auditor: 25K→lower(5L/4×rem)<br>Knowingly: Jail+50K→lower(25L/8×rem)+Refund+Damages</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MISTAKES PAGE ========== -->
+<div id="page-mistakes" class="page">
+  <div class="card">
+    <div class="card-title">❌ Common Mistakes — Don't Lose Marks!</div>
+    <div id="mistakesGrid"></div>
+  </div>
+</div>
+
+<!-- ========== TEST MODE PAGE ========== -->
+<div id="page-test" class="page">
+  <div class="test-header">
+    <div>
+      <div style="font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;color:var(--green)">🎯 Mini Test — Audit &amp; Auditors</div>
+      <div style="color:var(--muted);font-size:12px;margin-top:3px">Exam format mein likho. Submit karo. ICAI style evaluation milega!</div>
+    </div>
+    <div class="test-meta">
+      <div><span class="tmv">5</span><span class="tml">Questions</span></div>
+      <div><span class="tmv">20</span><span class="tml">Marks</span></div>
+      <div><div class="timer-disp" id="timerDisplay">25:00</div><span class="tml">Minutes</span></div>
+    </div>
+    <button id="timerBtn" onclick="startTimer()">▶ Start Timer</button>
+  </div>
+
+  <div class="test-q">
+    <div class="test-qh"><span class="test-qnum">Q1 — §141</span><span class="test-qm">4 Marks</span></div>
+    <div class="test-qb">Raju &amp; Associates is a CA firm with 4 partners — P (12 audits), Q (8), R (5), S (3). Firm offered audit of 75 more companies. How many can they accept? Can any individual partner accept more?<textarea class="ai" placeholder="Write your answer here — Provision → Application → Conclusion..."></textarea></div>
+  </div>
+
+  <div class="test-q">
+    <div class="test-qh"><span class="test-qnum">Q2 — §143</span><span class="test-qm">5 Marks</span></div>
+    <div class="test-qb">During audit of Zenith Ltd., statutory auditor Mr. Sharma discovers fraud of ₹2 crores by CFO. Audit Committee takes 60 days to respond. What should Mr. Sharma do? All steps + time limits.<textarea class="ai" placeholder="Write your answer here — Provision → Application → Conclusion..."></textarea></div>
+  </div>
+
+  <div class="test-q">
+    <div class="test-qh"><span class="test-qnum">Q3 — §141</span><span class="test-qm">4 Marks</span></div>
+    <div class="test-qb">Are following disqualified? (a) Mr. A — CA, owes ₹6L to company. (b) XYZ — provides management consulting. (c) Mr. B — relative holds ₹80K face value shares. (d) Mr. C — full-time employee elsewhere.<textarea class="ai" placeholder="Write your answer here — Provision → Application → Conclusion..."></textarea></div>
+  </div>
+
+  <div class="test-q">
+    <div class="test-qh"><span class="test-qnum">Q4 — §147</span><span class="test-qm">4 Marks</span></div>
+    <div class="test-qb">What is punishment for auditor u/s 147 if: (a) He generally contravenes Section 139, and (b) He acts knowingly with intent to deceive company and shareholders?<textarea class="ai" placeholder="Write your answer here — Provision → Application → Conclusion..."></textarea></div>
+  </div>
+
+  <div class="test-q">
+    <div class="test-qh"><span class="test-qnum">Q5 — §148</span><span class="test-qm">3 Marks</span></div>
+    <div class="test-qb">Write short note on Cost Audit u/s 148: Who maintains cost records? Who is cost auditor? Submission of cost audit report?<textarea class="ai" placeholder="Write your answer here — Provision → Application → Conclusion..."></textarea></div>
+  </div>
+
+  <button class="submit-btn" onclick="submitTest()">📩 Submit Test — Get ICAI Evaluation</button>
+
+  <div class="eval-box" id="evalBox">
+    <div class="eval-title">📊 ICAI Examiner Evaluation</div>
+    <div class="eval-qr">
+      <div class="eval-qt">Q1 — 20 Company Limit §141</div>
+      <div class="marks-disp">3.5 / 4</div>
+      <div class="fb-text">✅ Firm limit calculation correct. ✅ Individual partner limits correct. ⚠️ Missed: which companies excluded from 20-limit (Private &lt;₹100cr, Dormant, OPC, Small).</div>
+      <div class="model-ans"><b class="hl-g">Model:</b> Firm limit = 4×20=80. Already held=28. <b>Remaining = 52 more.</b> P=8, Q=12, R=15, S=17 more. Note: Private &lt;₹100cr/Dormant/OPC/Small not counted.</div>
+    </div>
+    <div class="eval-qr">
+      <div class="eval-qt">Q2 — Fraud Reporting §143(12)</div>
+      <div class="marks-disp">5 / 5</div>
+      <div class="fb-text">✅ All steps correct. ✅ Time limits accurate. ✅ Mode of sending stated. Bahut achha — full marks! Aisi hi likhna exam mein.</div>
+      <div class="model-ans"><b class="hl-g">Model:</b> ₹2Cr ≥ ₹1Cr → (1) Report AC/BOD in 2 days (2) 45-day wait → AC took 60d = no reply → (3) Forward to CG directly with note. Sealed cover + Regd Post + email to Secretary MCA.</div>
+    </div>
+    <div class="eval-qr">
+      <div class="eval-qt">Q3 — Disqualification §141</div>
+      <div class="marks-disp">3 / 4</div>
+      <div class="fb-text">✅ (a)(b)(d) correct. ⚠️ (c) — Many write "disqualified" without checking ₹1L threshold. ₹80K &lt; ₹1L = NOT disqualified. -1 mark.</div>
+      <div class="model-ans"><b class="hl-g">Model:</b> (a) DQ—₹6L&gt;₹5L | (b) DQ—Mgmt services §144 | (c) NOT DQ—₹80K&lt;₹1L threshold | (d) DQ—full-time employment §141(3)</div>
+    </div>
+    <div class="eval-qr">
+      <div class="eval-qt">Q4 — Punishment §147</div>
+      <div class="marks-disp">3.5 / 4</div>
+      <div class="fb-text">✅ General fine amounts correct. ✅ Imprisonment mentioned. ⚠️ Missed: Refund of remuneration + damages to statutory body, members, creditors.</div>
+      <div class="model-ans"><b class="hl-g">Model:</b> (a) General: 25K to lower(5L/4×rem) (b) Knowingly: Jail ≤1yr + 50K to lower(25L/8×rem) + Refund remuneration + Pay damages</div>
+    </div>
+    <div class="eval-qr">
+      <div class="eval-qt">Q5 — Cost Audit §148</div>
+      <div class="marks-disp">2.5 / 3</div>
+      <div class="fb-text">✅ CMA as auditor. ✅ BOD submission. ⚠️ Missed: Micro/Small enterprise exception + 30-day deadline to furnish to CG.</div>
+      <div class="model-ans"><b class="hl-g">Model:</b> Turnover ≥₹35Cr (Table A/B) → maintain cost records. Not for Micro/Small. Cost Auditor = CMA (NOT statutory CA of same co). Report to BOD → furnish to CG in 30 days.</div>
+    </div>
+    <div style="background:var(--card2);border-radius:10px;padding:16px;margin-top:12px;text-align:center">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:24px;font-weight:700;color:var(--accent)">Total: 17.5 / 20 &nbsp; (87.5%)</div>
+      <div style="color:var(--green);font-size:13px;margin-top:8px;font-weight:700">Examiner Comment: "Structure aur presentation achha hai. Lekin thresholds (₹1L, ₹5L) aur punishment details ke baad ke points (refund + damages) miss ho rahe hain. Agle test mein 20/20 target karo! 💪"</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── DATA ──
+const flashcards = [
+  {section:'§141',q:'Who can be appointed as auditor?',a:'CA with valid CoP, OR CA Firm where majority partners are practicing CAs in India'},
+  {section:'§141',q:'CASHA Mnemonic stands for?',a:'C=Corporate | A=Appointed employee | S=Security>₹1L | H=indebt>₹5L | A=Audit>20 cos'},
+  {section:'§141',q:'What is the indebtedness disqualification limit?',a:'Indebtedness > ₹5 lakhs to company/subsidiary/holding/associate'},
+  {section:'§141',q:'What is the security/interest face value limit for disqualification?',a:'Face value exceeding ₹1 lakh — relative or partner holds it'},
+  {section:'§141',q:'What companies are NOT counted in the 20-company limit?',a:'Private co (<₹100cr, not defaulted), Dormant, OPC, Small company'},
+  {section:'§141',q:'Firm\'s maximum audit limit formula?',a:'Number of CA partners × 20'},
+  {section:'§139',q:'Who appoints first auditor in Government company? Time limit?',a:'CAG within 60 days of registration. CAG fails → BOD within 30 days'},
+  {section:'§139',q:'Who appoints first auditor in other company? Time limit?',a:'BOD within 30 days. BOD fails → Members at EGM'},
+  {section:'§139',q:'Term of auditor for listed company — Individual vs Firm?',a:'Individual: 1 term of 5 years | Firm: 2 terms of 5 years each'},
+  {section:'§139',q:'What is the cooling period after completing term?',a:'5 years from completion of term. Applies only to SAME company'},
+  {section:'§139',q:'How long does casual vacancy auditor hold office?',a:'Until conclusion of next AGM (filled by BOD within 30 days)'},
+  {section:'§139',q:'Is period as first auditor counted in term limit?',a:'NO — First auditor period is NOT considered for subsequent term calculation'},
+  {section:'§144',q:'Name any 4 prohibited services u/s 144',a:'Investment banking, Actuarial, Design of FIS, Management services, Internal audit, Bookkeeping (any 4)'},
+  {section:'§144',q:'Can auditor provide prohibited services to holding company?',a:'NO — Applies to company, its holding AND subsidiary company. Directly or indirectly.'},
+  {section:'§143',q:'Fraud < ₹1 Cr — auditor\'s duty?',a:'Report to AC/BOD within 2 days. AC/BOD discloses in BOD Report. No CG reporting.'},
+  {section:'§143',q:'Fraud ≥ ₹1 Cr — steps and time limits?',a:'AC/BOD in 2 days → 45 days for reply → If reply, CG in 15 days → If no reply, CG directly'},
+  {section:'§143',q:'How is fraud report sent to CG?',a:'Sealed cover, Registered Post + email to Secretary MCA, on letter head with seal'},
+  {section:'§143',q:'Penalty for non-compliance of fraud reporting?',a:'Listed company: ₹5 lakhs | Any other company: ₹1 lakh'},
+  {section:'§143',q:'LAST PAB stands for?',a:'Loans | Advances-deposits | Securities | Transactions-book | Personal expenses | Allotment | Books'},
+  {section:'§146',q:'Auditor\'s 3 main powers?',a:'(1) Access BOA & Vouchers (2) Access subsidiary/associate records for consolidation (3) Require info & explanation from officers'},
+  {section:'§140',q:'Steps to remove auditor before term?',a:'BR → Form ADT-2 to CG (30 days) → CG Approval → Special Resolution in GM (60 days)'},
+  {section:'§140',q:'Form for auditor resignation? Time limit?',a:'Form ADT-3 to Company + ROC within 30 days. Govt company → also to CAG'},
+  {section:'§140',q:'Default penalty for not filing ADT-3?',a:'₹50,000 or remuneration (whichever less) + ₹500/day, max ₹2 lakhs'},
+  {section:'§140',q:'Who can give special notice for new auditor? Limit?',a:'Members holding ≥1% voting power OR shares on which ≥₹5 lakhs paid up'},
+  {section:'§147',q:'General fine for auditor who contravenes?',a:'₹25,000 to lower of ₹5 lakhs OR 4× remuneration'},
+  {section:'§147',q:'Punishment for knowingly deceiving auditor?',a:'Jail ≤1yr + Fine ₹50K to lower(₹25L/8×rem) + Refund + Damages'},
+  {section:'§148',q:'Who can be cost auditor? Can CA be?',a:'CMA (Cost Accountant) with CoP. CA (statutory auditor u/s 139) CANNOT be cost auditor of same company'},
+  {section:'§148',q:'Cost audit applies to which companies?',a:'Goods/services in Table A/B with turnover ≥₹35 crores. NOT Micro/Small enterprises'},
+  {section:'§148',q:'Cost audit report submitted to? Furnish to CG in?',a:'Report to BOD. Company must furnish to CG within 30 days'},
+  {section:'NFRA',q:'NFRA return filing — form and deadline?',a:'Form NFRA-2, on or before 30th November every year'},
+];
+
+const practiceQs = [
+  {q:'Who can be appointed as first auditor in a Government Company? Time limits? What if they fail?',a:'CAG within 60 days → CAG fails: BOD within 30 days → BOD fails: Members at EGM within 60 days.'},
+  {q:'What is cooling period for listed company individual auditor? Does it apply to subsidiaries?',a:'5 years. Applies ONLY to same company — NOT to subsidiary, holding, or any other company.'},
+  {q:'Name all 9 prohibited services u/s 144. To which companies do they apply?',a:'Investment banking, Actuarial, Design of FIS, Management, Investment advisory, Outsourced financial, Internal audit, Accounting/bookkeeping, Other prescribed. Applies to company, its holding AND subsidiary — directly or indirectly.'},
+  {q:'Fraud of ₹1.5 crores discovered by auditor. AC takes 60 days to respond. All steps with time limits?',a:'Report to AC/BOD in 2 days → Seek reply in 45 days → AC took 60 days = no reply → Forward to CG directly with note. Sealed cover + Registered Post + email.'},
+  {q:'What is indebtedness disqualification limit? Security disqualification limit?',a:'Indebtedness: >₹5 lakhs to CASHA group. Security: face value >₹1 lakh held by relative or partner.'},
+  {q:'Complete procedure for removal of auditor before term expiry. All steps + form names.',a:'Board Resolution → Form ADT-2 to CG within 30 days → CG approval → Special Resolution in GM within 60 days.'},
+  {q:'What is penalty if auditor acts knowingly with intent to deceive? All components.',a:'Imprisonment up to 1 year + Fine ≥₹50K to lower(₹25L/8×rem) + Refund remuneration + Pay damages to company/statutory body/members/creditors.'},
+  {q:'Who can be Cost Auditor? Can CA statutory auditor of same company also be cost auditor?',a:'CMA (Cost Accountant) holding CoP. NO — person u/s 139 cannot be cost auditor of same company.'},
+  {q:'What is 20-company limit calculation? Which companies NOT counted?',a:'Individual: max 20. Firm: partners × 20. NOT counted: Private (<₹100cr, not defaulted), Dormant, OPC, Small company.'},
+  {q:'When is Special Notice required? Who can give it? Timing rules?',a:'When appointing person other than retiring auditor. Members with ≥1% voting power OR ≥₹5L paid-up shares. Timing: Not earlier than 3 months but ≥14 days before meeting.'},
+];
+
+const revisionCards = [
+  {title:'§141 — Qualification', items:['CA + valid CoP → Eligible','CA Firm (majority partners CA, practicing India)','CASHA Mnemonic = Disqualifications','₹1 lakh = security threshold','₹5 lakh = indebtedness threshold','20 = max audits per individual','Firm = partners × 20','Private/Dormant/OPC/Small → not counted']},
+  {title:'§139 — Appointment', items:['Govt: CAG = 60 days','Others: BOD = 30 days','Casual vacancy: 30 days (both)','Listed/Big: 1 term (indiv) / 2 terms (firm)','Each term = 5 years','Cooling = 5 years (same company only)','First auditor period excluded from term','Subsequent auditor held till 6th AGM']},
+  {title:'§143 — Fraud Reporting', items:['<₹1 Cr → AC/BOD in 2 days','Disclosed in BOD Report (not CG)','≥₹1 Cr → AC/BOD in 2 days','45 days for reply','Reply → CG in 15 days','No reply → CG directly','Sealed cover + Regd Post + email','Penalty: Listed ₹5L | Others ₹1L']},
+  {title:'§140 — Removal/Resignation', items:['Removal: BR → ADT-2 (30d) → CG → SR (60d)','Resignation: ADT-3 to Co+ROC in 30 days','Govt: also file with CAG','Default: ₹50K/rem + ₹500/day (max ₹2L)','Special notice: ≥1% vote OR ≥₹5L paid-up','Timing: <3 months but ≥14 days before meeting']},
+  {title:'§144 — Prohibited Services', items:['Investment banking','Actuarial services','Design of FIS','Management services','Investment advisory','Outsourced financial services','Internal audit','Accounting/bookkeeping','Applies to co, holding, subsidiary']},
+  {title:'§147 — Punishment', items:['Company: ₹25K → ₹5L','Officer: ₹10K → ₹1L','Auditor: ₹25K → lower(₹5L/4×rem)','Knowingly: Jail 1yr + ₹50K → lower(₹25L/8×rem)','+ Refund remuneration','+ Damages to co/statutory body/members/creditors','Firm partner: jointly & severally liable']},
+  {title:'§148 — Cost Audit', items:['Table A/B goods/services, turnover ≥₹35 Cr','Not applicable: Micro/Small enterprise','Cost Auditor = CMA only','Statutory auditor ≠ Cost auditor (same co)','Report to BOD','Furnish to CG within 30 days','Penalty same as §147']},
+  {title:'NFRA', items:['Reviews working papers','Evaluates quality control system','Performs testing of audit procedures','Directs auditor to improve quality','Form NFRA-2 by 30th November every year','Cannot publish proprietary info (except public interest)']},
+];
+
+const mistakes = [
+  {wrong:'Period as first auditor counts toward term limit',right:'First auditor period is NOT considered for subsequent term. [§139(2)]'},
+  {wrong:'Cooling period applies to all companies where auditor/partner works',right:'Cooling period of 5 years applies ONLY to SAME company — not subsidiaries or other companies'},
+  {wrong:'CA auditor (statutory) can also do cost audit of same company',right:'Person appointed u/s 139 CANNOT be appointed as Cost Auditor of same company [§148]'},
+  {wrong:'Any fraud must be reported to Central Government',right:'Only fraud ≥ ₹1 crore requires CG reporting. Fraud < ₹1 crore → only AC/BOD (in BOD Report) [§143(12)]'},
+  {wrong:'LLP is body corporate — so LLP is also disqualified',right:'LLP is specifically EXCLUDED from Body Corporate disqualification u/s 141'},
+  {wrong:'Relative holds ₹80,000 face value shares → auditor disqualified',right:'Disqualification triggers ONLY if face value EXCEEDS ₹1 lakh. ₹80K < ₹1L = NOT disqualified'},
+  {wrong:'Auditor can be removed directly by passing SR at AGM',right:'Removal needs: BR → Form ADT-2 to CG (30 days) → CG approval → SR in GM (60 days). Cannot skip CG.'},
+  {wrong:'Fraud report can be sent by ordinary post or email only',right:'Must be sent in SEALED COVER by Registered Post/Speed Post + email as confirmation'},
+  {wrong:'Prohibited services u/s 144 only apply to audited company',right:'Cannot be provided to company, its HOLDING company OR SUBSIDIARY — directly or indirectly'},
+  {wrong:'Cost audit applies to all companies with turnover ≥₹35 crores',right:'Only applies to Table A/B goods/services AND turnover ≥₹35 crores. NOT applicable to Micro/Small enterprises'},
+  {wrong:'Auditor\'s remuneration always fixed by BOD',right:'Fixed by BOD only for FIRST auditor. Subsequent auditor → fixed in General Meeting or as determined in GM'},
+  {wrong:'If relative acquires security > ₹1 lakh, nothing happens to auditor',right:'Auditor must take corrective action within 60 days of acquisition — else disqualified'},
+];
+
+// ── RENDER ──
+function renderFlashcards(){
+  const grid = document.getElementById('flashGrid');
+  flashcards.forEach((c,i)=>{
+    grid.innerHTML += `<div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-section">${c.section}</div>
+          <div class="flip-q">${c.q}</div>
+          <div class="flip-hint">Click to reveal answer</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-section">${c.section}</div>
+          <div class="flip-a">${c.a}</div>
+          <div class="flip-hint">Click to flip back</div>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+function renderPractice(){
+  const container = document.getElementById('practiceQuestions');
+  practiceQs.forEach((q,i)=>{
+    container.innerHTML += `<div class="pq">
+      <div class="pq-row">
+        <div class="q-num">${i+1}</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600">${q.q}</div>
+          <button class="show-btn" onclick="toggleAnswer(this)">Show Answer ▼</button>
+          <div class="ans-box">${q.a}</div>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+function renderRevision(){
+  const grid = document.getElementById('revGrid');
+  revisionCards.forEach(c=>{
+    grid.innerHTML += `<div class="rev-card">
+      <div class="rev-card-title">${c.title}</div>
+      <ul class="kw-list">${c.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    </div>`;
+  });
+}
+
+function renderMistakes(){
+  const container = document.getElementById('mistakesGrid');
+  mistakes.forEach(m=>{
+    container.innerHTML += `<div class="mc">
+      <div style="font-size:18px;flex-shrink:0">❌</div>
+      <div>
+        <div class="mc-wrong">WRONG: "${m.wrong}"</div>
+        <div class="mc-right">✅ CORRECT: ${m.right}</div>
+      </div>
+    </div>`;
+  });
+}
+
+// ── TABS ──
+function showMain(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.main-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('subNav').style.display = id==='concepts'?'block':'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateProgress();
+}
+
+function showSub(id, btn){
+  document.querySelectorAll('.sub-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sub-page-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:80,behavior:'smooth'});
+  markVisited(id);
+}
+
+function goSection(id){
+  // Switch to concepts tab
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.main-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-concepts').classList.add('active');
+  document.querySelector('.main-tab').classList.add('active');
+  document.getElementById('subNav').style.display='block';
+  // Switch to sub section
+  document.querySelectorAll('.sub-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sub-page-'+id).classList.add('active');
+  const subBtn = document.getElementById('sub-'+id);
+  if(subBtn) subBtn.classList.add('active');
+  window.scrollTo({top:80,behavior:'smooth'});
+  markVisited(id);
+}
+
+// ── ACCORDION ──
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  btn.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ── ANSWER TOGGLE ──
+function toggleAnswer(btn){
+  const box = btn.nextElementSibling;
+  box.classList.toggle('show');
+  btn.textContent = box.classList.contains('show')?'Hide Answer ▲':'Show Answer ▼';
+}
+
+// ── PROGRESS ──
+const visited = new Set();
+const allSections = ['s141','s139','s144','s143','s146','s140','s147','s148','nfra'];
+function markVisited(id){ visited.add(id); updateProgress(); }
+function updateProgress(){
+  const pct = Math.round((visited.size/allSections.length)*100);
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressPct').textContent = pct+'%';
+}
+
+// ── TIMER ──
+let timerInterval, timeLeft=25*60, running=false;
+function startTimer(){
+  const btn=document.getElementById('timerBtn');
+  if(!running){
+    running=true; btn.textContent='⏸ Pause';
+    timerInterval=setInterval(()=>{
+      timeLeft--;
+      const m=Math.floor(timeLeft/60).toString().padStart(2,'0');
+      const s=(timeLeft%60).toString().padStart(2,'0');
+      document.getElementById('timerDisplay').textContent=`${m}:${s}`;
+      if(timeLeft<=0){ clearInterval(timerInterval); document.getElementById('timerDisplay').textContent='⏰ TIME UP!'; document.getElementById('timerDisplay').style.color='var(--red)'; btn.textContent='Done'; }
+      else if(timeLeft<=300) document.getElementById('timerDisplay').style.color='var(--red)';
+    },1000);
+  } else { clearInterval(timerInterval); running=false; btn.textContent='▶ Resume'; }
+}
+function submitTest(){
+  document.getElementById('evalBox').classList.add('show');
+  document.getElementById('evalBox').scrollIntoView({behavior:'smooth',block:'start'});
+  clearInterval(timerInterval);
+  document.getElementById('timerBtn').textContent='✅ Submitted';
+}
+
+// ── SCROLL TOP ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>300);
+});
+
+// ── INIT ──
+renderFlashcards();
+renderPractice();
+renderRevision();
+renderMistakes();
+markVisited('s141'); // mark first section as visited on load
+</script>
+</body>
+</html>
