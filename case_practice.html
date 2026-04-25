@@ -369,10 +369,10 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
       <span class="mtab-label">Corp. Laws</span>
       <span class="mtab-count">50 cases · 180+ Qs</span>
     </button>
-    <button class="mtab t-gst" id="tabGST" onclick="setTab('GST')">
+   <button class="mtab t-gst" id="tabGSTCS" onclick="setTab('GSTCS')">
       <span class="mtab-icon">🧾</span>
-      <span class="mtab-label">GST</span>
-      <span class="mtab-count">50 Flashcards + 10 Cases</span>
+      <span class="mtab-label">GST Cases</span>
+      <span class="mtab-count">50 Case Scenarios</span>
     </button>
     <button class="mtab t-it" id="tabIT" onclick="setTab('IT')">
       <span class="mtab-icon">💰</span>
@@ -381,37 +381,60 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     </button>
   </div>
 
-  <!-- AA + LAW FILTER -->
-  <div id="aalawSection" style="display:none;">
-    <div class="filter-bar" id="aalawFilterBar">
-      <h3 id="aalawFilterTitle">🎯 Configure Practice</h3>
-      <div class="subject-pills" id="subjectPills">
-        <button class="spill all active" id="pillAll" onclick="setAALAWPill('all',this)">🎯 Both</button>
-        <button class="spill aa" id="pillAA" onclick="setAALAWPill('Advanced Accounting',this)">📊 Accounts Only</button>
-        <button class="spill law" id="pillLAW" onclick="setAALAWPill('Corporate & Other Laws',this)">⚖️ Law Only</button>
-      </div>
+  <!-- ACCOUNTS SECTION (separate) -->
+  <div id="aaSection" style="display:none;">
+    <div class="filter-bar fb-aa">
+      <h3>📊 Advanced Accounting — Configure Practice</h3>
       <div class="filter-row">
         <div class="filter-group">
           <label>Chapter / Topic</label>
-          <select class="filter-select" id="fChapter" onchange="applyFiltersAALAW()"><option value="all">All Chapters</option></select>
+          <select class="filter-select" id="aaFChapter" onchange="applyFiltersAA()"><option value="all">All Chapters</option></select>
         </div>
         <div class="filter-group">
           <label>Case No.</label>
-          <select class="filter-select" id="fCase" onchange="applyFiltersAALAW()"><option value="all">All Cases</option></select>
+          <select class="filter-select" id="aaFCase" onchange="applyFiltersAA()"><option value="all">All Cases</option></select>
         </div>
       </div>
       <div class="filter-actions">
-        <button class="btn-go" id="goAALAW" onclick="startAALAWPractice()">▶ Start Practice</button>
-        <button class="btn-mix" onclick="startAALAWMix()">🔀 All Cases</button>
+        <button class="btn-go go-aa" onclick="startAAPractice()">▶ Start Practice</button>
+        <button class="btn-mix" onclick="startAAMix()">🔀 All 50 Cases</button>
       </div>
       <div class="stats-strip">
-        <div class="stat-item">Showing <b id="aalawCaseCount">0</b> cases</div>
-        <div class="stat-item">Questions <b id="aalawQCount">0</b></div>
-        <div class="stat-item">Sessions <b id="aalawSessions">0</b></div>
-        <div class="stat-item">Best <b id="aalawBest">—</b></div>
+        <div class="stat-item">Showing <b id="aaCaseCount">0</b> cases</div>
+        <div class="stat-item">Questions <b id="aaQCount">0</b></div>
+        <div class="stat-item">Sessions <b id="aaSessions">0</b></div>
+        <div class="stat-item">Best <b id="aaBest">—</b></div>
       </div>
     </div>
-    <div class="case-list-grid" id="aalawGrid"></div>
+    <div class="case-list-grid" id="aaGrid"></div>
+  </div>
+
+  <!-- LAWS SECTION (separate) -->
+  <div id="lawSection" style="display:none;">
+    <div class="filter-bar fb-law">
+      <h3>⚖️ Corporate & Other Laws — Configure Practice</h3>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Chapter / Topic</label>
+          <select class="filter-select" id="lawFChapter" onchange="applyFiltersLAW()"><option value="all">All Chapters</option></select>
+        </div>
+        <div class="filter-group">
+          <label>Case No.</label>
+          <select class="filter-select" id="lawFCase" onchange="applyFiltersLAW()"><option value="all">All Cases</option></select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-go go-law" onclick="startLAWPractice()">▶ Start Practice</button>
+        <button class="btn-mix" onclick="startLAWMix()">🔀 All 50 Cases</button>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">Showing <b id="lawCaseCount">0</b> cases</div>
+        <div class="stat-item">Questions <b id="lawQCount">0</b></div>
+        <div class="stat-item">Sessions <b id="lawSessions">0</b></div>
+        <div class="stat-item">Best <b id="lawBest">—</b></div>
+      </div>
+    </div>
+    <div class="case-list-grid" id="lawGrid"></div>
   </div>
 
   <!-- GST SECTION -->
@@ -422,7 +445,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
     </div>
     <div class="gst-mode-tabs">
       <button class="gst-tab active" onclick="setGSTMode('flashcard',event)">🃏 Flashcards (50 Qs)</button>
-      <button class="gst-tab" onclick="setGSTMode('case',event)">📋 Case Scenarios (10)</button>
+      <button class="gst-tab" onclick="setGSTMode('case',event)">📋 Case Scenarios (50)</button>
     </div>
     <!-- FLASHCARD MODE -->
     <div id="gst-flashcard-mode">
@@ -519,6 +542,47 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,15,0.93);backdrop-fil
         <div id="gst-cs-results" style="display:none;margin-top:14px;"></div>
       </div>
     </div>
+  </div>
+
+  <!-- GST CASE NAVIGATE SECTION -->
+  <div id="gstCaseSection" style="display:none;">
+    <div class="amend-banner">
+      <span class="amend-tag">🆕 2025</span>
+      <span class="amend-text">Finance Act 2025 aligned · 50 Case Scenarios · ICAI Official · Timer-based · Auto-scored</span>
+    </div>
+    <div class="filter-bar fb-gst">
+      <h3>🧾 GST Case Scenarios — Configure Practice</h3>
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Case Number</label>
+          <select class="filter-select" id="gstCsFChapter" onchange="applyFiltersGSTCS()"><option value="all">All Cases</option></select>
+        </div>
+        <div class="filter-group">
+          <label>Tags / Topic</label>
+          <select class="filter-select" id="gstCsFTag" onchange="applyFiltersGSTCS()">
+            <option value="all">All Topics</option>
+            <option value="registration">Registration</option>
+            <option value="supply">Supply / Value</option>
+            <option value="place">Place of Supply</option>
+            <option value="itc">Input Tax Credit</option>
+            <option value="returns">Returns & Invoicing</option>
+            <option value="exemption">Exemption</option>
+            <option value="rcm">RCM</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-go go-gst" onclick="startGSTCSPractice()">▶ Start Practice</button>
+        <button class="btn-mix" onclick="startGSTCSMix()">🔀 All Cases</button>
+      </div>
+      <div class="stats-strip">
+        <div class="stat-item">Showing <b id="gstCsCaseCount">0</b> cases</div>
+        <div class="stat-item">Questions <b id="gstCsQCount">0</b></div>
+        <div class="stat-item">Sessions <b id="gstCsSessions">0</b></div>
+        <div class="stat-item">Best <b id="gstCsBest">—</b></div>
+      </div>
+    </div>
+    <div class="case-list-grid" id="gstCsNavGrid"></div>
   </div>
 
   <!-- IT SECTION -->
@@ -1968,10 +2032,11 @@ questions:[
 // ================================================================
 // APP STATE
 // ================================================================
-let activeTab='AA'; // AA, LAW, GST, IT
-let aalawSubFilter='all'; // all, Advanced Accounting, Corporate & Other Laws
-let aalawFiltered=[];
+let activeTab='AA'; // AA, LAW, GST, GSTCS, IT
+let aaFiltered=[];
+let lawFiltered=[];
 let itFiltered=[];
+let gstCsNavFiltered=[];
 let quizState={queue:[],idx:0,score:0,wrong:0,answered:false,startTime:null,timerSeconds:0,timerTotal:0,timerInterval:null,currentScenarioId:null,origCases:[],subject:'AA'};
 let gstState={chapter:'ALL',category:'ALL',filtered:[],index:0,flipped:false,correct:0,wrong:0,attempted:new Set()};
 let gstCsState={scenarioIdx:0,qIdx:0,answers:[],scores:{}};
@@ -1987,8 +2052,10 @@ const SC={
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
-  populateAALAWFilters();
+  populateAAFilters();
+  populateLAWFilters();
   populateITFilters();
+  populateGSTCSFilters();
   setTab('AA');
   gstApplyFilters();
   renderGSTCard();
@@ -2000,115 +2067,74 @@ function setTab(tab){
   activeTab=tab;
   // Update mega tabs
   document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
-  const tmap={AA:'tabAA',LAW:'tabLAW',GST:'tabGST',IT:'tabIT'};
+  const tmap={AA:'tabAA',LAW:'tabLAW',GST:'tabGST',GSTCS:'tabGSTCS',IT:'tabIT'};
   document.getElementById(tmap[tab])?.classList.add('active');
   // Show/hide sections
-  document.getElementById('aalawSection').style.display=(tab==='AA'||tab==='LAW')?'block':'none';
-  // Show/hide subject pills based on tab
-  const pillAll=document.getElementById('pillAll');
-  const pillAA=document.getElementById('pillAA');
-  const pillLAW=document.getElementById('pillLAW');
-  if(pillAll&&pillAA&&pillLAW){
-    if(tab==='AA'){pillAll.style.display='none';pillLAW.style.display='none';pillAA.style.display='inline-flex';}
-    else if(tab==='LAW'){pillAll.style.display='none';pillAA.style.display='none';pillLAW.style.display='inline-flex';}
-    else{pillAll.style.display='';pillAA.style.display='';pillLAW.style.display='';}
-  }
+  document.getElementById('aaSection').style.display=tab==='AA'?'block':'none';
+  document.getElementById('lawSection').style.display=tab==='LAW'?'block':'none';
   document.getElementById('gstSection').style.display=tab==='GST'?'block':'none';
+  document.getElementById('gstCaseSection').style.display=tab==='GSTCS'?'block':'none';
   document.getElementById('itSection').style.display=tab==='IT'?'block':'none';
   document.getElementById('quizArea').style.display='none';
   document.getElementById('resultArea').style.display='none';
   if(tab==='AA'){
-    document.getElementById('fChapter').value='all';
-    document.getElementById('fCase').value='all';
-    setAALAWPill('Advanced Accounting',null);
+    populateAAFilters();
+    applyFiltersAA();
+    updateAAStats();
   } else if(tab==='LAW'){
-    document.getElementById('fChapter').value='all';
-    document.getElementById('fCase').value='all';
-    setAALAWPill('Corporate & Other Laws',null);
+    populateLAWFilters();
+    applyFiltersLAW();
+    updateLAWStats();
+  } else if(tab==='GSTCS'){
+    populateGSTCSFilters();
+    applyFiltersGSTCS();
+    updateGSTCSStats();
   } else if(tab==='IT'){
     applyFiltersIT();
     updateITStats();
   }
 }
 
-// ── AA / LAW ──
-function setAALAWPill(sub,el){
-  aalawSubFilter=sub;
-  if(el){
-    document.querySelectorAll('.spill').forEach(s=>s.classList.remove('active'));
-    el.classList.add('active');
-  }
-  // Style filter bar
-  const fb=document.getElementById('aalawFilterBar');
-  const go=document.getElementById('goAALAW');
-  if(sub==='Advanced Accounting'){
-    fb.className='filter-bar fb-aa';
-    go.className='btn-go go-aa';
-    document.getElementById('aalawFilterTitle').textContent='📊 Advanced Accounting — Configure Practice';
-  } else if(sub==='Corporate & Other Laws'){
-    fb.className='filter-bar fb-law';
-    go.className='btn-go go-law';
-    document.getElementById('aalawFilterTitle').textContent='⚖️ Corporate Laws — Configure Practice';
-  } else {
-    fb.className='filter-bar fb-aa';
-    go.className='btn-go go-aa';
-    document.getElementById('aalawFilterTitle').textContent='🎯 All Cases — Configure Practice';
-  }
-  // Reset chapter/case selections when subject changes
-  document.getElementById('fChapter').value='all';
-  document.getElementById('fCase').value='all';
-  populateAALAWFilters();
-  applyFiltersAALAW();
-}
-
-function populateAALAWFilters(){
-  // Dynamically populate based on current aalawSubFilter
-  const subset = aalawSubFilter==='all' ? AALAW_DATA : AALAW_DATA.filter(c=>c.subject===aalawSubFilter);
-  const chapters=[...new Set(subset.map(c=>c.chapter))];
-  const chSel=document.getElementById('fChapter');
+// ── AA ──
+function populateAAFilters(){
+  const data=AALAW_DATA.filter(c=>c.subject==='Advanced Accounting');
+  const chapters=[...new Set(data.map(c=>c.chapter))];
+  const chSel=document.getElementById('aaFChapter');
   chSel.innerHTML='<option value="all">All Chapters</option>';
   chapters.forEach(ch=>{const o=document.createElement('option');o.value=ch;o.textContent=ch.length>42?ch.substring(0,40)+'…':ch;chSel.appendChild(o);});
-  const csSel=document.getElementById('fCase');
+  const csSel=document.getElementById('aaFCase');
   csSel.innerHTML='<option value="all">All Cases</option>';
-  subset.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.case_no;csSel.appendChild(o);});
+  data.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.case_no;csSel.appendChild(o);});
 }
-
-function applyFiltersAALAW(){
-  const ch=document.getElementById('fChapter').value;
-  const cs=document.getElementById('fCase').value;
-  aalawFiltered=AALAW_DATA.filter(c=>{
-    if(aalawSubFilter!=='all'&&c.subject!==aalawSubFilter)return false;
+function applyFiltersAA(){
+  const ch=document.getElementById('aaFChapter').value;
+  const cs=document.getElementById('aaFCase').value;
+  const data=AALAW_DATA.filter(c=>c.subject==='Advanced Accounting');
+  aaFiltered=data.filter(c=>{
     if(ch!=='all'&&c.chapter!==ch)return false;
     if(cs!=='all'&&c.id!==cs)return false;
     return true;
   });
-  document.getElementById('aalawCaseCount').textContent=aalawFiltered.length;
-  document.getElementById('aalawQCount').textContent=aalawFiltered.reduce((s,c)=>s+c.questions.length,0);
-  renderAALAWGrid(aalawFiltered);
-  updateAALAWStats();
+  document.getElementById('aaCaseCount').textContent=aaFiltered.length;
+  document.getElementById('aaQCount').textContent=aaFiltered.reduce((s,c)=>s+c.questions.length,0);
+  renderAAGrid(aaFiltered);
+  updateAAStats();
 }
-
-function updateAALAWStats(){
-  const p=JSON.parse(localStorage.getItem('plh_aalaw_perf')||'{"sessions":0,"bestPct":0}');
-  document.getElementById('aalawSessions').textContent=p.sessions;
-  document.getElementById('aalawBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
+function updateAAStats(){
+  const p=JSON.parse(localStorage.getItem('plh_aa_perf')||'{"sessions":0,"bestPct":0}');
+  document.getElementById('aaSessions').textContent=p.sessions;
+  document.getElementById('aaBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
 }
-
-function renderAALAWGrid(cases){
-  const grid=document.getElementById('aalawGrid');
+function renderAAGrid(cases){
+  const grid=document.getElementById('aaGrid');
   if(!cases.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:40px;margin-bottom:10px">🔍</div><p>No cases match your filters.</p></div>`;return;}
-  const scores=JSON.parse(localStorage.getItem('plh_aalaw_scores')||'{}');
+  const scores=JSON.parse(localStorage.getItem('plh_aa_scores')||'{}');
   grid.innerHTML=cases.map(c=>{
-    const isAA=c.subject==='Advanced Accounting';
     const sc=scores[c.id];
     const badge=sc?`<div class="cc-score-badge" style="background:rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.15);border:1px solid rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.3);color:${sc.pct>=70?'var(--green)':'var(--red)'}">${sc.pct}%</div>`:'';
-    const ccls=isAA?'c-aa':'c-law';
-    const bcls=isAA?'cb-aa':'cb-law';
-    const icon=isAA?'📊':'⚖️';
-    const label=isAA?'Adv. Accounts':'Corp. Laws';
-    return `<div class="case-card ${ccls}" onclick="startSingleCase('${c.id}','AALAW')">
+    return `<div class="case-card c-aa" onclick="startSingleCase('${c.id}','AA')">
       ${badge}
-      <div class="cc-badge ${bcls}">${icon} ${label}</div>
+      <div class="cc-badge cb-aa">📊 Adv. Accounts</div>
       <div class="cc-title">${c.case_no}</div>
       <div class="cc-chapter">${c.chapter}</div>
       <div class="cc-meta"><span class="cc-qcount">📝 ${c.questions.length} Q${c.questions.length>1?'s':''}</span><span class="cc-go">${sc?'Retry':'Attempt →'}</span></div>
@@ -2116,9 +2142,136 @@ function renderAALAWGrid(cases){
     </div>`;
   }).join('');
 }
+function startAAPractice(){if(!aaFiltered.length){alert('No cases match filters!');return;}launchQuiz([...aaFiltered],'AA');}
+function startAAMix(){launchQuiz(shuffle([...AALAW_DATA.filter(c=>c.subject==='Advanced Accounting')]),'AA');}
 
-function startAALAWPractice(){if(!aalawFiltered.length){alert('No cases match filters!');return;}launchQuiz([...aalawFiltered],'AALAW');}
-function startAALAWMix(){launchQuiz(shuffle([...AALAW_DATA]),'AALAW');}
+// ── LAW ──
+function populateLAWFilters(){
+  const data=AALAW_DATA.filter(c=>c.subject==='Corporate & Other Laws');
+  const chapters=[...new Set(data.map(c=>c.chapter))];
+  const chSel=document.getElementById('lawFChapter');
+  chSel.innerHTML='<option value="all">All Chapters</option>';
+  chapters.forEach(ch=>{const o=document.createElement('option');o.value=ch;o.textContent=ch.length>42?ch.substring(0,40)+'…':ch;chSel.appendChild(o);});
+  const csSel=document.getElementById('lawFCase');
+  csSel.innerHTML='<option value="all">All Cases</option>';
+  data.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.case_no;csSel.appendChild(o);});
+}
+function applyFiltersLAW(){
+  const ch=document.getElementById('lawFChapter').value;
+  const cs=document.getElementById('lawFCase').value;
+  const data=AALAW_DATA.filter(c=>c.subject==='Corporate & Other Laws');
+  lawFiltered=data.filter(c=>{
+    if(ch!=='all'&&c.chapter!==ch)return false;
+    if(cs!=='all'&&c.id!==cs)return false;
+    return true;
+  });
+  document.getElementById('lawCaseCount').textContent=lawFiltered.length;
+  document.getElementById('lawQCount').textContent=lawFiltered.reduce((s,c)=>s+c.questions.length,0);
+  renderLAWGrid(lawFiltered);
+  updateLAWStats();
+}
+function updateLAWStats(){
+  const p=JSON.parse(localStorage.getItem('plh_law_perf')||'{"sessions":0,"bestPct":0}');
+  document.getElementById('lawSessions').textContent=p.sessions;
+  document.getElementById('lawBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
+}
+function renderLAWGrid(cases){
+  const grid=document.getElementById('lawGrid');
+  if(!cases.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:40px;margin-bottom:10px">🔍</div><p>No cases match your filters.</p></div>`;return;}
+  const scores=JSON.parse(localStorage.getItem('plh_law_scores')||'{}');
+  grid.innerHTML=cases.map(c=>{
+    const sc=scores[c.id];
+    const badge=sc?`<div class="cc-score-badge" style="background:rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.15);border:1px solid rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.3);color:${sc.pct>=70?'var(--green)':'var(--red)'}">${sc.pct}%</div>`:'';
+    return `<div class="case-card c-law" onclick="startSingleCase('${c.id}','LAW')">
+      ${badge}
+      <div class="cc-badge cb-law">⚖️ Corp. Laws</div>
+      <div class="cc-title">${c.case_no}</div>
+      <div class="cc-chapter">${c.chapter}</div>
+      <div class="cc-meta"><span class="cc-qcount">📝 ${c.questions.length} Q${c.questions.length>1?'s':''}</span><span class="cc-go">${sc?'Retry':'Attempt →'}</span></div>
+      <div class="cc-tags">${c.tags.map(t=>`<span class="cc-chip">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+function startLAWPractice(){if(!lawFiltered.length){alert('No cases match filters!');return;}launchQuiz([...lawFiltered],'LAW');}
+function startLAWMix(){launchQuiz(shuffle([...AALAW_DATA.filter(c=>c.subject==='Corporate & Other Laws')]),'LAW');}
+
+// ── GST CASE NAVIGATE (cards grid) ──
+function populateGSTCSFilters(){
+  const chSel=document.getElementById('gstCsFChapter');
+  chSel.innerHTML='<option value="all">All Cases</option>';
+  GST_CASE_SCENARIOS.forEach((cs,i)=>{const o=document.createElement('option');o.value=i;o.textContent='Case Scenario '+(i+1);chSel.appendChild(o);});
+}
+function applyFiltersGSTCS(){
+  const cs=document.getElementById('gstCsFChapter').value;
+  const tag=document.getElementById('gstCsFTag').value;
+  if(cs!=='all'){
+    gstCsNavFiltered=[GST_CASE_SCENARIOS[parseInt(cs)]].filter(Boolean);
+  } else {
+    gstCsNavFiltered=[...GST_CASE_SCENARIOS];
+  }
+  document.getElementById('gstCsCaseCount').textContent=gstCsNavFiltered.length;
+  document.getElementById('gstCsQCount').textContent=gstCsNavFiltered.reduce((s,c)=>s+(c.qs?c.qs.length:0),0);
+  renderGSTCsNavGrid(gstCsNavFiltered);
+  updateGSTCSStats();
+}
+function updateGSTCSStats(){
+  const p=JSON.parse(localStorage.getItem('plh_gstcs_perf')||'{"sessions":0,"bestPct":0}');
+  document.getElementById('gstCsSessions').textContent=p.sessions;
+  document.getElementById('gstCsBest').textContent=p.bestPct>0?p.bestPct+'%':'—';
+}
+function renderGSTCsNavGrid(cases){
+  const grid=document.getElementById('gstCsNavGrid');
+  if(!cases.length){grid.innerHTML=`<div class="empty-state"><div style="font-size:40px;margin-bottom:10px">🔍</div><p>No cases match.</p></div>`;return;}
+  const scores=JSON.parse(localStorage.getItem('plh_gstcs_scores')||'{}');
+  grid.innerHTML=cases.map((c,i)=>{
+    const idx=GST_CASE_SCENARIOS.indexOf(c);
+    const scKey='gstcs_'+idx;
+    const sc=scores[scKey];
+    const badge=sc?`<div class="cc-score-badge" style="background:rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.15);border:1px solid rgba(${sc.pct>=70?'67,217,142':'240,71,71'},0.3);color:${sc.pct>=70?'var(--green)':'var(--red)'}">${sc.pct}%</div>`:'';
+    const qcount=c.qs?c.qs.length:0;
+    const preview=c.ctx?c.ctx.substring(0,90)+'…':'';
+    return `<div class="case-card c-gst" onclick="startGSTCSSingle(${idx})">
+      ${badge}
+      <div class="cc-badge cb-gst">🧾 GST Case</div>
+      <div class="cc-title">Case Scenario ${idx+1}</div>
+      <div class="cc-chapter" style="color:var(--text3);font-size:10px;line-height:1.4;margin-bottom:8px;">${preview}</div>
+      <div class="cc-meta"><span class="cc-qcount">📝 ${qcount} Q${qcount>1?'s':''}</span><span class="cc-go">${sc?'Retry':'Attempt →'}</span></div>
+    </div>`;
+  }).join('');
+}
+function startGSTCSPractice(){
+  if(!gstCsNavFiltered.length){alert('No cases!');return;}
+  // Launch using the existing GST CS quiz engine
+  const idxList=gstCsNavFiltered.map(c=>GST_CASE_SCENARIOS.indexOf(c));
+  launchGSTCSQuizByIndex(idxList);
+}
+function startGSTCSMix(){
+  const idxList=shuffle([...Array(GST_CASE_SCENARIOS.length).keys()]);
+  launchGSTCSQuizByIndex(idxList);
+}
+function startGSTCSSingle(idx){
+  launchGSTCSQuizByIndex([idx]);
+}
+function launchGSTCSQuizByIndex(idxList){
+  // Build queue from GST CS data and use shared quiz engine
+  const queue=[];
+  idxList.forEach(idx=>{
+    const cs=GST_CASE_SCENARIOS[idx];
+    if(!cs||!cs.qs)return;
+    const caseObj={
+      id:'gstcs_'+idx,
+      subject:'GST',
+      chapter:'GST Case Scenario '+(idx+1),
+      case_no:'Case Scenario '+(idx+1),
+      tags:['GST'],
+      scenario:cs.ctx||'',
+      questions:cs.qs.map((q,qi)=>({qno:qi+1,question:q.q,options:q.opts,correct:q.ans,explanation:q.exp||''}))
+    };
+    queue.push(caseObj);
+  });
+  if(!queue.length)return;
+  launchQuiz(queue,'GST');
+}
 
 // ── IT ──
 function populateITFilters(){
@@ -2175,14 +2328,15 @@ function startITMix(){launchQuiz(shuffle([...IT_CASE_SCENARIOS]),'IT');}
 // ── SHARED QUIZ ──
 function startSingleCase(id,type){
   let c;
-  if(type==='AALAW') c=AALAW_DATA.find(x=>x.id===id);
+  if(type==='AA'||type==='LAW') c=AALAW_DATA.find(x=>x.id===id);
   else c=IT_CASE_SCENARIOS.find(x=>x.id===id);
   if(c) launchQuiz([c],type);
 }
 
 function getSubjectKey(c,type){
   if(type==='IT') return 'IT';
-  if(c.subject==='Advanced Accounting') return 'AA';
+  if(type==='GST') return 'GST';
+  if(type==='AA'||c.subject==='Advanced Accounting') return 'AA';
   return 'LAW';
 }
 
@@ -2196,7 +2350,7 @@ function launchQuiz(cases,type){
   document.getElementById('quizArea').style.display='block';
   document.getElementById('resultArea').style.display='none';
   // style quiz elements
-  const sub=type==='IT'?'IT':(cases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
+  let sub=type==='IT'?'IT':type==='GST'?'GST':(cases[0]?.subject==='Advanced Accounting'?'AA':'LAW');
   const s=SC[sub];
   document.getElementById('timerFill').className='timer-fill '+s.timer;
   document.getElementById('qProgressFill').className='qp-fill '+s.timer;
@@ -2207,17 +2361,18 @@ function launchQuiz(cases,type){
 }
 
 function hideAllSections(){
-  document.getElementById('aalawSection').style.display='none';
-  document.getElementById('gstSection').style.display='none';
-  document.getElementById('itSection').style.display='none';
-  document.getElementById('quizArea').style.display='none';
-  document.getElementById('resultArea').style.display='none';
+  ['aaSection','lawSection','gstSection','gstCaseSection','itSection','quizArea','resultArea'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
 }
 
 function getQuizSub(){
   const c=quizState.queue[quizState.idx];
   if(!c)return 'AA';
   if(quizState.type==='IT')return 'IT';
+  if(quizState.type==='GST')return 'GST';
+  if(quizState.type==='AA')return 'AA';
+  if(quizState.type==='LAW')return 'LAW';
   return c.scenario.subject==='Advanced Accounting'?'AA':'LAW';
 }
 
@@ -2328,15 +2483,22 @@ function showResult(timedOut){
   document.getElementById('resTime').textContent=`${Math.floor(elapsed/60).toString().padStart(2,'0')}:${(elapsed%60).toString().padStart(2,'0')}`;
   document.getElementById('btnRetry').className='btn-retry '+s.retry;
   // Save stats
-  const perfKey=quizState.type==='IT'?'plh_it_perf':'plh_aalaw_perf';
-  const scoreKey=quizState.type==='IT'?'plh_it_scores':'plh_aalaw_scores';
+  let perfKey,scoreKey;
+  if(quizState.type==='IT'){perfKey='plh_it_perf';scoreKey='plh_it_scores';}
+  else if(quizState.type==='AA'){perfKey='plh_aa_perf';scoreKey='plh_aa_scores';}
+  else if(quizState.type==='LAW'){perfKey='plh_law_perf';scoreKey='plh_law_scores';}
+  else if(quizState.type==='GST'){perfKey='plh_gstcs_perf';scoreKey='plh_gstcs_scores';}
+  else{perfKey='plh_aa_perf';scoreKey='plh_aa_scores';}
   const perf=JSON.parse(localStorage.getItem(perfKey)||'{"sessions":0,"bestPct":0}');
   perf.sessions++;perf.bestPct=Math.max(perf.bestPct,pct);localStorage.setItem(perfKey,JSON.stringify(perf));
   const caseScores=JSON.parse(localStorage.getItem(scoreKey)||'{}');
   [...new Set(quizState.queue.map(x=>x.scenario.id))].forEach(id=>{caseScores[id]={pct,date:new Date().toLocaleDateString('en-IN')};});
   localStorage.setItem(scoreKey,JSON.stringify(caseScores));
-  if(quizState.type==='IT')updateITStats();else updateAALAWStats();
-  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
+  if(quizState.type==='IT')updateITStats();
+  else if(quizState.type==='AA')updateAAStats();
+  else if(quizState.type==='LAW')updateLAWStats();
+  else if(quizState.type==='GST')updateGSTCSStats();
+  const subjectLabel=quizState.type==='IT'?'💰 Income Tax':quizState.type==='GST'?'🧾 GST':(sub==='AA'?'📊 Adv. Accounts':'⚖️ Corp. Laws');
   document.getElementById('chapterBreakdown').innerHTML=`<div class="rcb-title">📊 Session Summary</div>
     <div class="rcb-row"><span>${subjectLabel}</span><span class="rcb-pct ${pct>=70?'pct-good':pct>=50?'pct-ok':'pct-bad'}">${pct}%</span></div>
     <div class="rcb-row" style="border:none"><span style="color:var(--text3);font-size:10px">Questions practiced</span><span style="font-family:var(--mono)">${total}</span></div>`;
@@ -2347,13 +2509,12 @@ function retryQuiz(){document.getElementById('resultArea').style.display='none';
 function backToList(){
   clearInterval(quizState.timerInterval);
   hideAllSections();
-  if(quizState.type==='IT'){
-    document.getElementById('itSection').style.display='block';
-    applyFiltersIT();
-  } else {
-    document.getElementById('aalawSection').style.display='block';
-    applyFiltersAALAW();
-  }
+  const t=quizState.type;
+  if(t==='IT'){document.getElementById('itSection').style.display='block';applyFiltersIT();}
+  else if(t==='AA'){document.getElementById('aaSection').style.display='block';applyFiltersAA();}
+  else if(t==='LAW'){document.getElementById('lawSection').style.display='block';applyFiltersLAW();}
+  else if(t==='GST'){document.getElementById('gstCaseSection').style.display='block';applyFiltersGSTCS();}
+  else{document.getElementById('aaSection').style.display='block';applyFiltersAA();}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
