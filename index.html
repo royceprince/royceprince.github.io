@@ -1315,11 +1315,11 @@ footer {
         <button class="nav-pill inter" onclick="showCourse('inter')">Inter</button>
         <button class="nav-pill final" onclick="showCourse('final')">Final</button>
       </div>
+      <a href="dashboard.html" class="nav-a" style="background:rgba(124,106,247,0.12);border:1px solid rgba(124,106,247,0.2);border-radius:8px;padding:6px 12px;color:var(--accent3);font-weight:700;">🚀 Dashboard</a>
       <a href="#subjects" class="nav-a">Subjects</a>
       <a href="pyq.html" class="nav-a">PYQ</a>
       <a href="#practice" class="nav-a">Practice</a>
       <a href="#planner" class="nav-a">Planner</a>
-      <a href="#dashboard" class="nav-a">Dashboard</a>
       <a href="#revision" class="nav-a">Revision</a>
       <a href="ca_rtp_questionbank.html" class="nav-a">📰 RTP</a>
       <div class="hub-nav-user" id="hub-nav-user" onclick="toggleHubDropdown()">
@@ -1338,6 +1338,7 @@ footer {
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <a href="dashboard.html" class="nav-a" style="color:var(--accent3);font-weight:700;">🚀 Dashboard Portal</a>
   <a href="#subjects" class="nav-a" onclick="closeMobileMenu()">📚 Subjects</a>
   <a href="pyq.html" class="nav-a">📋 PYQ Finder</a>
   <a href="#practice" class="nav-a" onclick="closeMobileMenu()">🎯 Practice MCQ</a>
@@ -1363,7 +1364,8 @@ footer {
     <h1 class="hero-title">Master CA the<br><span class="grad">Smarter Way</span></h1>
     <p class="hero-sub">All-in-one platform for CA Foundation, Inter & Final. Flashcards, MCQ, PYQ, AI Planner, RTP Bank — everything you need to crack ICAI exams.</p>
     <div class="hero-cta">
-      <a href="#subjects" class="btn btn-primary">📚 Start Studying</a>
+      <a href="dashboard.html" class="btn btn-primary" style="background:linear-gradient(135deg,#7c6af7,#4fc3f7);font-size:15px;padding:14px 28px;">🚀 Enter Dashboard</a>
+      <a href="#subjects" class="btn btn-secondary">📚 Browse Subjects</a>
       <a href="#practice" class="btn btn-secondary">🎯 Practice MCQs</a>
       <a href="pyq.html" class="btn btn-secondary">📋 PYQ Finder</a>
     </div>
@@ -1396,6 +1398,23 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════ DASHBOARD ENTRY BANNER ═══════════ -->
+<section style="padding-top:0;padding-bottom:0;">
+  <div class="section-inner">
+    <div style="background:linear-gradient(135deg,rgba(124,106,247,0.12),rgba(79,195,247,0.06));border:1px solid rgba(124,106,247,0.25);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">🚀</div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--accent);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">NEW — STUDENT PORTAL</div>
+          <h3 style="font-size:18px;font-weight:700;font-family:var(--display);margin-bottom:4px;">Your Personal CA Dashboard</h3>
+          <p style="font-size:13px;color:var(--text2);">Sidebar navigation · Subject-wise progress · All tools in one place · Works for Foundation, Inter & Final</p>
+        </div>
+      </div>
+      <a href="dashboard.html" class="btn btn-primary" style="padding:13px 28px;white-space:nowrap;font-size:14px;">Enter Dashboard →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ COURSE SELECTOR ═══════════ -->
 <section id="courses" style="padding-top:60px;">
   <div class="section-inner">
@@ -1416,7 +1435,7 @@ footer {
           <span class="course-chip">Maths</span>
           <span class="course-chip">Economics</span>
         </div>
-        <button class="course-cta">Explore Foundation →</button>
+        <button class="course-cta" onclick="showCourse('foundation')">Explore Foundation →</button>
       </div>
       <!-- Inter -->
       <div class="course-card inter active" onclick="showCourse('inter')">
@@ -2130,11 +2149,11 @@ footer {
       </div>
       <div class="footer-col">
         <h4>Tools</h4>
+        <a href="dashboard.html">🚀 Student Dashboard</a>
         <a href="pyq.html">PYQ Finder</a>
         <a href="ca_rtp_questionbank.html">RTP Question Bank</a>
         <a href="https://royceprince.github.io/gst-practice.html">GST MCQ</a>
         <a href="#planner">AI Study Planner</a>
-        <a href="#dashboard">Dashboard</a>
         <a href="#revision">Last Min Revision</a>
       </div>
       <div class="footer-col">
