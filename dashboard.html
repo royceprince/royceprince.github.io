@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prince Learning Hub — CA Student Dashboard</title>
+<meta name="description" content="Your personal CA study dashboard — CA Foundation, Inter & Final. Track progress, access flashcards, MCQ, PYQ from one place.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07071a;
+  --surface: #0d0d24;
+  --card: #111130;
+  --card2: #15153a;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #ece9ff;
+  --text2: #9694bb;
+  --muted: #5a587a;
+  --accent: #6c5ce7;
+  --accent2: #00cec9;
+  --accent3: #a29bfe;
+  --green: #00b894;
+  --gold: #fdcb6e;
+  --danger: #e17055;
+  --pink: #fd79a8;
+  --sidebar-w: 240px;
+  --display: 'Syne', sans-serif;
+  --body: 'DM Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;display:flex;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:var(--body)}
+img{max-width:100%}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 100;
+  transition: transform 0.3s;
+  overflow-y: auto;
+}
+.sidebar-brand {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.brand-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.brand-name { font-family: var(--display); font-size: 15px; font-weight: 700; }
+.brand-sub { font-size: 10px; color: var(--muted); font-family: var(--mono); }
+
+/* Course level switcher in sidebar */
+.sb-course-pills {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.sb-course-label { font-size: 10px; font-weight: 700; color: var(--muted); font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.sb-pill {
+  display: block; width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text2);
+  transition: all 0.2s;
+  text-align: left;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+.sb-pill:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.sb-pill.foundation.active { background: rgba(0,184,148,0.12); border-color: rgba(0,184,148,0.25); color: var(--green); }
+.sb-pill.inter.active { background: rgba(108,92,231,0.12); border-color: rgba(108,92,231,0.25); color: var(--accent3); }
+.sb-pill.final.active { background: rgba(253,203,110,0.12); border-color: rgba(253,203,110,0.25); color: var(--gold); }
+
+.sb-nav { padding: 12px 8px; flex: 1; }
+.sb-section { font-size: 10px; font-weight: 700; color: var(--muted); font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px 4px; }
+.sb-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 13px; font-weight: 500;
+  color: var(--text2);
+  transition: all 0.2s;
+  margin-bottom: 2px;
+}
+.sb-link:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+.sb-link.active { background: rgba(108,92,231,0.15); color: var(--accent3); }
+.sb-link-icon { font-size: 16px; min-width: 20px; }
+.sb-badge { margin-left: auto; padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: 700; font-family: var(--mono); background: rgba(108,92,231,0.2); color: var(--accent3); }
+.sb-badge.green { background: rgba(0,184,148,0.15); color: var(--green); }
+
+.sb-bottom {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.sb-user {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sb-user:hover { border-color: var(--border2); }
+.sb-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0;
+}
+.sb-user-name { font-size: 13px; font-weight: 600; }
+.sb-user-level { font-size: 10px; color: var(--muted); font-family: var(--mono); }
+
+/* ── MAIN ── */
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(7,7,26,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex; align-items: center; gap: 12px;
+}
+.topbar-page { font-family: var(--display); font-size: 17px; font-weight: 700; }
+.topbar-level {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px; font-weight: 700; font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+.topbar-level.inter { background: rgba(108,92,231,0.15); color: var(--accent3); }
+.topbar-level.foundation { background: rgba(0,184,148,0.12); color: var(--green); }
+.topbar-level.final { background: rgba(253,203,110,0.12); color: var(--gold); }
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.topbar-btn {
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 12px; font-weight: 700;
+  background: rgba(108,92,231,0.12);
+  border: 1px solid rgba(108,92,231,0.25);
+  color: var(--accent3);
+  transition: all 0.2s;
+}
+.topbar-btn:hover { background: rgba(108,92,231,0.2); }
+.live-indicator { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); font-weight: 600; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+
+.hamburger { display: none; background: none; border: none; color: var(--text); font-size: 22px; cursor: pointer; }
+
+/* ── DASHBOARD CONTENT ── */
+.dash-content { padding: 32px; flex: 1; }
+.dash-panel { display: none; animation: fadeUp 0.35s ease; }
+.dash-panel.active { display: block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── STAT CARDS ── */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); border-color: var(--border2); }
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--bar-color, linear-gradient(90deg, var(--accent), var(--accent2)));
+}
+.stat-icon { font-size: 22px; margin-bottom: 10px; }
+.stat-val { font-family: var(--mono); font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.stat-label { font-size: 12px; color: var(--muted); }
+.stat-sub { font-size: 11px; color: var(--green); margin-top: 5px; font-family: var(--mono); }
+
+/* ── SECTION HEADER ── */
+.section-hdr { margin-bottom: 20px; }
+.section-hdr h2 { font-family: var(--display); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.section-hdr p { font-size: 13px; color: var(--text2); }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px; font-weight: 700; font-family: var(--mono);
+  background: rgba(108,92,231,0.1);
+  border: 1px solid rgba(108,92,231,0.2);
+  color: var(--accent3);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── SUBJECT GRID ── */
+.subject-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.sub-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.sub-card:hover { transform: translateY(-4px); border-color: rgba(108,92,231,0.35); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.sub-card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 14px; }
+.sub-card h3 { font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.sub-card p { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 14px; }
+.sub-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.sub-btn {
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 11px; font-weight: 700;
+  background: rgba(108,92,231,0.1);
+  border: 1px solid rgba(108,92,231,0.2);
+  color: var(--accent3);
+  transition: all 0.2s;
+}
+.sub-btn:hover { background: rgba(108,92,231,0.2); }
+.sub-btn.alt { background: rgba(255,255,255,0.04); border-color: var(--border2); color: var(--text2); }
+.sub-btn.alt:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+.sub-progress-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+.sub-progress-fill { height: 100%; border-radius: 2px; transition: width 0.6s; }
+.sub-progress-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); font-family: var(--mono); margin-bottom: 4px; }
+.sub-coming { padding: 12px; background: rgba(253,203,110,0.06); border-radius: 8px; font-size: 11px; color: var(--gold); margin-top: 8px; }
+
+/* ── TOOLS GRID ── */
+.tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+.tool-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.tool-card:hover { border-color: rgba(108,92,231,0.3); background: rgba(108,92,231,0.05); transform: translateY(-2px); }
+.tool-icon { font-size: 28px; margin-bottom: 8px; }
+.tool-name { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.tool-sub { font-size: 10px; color: var(--muted); font-family: var(--mono); }
+
+/* ── COUNTDOWN ── */
+.countdown-widget {
+  background: linear-gradient(135deg, rgba(108,92,231,0.12), rgba(0,206,201,0.06));
+  border: 1px solid rgba(108,92,231,0.2);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex; align-items: center; gap: 28px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.cd-label { font-family: var(--display); font-size: 18px; font-weight: 700; flex: 1; }
+.cd-sub { font-size: 13px; color: var(--text2); margin-top: 4px; }
+.cd-digits { display: flex; align-items: center; gap: 8px; }
+.cd-unit { text-align: center; }
+.cd-num { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--accent3); background: var(--card); border: 1px solid var(--border2); border-radius: 10px; padding: 8px 16px; min-width: 60px; }
+.cd-lbl { font-size: 10px; color: var(--muted); margin-top: 4px; font-family: var(--mono); text-transform: uppercase; }
+.cd-sep { font-size: 24px; color: var(--muted); padding-bottom: 18px; }
+
+/* ── ANNOUNCEMENT CARD ── */
+.announce {
+  background: linear-gradient(135deg, rgba(253,203,110,0.08), rgba(253,121,168,0.05));
+  border: 1px solid rgba(253,203,110,0.2);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.announce-icon { font-size: 28px; flex-shrink: 0; }
+.announce-text h4 { font-family: var(--display); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.announce-text p { font-size: 12px; color: var(--text2); }
+.announce-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px; font-weight: 700;
+  background: rgba(253,203,110,0.12);
+  border: 1px solid rgba(253,203,110,0.25);
+  color: var(--gold);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.announce-btn:hover { background: rgba(253,203,110,0.2); }
+
+/* ── COMING SOON PANEL ── */
+.coming-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+}
+.coming-emoji { font-size: 56px; margin-bottom: 20px; }
+.coming-panel h2 { font-family: var(--display); font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.coming-panel p { color: var(--text2); font-size: 15px; margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.coming-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 14px; font-weight: 700;
+  background: rgba(108,92,231,0.15);
+  border: 1px solid rgba(108,92,231,0.3);
+  color: var(--accent3);
+  transition: all 0.2s;
+}
+.coming-btn:hover { background: rgba(108,92,231,0.25); }
+
+/* ── BTN ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 700;
+  border: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-primary { background: linear-gradient(135deg, var(--accent), #8c7cf0); color: #fff; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(108,92,231,0.4); }
+.btn-green { background: rgba(0,184,148,0.15); border: 1px solid rgba(0,184,148,0.25); color: var(--green); }
+.btn-green:hover { background: rgba(0,184,148,0.25); }
+
+/* ── MOBILE SIDEBAR OVERLAY ── */
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 99; }
+
+/* ── ANIMATIONS ── */
+.bg-glow {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+}
+.bg-glow-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; left: calc(var(--sidebar-w) - 100px); }
+.bg-glow-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 0; right: 0; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay { display: block; }
+  .main-content { margin-left: 0; }
+  .hamburger { display: block; }
+  .topbar { padding: 12px 16px; }
+  .dash-content { padding: 20px 16px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .subject-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .countdown-widget { flex-direction: column; gap: 16px; }
+  .cd-label { min-width: auto; }
+}
+@media(max-width:480px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .cd-num { font-size: 24px; padding: 6px 12px; min-width: 48px; }
+  .announce { flex-wrap: wrap; }
+  .announce-btn { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- ── SIDEBAR OVERLAY ── -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-icon">◈</div>
+    <div class="brand-name">Prince Learning Hub</div>
+    <div class="brand-sub">CA STUDENT PORTAL · 2026</div>
+  </div>
+
+  <!-- Course Switcher -->
+  <div class="sb-course-pills">
+    <div class="sb-course-label">Your Level</div>
+    <button class="sb-pill foundation" onclick="switchCourse('foundation')">🌱 CA Foundation</button>
+    <button class="sb-pill inter active" onclick="switchCourse('inter')">⚡ CA Inter</button>
+    <button class="sb-pill final" onclick="switchCourse('final')">🏆 CA Final</button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sb-nav">
+    <div class="sb-section">Overview</div>
+    <a href="#" class="sb-link active" onclick="showPanel('home', this)">
+      <span class="sb-link-icon">🏠</span> Dashboard Home
+    </a>
+    <a href="#" class="sb-link" onclick="showPanel('subjects', this)">
+      <span class="sb-link-icon">📚</span> Subjects
+    </a>
+    <a href="#" class="sb-link" onclick="showPanel('tools', this)">
+      <span class="sb-link-icon">🛠️</span> Study Tools
+    </a>
+
+    <div class="sb-section" style="margin-top:12px">CA Inter</div>
+    <a href="tax-flashcard.html" class="sb-link">
+      <span class="sb-link-icon">💰</span> Direct Tax
+      <span class="sb-badge">Flashcards</span>
+    </a>
+    <a href="gst-flashcard.html" class="sb-link">
+      <span class="sb-link-icon">🧾</span> GST
+      <span class="sb-badge green">14 Ch</span>
+    </a>
+    <a href="law-flashcard.html" class="sb-link">
+      <span class="sb-link-icon">⚖️</span> Corporate Law
+    </a>
+    <a href="accounts-flashcard.html" class="sb-link">
+      <span class="sb-link-icon">📊</span> Adv. Accounts
+    </a>
+    <a href="audit-flashcard.html" class="sb-link">
+      <span class="sb-link-icon">🔍</span> Audit
+    </a>
+    <a href="case_practice.html" class="sb-link">
+      <span class="sb-link-icon">📝</span> Case Practice
+    </a>
+
+    <div class="sb-section" style="margin-top:12px">Tools</div>
+    <a href="pyq.html" class="sb-link">
+      <span class="sb-link-icon">📋</span> PYQ Finder
+      <span class="sb-badge">10yr</span>
+    </a>
+    <a href="ca_rtp_questionbank.html" class="sb-link">
+      <span class="sb-link-icon">📰</span> RTP Bank
+      <span class="sb-badge">248+</span>
+    </a>
+    <a href="gst-practice.html" class="sb-link">
+      <span class="sb-link-icon">🎯</span> GST MCQ
+    </a>
+    <a href="all_in_LAW.html" class="sb-link">
+      <span class="sb-link-icon">⚡</span> Law OneShot
+    </a>
+
+    <div class="sb-section" style="margin-top:12px">Community</div>
+    <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="sb-link">
+      <span class="sb-link-icon">🟢</span> Virtual Library
+    </a>
+    <a href="https://wa.me/919140162300" target="_blank" class="sb-link">
+      <span class="sb-link-icon">💬</span> WhatsApp Group
+    </a>
+    <a href="index.html" class="sb-link">
+      <span class="sb-link-icon">🌐</span> Main Website
+    </a>
+  </nav>
+
+  <div class="sb-bottom">
+    <div class="sb-user" id="sb-user">
+      <div class="sb-avatar" id="sb-avatar">CA</div>
+      <div>
+        <div class="sb-user-name" id="sb-name">CA Warrior</div>
+        <div class="sb-user-level">CA Inter · 2026</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<div class="main-content">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <div class="topbar-page" id="topbar-page">Dashboard</div>
+    <div class="topbar-level inter" id="topbar-level">CA INTER</div>
+    <div class="topbar-right">
+      <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="live-indicator">
+        <span class="live-dot"></span> Live Study Room
+      </a>
+      <button class="topbar-btn" onclick="window.location='index.html'">← Main Site</button>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="dash-content">
+
+    <!-- ── HOME PANEL ── -->
+    <div class="dash-panel active" id="panel-home">
+
+      <!-- Countdown -->
+      <div class="countdown-widget" id="cd-widget">
+        <div>
+          <div class="cd-label">🔥 CA Inter · Nov 2026 Exam</div>
+          <div class="cd-sub">Stay focused. Every hour counts. You're almost there.</div>
+        </div>
+        <div class="cd-digits">
+          <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="cd-mins">—</div><div class="cd-lbl">Mins</div></div>
+        </div>
+      </div>
+
+      <!-- Announcement -->
+      <div class="announce">
+        <div class="announce-icon">📌</div>
+        <div class="announce-text">
+          <h4>Finance Act 2025 Amendments Now Live</h4>
+          <p>New tax regime defaults, Section 87A rebate changes, and GST ISD amendment — all updated in flashcards.</p>
+        </div>
+        <a href="tax-flashcard.html" class="announce-btn">View Updates →</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-grid">
+        <div class="stat-card" style="--bar-color:linear-gradient(90deg,var(--accent),var(--accent3))">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-val" id="stat-accuracy">—</div>
+          <div class="stat-label">MCQ Accuracy</div>
+          <div class="stat-sub" id="stat-attempted">Start practicing to track</div>
+        </div>
+        <div class="stat-card" style="--bar-color:linear-gradient(90deg,var(--green),#55efc4)">
+          <div class="stat-icon">✅</div>
+          <div class="stat-val" id="stat-score">0/0</div>
+          <div class="stat-label">Correct / Attempted</div>
+          <div class="stat-sub">Practice MCQs to update</div>
+        </div>
+        <div class="stat-card" style="--bar-color:linear-gradient(90deg,var(--gold),var(--pink))">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-val" id="stat-streak">1</div>
+          <div class="stat-label">Day Streak</div>
+          <div class="stat-sub">Keep it going! 💪</div>
+        </div>
+        <div class="stat-card" style="--bar-color:linear-gradient(90deg,var(--accent2),var(--accent))">
+          <div class="stat-icon">📚</div>
+          <div class="stat-val">5</div>
+          <div class="stat-label">Subjects Active</div>
+          <div class="stat-sub">CA Inter Group 1+2</div>
+        </div>
+      </div>
+
+      <!-- Quick Tools -->
+      <div class="section-hdr">
+        <div class="section-tag">⚡ Quick Access</div>
+        <h2>Study Tools</h2>
+      </div>
+      <div class="tools-grid">
+        <a href="pyq.html" class="tool-card">
+          <div class="tool-icon">📋</div>
+          <div class="tool-name">PYQ Finder</div>
+          <div class="tool-sub">10 Year Bank</div>
+        </a>
+        <a href="ca_rtp_questionbank.html" class="tool-card">
+          <div class="tool-icon">📰</div>
+          <div class="tool-name">RTP Bank</div>
+          <div class="tool-sub">248+ Q&A</div>
+        </a>
+        <a href="case_practice.html" class="tool-card">
+          <div class="tool-icon">📝</div>
+          <div class="tool-name">Case Practice</div>
+          <div class="tool-sub">ICAI Style · Timer</div>
+        </a>
+        <a href="gst-practice.html" class="tool-card">
+          <div class="tool-icon">🧾</div>
+          <div class="tool-name">GST MCQ</div>
+          <div class="tool-sub">Timer Mode</div>
+        </a>
+        <a href="all_in_LAW.html" class="tool-card">
+          <div class="tool-icon">⚖️</div>
+          <div class="tool-name">Law OneShot</div>
+          <div class="tool-sub">All Chapters</div>
+        </a>
+        <a href="Adv_Accounting.html" class="tool-card">
+          <div class="tool-icon">💰</div>
+          <div class="tool-name">Accounts Practice</div>
+          <div class="tool-sub">750+ Questions</div>
+        </a>
+        <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="tool-card">
+          <div class="tool-icon">🟢</div>
+          <div class="tool-name">Virtual Library</div>
+          <div class="tool-sub">24×7 Live</div>
+        </a>
+        <a href="index.html#revision" class="tool-card">
+          <div class="tool-icon">⚡</div>
+          <div class="tool-name">Last Min Revision</div>
+          <div class="tool-sub">Hot Topics</div>
+        </a>
+      </div>
+
+      <!-- Motivational Quote -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:14px;">💪</div>
+        <div style="font-size:16px;font-weight:500;line-height:1.7;color:var(--text);margin-bottom:12px;" id="quote-text">"Consistency is 10 times more powerful than intensity. Show up every single day."</div>
+        <div style="font-size:12px;color:var(--muted);font-family:var(--mono);" id="quote-author">— PLH Daily Reminder</div>
+        <button onclick="nextQuote()" style="margin-top:16px;padding:8px 20px;border-radius:8px;font-size:12px;font-weight:700;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);color:var(--accent3);cursor:pointer;">✨ Next Quote</button>
+      </div>
+    </div>
+
+    <!-- ── SUBJECTS PANEL ── -->
+    <div class="dash-panel" id="panel-subjects">
+      <div class="section-hdr">
+        <div class="section-tag" id="subj-tag">⚡ CA Inter Subjects</div>
+        <h2 id="subj-title">All Subjects, One Place</h2>
+        <p id="subj-desc">Chapter-wise flashcards, MCQs, and case studies — built from ICAI study material.</p>
+      </div>
+
+      <!-- Inter subjects (shown by default) -->
+      <div id="inter-subjects">
+        <div class="subject-grid">
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">💰</div>
+            <h3>Direct Tax</h3>
+            <p>Income Tax Act, TDS, Capital Gains, Deductions u/s 80C–80U, Return Filing, FA 2025 Amendments.</p>
+            <div class="sub-actions">
+              <a href="tax-flashcard.html" class="sub-btn">Flashcards →</a>
+              <a href="pyq.html" class="sub-btn alt">PYQ</a>
+              <a href="case_practice.html" class="sub-btn alt">Cases</a>
+            </div>
+            <div class="sub-progress-meta"><span>Chapters Covered</span><span>9 / 14</span></div>
+            <div class="sub-progress-bar"><div class="sub-progress-fill" style="width:65%;background:linear-gradient(90deg,var(--gold),var(--pink))"></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,184,148,0.12)">🧾</div>
+            <h3>GST</h3>
+            <p>14 chapters — Supply, ITC, Registration, Returns, Valuation, Place of Supply. ISD amendment 2024.</p>
+            <div class="sub-actions">
+              <a href="gst-flashcard.html" class="sub-btn">Flashcards →</a>
+              <a href="gst-practice.html" class="sub-btn">MCQ Timer →</a>
+              <a href="pyq.html" class="sub-btn alt">PYQ</a>
+            </div>
+            <div class="sub-progress-meta"><span>Chapters Covered</span><span>14 / 14</span></div>
+            <div class="sub-progress-bar"><div class="sub-progress-fill" style="width:90%;background:linear-gradient(90deg,var(--green),#55efc4)"></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(162,155,254,0.12)">⚖️</div>
+            <h3>Corporate & Other Laws</h3>
+            <p>Companies Act 2013, LLP, Negotiable Instruments Act, IBC, SCRA. Chapter-wise tricks.</p>
+            <div class="sub-actions">
+              <a href="law-flashcard.html" class="sub-btn">Flashcards →</a>
+              <a href="all_in_LAW.html" class="sub-btn">OneShot →</a>
+              <a href="case_practice.html" class="sub-btn alt">Cases</a>
+            </div>
+            <div class="sub-progress-meta"><span>Chapters Covered</span><span>8 / 12</span></div>
+            <div class="sub-progress-bar"><div class="sub-progress-fill" style="width:70%;background:linear-gradient(90deg,var(--accent),var(--accent3))"></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,206,201,0.12)">📊</div>
+            <h3>Advanced Accounts</h3>
+            <p>AS 1–29, Amalgamation (AS-14), Branch Accounting (AS-11), Internal Reconstruction.</p>
+            <div class="sub-actions">
+              <a href="accounts-flashcard.html" class="sub-btn">Flashcards →</a>
+              <a href="Adv_Accounting.html" class="sub-btn">Practice →</a>
+              <a href="case_practice.html" class="sub-btn alt">Cases</a>
+            </div>
+            <div class="sub-progress-meta"><span>Chapters Covered</span><span>6 / 10</span></div>
+            <div class="sub-progress-bar"><div class="sub-progress-fill" style="width:60%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div></div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,121,168,0.12)">🔍</div>
+            <h3>Audit & Assurance</h3>
+            <p>SA 200–SA 710, Audit Planning, Risk Assessment, Internal Control, CARO 2020, Written Representation.</p>
+            <div class="sub-actions">
+              <a href="audit-flashcard.html" class="sub-btn">Flashcards →</a>
+              <a href="pyq.html" class="sub-btn alt">PYQ</a>
+            </div>
+            <div class="sub-progress-meta"><span>Chapters Covered</span><span>5 / 8</span></div>
+            <div class="sub-progress-bar"><div class="sub-progress-fill" style="width:55%;background:linear-gradient(90deg,var(--pink),var(--accent3))"></div></div>
+          </div>
+          <div class="sub-card" style="border-color:rgba(108,92,231,0.25);background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(0,206,201,0.03))">
+            <div class="sub-card-icon" style="background:rgba(108,92,231,0.15)">🎯</div>
+            <h3>Case Scenario Practice</h3>
+            <p>100+ ICAI Case Scenarios across Accounts, Law, GST & Tax — with timer, solutions, chapter-wise filtering.</p>
+            <div class="sub-actions">
+              <a href="case_practice.html" class="sub-btn">Open Practice →</a>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;">
+              <span style="padding:2px 8px;background:rgba(0,184,148,0.1);border:1px solid rgba(0,184,148,0.2);border-radius:20px;font-size:10px;color:var(--green);font-family:var(--mono);">100+ Scenarios</span>
+              <span style="padding:2px 8px;background:rgba(253,203,110,0.1);border:1px solid rgba(253,203,110,0.2);border-radius:20px;font-size:10px;color:var(--gold);font-family:var(--mono);">Timer Mode</span>
+              <span style="padding:2px 8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);border-radius:20px;font-size:10px;color:var(--accent3);font-family:var(--mono);">ICAI Style</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foundation subjects (hidden) -->
+      <div id="foundation-subjects" style="display:none">
+        <div class="subject-grid">
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,184,148,0.12)">📒</div>
+            <h3>Principles of Accounting</h3>
+            <p>Journal entries, Trial Balance, Final Accounts, Depreciation, Bills of Exchange, Bank Reconciliation.</p>
+            <div class="sub-actions">
+              <a href="pyq.html" class="sub-btn alt">PYQ</a>
+            </div>
+            <div class="sub-coming">🚧 Dedicated flashcards coming soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,184,148,0.12)">⚖️</div>
+            <h3>Business Laws</h3>
+            <p>Indian Contract Act, Sale of Goods Act, Partnership Act, Companies Act basics, Negotiable Instruments.</p>
+            <div class="sub-actions"><a href="pyq.html" class="sub-btn alt">PYQ</a></div>
+            <div class="sub-coming">🚧 Dedicated flashcards coming soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,184,148,0.12)">🔢</div>
+            <h3>Business Maths & Statistics</h3>
+            <p>Ratio, Equations, Permutation & Combination, Probability, Statistics, Index Numbers.</p>
+            <div class="sub-actions"><a href="pyq.html" class="sub-btn alt">PYQ</a></div>
+            <div class="sub-coming">🚧 Dedicated flashcards coming soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(0,184,148,0.12)">📈</div>
+            <h3>Business Economics</h3>
+            <p>Micro & Macro Economics, Demand, Supply, Market Structures, National Income, Money & Banking.</p>
+            <div class="sub-actions"><a href="pyq.html" class="sub-btn alt">PYQ</a></div>
+            <div class="sub-coming">🚧 Dedicated flashcards coming soon</div>
+          </div>
+        </div>
+        <div class="coming-panel" style="margin-top:24px;">
+          <div class="coming-emoji">🌱</div>
+          <h2>CA Foundation Content Coming Soon</h2>
+          <p>We're building dedicated Foundation flashcards, MCQs, and formula sheets. Join WhatsApp to get notified first.</p>
+          <a href="https://wa.me/919140162300" target="_blank" class="coming-btn">📲 Join WhatsApp Community</a>
+        </div>
+      </div>
+
+      <!-- Final subjects (hidden) -->
+      <div id="final-subjects" style="display:none">
+        <div class="subject-grid">
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">📊</div>
+            <h3>Financial Reporting (FR)</h3>
+            <p>Ind AS, Consolidated Financial Statements, Business Combinations, IFRS Comparison.</p>
+            <div class="sub-coming">🚧 Content Coming Soon · Priority Build</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">💹</div>
+            <h3>Advanced FM (AFM)</h3>
+            <p>Financial Policy, Project Finance, Risk Management, Derivatives, Mergers & Acquisitions.</p>
+            <div class="sub-coming">🚧 Content Coming Soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">🔎</div>
+            <h3>Advanced Audit</h3>
+            <p>Audit of Banks, NBFCs, Insurance Companies, SAEs, SRSs, Peer Review, Quality Control.</p>
+            <div class="sub-coming">🚧 Content Coming Soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">💰</div>
+            <h3>Direct Tax — Final</h3>
+            <p>Assessment Procedure, Appeals, Search & Seizure, Transfer Pricing, International Tax.</p>
+            <div class="sub-coming">🚧 Content Coming Soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">🧾</div>
+            <h3>Indirect Tax (IDT)</h3>
+            <p>Advanced GST, Customs Law, FTP, Special Economic Zones, Foreign Trade.</p>
+            <div class="sub-coming">🚧 Content Coming Soon</div>
+          </div>
+          <div class="sub-card">
+            <div class="sub-card-icon" style="background:rgba(253,203,110,0.12)">💻</div>
+            <h3>Information Systems</h3>
+            <p>Data Analytics, Blockchain, Cybersecurity, ISCA, IS Audit.</p>
+            <div class="sub-coming">🚧 Content Coming Soon</div>
+          </div>
+        </div>
+        <div class="coming-panel" style="margin-top:24px;">
+          <div class="coming-emoji">🏆</div>
+          <h2>CA Final Content Coming Soon</h2>
+          <p>We're building an epic CA Final section. Join the WhatsApp group to get notified when content goes live.</p>
+          <a href="https://wa.me/919140162300" target="_blank" class="coming-btn">📲 WhatsApp: 9140162300</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOOLS PANEL ── -->
+    <div class="dash-panel" id="panel-tools">
+      <div class="section-hdr">
+        <div class="section-tag">🛠️ Study Arsenal</div>
+        <h2>All Study Tools</h2>
+        <p>Every tool you need to crack CA Inter — all in one place.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">📋</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">PYQ Finder</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">10-year question bank. Filter by subject, chapter, and year. Spot patterns, master repeating topics.</p>
+          <a href="pyq.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Open PYQ Finder →</a>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">📰</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">RTP Question Bank</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">248+ Q&A pairs from ICAI Revision Test Papers across 36 chapters. CaPeer-style interface.</p>
+          <a href="ca_rtp_questionbank.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Open RTP Bank →</a>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">📝</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">Case Scenario Practice</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">100+ ICAI case scenarios across Accounts, Law, GST & Income Tax. Timer mode, detailed solutions.</p>
+          <a href="case_practice.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Open Case Practice →</a>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">🧾</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">GST MCQ Timer</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Practice GST MCQs with a 30-minute exam timer. 50 official ICAI Case Scenario MCQs included.</p>
+          <a href="gst-practice.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Start GST MCQ →</a>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">⚖️</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">Law OneShot</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Complete Corporate Law revision in one HTML — all chapters, case studies, section references.</p>
+          <a href="all_in_LAW.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Open Law OneShot →</a>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+          <div style="font-size:28px;margin-bottom:12px;">📊</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">Accounts Practice</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">750+ questions from ICAI textbook. AS 1–29 coverage, MCQ mode, ICAI-format financial statements.</p>
+          <a href="Adv_Accounting.html" class="btn btn-primary" style="font-size:12px;padding:9px 18px;">Open Accounts →</a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;background:linear-gradient(135deg,rgba(0,184,148,0.08),rgba(0,206,201,0.04));border:1px solid rgba(0,184,148,0.2);border-radius:16px;padding:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:28px;margin-bottom:8px;">🟢</div>
+          <h3 style="font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:6px;">Virtual Library — 24×7</h3>
+          <p style="font-size:13px;color:var(--text2);">Join India's most active CA study room. 100+ warriors study here daily. All levels welcome.</p>
+        </div>
+        <a href="https://meet.google.com/qqf-hbap-tpa" target="_blank" class="btn btn-green" style="margin-left:auto;">Join Now →</a>
+      </div>
+    </div>
+
+  </div><!-- end dash-content -->
+</div><!-- end main-content -->
+
+<!-- Firebase -->
+<script type="module" src="js/firebase-config.js"></script>
+
+<script>
+// ── COUNTDOWN ──
+function updateCountdown() {
+  const target = new Date('2026-11-01T00:00:00');
+  const diff = target - new Date();
+  if (diff <= 0) { ['cd-days','cd-hours','cd-mins'].forEach(id => document.getElementById(id).textContent = '0'); return; }
+  document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ── SIDEBAR TOGGLE ──
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').style.display =
+    document.getElementById('sidebar').classList.contains('open') ? 'block' : 'none';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').style.display = 'none';
+}
+
+// ── PANEL NAV ──
+function showPanel(name, el) {
+  document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  if (el) el.classList.add('active');
+  document.getElementById('topbar-page').textContent =
+    name === 'home' ? 'Dashboard' : name === 'subjects' ? 'Subjects' : 'Study Tools';
+}
+
+// ── COURSE SWITCH ──
+const COURSE_CONFIG = {
+  inter: {
+    level: 'CA INTER', tag: '⚡ CA Inter Subjects', title: 'All Subjects, One Place',
+    desc: 'Chapter-wise flashcards, MCQs, and case studies — built from ICAI study material.',
+    levelClass: 'inter', countdown: true
+  },
+  foundation: {
+    level: 'CA FOUNDATION', tag: '🌱 CA Foundation Subjects', title: 'Foundation Subjects',
+    desc: 'All 4 Foundation subjects with notes, formula sheets, MCQs, and flashcards.',
+    levelClass: 'foundation', countdown: false
+  },
+  final: {
+    level: 'CA FINAL', tag: '🏆 CA Final Subjects', title: 'Final Level Subjects',
+    desc: 'CA Final resources — comprehensive content coming soon.',
+    levelClass: 'final', countdown: false
+  }
+};
+let currentCourse = 'inter';
+
+function switchCourse(course) {
+  currentCourse = course;
+  const cfg = COURSE_CONFIG[course];
+  // Update sidebar pills
+  document.querySelectorAll('.sb-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.sb-pill.' + course).classList.add('active');
+  // Update topbar level
+  const lvlEl = document.getElementById('topbar-level');
+  lvlEl.textContent = cfg.level;
+  lvlEl.className = 'topbar-level ' + cfg.levelClass;
+  // Update subjects section header
+  document.getElementById('subj-tag').textContent = cfg.tag;
+  document.getElementById('subj-title').textContent = cfg.title;
+  document.getElementById('subj-desc').textContent = cfg.desc;
+  // Show/hide subject panels
+  ['inter','foundation','final'].forEach(c => {
+    document.getElementById(c + '-subjects').style.display = c === course ? '' : 'none';
+  });
+  // Countdown visibility
+  document.getElementById('cd-widget').style.display = cfg.countdown ? '' : 'none';
+  // Switch panel to subjects
+  showPanel('subjects', null);
+}
+
+// ── QUOTES ──
+const QUOTES = [
+  { t: '"Consistency is 10 times more powerful than intensity. Show up every single day."', a: '— PLH Daily Reminder' },
+  { t: '"The CA journey is hard because the destination is worth it."', a: '— Prince Learning Hub' },
+  { t: '"PYQ is not just practice — it\'s intelligence gathering. Patterns repeat. Study them."', a: '— Rank Strategy' },
+  { t: '"Weak subjects don\'t fail you — avoiding them does. Face your weak subject first."', a: '— PLH Strategy' },
+  { t: '"Every MCQ you practice is a question you won\'t get wrong on exam day."', a: '— Prince Learning Hub' },
+];
+let qi = 0;
+function nextQuote() {
+  qi = (qi + 1) % QUOTES.length;
+  document.getElementById('quote-text').textContent = QUOTES[qi].t;
+  document.getElementById('quote-author').textContent = QUOTES[qi].a;
+}
+
+// ── FIREBASE AUTH (if available) ──
+try {
+  if (window.FB) {
+    window.FB.onAuthChange(user => {
+      if (user) {
+        const name = user.displayName || user.email.split('@')[0];
+        const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+        document.getElementById('sb-name').textContent = name;
+        const av = document.getElementById('sb-avatar');
+        if (user.photoURL) av.innerHTML = `<img src="${user.photoURL}" style="width:100%;height:100%;border-radius:50%;object-fit:cover" alt="avatar">`;
+        else av.textContent = initials;
+      }
+    });
+  }
+} catch(e) {}
+
+// ── MCQ STATS FROM LOCALSTORAGE ──
+try {
+  const correct = parseInt(localStorage.getItem('plh_correct') || '0');
+  const total = parseInt(localStorage.getItem('plh_total') || '0');
+  if (total > 0) {
+    document.getElementById('stat-accuracy').textContent = Math.round(correct/total*100) + '%';
+    document.getElementById('stat-score').textContent = correct + '/' + total;
+    document.getElementById('stat-attempted').textContent = total + ' questions attempted';
+  }
+  const streak = localStorage.getItem('plh_streak') || '1';
+  document.getElementById('stat-streak').textContent = streak;
+} catch(e) {}
+</script>
+</body>
+</html>
